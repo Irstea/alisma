@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                <REFERENTIELS xmlns="http://xml.sandre.eaufrance.fr/scenario/referentiel/3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xml.sandre.eaufrance.fr/scenario/referentiel/3.1 http://xml.sandre.eaufrance.fr/scenario/referentiel/3.1/sandre_sc_referentiel.xsd">
+    <Scenario>
+        <CodeScenario>REFERENTIEL</CodeScenario>
+        <VersionScenario>3.1</VersionScenario>
+        <NomScenario>Diffusion de listes de référence par le Sandre</NomScenario>
+        <DateCreationFichier>2015-01-20</DateCreationFichier>
+        <DateDebutReference>1953-01-01</DateDebutReference>
+        <DateFinReference>2015-01-20</DateFinReference>
+        <Emetteur>
+            <CdIntervenant schemeAgencyID="SANDRE">1470</CdIntervenant>
+            <NomIntervenant>Service d'Administration Nationale des Données et Référentiels sur l'Eau</NomIntervenant>
+        </Emetteur>
+    </Scenario>
+    <Referentiel>
+        <CdReferentiel schemeAgencyID="SANDRE" schemeID="REF">STQ</CdReferentiel>
+        <NomReferentiel>Station de mesure</NomReferentiel>
+        <TypeReferentiel listAgencyID="sandre">2</TypeReferentiel>
+        <StReferentiel>Validé</StReferentiel>
+        <NbOccurrences>22796</NbOccurrences>
+        <StationMesureEauxSurface>
+            <CdStationMesureEauxSurface schemeAgencyID="AE">01000173</CdStationMesureEauxSurface>
+            <LbStationMesureEauxSurface>L'AVRE à MOREUIL (80)</LbStationMesureEauxSurface>
+            <StStationMesure>Validé</StStationMesure>
+            <LocPreciseStationMesureEauxSurface>LA CASTELLIERE</LocPreciseStationMesureEauxSurface>
+            <CoordXStationMesureEauxSurface>660857.955</CoordXStationMesureEauxSurface>
+            <CoordYStationMesureEauxSurface>6966067.22</CoordYStationMesureEauxSurface>
+            <ProjStationMesureEauxSurface>26</ProjStationMesureEauxSurface>
+            <PremierMoisAnneeEtiage>6</PremierMoisAnneeEtiage>
+            <DateCreationStationMesureEauxSurface>1900-01-01</DateCreationStationMesureEauxSurface>
+            <DateArretActiviteStationMesureEauxSurface/>
+            <DateMAJInfosStationMesureEauxSurface>2008-03-03</DateMAJInfosStationMesureEauxSurface>
+            <MdoLocStationMesureEauxSurface>
+                <CdMasseDEau>AR06</CdMasseDEau>
+            </MdoLocStationMesureEauxSurface>
+            <EntiteHydroStation>
+                <CdEntiteHydrographique>E6400600</CdEntiteHydrographique>
+                <NomEntiteHydrographique>Avre</NomEntiteHydrographique>
+            </EntiteHydroStation>
+            <TronconEntiteHydrographiquePrincipale>
+                <CdTronconHydrographique>E6400600</CdTronconHydrographique>
+            </TronconEntiteHydrographiquePrincipale>
+            <PkPointTronconEntiteHydroPrincipale>982.110</PkPointTronconEntiteHydroPrincipale>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2008-01-01</DateDebutAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000081</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <PointPrelEauxSurf>
+                <CdPointEauxSurf>001</CdPointEauxSurf>
+                <LbPointEauxSurf>Non renseigné</LbPointEauxSurf>
+                <StPointPrel>Validé</StPointPrel>
+                <DateMiseServicePointEauxSurf>1900-01-01</DateMiseServicePointEauxSurf>
+                <DateMiseHorServicePointEauxSurf/>
+                <CoordXPointEauxSurf>660857.955615729</CoordXPointEauxSurf>
+                <CoordYPointEauxSurf>6966067.22884133</CoordYPointEauxSurf>
+                <ProjPointEauxSurf>26</ProjPointEauxSurf>
+                <ComPointEauxSurf/>
+                <ModeObtentionPointEauxSurf>0</ModeObtentionPointEauxSurf>
+                <NaturePointEauxSurf>0</NaturePointEauxSurf>
+                <DateMAJInfosPointPrel/>
+            </PointPrelEauxSurf>
+        </StationMesureEauxSurface>
+        <StationMesureEauxSurface>
+            <CdStationMesureEauxSurface schemeAgencyID="AE">01000604</CdStationMesureEauxSurface>
+            <LbStationMesureEauxSurface>L'OMIGNON à VERMAND (02)</LbStationMesureEauxSurface>
+            <StStationMesure>Validé</StStationMesure>
+            <LocPreciseStationMesureEauxSurface>AMONT DE VERMAND</LocPreciseStationMesureEauxSurface>
+            <CoordXStationMesureEauxSurface>710789.194</CoordXStationMesureEauxSurface>
+            <CoordYStationMesureEauxSurface>6974922.26</CoordYStationMesureEauxSurface>
+            <ProjStationMesureEauxSurface>26</ProjStationMesureEauxSurface>
+            <PremierMoisAnneeEtiage>6</PremierMoisAnneeEtiage>
+            <DateCreationStationMesureEauxSurface>1900-01-01</DateCreationStationMesureEauxSurface>
+            <DateArretActiviteStationMesureEauxSurface/>
+            <DateMAJInfosStationMesureEauxSurface>2008-03-06</DateMAJInfosStationMesureEauxSurface>
+            <MdoLocStationMesureEauxSurface>
+                <CdMasseDEau>AR40</CdMasseDEau>
+            </MdoLocStationMesureEauxSurface>
+            <EntiteHydroStation>
+                <CdEntiteHydrographique>E6350750</CdEntiteHydrographique>
+                <NomEntiteHydrographique>Omignon</NomEntiteHydrographique>
+            </EntiteHydroStation>
+            <TronconEntiteHydrographiquePrincipale>
+                <CdTronconHydrographique>E6350750</CdTronconHydrographique>
+            </TronconEntiteHydrographiquePrincipale>
+            <PkPointTronconEntiteHydroPrincipale>977.440</PkPointTronconEntiteHydroPrincipale>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2008-01-01</DateDebutAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000081</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <PointPrelEauxSurf>
+                <CdPointEauxSurf>001</CdPointEauxSurf>
+                <LbPointEauxSurf>Non renseigné</LbPointEauxSurf>
+                <StPointPrel>Validé</StPointPrel>
+                <DateMiseServicePointEauxSurf>1900-01-01</DateMiseServicePointEauxSurf>
+                <DateMiseHorServicePointEauxSurf/>
+                <CoordXPointEauxSurf>710789.194494775</CoordXPointEauxSurf>
+                <CoordYPointEauxSurf>6974922.26088801</CoordYPointEauxSurf>
+                <ProjPointEauxSurf>26</ProjPointEauxSurf>
+                <ComPointEauxSurf/>
+                <ModeObtentionPointEauxSurf>0</ModeObtentionPointEauxSurf>
+                <NaturePointEauxSurf>0</NaturePointEauxSurf>
+                <DateMAJInfosPointPrel/>
+            </PointPrelEauxSurf>
+        </StationMesureEauxSurface>
+        <StationMesureEauxSurface>
+            <CdStationMesureEauxSurface schemeAgencyID="AE">01000675</CdStationMesureEauxSurface>
+            <LbStationMesureEauxSurface>LE GY À DUISANS (62)</LbStationMesureEauxSurface>
+            <StStationMesure>Validé</StStationMesure>
+            <LocPreciseStationMesureEauxSurface>PONT D56</LocPreciseStationMesureEauxSurface>
+            <CoordXStationMesureEauxSurface>677037.555</CoordXStationMesureEauxSurface>
+            <CoordYStationMesureEauxSurface>7023772.52</CoordYStationMesureEauxSurface>
+            <ProjStationMesureEauxSurface>26</ProjStationMesureEauxSurface>
+            <PremierMoisAnneeEtiage>6</PremierMoisAnneeEtiage>
+            <DateCreationStationMesureEauxSurface>1900-01-01</DateCreationStationMesureEauxSurface>
+            <DateArretActiviteStationMesureEauxSurface/>
+            <DateMAJInfosStationMesureEauxSurface>2008-10-01</DateMAJInfosStationMesureEauxSurface>
+            <MdoLocStationMesureEauxSurface>
+                <CdMasseDEau>AR43</CdMasseDEau>
+            </MdoLocStationMesureEauxSurface>
+            <EntiteHydroStation>
+                <CdEntiteHydrographique>E2010660</CdEntiteHydrographique>
+                <NomEntiteHydrographique>Le Gy</NomEntiteHydrographique>
+            </EntiteHydroStation>
+            <TronconEntiteHydrographiquePrincipale>
+                <CdTronconHydrographique>E2010660</CdTronconHydrographique>
+            </TronconEntiteHydrographiquePrincipale>
+            <PkPointTronconEntiteHydroPrincipale>997.070</PkPointTronconEntiteHydroPrincipale>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2001-01-01</DateDebutAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000027</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>1979-01-01</DateDebutAppartReseauMesure>
+                <DateFinAppartReseauMesure>1995-12-31</DateFinAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000002</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <PointPrelEauxSurf>
+                <CdPointEauxSurf>001</CdPointEauxSurf>
+                <LbPointEauxSurf>Non renseigné</LbPointEauxSurf>
+                <StPointPrel>Validé</StPointPrel>
+                <DateMiseServicePointEauxSurf>1900-01-01</DateMiseServicePointEauxSurf>
+                <DateMiseHorServicePointEauxSurf/>
+                <CoordXPointEauxSurf>677037.555083073</CoordXPointEauxSurf>
+                <CoordYPointEauxSurf>7023772.52325534</CoordYPointEauxSurf>
+                <ProjPointEauxSurf>26</ProjPointEauxSurf>
+                <ComPointEauxSurf/>
+                <ModeObtentionPointEauxSurf>0</ModeObtentionPointEauxSurf>
+                <NaturePointEauxSurf>0</NaturePointEauxSurf>
+                <DateMAJInfosPointPrel/>
+            </PointPrelEauxSurf>
+        </StationMesureEauxSurface>
+        <StationMesureEauxSurface>
+            <CdStationMesureEauxSurface schemeAgencyID="AE">01000955</CdStationMesureEauxSurface>
+            <LbStationMesureEauxSurface>LES TROIS DOMS à AYENCOURT (80)</LbStationMesureEauxSurface>
+            <StStationMesure>Validé</StStationMesure>
+            <LocPreciseStationMesureEauxSurface>AMONT DE mONTDIDIER</LocPreciseStationMesureEauxSurface>
+            <CoordXStationMesureEauxSurface>668194.610</CoordXStationMesureEauxSurface>
+            <CoordYStationMesureEauxSurface>6947340.46</CoordYStationMesureEauxSurface>
+            <ProjStationMesureEauxSurface>26</ProjStationMesureEauxSurface>
+            <PremierMoisAnneeEtiage>6</PremierMoisAnneeEtiage>
+            <DateCreationStationMesureEauxSurface>1900-01-01</DateCreationStationMesureEauxSurface>
+            <DateArretActiviteStationMesureEauxSurface/>
+            <DateMAJInfosStationMesureEauxSurface>2008-03-06</DateMAJInfosStationMesureEauxSurface>
+            <MdoLocStationMesureEauxSurface>
+                <CdMasseDEau>AR06</CdMasseDEau>
+            </MdoLocStationMesureEauxSurface>
+            <EntiteHydroStation>
+                <CdEntiteHydrographique>E6400650</CdEntiteHydrographique>
+                <NomEntiteHydrographique>Trois Doms</NomEntiteHydrographique>
+            </EntiteHydroStation>
+            <TronconEntiteHydrographiquePrincipale>
+                <CdTronconHydrographique>E6400650</CdTronconHydrographique>
+            </TronconEntiteHydrographiquePrincipale>
+            <PkPointTronconEntiteHydroPrincipale>985.100</PkPointTronconEntiteHydroPrincipale>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2008-01-01</DateDebutAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000081</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2012-10-29</DateDebutAppartReseauMesure>
+                <DateFinAppartReseauMesure>2012-12-10</DateFinAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0101320125</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <PointPrelEauxSurf>
+                <CdPointEauxSurf>001</CdPointEauxSurf>
+                <LbPointEauxSurf>Non renseigné</LbPointEauxSurf>
+                <StPointPrel>Validé</StPointPrel>
+                <DateMiseServicePointEauxSurf>1900-01-01</DateMiseServicePointEauxSurf>
+                <DateMiseHorServicePointEauxSurf/>
+                <CoordXPointEauxSurf>668194.610595024</CoordXPointEauxSurf>
+                <CoordYPointEauxSurf>6947340.46576386</CoordYPointEauxSurf>
+                <ProjPointEauxSurf>26</ProjPointEauxSurf>
+                <ComPointEauxSurf/>
+                <ModeObtentionPointEauxSurf>0</ModeObtentionPointEauxSurf>
+                <NaturePointEauxSurf>0</NaturePointEauxSurf>
+                <DateMAJInfosPointPrel/>
+            </PointPrelEauxSurf>
+        </StationMesureEauxSurface>
+        <StationMesureEauxSurface>
+            <CdStationMesureEauxSurface schemeAgencyID="AE">01000975</CdStationMesureEauxSurface>
+            <LbStationMesureEauxSurface>L'ANCRE à THIEPVAL (80)</LbStationMesureEauxSurface>
+            <StStationMesure>Validé</StStationMesure>
+            <LocPreciseStationMesureEauxSurface>pont d73</LocPreciseStationMesureEauxSurface>
+            <CoordXStationMesureEauxSurface>676240.546</CoordXStationMesureEauxSurface>
+            <CoordYStationMesureEauxSurface>6996285.72</CoordYStationMesureEauxSurface>
+            <ProjStationMesureEauxSurface>26</ProjStationMesureEauxSurface>
+            <PremierMoisAnneeEtiage>6</PremierMoisAnneeEtiage>
+            <DateCreationStationMesureEauxSurface>1900-01-01</DateCreationStationMesureEauxSurface>
+            <DateArretActiviteStationMesureEauxSurface/>
+            <DateMAJInfosStationMesureEauxSurface>2008-03-03</DateMAJInfosStationMesureEauxSurface>
+            <MdoLocStationMesureEauxSurface>
+                <CdMasseDEau>AR04</CdMasseDEau>
+            </MdoLocStationMesureEauxSurface>
+            <EntiteHydroStation>
+                <CdEntiteHydrographique>E6380600</CdEntiteHydrographique>
+                <NomEntiteHydrographique>Ancre</NomEntiteHydrographique>
+            </EntiteHydroStation>
+            <TronconEntiteHydrographiquePrincipale>
+                <CdTronconHydrographique>E6380600</CdTronconHydrographique>
+            </TronconEntiteHydrographiquePrincipale>
+            <PkPointTronconEntiteHydroPrincipale>969.980</PkPointTronconEntiteHydroPrincipale>
+            <AppartRsx>
+                <DateDebutAppartReseauMesure>2008-01-01</DateDebutAppartReseauMesure>
+                <RsxStation>
+                    <CodeSandreRdd>0100000081</CodeSandreRdd>
+                </RsxStation>
+            </AppartRsx>
+            <PointPrelEauxSurf>
+                <CdPointEauxSurf>001</CdPointEauxSurf>
+                <LbPointEauxSurf>Non renseigné</LbPointEauxSurf>
+                <StPointPrel>Validé</StPointPrel>
+                <DateMiseServicePointEauxSurf>1900-01-01</DateMiseServicePointEauxSurf>
+                <DateMiseHorServicePointEauxSurf/>
+                <CoordXPointEauxSurf>676240.54689412</CoordXPointEauxSurf>
+                <CoordYPointEauxSurf>6996285.72188322</CoordYPointEauxSurf>
+                <ProjPointEauxSurf>26</ProjPointEauxSurf>
+                <ComPointEauxSurf/>
+                <ModeObtentionPointEauxSurf>0</ModeObtentionPointEauxSurf>
+                <NaturePointEauxSurf>0</NaturePointEauxSurf>
+                <DateMAJInfosPointPrel/>
+            </PointPrelEauxSurf>
+        </StationMesureEauxSurface>
+</Referentiel>
+</REFERENTIELS>

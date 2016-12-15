@@ -1,0 +1,158 @@
+\chapter{Installer le logiciel}
+
+\section{Installer les pré-requis}
+\subsection{JRE Java}
+Si nécessaire (votre ordinateur dispose peut-être déjà d'une version du JRE), téléchargez le programme d'installation du JRE Java à partir du site : \url{http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html}
+\subsection{Serveur MySql}
+Le serveur MySql est utilisé pour gérer les données de l'application.
+
+Vous avez besoin d'installer un serveur MySql dans votre poste de travail si vous voulez que votre application fonctionne de manière autonome. Si vous disposez d'un serveur, installez plutôt MySql dans le serveur ; vous n'aurez alors besoin de n'installer qu'un client pour exécuter les scripts de création et de pré-remplissage de la base de données.
+
+Consultez le cas échéant votre correspondant informatique pour savoir quelle est la meilleure stratégie à adopter.
+
+Pour télécharger MySQL serveur : \url{http://dev.mysql.com/downloads/windows/installer/}
+
+\subsubsection{Configurer le serveur MySql}
+Dans le dossier d'installation de MySql, ouvrez le fichier \textit{my.cnf} ou \textit{my.ini} (en principe, dans le dossier : C:\textbackslash{} ProgramData\textbackslash{}MySQL\textbackslash{}MySQL Server 5.6. Dans la section [mysqld], recherchez l'entrée \textit{max\_allowed\_packet}, et vérifiez que la valeur soit au minimum à 16M :
+\begin{lstlisting}
+[mysqld]
+...
+max_allowed_packet      = 16M
+\end{lstlisting}
+
+Dans le cas contraire, l'import des données de référence (table des stations ou des espèces, notamment) risque de ne pas aboutir.
+
+Relancez ensuite le serveur Mysql.
+
+\subsection{Client MySql}
+Le programme sait se connecter directement au serveur MySql, sans passer par des outils tiers. Vous n'avez besoin d'un client, par exemple SQL Workbench, uniquement pour exécuter les scripts de création et de remplissage de la base de données.
+
+Pour télécharger SqlWorkbench : \url{http://dev.mysql.com/downloads/workbench/}
+
+
+\section{Installer le logiciel}
+\subsection{Créer le dossier d'installation}
+
+Le logiciel peut être installé à n'importe quel endroit dans le micro-ordinateur. Néanmoins, privilégiez l'installation soit dans le dossier \textit{program\textbackslash alisma}, soit directement dans un dossier à la racine de votre disque, par exemple \textit{c:\textbackslash alisma}.
+
+\subsection{Décompresser l'archive}
+Décompressez le fichier \textit{alisma.zip} dans le dossier d'installation. Vous devriez récupérer la structure suivante :
+
+\begin{itemize}
+\item Dossiers :
+\begin{description}
+\item[database] : scripts d'installation de la base de données ;
+\item[param] : contient le fichier de paramètres ;
+\item[license] : contient les fichiers de licence d'utilisation du logiciel ;
+\item[alisma\_lib] : bibliothèques complémentaires utilisées par l'application.
+\end{description}
+\item fichiers :
+\begin{description}
+\item[alisma.jar] : fichier contenant le programme java ;
+\item[alisma.bat] : programme de lancement à partir de Windows ;
+\item[alisma.sh] : programme de lancement à partir de Linux ;
+\item[alisma.png] : icône de l'application, pour créer un raccourci, par exemple (ce fichier n'est pas utilisé directement dans l'application) ;
+\item[langage.config] : fichier créé à la première utilisation, qui contient la langue utilisée par défaut.
+\end{description}
+\end{itemize}
+
+\section{Créer la base de données}
+Connectez-vous à votre serveur MySQL, avec les droits vous permettant de créer une base de données.
+
+Si vous avez installé le serveur MySQL localement (dans votre ordinateur), utilisez ces informations :
+\begin{description}
+\item[serveur] : \textit{localhost}
+\item[login] : \textit{root}
+\item[password] : laisser à vide\footnote{Les dernières versions de MySql imposent l'utilisation d'un mot de passe pour le compte root}
+\end{description}
+
+Créez la base de données (ou \textit{schéma}, dans la terminologie MySql) \textbf{alisma}, associée au login \textbf{alisma} et au mot de passe \textbf{alisma} (paramètres par défaut dans le fichier de configuration).
+
+Les scripts de création et d'alimentation de la base de données sont stockés dans le dossier \textit{database}. Ils doivent être exécutés dans cet ordre, sous peine de déclencher des messages d'erreur de cohérence :
+\begin{enumerate}
+\item \textit{create\_alisma\_v1.0.sql} : script de création de la base de données \textit{alisma} ;
+\item \textit{parametre\_populate\_v1.0.sql} : import des paramètres généraux ;
+\item \textit{taxons\_populate\_v1.0.sql} : import du référentiel IRSTEA ;
+\item \textit{cours\_eau\_populate\_v1.0.sql} : import des cours d'eau déclarés dans les stations du référentiel SANDRE ;
+\item \textit{stations\_populate\_v1.0.sql} : import des stations du référentiel SANDRE.
+\end{enumerate}
+
+\section{Adapter les paramètres à votre installation}
+\label{sec:param}
+Le fichier \textit{param\textbackslash{}param.ini} contient les paramètres qui peuvent être modifiés facilement par l'utilisateur. Néanmoins, la plus grande prudence est de mise, le risque de créer des dysfonctionnements ultérieurement n'étant alors pas nul...
+
+Pour modifier le fichier \textit{param.ini}, utilisez \textit{notepad++} (\url{https://notepad-plus-plus.org}) plutôt que \textit{notepad}, pour éviter les problèmes de caractères de fin de ligne, qui sont différents entre Windows et les autres systèmes d'exploitation.
+
+Le fichier de paramètres est organisé en sections :
+
+\subsection{database}
+Cette section précise les paramètres de connexion à la base de données (entre parenthèses, les valeurs par défaut).
+\begin{description}
+\item [server] : nom du serveur (\textit{localhost})
+\item [dbname] : nom de la base de données (\textit{alisma})
+\item [dbuser] : nom du compte de connexion (\textit{alisma})
+\item [dbpass] : mot de passe de connexion (\textit{alisma})
+\item [jdbc\_class] : nom du pilote d'accès à la base de données (\textit{com.mysql.jdbc.Driver})
+\item [dbtype] : type de la base de données (\textit{mysql})
+\item [backupFileNamePrefix] : préfixe utilisé pour les sauvegardes de la base de données (\textit{alisma\_db})
+\item [backupProgram] : nom du programme utilisé pour réaliser la sauvegarde de la base de données (\textit{c:\textbackslash{}Program Files\textbackslash{}MySQL\textbackslash{}MYSQL Server 5.6\textbackslash{}bin\textbackslash{}mysqldump.exe})
+\item [pathFolderDataSave] : chemin de stockage des sauvegardes (\textit{c:\textbackslash{}alisma\textbackslash{}backup})
+\item [pathFileDateSave] : chemin d'accès au fichier contenant la date de la dernière sauvegarde réalisée (\textit{c:\textbackslash{}alisma\textbackslash{}backup\textbackslash{}alisma\_save.txt})
+\item [backupDelay] : délai entre deux sauvegardes (7). Pour inhiber la réalisation des sauvegardes, ce paramètre doit être positionné à \textbf{-1}
+\end{description}
+
+Si votre base de données est hébergée dans un serveur, contactez votre administrateur informatique pour connaître les paramètres à renseigner.
+
+\subsection{language}
+
+Cette section permet de définir la langue utilisée par défaut dans le logiciel.
+
+\begin{description}
+\item [default] : langue utilisée par défaut (fr\_FR)
+\item [preferred] : langue préférée (fr\_FR)
+\item[en\_US]: langue utilisée en cas de libellé manquant (fr\_FR)
+\item [en\_EN] : idem
+\end{description}
+
+
+\subsection{others}
+
+\begin{description}
+\item [modeDebug] : active l'affichage des messages dans le logiciel (false)
+\item [lambert] : indique si les coordonnées Lambert sont utilisées (true). Si le logiciel est employé pour des relevés hors France, basculez ce paramètre à \textbf{false}
+\item [lambert93Emin] : coordonnée Lambert Est minimale (70000)
+\item [lambert93Emax] : coordonnée Lambert Est maximale (1200000)
+\item [lambert93Nmin] : coordonnée Lambert Nord minimale (6000000)
+\item [lambert93Nmax] : coordonnée Lambert Nord maximale (7200000)
+\item [pathFolderExport] : chemin de stockage des fichiers générés (c:\textbackslash{}alisma\textbackslash{}export)
+\item [exportFileNamePrefix] : préfixe utilisé pour les fichiers exportés (alisma)
+\item [xsltfile\_fr] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en français (param/alisma.xsl)
+\item [xsltfile\_en] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en anglais (param/alisma.xsl)
+
+\end{description}
+
+\subsection{fieldslevel}
+Cette section permet de rendre certains champs obligatoires ou non. Quatre niveaux sont disponibles :
+\begin{itemize}
+\item \textit{vide} : pas de contrôle particulier sur le champ ;
+\item \textit{recommanded} : le champ concerné devrait être renseigné ;
+\item \textit{necessary} : le champ doit être renseigné pour que le dossier soit validé ;
+\item \textit{mandatory} : le champ doit être renseigné pour pouvoir enregistrer le dossier.
+\end{itemize}
+
+Dans la pratique, ces niveaux ne sont modifiables que pour les informations suivantes :
+\begin{description}
+\item [coord\_x et coord\_y] : coordonnées Lambert. Les valeurs doivent être vidées si le logiciel est utilisé hors de France (modification à réaliser en même temps pour le paramètre \textit{others/lambert}) 
+\item [wgs84\_x et wgs84\_y] : coordonnées WGS84 (recommanded).
+\end{description}
+
+\subsection{display}
+Cette section contient le code des couleurs employées, ainsi que les adresses des logos.
+\begin{description}
+\item [colorFooter] : couleur du bas d'écran (150,182,254)
+\item [colorBanniere] : couleur de la bannière (150,182,254)
+\item [colorCentral] : couleur de la fenêtre (157,212,255)
+\item [colorTab] : couleur des onglets (0,20,205)
+\item [icone] : nom du fichier contenant l'icône de l'application (ressources/alisma.png)
+\item [logo] : nom du fichier contenant le logo d'IRSTEA (ressources/logo.png)
+\end{description}

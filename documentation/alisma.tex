@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper,titlepage,twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[colorlinks=false,urlbordercolor=white,linkbordercolor=white]{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{listings}
+\pagestyle{fancy}
+\usepackage{titlesec}
+\usepackage[abs]{overpic}
+\usepackage{hyperref}
+
+% Definition des couleurs
+\definecolor{titreColor}{RGB}{0,58,128}  % Marine
+\definecolor{stitreColor}{RGB}{0,158,224}  % Ocean
+\definecolor{auteurColor}{RGB}{0,58,128}     % Marine
+\definecolor{texteColor}{RGB}{164,196,0}     % Prairie
+
+% Definition des chapitres
+\titleformat{\chapter}[display]
+{\normalfont\Large\filcenter\sffamily}
+{\titlerule[1pt]%
+ \vspace{1pt}%
+ \titlerule
+ \vspace{1pc}%
+ \Large\color{titreColor}{\chaptertitlename} \thechapter}
+{1pc}
+{\titlerule
+ \vspace{1pc}%
+ \Huge}
+
+\titleformat{\section}
+{\color{titreColor}\normalfont\Large\bfseries\sffamily}
+{\color{titreColor}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{stitreColor}\bfseries\sffamily}
+{\color{stitreColor}\thesubsection}{1em}{}
+
+%Données de titre et d'auteur pour la page de garde
+\newcommand{\titre}{Logiciel ALISMA}
+\newcommand{\sousTitre}{Manuel d'installation et d'utilisation}
+\newcommand{\auteur}{Éric Quinton}
+\newcommand{\dateModif}{\today}
+
+\begin{document}
+%Supprime les veuves et orphelines
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom 
+
+% Integre la page de garde
+\input{titre_irstea}
+% Définition des entêtes
+\fancyhead{}
+\fancyhead[CO]{\leftmark\sffamily}
+\fancyhead[CE]{ \sffamily\titre{}}
+\fancyfoot[CO]{\sffamily\thepage}
+\fancyfoot[CE]{\sffamily\thepage}
+% Redéfinition de \cleardoublepage pour créer une page vide
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}
+  \vspace*{\fill}
+
+  \vspace{\fill}
+  \thispagestyle{empty}
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+% \cleardoublepage permet de générer une page vide 
+% si le chapitre ne commence pas sur la page de droite
+%\cleardoublepage
+\input{introduction}
+
+%\section{Première section}
+%\subsection{sous-section}
+%Exemple de texte
+%\subsection{autre sous-section}
+
+% Second chapitre
+%\cleardoublepage
+\input{installer}
+
+\chapter{Utiliser le logiciel}
+
+\chapter{Annexes}
+\input{annexes}
+% \input{chapitre2}
+% Table des matières
+\tableofcontents
+\end{document}
