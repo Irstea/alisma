@@ -141,6 +141,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 		} else 
 			nbUR = dbUR.getNbReleve(keyOp);
+		if (nbUR > 2)
+			nbUR = 2;
 
 		/*
 		 * Initialisation de la fenetre

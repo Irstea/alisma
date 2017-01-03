@@ -47,9 +47,11 @@
      <logger name="utils" additivity="false">
     <level value="debug"/>
     <appender-ref ref="console"/>
+    <appender-ref ref="logfile"/>
     </logger>
       <logger name="stations" additivity="false">
     <level value="debug"/>
+    <appender-ref ref="logfile"/>
     <appender-ref ref="console"/>
     </logger>
     

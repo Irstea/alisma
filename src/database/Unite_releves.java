@@ -137,7 +137,9 @@ public class Unite_releves extends DbObject {
 				+ " left outer join type_ur on (ur.type_ur_id = type_ur.type_ur_id)"
 				+ " left outer join periphyton on (ur.periphyton_id = periphyton.periphyton_id)"
 				+ " left outer join facies on (ur.facies_id = facies.facies_id)"
-				+ " left outer join facies_autre_type on (ur.facies_autre_type_id = facies_autre_type.facies_autre_type_id)";
+				+ " left outer join facies_autre_type on (ur.facies_autre_type_id = facies_autre_type.facies_autre_type_id)"
+				+ " order by id_UR"
+				+ " limit 2";
 		return readListFromKey("id_op_controle", key, sql);
 	}
 

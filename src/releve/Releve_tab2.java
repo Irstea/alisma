@@ -38,6 +38,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		super();
 		obj = this;
 		nbUR = pnbUR;
+
 		ur = fur;
 		/*
 		 * Initialisations
