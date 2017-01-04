@@ -167,7 +167,10 @@ public class StationChange extends JFrameAlisma {
 		/*
 		 * Verification des coordonnees lambert
 		 */
-		if (Parametre.others.get("lambert").equals("true")) {
+		String lambert = Parametre.others.get("lambert");
+		if (lambert == null)
+			lambert = "false";
+		if (lambert.equals("true")) {
 			try {
 				val = Double.parseDouble(data.get("x"));
 				if (val < Double.parseDouble(Parametre.others
@@ -236,9 +239,13 @@ public class StationChange extends JFrameAlisma {
 			addCombo("coursEauList", 1, 5, 1);
 			addFieldMandatory("station");
 			addFieldMandatory("coursEauList");
+			try {
 			if (Parametre.others.get("lambert").equals("true")) {
 				addFieldMandatory("x");
 				addFieldMandatory("y");
+			}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
 			}
 			addButton("boutonValider", 'V', "valider", 1, 6, 1);
 			addButton("boutonSupprimer", 'S', "supprimer", 2, 6, 1);

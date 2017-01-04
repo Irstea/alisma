@@ -10,12 +10,15 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JDialog;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author quinton
  *
  */
 public class JDialogAlisma extends JDialog {
 	public JDialogAlisma obj;
+	public static Logger logger = Logger.getLogger(JDialogAlisma.class);
 	
 	/**
 	 * 
@@ -58,7 +61,11 @@ public class JDialogAlisma extends JDialog {
 		/*
 		 * Positionnement de l'icone de l'application
 		 */
+		try {
 		this.setIconImage(Parametre.iconeImage);
+		} catch (Exception e) {
+			logger.error ( e.getMessage());
+		}
 	}
 	
 	/**

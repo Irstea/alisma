@@ -305,9 +305,13 @@ public class Releve_tab1 extends ComposantAlisma {
 	class PointPrelevement extends ComposantAlisma {
 		boolean lambertVisible = true;
 
+
 		// ConvertWgs84ToLambert93 convertCoord = new ConvertWgs84ToLambert93();
 		public PointPrelevement(int pNbUR) {
-			if (Parametre.others.get("lambert").equals("false"))
+			String plambert = Parametre.others.get("lambert") ;			
+			if (plambert == null)
+				plambert = "false" ;
+			if (plambert.equals("false"))
 				lambertVisible = false;
 			addLabel("protocol", 0, 0, null);
 			addLabel("nbUR", 2, 0, null);
