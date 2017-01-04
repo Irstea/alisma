@@ -116,16 +116,18 @@ public class MainFenetre extends Observable implements Observer {
 			buttons_panel.add(francais, gbcStandard);
 			gbcStandard.gridx = 2;
 			buttons_panel.add(anglais, gbcStandard);
-
+			buttons_panel.add(new JLabel(new ImageIcon(getClass()
+					.getClassLoader().getResource("ressources/alisma_logo2.jpg"))),
+					initConstraints(gbc, 0, 1, 3));
 			buttons_panel.add(new JLabel(new ImageIcon(getClass()
 					.getClassLoader().getResource("ressources/img1.jpg"))),
-					initConstraints(gbc, 0, 1, 1));
+					initConstraints(gbc, 0, 2, 1));
 			buttons_panel.add(new JLabel(new ImageIcon(getClass()
 					.getClassLoader().getResource("ressources/img2.jpg"))),
-					initConstraints(gbc, 1, 1, 1));
+					initConstraints(gbc, 1, 2, 1));
 			buttons_panel.add(new JLabel(new ImageIcon(getClass()
 					.getClassLoader().getResource("ressources/img3.jpg"))),
-					initConstraints(gbc, 2, 1, 1));
+					initConstraints(gbc, 2, 2, 1));
 
 			/*
 			 * Ajout des boutons de selection de la langue
@@ -141,7 +143,7 @@ public class MainFenetre extends Observable implements Observer {
 			/*
 			 * Lancement de l'affichage de la fenetre
 			 */
-			super.draw(650, 300);
+			super.draw(650, 600);
 		}
 
 		/**
