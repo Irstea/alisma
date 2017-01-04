@@ -1,5 +1,7 @@
 package alisma;
 
+import javax.swing.JOptionPane;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -22,6 +24,18 @@ public class Alisma {
 		DOMConfigurator.configure("param/log4j.xml");
 		BasicConfigurator.configure();
 		/*
+		 * Verification de la version de Java installee
+		 */
+		Double java_version = getJavaVersion();
+		logger.info("Version Java : " + java_version);
+		
+		if (java_version < 1.7) {
+			JOptionPane.showMessageDialog(null, "Java version is too old ("+java_version+"), this program will stop now",
+					"Error", JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		}
+		
+		/*
 		 * Lecture des parametres dans le fichier param.ini
 		 */
 		new Parametre(parametre);
@@ -43,5 +57,12 @@ public class Alisma {
 		 */
 		new Controleur();
 
+	}
+	
+	static double getJavaVersion () {
+	    String version = System.getProperty("java.version");
+	    int pos = version.indexOf('.');
+	    pos = version.indexOf('.', pos+1);
+	    return Double.parseDouble (version.substring (0, pos));
 	}
 }
