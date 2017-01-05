@@ -143,6 +143,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			nbUR = dbUR.getNbReleve(keyOp);
 		if (nbUR > 2)
 			nbUR = 2;
+		logger.debug("Nbre UR retenu : "+nbUR);
 
 		/*
 		 * Initialisation de la fenetre
@@ -675,6 +676,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			}
 			keyPointPrelev = dbPointPrelev.ecrire(data, keyPointPrelev);
 			data.put("id_pt_prel", String.valueOf(keyPointPrelev));
+			tab_1.pointPrelevement.setValue("id_pt_prel", String.valueOf(keyPointPrelev));
 			logger.debug("id_op_controle before ecrire() : "+keyOp);
 			keyOp = dbOpControle.ecrire(data, keyOp);
 			logger.debug("id_op_controle after ecrire() : "+keyOp);

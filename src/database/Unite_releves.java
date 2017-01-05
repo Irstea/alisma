@@ -62,7 +62,7 @@ public class Unite_releves extends DbObject {
 				lData.put(param+"_id", "");
 			}
 		}
-		write(lData, cle);
+		cle = write(lData, cle);
 		return cle;
 	}
 	
