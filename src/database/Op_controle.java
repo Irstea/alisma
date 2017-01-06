@@ -110,8 +110,9 @@ public class Op_controle extends DbObject {
 		if (keyOp > -1) {
 			String[] queries = { "DELETE FROM Unite_releves WHERE id_op_controle = " + keyOp,
 					"DELETE FROM Lignes_op_controle WHERE id_op_controle = " + keyOp,
-					"DELETE FROM Op_controle WHERE id_op_controle = " + keyOp,
-					"DELETE from ibmr where id_op_controle = " + keyOp };
+					"DELETE from ibmr where id_op_controle = " + keyOp,
+					"DELETE FROM Op_controle WHERE id_op_controle = " + keyOp
+					 };
 			try {
 				query = connection.createStatement();
 				for (String sql : queries) {
