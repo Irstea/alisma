@@ -349,13 +349,27 @@ public class DbObject {
 	 * @return List<Hashtable<String, String>>
 	 */
 	public List<Hashtable<String, String>> readListFromKey(String pKeyName, Object key, String sqlClause) {
+		return readListFromKey(pKeyName, key, sqlClause, "") ;
+	}
+	/**
+	 * retourne la liste des enregistrements correspondants à une clé, avec
+	 * intégration d'une clause order
+	 * @param pKeyName
+	 * @param key
+	 * @param sqlClause
+	 * @param orderClause
+	 * @return
+	 */
+	public List<Hashtable<String, String>> readListFromKey(String pKeyName, Object key, String sqlClause, String orderClause) {
 		String where = " where " + identProtect + pKeyName + identProtect + " = ";
 		if (key.getClass().getSimpleName() == "String") {
 			where += "'" + key + "'";
 		} else
 			where += key;
-		return executeList(sqlClause + where);
+		return executeList(sqlClause + where +" " + orderClause);	
+
 	}
+	
 
 	public List<Hashtable<String, String>> getListOrderBy(String colOrder) {
 		String sql = "select * from " + tableName + " order by " + identProtect + colOrder + identProtect;
