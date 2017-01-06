@@ -20,7 +20,9 @@
     </fo:static-content>
     <fo:static-content flow-name="xsl-region-before">
      <fo:block text-align="center" background-image="param/logo.gif" font-weight="bold" font-style="italic" background-position-horizontal="left" background-repeat="no-repeat" line-height="2.5cm">
- Récapitulatif des relevés - Macrophytes cours d'eau</fo:block>
+ Récapitulatif des relevés - Macrophytes cours d'eau - v. <xsl:value-of select="versions/softwareVersion"/>
+ </fo:block>
+ 
     </fo:static-content>
 
         <fo:flow flow-name="xsl-region-body">        

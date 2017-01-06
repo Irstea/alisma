@@ -73,15 +73,28 @@ public class ExportOp {
 		 */
 		String encodage = (Alisma.isWindowsOs) ? "ISO-8859-15" : "UTF-8";
 		String newLine = System.getProperty("line.separator");
-		String xml = "<?xml version=\"1.0\" encoding=\"" + encodage + "\" ?>" + newLine + "<operations>" + newLine;
+		String xml = "<?xml version=\"1.0\" encoding=\"" + encodage + "\" ?>" + newLine;
+		/*
+		 * Operations
+		 */
+		xml = xml + "<operations>" + newLine;
+		/*
+		 * Versions
+		 */
+		xml = xml + "<versions>" + newLine;
+		xml = xml + "<softwareVersion>" + Alisma.VERSIONNUMBER + "</softwareVersion>" + newLine;
+		xml = xml + "</versions>" + newLine;
+		/*
+		 * Traitement des opérations
+		 */
 		String key;
 		List<Hashtable<String, String>> ldataFils;
 		/*
 		 * Recupere la liste des operations
 		 */
 		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
-//		if (Alisma.isWindowsOs)
-//			listeop = op.encodeAll(listeop);
+		// if (Alisma.isWindowsOs)
+		// listeop = op.encodeAll(listeop);
 		for (Hashtable<String, String> operation : listeop) {
 			key = operation.get("id_op_controle");
 			xml += "<operation>" + newLine;
@@ -96,10 +109,10 @@ public class ExportOp {
 			/*
 			 * traitement des unites de releve
 			 */
-			
+
 			ldataFils = ur.getListeFromOp(Integer.parseInt(key));
-//			if (Alisma.isWindowsOs)
-//				ldataFils = ur.encodeAll(ldataFils);
+			// if (Alisma.isWindowsOs)
+			// ldataFils = ur.encodeAll(ldataFils);
 			for (Hashtable<String, String> dataFils : ldataFils) {
 				xml += "<unite_releve>" + ur.getXml(dataFils, true) + "</unite_releve>" + newLine;
 			}
@@ -148,13 +161,12 @@ public class ExportOp {
 	 */
 	String ecrireFichierExport(String contenu, String suffixe, boolean silent, int cle) {
 		File f = null;
-		String scle = (cle > 0 ? "_"+ (new Integer(cle).toString()) : "" ) ;
+		String scle = (cle > 0 ? "_" + (new Integer(cle).toString()) : "");
 		/*
 		 * Preparation du chemin d'export
 		 */
 		String fileName = Parametre.others.get("pathFolderExport") + File.separator
-				+ Parametre.others.get("exportFileNamePrefix")
-				+ scle
+				+ Parametre.others.get("exportFileNamePrefix") + scle
 				+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + "." + suffixe;
 		f = new File(fileName);
 
@@ -205,15 +217,15 @@ public class ExportOp {
 		/*
 		 * Teste si une seule fiche est exportee
 		 */
-		int idOp ;
+		int idOp;
 		String sid = "";
 		try {
 			if (!param.get("id_op_controle").isEmpty()) {
 				idOp = new Integer(param.get("id_op_controle"));
-				sid = "_"+param.get("id_op_controle");
-			} else 
+				sid = "_" + param.get("id_op_controle");
+			} else
 				idOp = -1;
-		}catch (NullPointerException e) {
+		} catch (NullPointerException e) {
 			idOp = -1;
 		}
 		/*
@@ -229,8 +241,8 @@ public class ExportOp {
 		 */
 		FopFactory fopFactory = FopFactory.newInstance();
 		FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-		
-		File xsltfile = new File(Parametre.others.get("xsltfile_"+Langue.languageSelect));
+
+		File xsltfile = new File(Parametre.others.get("xsltfile_" + Langue.languageSelect));
 		String fileNamePdf = Parametre.others.get("pathFolderExport") + File.separator + fileNamePrefix
 				+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + ".pdf";
 		File pdffile = new File(fileNamePdf);
