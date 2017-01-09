@@ -156,3 +156,37 @@ Cette section contient le code des couleurs employées, ainsi que les adresses d
 \item [icone] : nom du fichier contenant l'icône de l'application (ressources/alisma.png)
 \item [logo] : nom du fichier contenant le logo d'IRSTEA (ressources/logo.png)
 \end{description}
+
+\section{Mettre à jour le logiciel}
+
+Lors de la livraison d'une nouvelle version, voici les opérations à réaliser.
+
+Lisez le fichier \textit{news.txt} ou \textit{lisezmoi.txt}, qui peuvent contenir des informations complémentaires nécessaires pour la mise à jour.
+
+\subsection{Installer la nouvelle version du logiciel}
+
+Renommez votre ancien dossier d'installation, par exemple en \textit{alisma.old}.
+
+Créez un nouveau dossier au nom identique au précédent (c:\textbackslash{}alisma).
+
+Décompressez la nouvelle version dans cd dossier. Récupérez ensuite l'ancien fichier \textit{param.ini} (en principe, c:\textbackslash{}alisma\textbackslash{}param\textbackslash{}param.ini) et écrasez la version livrée : cela vous permettra de conserver vos paramètres.
+
+\subsection{Vérifier si la base de données a besoin d'une mise à jour}
+
+Dans le dossier \textit{database}, vérifiez s'il existe un script de modification correspondant à votre version, par exemple :
+
+\begin{lstlisting}
+alter-1.0.3-1.1.0.sql
+\end{lstlisting}
+
+Le premier nombre (1.0.3) correspond à la dernière version avant mise à jour de la structure de la base de données. Le second (1.1.0), la version cible minimale. Il est possible que plusieurs scripts soient nécessaires si vous avez sauté plusieurs mises à jour intermédiaires.
+
+Si vous avez besoin de réaliser une mise à jour :
+\begin{itemize}
+\item faites une sauvegarde de votre base de données ;
+\item exécutez le script, et notez le cas échéant les messages d'erreur rencontrés.
+\end{itemize}
+
+En cas d'erreur à l'exécution de la mise à jour, notez les messages d'erreur et signalez-les dans github (\url{https://github.com/Irstea/alisma/issues/new}).
+Restaurez ensuite la base de données à partir de la sauvegarde réalisée précédemment, et revenez à la version précédente du logiciel.
+

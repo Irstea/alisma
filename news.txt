@@ -1,0 +1,16 @@
+ALISMA - nouveautés
+===================
+
+Version 1.0.3 du 6 janvier 2017
+-------------------------------
+Correction de bogues :
+- si une nouvelle opération de contrôle était enregistrée deux fois de suite sans fermer la fenêtre correspondante, les unités de relevé correspondantes étaient doublées, ainsi que le point de prélèvement
+- certaines requêtes SQL pouvaient échouer, si elles comprenaient une clause "order by"
+- l'absence de paramètres dans le fichier de configuration param.ini pouvait, dans certains cas de figure, faire planter l'application
+- il n'était pas possible de supprimer une opération (contrainte d'intégrité référentielle non respectée)
+- la version du runtime Java est maintenant testée, pour éviter une utilisation avec des versions obsolètes du JRE
+
+Améliorations :
+- le fichier XML d'export, et le fichier PDF généré, contiennent maintenant le numéro de la version du logiciel qui les a créé
+- mise à jour de la documentation, avec en particulier la procédure à suivre pour installer une nouvelle version.
+
