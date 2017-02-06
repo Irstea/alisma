@@ -57,8 +57,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	int keyOp = -1, nbUR = 2, keyPointPrelev = -1;
 	String pathImage = "ressources/";
 	List<ImageIcon> imageIcons = new ArrayList<ImageIcon>();
-	String[] imageIconName = { "ok-green-24.png", "warning-blue-24.png",
-			"warning-yellow-24.png", "error-red-24.png" };
+	String[] imageIconName = { "ok-green-24.png", "warning-blue-24.png", "warning-yellow-24.png", "error-red-24.png" };
 
 	/*
 	 * Ecriture en bdd
@@ -77,8 +76,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	 * onglets
 	 */
 	private JTabbedPane tabs = new JTabbedPane();
-	JPanel jpaneTab1 = new JPanel(), jpaneTab2 = new JPanel(),
-			jpaneTab3 = new JPanel();
+	JPanel jpaneTab1 = new JPanel(), jpaneTab2 = new JPanel(), jpaneTab3 = new JPanel();
 	Releve_tab1 tab_1;
 	Releve_tab2 tab_2;
 	Releve_tab3 tab_3;
@@ -107,16 +105,17 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	private String protocole = "";
 
 	/**
-	 * Initialisation 
-	 * @param id : cle du releve
+	 * Initialisation
+	 * 
+	 * @param id
+	 *            : cle du releve
 	 */
 	public Releve_frame(int id) {
 		/*
 		 * Preparation des icones
 		 */
 		for (int i = 0; i < imageIconName.length; i++) {
-			imageIcons.add(i, new ImageIcon(getClass().getClassLoader()
-					.getResource(pathImage + imageIconName[i])));
+			imageIcons.add(i, new ImageIcon(getClass().getClassLoader().getResource(pathImage + imageIconName[i])));
 		}
 		/*
 		 * Initialisation des menus
@@ -128,10 +127,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		if (keyOp < 0) {
 			JFrame frame = new JFrame();
 			Object[] options = { "UR unique", "2 UR" };
-			nbUR = JOptionPane.showOptionDialog(frame,
-					Langue.getString("selectionNbUR"),
-					Langue.getString("titreSelectionNbUR"),
-					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+			nbUR = JOptionPane.showOptionDialog(frame, Langue.getString("selectionNbUR"),
+					Langue.getString("titreSelectionNbUR"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
 					null, // do not use a custom Icon
 					options, // the titles of buttons
 					options[1]); // default button title
@@ -139,11 +136,11 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				nbUR = 1;
 			nbUR++;
 
-		} else 
+		} else
 			nbUR = dbUR.getNbReleve(keyOp);
 		if (nbUR > 2)
 			nbUR = 2;
-		logger.debug("Nbre UR retenu : "+nbUR);
+		logger.debug("Nbre UR retenu : " + nbUR);
 
 		/*
 		 * Initialisation de la fenetre
@@ -163,8 +160,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		JPanel banniere_pane = new JPanel(new FlowLayout());
 		((FlowLayout) banniere_pane.getLayout()).setAlignment(FlowLayout.LEFT);
 		banniere_pane.setBackground(Parametre.cBanniere);
-		banniere.setFont(new Font(banniere.getFont().getName(), banniere
-				.getFont().getStyle(), 15));
+		banniere.setFont(new Font(banniere.getFont().getName(), banniere.getFont().getStyle(), 15));
 		/*
 		 * Ajout du bouton de validation
 		 */
@@ -198,12 +194,13 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 					tab_2.setEnabled(true);
 					tab_3.setEnabled(true);
 					/*
-					 * Desactivation du bouton 
+					 * Desactivation du bouton
 					 */
 					jbModifier.setEnabled(false);
 				}
-				
-			} });
+
+			}
+		});
 		/*
 		 * Ajout du bouton permettant de supprimer la fiche
 		 */
@@ -212,13 +209,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int rep = JOptionPane.showConfirmDialog(null, Langue
-						.getString("warningRmOp"), Langue
-						.getString("supprimer"),
-						JOptionPane.YES_NO_OPTION,
-						JOptionPane.QUESTION_MESSAGE,
-						new ImageIcon(getClass().getClassLoader()
-								.getResource("ressources/warning.png")));
+				int rep = JOptionPane.showConfirmDialog(null, Langue.getString("warningRmOp"),
+						Langue.getString("supprimer"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+						new ImageIcon(getClass().getClassLoader().getResource("ressources/warning.png")));
 				if (rep == JOptionPane.YES_OPTION) {
 					dbOpControle.deleteOperation(keyOp, keyPointPrelev);
 					/*
@@ -227,17 +220,18 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 					setObserversHasChanged();
 					fenetre.close();
 				}
-			}});
+			}
+		});
 		jbPDF = new JButton(Langue.getString("exportPdf"));
 		jbPDF.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setChanged();
 				notifyObservers("exportPDF");
 			}
 		});
-		
+
 		/*
 		 * Ajout de la banniere
 		 */
@@ -247,7 +241,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		banniere_pane.add(jbModifier);
 		banniere_pane.add(jbSupprimer);
 		banniere_pane.add(jbPDF);
-		if(keyOp == -1) {
+		if (keyOp == -1) {
 			jbSupprimer.setEnabled(false);
 			jbPDF.setEnabled(false);
 		}
@@ -256,8 +250,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 * Remplissage des tabs, avec positionnement en haut de fenetre
 		 */
 		tabs.setBackground(Parametre.cCentral);
-		tabs.setFont(new Font(tabs.getFont().getName(), tabs.getFont()
-				.getStyle(), 13));
+		tabs.setFont(new Font(tabs.getFont().getName(), tabs.getFont().getStyle(), 13));
 		/*
 		 * Tab 1
 		 */
@@ -273,8 +266,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		tab_2 = new Releve_tab2(nbUR, dbUR);
 		sp2.add(tab_2.getPane(), JPanel.TOP_ALIGNMENT);
 		sp2.setBackground(Parametre.cCentral);
-		scrollPane2 = new JScrollPane(sp2,
-				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+		scrollPane2 = new JScrollPane(sp2, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane2.getVerticalScrollBar().setUnitIncrement(10);
 		jpaneTab2.setBackground(Parametre.cCentral);
@@ -287,8 +279,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		tab_3 = new Releve_tab3(nbUR, dbUR);
 		sp3.add(tab_3.getPane(), JPanel.TOP_ALIGNMENT);
 		sp3.setBackground(Parametre.cCentral);
-		scrollPane3 = new JScrollPane(sp3,
-				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+		scrollPane3 = new JScrollPane(sp3, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane3.getVerticalScrollBar().setUnitIncrement(10);
 		jpaneTab3.setBackground(Parametre.cCentral);
@@ -312,8 +303,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		JPanel footer_panel = new JPanel(new FlowLayout());
 		((FlowLayout) footer_panel.getLayout()).setAlignment(FlowLayout.RIGHT);
 		footer_panel.setBackground(Parametre.cBanniere);
-		footer.setFont(new Font(footer.getFont().getName(), footer.getFont()
-				.getStyle(), 12));
+		footer.setFont(new Font(footer.getFont().getName(), footer.getFont().getStyle(), 12));
 		footer_panel.add(footer);
 		fenetre.getContentPane().add(footer_panel, BorderLayout.SOUTH);
 		/*
@@ -330,11 +320,11 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Lecture des infos generales sur l'opControle
 			 */
 			Hashtable<String, String> ibmrData = ibmr.read(keyOp);
-			Hashtable <String, String> data = dbOpControle.lire(keyOp);
+			Hashtable<String, String> data = dbOpControle.lire(keyOp);
 			if (!data.get("id_pt_prel").isEmpty()) {
 				data = tab_1.hashtableFusionner(data, dbPointPrelev.read(data.get("id_pt_prel")));
 				data = tab_1.hashtableFusionner(data, ibmrData);
-				
+
 			}
 			tab_1.setDataGlobal(data);
 			/*
@@ -345,7 +335,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Lecture des unites de releve
 			 */
 			List<Hashtable<String, String>> lData = dbUR.readListFromKey("id_op_controle", keyOp);
-			List<Hashtable<String, String>> urComplet = new ArrayList<Hashtable<String,String>>();
+			List<Hashtable<String, String>> urComplet = new ArrayList<Hashtable<String, String>>();
 			for (Hashtable<String, String> ur : lData) {
 				urComplet.add(dbUR.setValueCombo(ur));
 			}
@@ -354,31 +344,22 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			/*
 			 * Mise a jour des informations de calcul dans l'onglet 3
 			 */
-			/*Double ibmr, robustesse;
-			String max_taxon;
-			try {
-				ibmr = Double.parseDouble(tab_1.general.getData("IBMR"));
-			} catch (Exception e) {
-				ibmr = 0.0;
-			}
-			try {
-				robustesse = Double.parseDouble(tab_1.general.getData("robustesse"));
-			} catch (Exception e) {
-				robustesse = 0.0;
-			}
-			try {
-				max_taxon = tab_1.general.getData("taxonRobust");
-			} catch (Exception e) {
-				max_taxon = "";
-			}
-			tab_3.setDataCalcul(ibmr, robustesse,max_taxon);
-			*/
+			/*
+			 * Double ibmr, robustesse; String max_taxon; try { ibmr =
+			 * Double.parseDouble(tab_1.general.getData("IBMR")); } catch
+			 * (Exception e) { ibmr = 0.0; } try { robustesse =
+			 * Double.parseDouble(tab_1.general.getData("robustesse")); } catch
+			 * (Exception e) { robustesse = 0.0; } try { max_taxon =
+			 * tab_1.general.getData("taxonRobust"); } catch (Exception e) {
+			 * max_taxon = ""; } tab_3.setDataCalcul(ibmr,
+			 * robustesse,max_taxon);
+			 */
 			tab_3.setDataIbmr(ibmrData);
 			/*
 			 * Lecture des lignes de taxons
 			 */
 			tab_3.setDataTaxon(dbLigneControle.readListFromKey("id_op_controle", keyOp));
-		} 
+		}
 
 		/*
 		 * Lancement d'une validation a vide, pour pre-positionner les bordures
@@ -405,11 +386,10 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 * Redefinition du titre
 		 */
 		if (keyOp == -1) {
-			fenetre.setTitle(Langue.getString("alisma")+" - "+Langue.getString("opNouveau"));
+			fenetre.setTitle(Langue.getString("alisma") + " - " + Langue.getString("opNouveau"));
 		} else {
-			fenetre.setTitle(Langue.getString("alisma")+" - " 
-		+ tab_1.stationName
-		+ " - " + tab_1.general.getData("date_op"));
+			fenetre.setTitle(
+					Langue.getString("alisma") + " - " + tab_1.stationName + " - " + tab_1.general.getData("date_op"));
 		}
 		fenetre.setPosition("TL");
 		fenetre.pack();
@@ -454,8 +434,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		calcul_menu_item.setText(Langue.getString("calculer"));
 		close_menu_item.setText(Langue.getString("close"));
 
-		banniere.setText(Langue.getString("titre") );
-		footer.setText("Alisma "+ Alisma.VERSION);
+		banniere.setText(Langue.getString("titre"));
+		footer.setText("Alisma " + Alisma.VERSION);
 
 		tabs.setTitleAt(0, Langue.getString("donneesGenerales"));
 
@@ -476,8 +456,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		fenetre.setLocation(0, 0);
 
 		Dimension dimEcran = Toolkit.getDefaultToolkit().getScreenSize();
-		if (dimEcran.height < dimDefault.height
-				|| dimEcran.width < dimDefault.width) {
+		if (dimEcran.height < dimDefault.height || dimEcran.width < dimDefault.width) {
 			fenetre.setPreferredSize(dimEcran);
 		} else
 			fenetre.setPreferredSize(dimDefault);
@@ -493,8 +472,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	}
 
 	public void resizeComponent() {
-		Dimension dim = new Dimension(fenetre.getWidth()-20,
-				fenetre.getHeight() - 200);
+		Dimension dim = new Dimension(fenetre.getWidth() - 20, fenetre.getHeight() - 200);
 		scrollPane2.setPreferredSize(dim);
 		scrollPane2.revalidate();
 		scrollPane3.setPreferredSize(dim);
@@ -555,9 +533,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 * vide
 		 */
 		if (tab_3.getNbTaxons() == 0 && tab_1.isCommentaireEmpty()) {
-			tab_1.setCommentaireBordure(2);			
+			tab_1.setCommentaireBordure(2);
 			if (2 > result)
-				result = 2;			
+				result = 2;
 			if (rep3 < result)
 				rep3 = result;
 			tabs.setIconAt(2, imageIcons.get(rep3));
@@ -584,10 +562,15 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		} else {
 			setCalculOk(false);
 		}
-		if (result < 2 && !tab_1.getIBMR().isEmpty()) {
-			tab_1.setStatut(1);
+		if (result < 2) {
+			if (!tab_1.getIBMRSEEE().isEmpty()) {
+				tab_1.setStatut(2);
+			} else if (!tab_1.getIBMR().isEmpty()) {
+				tab_1.setStatut(1);
+			}
 			/*
-			 * Desactivation du bouton calcul pour donner une alerte a l'utilisateur
+			 * Desactivation du bouton calcul pour donner une alerte a
+			 * l'utilisateur
 			 */
 			setCalculOk(false);
 		} else
@@ -618,26 +601,26 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		calcul_menu_item.setEnabled(calculOk);
 	}
 
-//	private void close() {
-//		boolean quitter = true;
-//		/*
-//		 * Verification qu'aucune modification ne soit en cours
-//		 */
-//		if (isModif) {
-//			int rep;
-//			rep = JOptionPane.showOptionDialog(null,
-//					Langue.getString("confirmLoseData"), null,
-//					JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION,
-//					null, null, JOptionPane.CANCEL_OPTION);
-//			if (rep != JOptionPane.YES_OPTION)
-//				quitter = false;
-//		}
-//
-//		if (quitter == true) {
-//			fenetre.setVisible(false);
-//			fenetre.dispose();
-//		}
-//	}
+	// private void close() {
+	// boolean quitter = true;
+	// /*
+	// * Verification qu'aucune modification ne soit en cours
+	// */
+	// if (isModif) {
+	// int rep;
+	// rep = JOptionPane.showOptionDialog(null,
+	// Langue.getString("confirmLoseData"), null,
+	// JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION,
+	// null, null, JOptionPane.CANCEL_OPTION);
+	// if (rep != JOptionPane.YES_OPTION)
+	// quitter = false;
+	// }
+	//
+	// if (quitter == true) {
+	// fenetre.setVisible(false);
+	// fenetre.dispose();
+	// }
+	// }
 
 	/**
 	 * Sauvegarde des donnees
@@ -670,16 +653,16 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 */
 			data = tab_1.getDataGlobal();
 			try {
-			keyPointPrelev = new Integer(data.get("id_pt_prel"));
-			}catch (Exception e) {
+				keyPointPrelev = new Integer(data.get("id_pt_prel"));
+			} catch (Exception e) {
 				keyPointPrelev = -1;
 			}
 			keyPointPrelev = dbPointPrelev.ecrire(data, keyPointPrelev);
 			data.put("id_pt_prel", String.valueOf(keyPointPrelev));
 			tab_1.pointPrelevement.setValue("id_pt_prel", String.valueOf(keyPointPrelev));
-			logger.debug("id_op_controle before ecrire() : "+keyOp);
+			logger.debug("id_op_controle before ecrire() : " + keyOp);
 			keyOp = dbOpControle.ecrire(data, keyOp);
-			logger.debug("id_op_controle after ecrire() : "+keyOp);
+			logger.debug("id_op_controle after ecrire() : " + keyOp);
 			/*
 			 * Recuperation des donnees par UR et ecriture de Unites_releves
 			 */
@@ -687,24 +670,24 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				data = tab_2.getDataUR(i);
 				data = tab_3.hashtableFusionner(data, tab_3.getDataUR(i));
 				data.put("id_op_controle", String.valueOf(keyOp));
-				tab_2.setIdUR(i,  dbUR.ecrire(data, tab_2.getIdUR(i)));
+				tab_2.setIdUR(i, dbUR.ecrire(data, tab_2.getIdUR(i)));
 			}
 			/*
 			 * Recuperation des donnees IBMR
 			 */
 			ibmr.ecrire(tab_3.getDataIbmr(), keyOp);
-			
+
 			/*
 			 * Recuperation des donnees des taxons
 			 */
 			listTaxons = tab_3.getListTaxon();
-			
-			/*for (Hashtable<String, String> item : listTaxons) {
-				item.put("id_op_controle", String.valueOf(keyOp));
-				key = dbLigneControle.ecrire(item);
-				tab_3.setTaxonKey(numLigne, key);
-				numLigne++;
-			}*/
+
+			/*
+			 * for (Hashtable<String, String> item : listTaxons) {
+			 * item.put("id_op_controle", String.valueOf(keyOp)); key =
+			 * dbLigneControle.ecrire(item); tab_3.setTaxonKey(numLigne, key);
+			 * numLigne++; }
+			 */
 			/*
 			 * Ecriture des taxons
 			 */
@@ -725,9 +708,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			fenetre.setModified(isModif);
 			isResetCalcul = false;
 			setSaveOk(false);
-			if (statut == 1) 
+			if (statut == 1)
 				setCalculOk(false);
-			
+
 			/*
 			 * Activation du bouton supprimer
 			 */
@@ -758,9 +741,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		if (nbUR == 1) {
 			calculIbmr.setTauxUR(1, 0);
 		} else {
-			calculIbmr.setTauxUR(tab_2.getpcUR(1),tab_2.getpcUR(2) );
+			calculIbmr.setTauxUR(tab_2.getpcUR(1), tab_2.getpcUR(2));
 		}
-		
+
 		/*
 		 * Recuperation de l'ensemble des taxons declares
 		 */
@@ -782,7 +765,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 	@Override
 	public Hashtable<String, String> getParam() {
-		Hashtable <String, String> param = new Hashtable<String, String>();
+		Hashtable<String, String> param = new Hashtable<String, String>();
 		param.put("id_op_controle", ((Integer) keyOp).toString());
 		return param;
 	}

@@ -24,7 +24,7 @@ public class CalculIBMR {
 	double cote_spe, coef_steno;
 	double K, EK, EKCS;
 	double sumEK = 0, sumEKCS = 0;
-	double maxOccup = 0;
+	double maxEK = 0;
 	public String maxTaxon = "";
 	int nbUR = 2;
 	List<Hashtable<String, String>> data;
@@ -140,8 +140,8 @@ public class CalculIBMR {
 				/*
 				 * Enregistrement du taxon au plus fort EK
 				 */
-				if (txOccup > maxOccup) {
-					maxOccup = txOccup;
+				if (EK > maxEK) {
+					maxEK = EK;
 					maxTaxon = taxon.get("id_taxon");
 				}
 				logger.debug("maxTaxon : "+maxTaxon);

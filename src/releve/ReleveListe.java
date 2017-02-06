@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import org.joda.time.DateTime;
 
 import database.Op_controle;
+import import_export.ImportCSV;
 import utils.ComposantAlisma;
 import utils.Exportable;
 import utils.JFrameAlisma;
@@ -48,6 +49,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 	ComposantAlisma search = new Search();
 	GridBagConstraints gbc = new GridBagConstraints();
 	Op_controle operation = new Op_controle();
+	ImportCSV icsv = new ImportCSV();
 	JTable table;
 	int id;
 	String[] columnName = { Langue.getString("id"), Langue.getString("cd_station"), Langue.getString("nomStation"),
@@ -149,6 +151,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addButton("exportPdf", 'P', "exportPDF", 3, 2, 1);
 			addButton("recalculer", 'C', "recalculer", 4, 2, 1);
 			addButton("exportSEEE", 'S', "exportSEEE", 5, 2, 1);
+			addButton("importSEEE", 'I', "importSEEE", 6, 2, 1);
 			addComboItemList("statut", new String[] { "", Langue.getString("statut0"), Langue.getString("statut1"),
 					Langue.getString("statut2") }, true);
 			addDatePicker("fin", new Date(), 3, 1, 1);
@@ -198,6 +201,12 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			initTable();
 			setChanged();
 			notifyObservers("exportSEEE");
+			break;
+		case "importSEEE":
+		setChanged();
+		notifyObservers("importSEEE");
+		search.getCombo("statut").setSelectedIndex(3);
+		initTable();
 		}
 	}
 
@@ -211,8 +220,10 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 	}
 
 	public Object getValue(String value) {
-		if (value.equals("getId"))
+		if (value.equals("getId")) {
 			return id;
+		} else if (value.equals("filename"))
+			return (getFileName());
 		return null;
 	}
 
@@ -248,4 +259,13 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 
 		return data;
 	}
+	/**
+	 * Lit le nom du fichier a importer, et le restitue
+	 * @return
+	 */
+	public String getFileName() {
+		return icsv.selectFile(this.fenetre);
+	}
+	
+	
 }

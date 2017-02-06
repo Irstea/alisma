@@ -69,12 +69,26 @@ public class Op_controle extends DbObject {
 		/*
 		 * Recuperation de la valeur de releve_dce
 		 */
-		data.put("releve_dce", yesNoForKey.get(data.get("releve_dce")).toString());
-		logger.debug("releve_dce value : " + data.get("releve_dce"));
+		if (data.containsKey("releve_dce")) {
+			data.put("releve_dce", yesNoForKey.get(data.get("releve_dce")).toString());
+			logger.debug("releve_dce value : " + data.get("releve_dce"));
+		}
 		keyOp = write(data, keyOp);
 		return keyOp;
 	}
 
+	/**
+	 * Ecriture directe dans l'enregistrement,
+	 * sans tenir compte des tables liees
+	 * @param data
+	 * @param keyOp
+	 * @return
+	 */
+	public int ecrireSimple(Hashtable<String, String> data, int keyOp) {
+		return write(data, keyOp);
+	}
+
+	
 	/**
 	 * Lecture d'une operation, avec ajout des donnees des combo
 	 * 
@@ -89,11 +103,12 @@ public class Op_controle extends DbObject {
 		for (String param : paramList) {
 			try {
 				int key = Integer.parseInt(data.get(param + "_id"));
-				
+
 				data.put(param, params.get(param).getValueFromKey(key));
-				logger.debug("lire - "+param+" - Clé lue : "+ String.valueOf(key)+" valeur transmise : "+ String.valueOf(key));
+				logger.debug("lire - " + param + " - Clé lue : " + String.valueOf(key) + " valeur transmise : "
+						+ String.valueOf(key));
 			} catch (Exception e) {
-				logger.debug("lire : exception levée pour "+param+", qui est transmis en chaîne vide");
+				logger.debug("lire : exception levée pour " + param + ", qui est transmis en chaîne vide");
 				data.put(param, "");
 			}
 		}
@@ -111,8 +126,7 @@ public class Op_controle extends DbObject {
 			String[] queries = { "DELETE FROM Unite_releves WHERE id_op_controle = " + keyOp,
 					"DELETE FROM Lignes_op_controle WHERE id_op_controle = " + keyOp,
 					"DELETE from ibmr where id_op_controle = " + keyOp,
-					"DELETE FROM Op_controle WHERE id_op_controle = " + keyOp
-					 };
+					"DELETE FROM Op_controle WHERE id_op_controle = " + keyOp };
 			try {
 				query = connection.createStatement();
 				for (String sql : queries) {
@@ -165,6 +179,9 @@ public class Op_controle extends DbObject {
 					break;
 				case "1":
 					data.add(Langue.getString("statut1"));
+					break;
+				case "2":
+					data.add(Langue.getString("statut2"));
 					break;
 				default:
 					data.add(rs.getString("id_statut"));

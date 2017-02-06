@@ -5,6 +5,7 @@ package alisma;
 
 import import_export.Backup;
 import import_export.ExportOp;
+import import_export.ImportCSV;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -337,6 +338,11 @@ public class Controleur implements Observer {
 			param = e.getParam();
 			exportSEEE(param);
 			break;
+			
+		case "importSEEE":
+			ObservableExtended oe = (ObservableExtended) observable;
+			importSEEE(oe.getValue("filename"));
+			break;
 
 		case "recalculer":
 			e = (Exportable) observable;
@@ -370,6 +376,11 @@ public class Controleur implements Observer {
 			break;
 
 		}
+	}
+
+	private void importSEEE(Object object) {
+		ImportCSV csv = new ImportCSV();
+		csv.importSEEE(object.toString());
 	}
 
 	private void exportSEEE(Hashtable<String, String> param) {

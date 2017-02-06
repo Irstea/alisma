@@ -582,4 +582,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	public int getStatut() {
 		return statut;
 	}
+
+	public String getIBMRSEEE() {
+		return general.getData("seee_ibmr");
+	}
 }
