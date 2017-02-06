@@ -269,4 +269,72 @@ public class ExportOp {
 
 	}
 
+	public void exportSEEE() {
+		String newLine = System.getProperty("line.separator");
+		String tab = "\t";
+		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
+		String key, dateOp, ligne;
+		List<Hashtable<String, String>> ldataTaxons, ldataUR;
+		String[] pcUR = new String[2];
+		String[] taxonpc = new String[2];
+		/*
+		 * Preparation de la ligne d'entete
+		 */
+		String content = "CODE_OPERATION" + tab + "CODE_STATION" + tab + "DATE" + tab + "CODE_TAXON" + tab + "UR" + tab
+				+ "POURCENTAGE_FACIES" + tab + "RESULTAT" + newLine;
+
+		for (Hashtable<String, String> operation : listeop) {
+			key = operation.get("id_op_controle");
+			ldataTaxons = taxons.getListFromOp(key);
+			/*
+			 * Formatage de la date
+			 */
+			dateOp = operation.get("date_op");
+			/*
+			 * Recuperation des donnees concernant le point de prelevement
+			 */
+			ldataUR = ur.getListeFromOp(Integer.parseInt(key));
+			int i = 0;
+			pcUR[0] = "";
+			pcUR[1] = "";
+			
+			for (Hashtable<String, String> ur : ldataUR) {
+				pcUR [i] = ur.get("pc_UR");
+				if (pcUR[i].equals(""))
+					pcUR[i] = "0";
+				i++;
+			}
+			
+			for (Hashtable<String, String> taxon : ldataTaxons) {
+				ligne = key + tab + operation.get("cd_station")+tab + dateOp + tab + taxon.get("id_taxon")+tab;
+				taxonpc[0] = taxon.get("pc_UR1");
+				taxonpc[1] = taxon.get("pc_UR2");
+				for (int j = 0; j < 2 ; j++) 
+					if (taxonpc[j].equals("")|| taxonpc[j].equals("null"))
+						taxonpc[j] = "0";							
+				/*
+				 * traitement de l'UR
+				 */
+				if (i == 1) {
+					/*
+					 * UR unique
+					 */
+					ligne += "FU" + tab + pcUR[0]+ tab + taxonpc[0]+newLine;
+					content += ligne;
+				} else {
+					/*
+					 * Traitement des deux UR
+					 */
+					
+					content += ligne + "F1" + tab + pcUR[0] + tab + taxonpc[0]+newLine;
+					content += ligne + "F2" + tab + pcUR[1] + tab + taxonpc[1]+newLine;
+				}
+			}
+		}
+		/*
+		 * Fin de traitement de la liste
+		 */
+		ecrireFichierExport(content, "csv");
+	}
+
 }

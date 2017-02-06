@@ -71,12 +71,10 @@ public class Releve_tab1 extends ComposantAlisma {
 			/*
 			 * Definition des valeurs mini et maxi des coordonnees lambert
 			 */
-			String[] lambertListeBorne = { "lambert93Emin", "lambert93Emax",
-					"lambert93Nmin", "lambert93Nmax" };
+			String[] lambertListeBorne = { "lambert93Emin", "lambert93Emax", "lambert93Nmin", "lambert93Nmax" };
 			for (String borne : lambertListeBorne) {
 				try {
-					lambertBornes.put(borne,
-							Double.parseDouble(Parametre.others.get(borne)));
+					lambertBornes.put(borne, Double.parseDouble(Parametre.others.get(borne)));
 				} catch (Exception e) {
 					lambertBornes.put(borne, 0.0);
 				}
@@ -98,6 +96,11 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("robustesse", 2, 3);
 			addLabel("taxonRob", 4, 3);
 			addLabel("releveDce", 4, 2);
+			addLabel("seeeIbmr", 0, 4);
+			addLabel("robustesse", 2, 4);
+			addLabel("taxonRob", 4, 4);
+			addLabel("seeeDate", 0, 5);
+			addLabel("seeeVersion", 2, 5);
 
 			/*
 			 * Definition des champs
@@ -114,11 +117,16 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabelAsValue("robustesse_value", "", 3, 3, 1);
 			addLabelAsValue("taxon_robustesse", "", 5, 3, 1);
 			addCombo("releve_dce", 5, 2, 1);
-			addComboItemList(
-					"releve_dce",
-					new String[] { Langue.getString("oui"),
-							Langue.getString("non") }, true);
+			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
+			/*
+			 * Champs pour le calcul SEEE
+			 */
+			addLabelAsValue("seee_ibmr", "", 1, 4, 1);
+			addLabelAsValue("seee_robustesse_value", "", 3, 4, 1);
+			addLabelAsValue("seee_taxon_robustesse", "", 5, 4, 1);
+			addLabelAsValue("seee_date", "", 1, 5, 1);
+			addLabelAsValue("seee_version", "", 3, 5, 1);
 
 			/*
 			 * Ajout des listeners
@@ -143,19 +151,16 @@ public class Releve_tab1 extends ComposantAlisma {
 			});
 
 			@SuppressWarnings("unchecked")
-			JComboBox<Object> jcb = (JComboBox<Object>) fieldList
-					.get("station");
+			JComboBox<Object> jcb = (JComboBox<Object>) fieldList.get("station");
 			jcb.addItemListener(new ItemListener() {
 
 				@Override
 				public void itemStateChanged(ItemEvent arg0) {
 					if (!stationList.isEmpty()) {
 						@SuppressWarnings("unchecked")
-						JComboBox<Object> jcb = (JComboBox<Object>) fieldList
-								.get("station");
+						JComboBox<Object> jcb = (JComboBox<Object>) fieldList.get("station");
 						try {
-							setValue("nom_rv",
-									stationList.get(jcb.getSelectedItem())[3]);
+							setValue("nom_rv", stationList.get(jcb.getSelectedItem())[3]);
 						} catch (NullPointerException e) {
 							setValue("nom_rv", "");
 						}
@@ -178,8 +183,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			/*
 			 * Definition des champs obligatoire
 			 */
-			setFieldMandatory(new String[] { "station", "organisme",
-					"operateur", "date_op" });
+			setFieldMandatory(new String[] { "station", "organisme", "operateur", "date_op" });
 
 			/*
 			 * Mise en place du statut par defaut
@@ -194,15 +198,12 @@ public class Releve_tab1 extends ComposantAlisma {
 				 * Test si le code station existe
 				 */
 				try {
-					String station_id = stationList.get(getCombo("station")
-							.getSelectedItem())[0];
+					String station_id = stationList.get(getCombo("station").getSelectedItem())[0];
 					String station_cd = station_id.equals(station_id_lu) ? station_cd_lu
 							: dbStation.getCdStationFromId(station_id);
 					station_id_lu = station_id;
 					station_cd_lu = station_cd;
-					if (station_cd.length() == 0
-							&& dbOpControle.yesNoForKey.get(this
-									.getData("releve_dce")) == 1)
+					if (station_cd.length() == 0 && dbOpControle.yesNoForKey.get(this.getData("releve_dce")) == 1)
 						retour = 2;
 				} catch (NullPointerException e) {
 					// retour = 2;
@@ -226,8 +227,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			/*
 			 * Mise a jour de la boite de recherche des stations
 			 */
-			Hashtable<String, String> ligneStation = dbStation.readByKey(
-					"id_station", data.get("id_station"));
+			Hashtable<String, String> ligneStation = dbStation.readByKey("id_station", data.get("id_station"));
 			stationSearch(ligneStation.get("cd_station"));
 			stationName = ligneStation.get("station");
 		}
@@ -240,8 +240,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			if (!stationList.isEmpty()) {
 				JComboBox<Object> jcb = getCombo("station");
 				try {
-					data.put("id_station",
-							stationList.get(jcb.getSelectedItem())[0]);
+					data.put("id_station", stationList.get(jcb.getSelectedItem())[0]);
 				} catch (NullPointerException e) {
 					data.put("id_station", "");
 				}
@@ -255,8 +254,7 @@ public class Releve_tab1 extends ComposantAlisma {
 		 * @param search
 		 */
 		public void stationSearch(String search) {
-			List<Hashtable<String, String>> result = dbStation
-					.getListStationFromSearch(search);
+			List<Hashtable<String, String>> result = dbStation.getListStationFromSearch(search);
 			JComboBox<Object> jcb = getCombo("station");
 			jcb.removeAllItems();
 			stationList.clear();
@@ -265,17 +263,14 @@ public class Releve_tab1 extends ComposantAlisma {
 
 				String cd_station;
 				try {
-					cd_station = result.get(i).get("cd_station").equals(null) ? ""
-							: result.get(i).get("cd_station");
+					cd_station = result.get(i).get("cd_station").equals(null) ? "" : result.get(i).get("cd_station");
 				} catch (NullPointerException e) {
 					cd_station = "";
 				}
-				String ligne[] = { result.get(i).get("id_station"), cd_station,
-						result.get(i).get("station"),
+				String ligne[] = { result.get(i).get("id_station"), cd_station, result.get(i).get("station"),
 						result.get(i).get("cours_eau") };
 				jcb.addItem(cd_station + " " + result.get(i).get("station"));
-				stationList.put(
-						cd_station + " " + result.get(i).get("station"), ligne);
+				stationList.put(cd_station + " " + result.get(i).get("station"), ligne);
 				if (first) {
 					setValue("nom_rv", result.get(i).get("cours_eau"));
 					first = false;
@@ -289,10 +284,16 @@ public class Releve_tab1 extends ComposantAlisma {
 		 * @param statutId
 		 */
 		public void setStatut(int statutId) {
-			if (1 == statutId) {
+			switch (statutId) {
+			case 1:
 				setValue("statut", Langue.getString("statut1"));
-			} else
+				break;
+			case 2:
+				setValue("statut", Langue.getString("statut2"));
+				break;
+			default:
 				setValue("statut", Langue.getString("statut0"));
+			}
 		}
 	}
 
@@ -305,12 +306,11 @@ public class Releve_tab1 extends ComposantAlisma {
 	class PointPrelevement extends ComposantAlisma {
 		boolean lambertVisible = true;
 
-
 		// ConvertWgs84ToLambert93 convertCoord = new ConvertWgs84ToLambert93();
 		public PointPrelevement(int pNbUR) {
-			String plambert = Parametre.others.get("lambert") ;			
+			String plambert = Parametre.others.get("lambert");
 			if (plambert == null)
-				plambert = "false" ;
+				plambert = "false";
 			if (plambert.equals("false"))
 				lambertVisible = false;
 			addLabel("protocol", 0, 0, null);
@@ -359,37 +359,28 @@ public class Releve_tab1 extends ComposantAlisma {
 			 * Ajout du contenu des tables de parametres dans les combo
 			 */
 			try {
-				logger.debug("Longueur de paramListe: "
-						+ dbOpControle.paramList.length);
+				logger.debug("Longueur de paramListe: " + dbOpControle.paramList.length);
 			} catch (NullPointerException e) {
 				logger.error("dbOpControle.paramList non initialise");
 			}
 			for (String param : dbOpControle.paramList) {
 				logger.debug("parametre lu : " + param);
 				if (!param.equals("protocole"))
-					addComboItemList(param, dbOpControle.params.get(param)
-							.getArray(), false);
+					addComboItemList(param, dbOpControle.params.get(param).getArray(), false);
 			}
 			/*
 			 * Redefinition des protocoles possibles si une seule UR
 			 */
 			if (pNbUR == 1) {
-				addComboItemList("protocole",
-						new String[] {
-								dbOpControle.params.get("protocole")
-										.getValueFromKey(1),
-								dbOpControle.params.get("protocole")
-										.getValueFromKey(3) }, true);
+				addComboItemList("protocole", new String[] { dbOpControle.params.get("protocole").getValueFromKey(1),
+						dbOpControle.params.get("protocole").getValueFromKey(3) }, true);
 			} else
-				addComboItemList("protocole",
-						dbOpControle.params.get("protocole").getArray(false),
-						false);
+				addComboItemList("protocole", dbOpControle.params.get("protocole").getArray(false), false);
 
 			/*
 			 * Definition des tailles par defaut
 			 */
-			Dimension dimNormal = new Dimension(120, 20), dimLarge = new Dimension(
-					165, 20);
+			Dimension dimNormal = new Dimension(120, 20), dimLarge = new Dimension(165, 20);
 			setDimension("protocole", dimLarge);
 			setDimension("nbUR", dimNormal);
 			setDimension("coord_x", dimLarge);
@@ -405,8 +396,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			 * Definition des champs obligatoire
 			 */
 			setFieldMandatory(new String[] { "protocole", "nbUR" });
-			setFieldRecommanded(new String[] { "longueur", "largeur", "rive",
-					"hydrologie", "meteo", "turbidite", });
+			setFieldRecommanded(new String[] { "longueur", "largeur", "rive", "hydrologie", "meteo", "turbidite", });
 			/*
 			 * Ajout dynamique des champs selon leur niveau defini
 			 */
@@ -437,8 +427,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			if (!getData("coord_x").isEmpty()) {
 				try {
 					value = Double.parseDouble(getData("coord_x"));
-					if (value < lambertBornes.get("lambert93Emin")
-							|| value > lambertBornes.get("lambert93Emax")) {
+					if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
 						setBordure("coord_x", 2);
 						if (rep < 2)
 							rep = 2;
@@ -452,8 +441,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			if (!getData("coord_y").isEmpty()) {
 				try {
 					value = Double.parseDouble(getData("coord_y"));
-					if (value < lambertBornes.get("lambert93Nmin")
-							|| value > lambertBornes.get("lambert93Nmax")) {
+					if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
 						setBordure("coord_y", 2);
 						if (rep < 2)
 							rep = 2;
@@ -471,8 +459,7 @@ public class Releve_tab1 extends ComposantAlisma {
 		 */
 		public void setAction() {
 			if (actionLibelle == "calculLambert93") {
-				if (!getData("wgs84_x").isEmpty()
-						&& !getData("wgs84_y").isEmpty()) {
+				if (!getData("wgs84_x").isEmpty() && !getData("wgs84_y").isEmpty()) {
 					try {
 						double[] point = new double[2];
 						point[0] = Double.parseDouble(getData("wgs84_x"));
@@ -511,8 +498,7 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @return boolean
 	 */
 	public boolean isCommentaireEmpty() {
-		JTextArea obs = (JTextArea) pointPrelevement.fieldList
-				.get("observation");
+		JTextArea obs = (JTextArea) pointPrelevement.fieldList.get("observation");
 		return obs.getText().isEmpty();
 	}
 
@@ -532,13 +518,18 @@ public class Releve_tab1 extends ComposantAlisma {
 		general.setValue("ibmr_value", "");
 		general.setValue("robustesse_value", "");
 		general.setValue("taxon_robustesse", "");
+		general.setValue("seee_date", "");
+		general.setValue("seee_version", "");
+		general.setValue("seee_ibmr", "");
 	}
 
 	/**
 	 * Met a jour les donnees issues du calcul de l'indice
 	 * 
-	 * @param double ibmr
-	 * @param double robustesse
+	 * @param double
+	 *            ibmr
+	 * @param double
+	 *            robustesse
 	 * @param string
 	 *            maxTaxon
 	 */

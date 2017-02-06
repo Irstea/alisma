@@ -148,8 +148,9 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addButton("exporter", 'E', "exporter", 2, 2, 1);
 			addButton("exportPdf", 'P', "exportPDF", 3, 2, 1);
 			addButton("recalculer", 'C', "recalculer", 4, 2, 1);
-			addComboItemList("statut", new String[] { "", Langue.getString("statut0"), Langue.getString("statut1") },
-					true);
+			addButton("exportSEEE", 'S', "exportSEEE", 5, 2, 1);
+			addComboItemList("statut", new String[] { "", Langue.getString("statut0"), Langue.getString("statut1"),
+					Langue.getString("statut2") }, true);
 			addDatePicker("fin", new Date(), 3, 1, 1);
 			/*
 			 * Calcul de la date a l'annee precedente
@@ -191,6 +192,12 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			initTable();
 			setChanged();
 			notifyObservers("recalculer");
+			break;
+		case "exportSEEE":
+			search.getCombo("statut").setSelectedIndex(2);
+			initTable();
+			setChanged();
+			notifyObservers("exportSEEE");
 		}
 	}
 
@@ -224,10 +231,13 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 		 * Reformatage des valeurs fournies par les combobox
 		 */
 		if (!data.get("statut").isEmpty()) {
-			if (data.get("statut").equals(Langue.getString("statut0"))) {
-				data.put("statut", "0");
-			} else
+			String lstatut = data.get("statut");
+			if (lstatut.equals(Langue.getString("statut2"))) {
+				data.put("statut", "2");
+			} else if (lstatut.equals(Langue.getString("statut1"))) {
 				data.put("statut", "1");
+			} else
+				data.put("statut", "0");
 		}
 		if (!data.get("releve_dce").isEmpty()) {
 			if (data.get("releve_dce").equals(Langue.getString("oui"))) {

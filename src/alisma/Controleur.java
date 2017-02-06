@@ -331,6 +331,12 @@ public class Controleur implements Observer {
 			param = e.getParam();
 			exportPDF(param);
 			break;
+			
+		case "exportSEEE":
+			e = (Exportable) observable;
+			param = e.getParam();
+			exportSEEE(param);
+			break;
 
 		case "recalculer":
 			e = (Exportable) observable;
@@ -364,6 +370,13 @@ public class Controleur implements Observer {
 			break;
 
 		}
+	}
+
+	private void exportSEEE(Hashtable<String, String> param) {
+		if (exportOp == null) 
+			exportOp = new ExportOp();		
+		exportOp.setSearchParam(param);
+		exportOp.exportSEEE();
 	}
 
 	private void recalculer(Hashtable<String, String> param) {

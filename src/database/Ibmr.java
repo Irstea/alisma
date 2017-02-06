@@ -6,11 +6,12 @@ public class Ibmr extends DbObject {
 
 	public Ibmr() {
 		init("ibmr", "id_op_controle", false);
-		setStringList(new String[] { "taxon_robustesse" });
+		setStringList(new String[] { "taxon_robustesse", "seee_date","seee_version", "seee_taxon_robustesse" });
 		setNumericList(new String[] { "id_op_controle", "ibmr_value", "robustesse_value", "niveau_trophique_id",
 				"robustesse_niveau_trophique_id", "cs_moy", "cs_min", "cs_max", "coef_moy", "coef_min", "coef_max",
 				"nbtaxon_het", "nbtaxon_alg", "nbtaxon_bry", "nbtaxon_pte", "nbtaxon_pha", "nbtaxon_lic",
-				"nbtaxon_total", "nbtaxon_contrib", "nbtaxon_steno1", "nbtaxon_steno2", "nbtaxon_steno3" });
+				"nbtaxon_total", "nbtaxon_contrib", "nbtaxon_steno1", "nbtaxon_steno2", "nbtaxon_steno3",
+				"seee_ibmr", "seee_nbtaxon_contrib", "seee_robustesse_value"});
 	}
 
 	/**

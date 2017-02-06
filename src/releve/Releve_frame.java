@@ -193,7 +193,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (tab_1.getStatut() < 2) {
+				if (tab_1.getStatut() < 3) {
 					tab_1.setEnabled(true);
 					tab_2.setEnabled(true);
 					tab_3.setEnabled(true);
