@@ -11,7 +11,7 @@ public class Ibmr extends DbObject {
 				"robustesse_niveau_trophique_id", "cs_moy", "cs_min", "cs_max", "coef_moy", "coef_min", "coef_max",
 				"nbtaxon_het", "nbtaxon_alg", "nbtaxon_bry", "nbtaxon_pte", "nbtaxon_pha", "nbtaxon_lic",
 				"nbtaxon_total", "nbtaxon_contrib", "nbtaxon_steno1", "nbtaxon_steno2", "nbtaxon_steno3",
-				"seee_ibmr", "seee_nbtaxon_contrib", "seee_robustesse_value"});
+				"seee_ibmr", "seee_nbtaxon_contrib", "seee_robustesse_value", "ek_nb_robustesse"});
 	}
 
 	/**

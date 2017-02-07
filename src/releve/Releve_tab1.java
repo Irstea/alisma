@@ -92,10 +92,11 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("date", 4, 1, null);
 			addLabel("ref", 0, 2, null);
 			addLabel("statut", 2, 2, null);
+			addLabel("releveDce", 4, 2);
 			addLabel("ibmr", 0, 3);
 			addLabel("robustesse", 2, 3);
 			addLabel("taxonRob", 4, 3);
-			addLabel("releveDce", 4, 2);
+			addLabel("nbTaxonEKmax", 6, 3);
 			addLabel("seeeIbmr", 0, 4);
 			addLabel("robustesse", 2, 4);
 			addLabel("taxonRob", 4, 4);
@@ -116,6 +117,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabelAsValue("ibmr_value", "", 1, 3, 1);
 			addLabelAsValue("robustesse_value", "", 3, 3, 1);
 			addLabelAsValue("taxon_robustesse", "", 5, 3, 1);
+			addLabelAsValue("ek_nb_robustesse", "", 7, 3, 1);
 			addCombo("releve_dce", 5, 2, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
@@ -519,6 +521,7 @@ public class Releve_tab1 extends ComposantAlisma {
 		general.setValue("ibmr_value", "");
 		general.setValue("robustesse_value", "");
 		general.setValue("taxon_robustesse", "");
+		general.setValue("ek_nb_robustesse", "");
 		general.setValue("seee_date", "");
 		general.setValue("seee_version", "");
 		general.setValue("seee_ibmr", "");
@@ -537,10 +540,11 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @param string
 	 *            maxTaxon
 	 */
-	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon) {
+	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon, double nbEKmax) {
 		general.setValue("ibmr_value", String.valueOf(ibmr));
 		general.setValue("robustesse_value", String.valueOf(robustesse));
 		general.setValue("taxon_robustesse", maxTaxon);
+		general.setValue("ek_nb_robustesse", String.valueOf(nbEKmax));
 	}
 
 	/**

@@ -759,7 +759,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 * Fin des calculs - mise a jour des champs
 		 */
 		tab_1.resetCalcul();
-		tab_1.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon);
+		tab_1.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon, calculIbmr.nbEK);
 		tab_3.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon);
 		tab_1.setStatut(1);
 		isModif = true;

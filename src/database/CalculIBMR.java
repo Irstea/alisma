@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map.Entry;
-
 import org.apache.log4j.Logger;
 
 import utils.ConnexionDatabase;
@@ -20,7 +19,7 @@ import utils.ConnexionDatabase;
 public class CalculIBMR {
 	static Logger logger = Logger.getLogger(CalculIBMR.class);
 	double tauxUR1 = 100, tauxUR2 = 0, txOccup, txOccup1, txOccup2;
-	public double ibmr = 0, robustesse = 0;
+	public double ibmr = 0, robustesse = 0, nbEK = 0;
 	double cote_spe, coef_steno;
 	double K, EK, EKCS;
 	double sumEK = 0, sumEKCS = 0;
@@ -167,6 +166,12 @@ public class CalculIBMR {
 			String cle = entry.getKey();
 			Hashtable<String, Double> valeur = entry.getValue();
 			/*
+			 * Calcul du nombre de taxons ayant le meme EK que le taxon supprime
+			 * lors du calcul de resistance
+			 */
+			if (valeur.get("EK") == maxEK)
+				nbEK ++;
+			/*
 			 * On elimine le taxon le plus fort
 			 */
 			if (!cle.equals(maxTaxon)) {
@@ -239,6 +244,7 @@ public class CalculIBMR {
 				ibmrData.put("ibmr_value", String.valueOf(ibmr));
 				ibmrData.put("robustesse_value", String.valueOf(robustesse));
 				ibmrData.put("taxon_robustesse", maxTaxon);
+				ibmrData.put("ek_nb_robustesse", String.valueOf(nbEK));
 				ibmrClass.write(ibmrData, Integer.parseInt(operation.get("id_op_controle")));
 			}
 
