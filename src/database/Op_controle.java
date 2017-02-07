@@ -29,7 +29,7 @@ public class Op_controle extends DbObject {
 		init("Op_controle", "id_op_controle", true);
 		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier" });
 		setNumericList(new String[] { "id_pt_prel", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id",
-				"turbidite_id", "releve_dce" });
+				"turbidite_id", "releve_dce", "typo_id" });
 		/*
 		 * Initialisation des tables de parametre
 		 */
@@ -152,9 +152,13 @@ public class Op_controle extends DbObject {
 	public String[][] getListeReleve(Hashtable<String, String> param) {
 		String[][] returned = null;
 		ArrayList<Object> data = new ArrayList<Object>();
-		String sql = "SELECT id_op_controle,cd_station, station,cours_eau,operateur,date_op, op.id_statut, cd_station, releve_dce FROM Op_controle op "
-				+ "JOIN Points_prelev ON op.id_pt_prel = Points_prelev.id_pt_prel JOIN Stations ON Points_prelev.id_station = Stations.id_station "
-				+ "JOIN Cours_Eau ON Stations.id_cours_eau = Cours_Eau.id_cours_eau ";
+		String sql = "SELECT id_op_controle,cd_station, station,cours_eau,operateur,date_op, op.id_statut, "
+				+ "cd_station, releve_dce "
+				+ "FROM Op_controle op "
+				+ "JOIN Points_prelev ON op.id_pt_prel = Points_prelev.id_pt_prel "
+				+ "JOIN Stations ON Points_prelev.id_station = Stations.id_station "
+				+ "JOIN Cours_Eau ON Stations.id_cours_eau = Cours_Eau.id_cours_eau "
+				;
 
 		String where = getWhere(param);
 		logger.debug(sql + where);
