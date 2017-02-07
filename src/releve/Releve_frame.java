@@ -324,6 +324,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			if (!data.get("id_pt_prel").isEmpty()) {
 				data = tab_1.hashtableFusionner(data, dbPointPrelev.read(data.get("id_pt_prel")));
 				data = tab_1.hashtableFusionner(data, ibmrData);
+				logger.debug("seee_robustesse_value :"+data.get("seee_robustesse_value"));
 
 			}
 			tab_1.setDataGlobal(data);
@@ -572,7 +573,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Desactivation du bouton calcul pour donner une alerte a
 			 * l'utilisateur
 			 */
-			setCalculOk(false);
+			//setCalculOk(false);
 		} else
 			tab_1.setStatut(0);
 		return result;
@@ -675,7 +676,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			/*
 			 * Recuperation des donnees IBMR
 			 */
-			ibmr.ecrire(tab_3.getDataIbmr(), keyOp);
+			data = tab_3.getDataIbmr();
+			data = tab_1.hashtableFusionner(data, tab_1.general.getData());
+			ibmr.ecrire(data, keyOp);
 
 			/*
 			 * Recuperation des donnees des taxons
@@ -755,6 +758,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		/*
 		 * Fin des calculs - mise a jour des champs
 		 */
+		tab_1.resetCalcul();
 		tab_1.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon);
 		tab_3.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon);
 		tab_1.setStatut(1);

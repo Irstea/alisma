@@ -66,7 +66,7 @@ public class ComposantMeso extends ComposantAlisma{
 	@SuppressWarnings("unchecked")
 	public int validation () {
 		int retour = super.validation();
-		logger.debug("ComposantMeso - retour de validation : " + String.valueOf(retour));
+		//logger.debug("ComposantMeso - retour de validation : " + String.valueOf(retour));
 		JComboBox<Object> jcb;
 		/*
 		 * Verification qu'au moins une entree a ete saisie

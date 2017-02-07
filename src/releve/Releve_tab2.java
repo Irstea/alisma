@@ -335,7 +335,7 @@ public class Releve_tab2 extends ComposantAlisma {
 
 		public int validation() {
 			int retour = super.validation();
-			logger.debug("Facies - valeur retour : " + String.valueOf(retour));
+//			logger.debug("Facies - valeur retour : " + String.valueOf(retour));
 //			if (retour == 2)
 //				retour = 1;
 			/*
@@ -344,8 +344,8 @@ public class Releve_tab2 extends ComposantAlisma {
 			 */
 			String autreType = getData("facies_autre_type");
 			String autreTypeClass = getData("autreTypeClass");
-			logger.debug("facies - autreType - empty ? " + String.valueOf(autreType.isEmpty()));
-			logger.debug("facies - autreTypeClass - empty ? " + String.valueOf(autreTypeClass.isEmpty()));
+//			logger.debug("facies - autreType - empty ? " + String.valueOf(autreType.isEmpty()));
+//			logger.debug("facies - autreTypeClass - empty ? " + String.valueOf(autreTypeClass.isEmpty()));
 			if (!autreType.isEmpty()) {
 				if (autreTypeClass.isEmpty()) {
 					setBordure("autreTypeClass", 3);
@@ -363,7 +363,7 @@ public class Releve_tab2 extends ComposantAlisma {
 				}
 				setBordure("autreTypeClass", 0);
 			}
-			logger.debug("facies - valeur retour en fin de validation : " + String.valueOf(retour));
+//			logger.debug("facies - valeur retour en fin de validation : " + String.valueOf(retour));
 			this.bordure.setBordure(pane, retour);
 			return retour;
 		}

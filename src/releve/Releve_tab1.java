@@ -217,6 +217,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 		public void setData(Hashtable<String, String> data) {
 			super.setData(data);
+			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
 			/*
 			 * Mise a jour de releve_dce
 			 */
@@ -521,6 +522,9 @@ public class Releve_tab1 extends ComposantAlisma {
 		general.setValue("seee_date", "");
 		general.setValue("seee_version", "");
 		general.setValue("seee_ibmr", "");
+		//general.setValue("seee_nbtaxon_contrib", "");
+		general.setValue("seee_robustesse_value", "");
+		general.setValue("seee_taxon_robustesse", "");
 	}
 
 	/**
