@@ -1,6 +1,6 @@
 package database;
 
-public class Typo  extends DbObject{
+public class Typo  extends DbObjectCombo{
 
 	public Typo() {
 		init("typo", "typo_id", true);

@@ -226,7 +226,8 @@ public class Op_controle extends DbObject {
 				+ " libelle_statut, releve_dce, " 
 				+ " ibmr.*,"
 				+ " typo_id, typo_name, ibmr_ref, groupe,"
-				+ " classe_etat_id, classe_etat_libelle"
+				+ " ibmr.classe_etat_id, c1.classe_etat_libelle, eqr_value, robustesse_eqr_value,"
+				+ " ibmr.robustesse_classe_etat_id, c2.classe_etat_libelle as robustesse_classe_etat_libelle"
 				+ " from Op_controle op" 
 				+ " join Points_prelev prelev on (prelev.id_pt_prel = op.id_pt_prel)"
 				+ " join Stations station on (station.id_station = prelev.id_station)"
@@ -239,7 +240,9 @@ public class Op_controle extends DbObject {
 				+ " left outer join meteo on (meteo.meteo_id = op.meteo_id)"
 				+ " left outer join turbidite on (turbidite.turbidite_id = op.turbidite_id)"
 				+ " left outer join typo on (op.typo_id = typo.typo_id)"
-				+ " left outer join classe_etat on (ibmr.classe_etat_id = classe_etat.classe_etat_id)";
+				+ " left outer join classe_etat c1 on (ibmr.classe_etat_id = c1.classe_etat_id)"
+				+ " left outer join classe_etat c2 on (ibmr.robustesse_classe_etat_id = c2.classe_etat_id)"
+				+ "";
 		String order = " order by date_op";
 		return executeList(sql + getWhere(param) + order, false);
 	}

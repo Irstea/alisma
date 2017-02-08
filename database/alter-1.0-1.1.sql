@@ -44,12 +44,21 @@ ON UPDATE NO ACTION;
 CREATE TABLE classe_etat (
                 classe_etat_id INT NOT NULL,
                 classe_etat_libelle VARCHAR(255) NOT NULL,
+                classe_etat_seuil FLOAT NOT NULL,
                 PRIMARY KEY (classe_etat_id)
 );
 
 ALTER TABLE classe_etat COMMENT 'Table des classes d''état';
+alter table classe_etat modify column classe_etat_seuil float comment 'Seuil plancher de la classe (>= à la valeur)';
 
 ALTER TABLE ibmr ADD COLUMN classe_etat_id INT AFTER robustesse_niveau_trophique_id;
+
+alter table ibmr add column robustesse_classe_etat_id int after ek_nb_robustesse;
+alter table ibmr add column eqr_value float after ibmr_value;
+alter table ibmr add column robustesse_eqr_value float after robustesse_value;
+
+alter table ibmr modify column eqr_value float comment 'Ecological Quality Ratio : ibmr calculée rapportée à l''ibmr de la typologie retenue';
+alter table ibmr modify column robustesse_eqr_value float comment 'Ecological Quality Ratio : ibmr calculée rapportée à l''ibmr de la typologie retenue pour le calcul de robustesse';
 
 ALTER TABLE ibmr ADD CONSTRAINT classe_etat_ibmr_fk
 FOREIGN KEY (classe_etat_id)
@@ -63,13 +72,13 @@ REFERENCES typo (typo_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
-insert into classe_etat (classe_etat_id, classe_etat_libelle)
+insert into classe_etat (classe_etat_id, classe_etat_libelle, classe_etat_seuil)
 values 
-(1, 'Très bon'),
-(2, 'Bon'),
-(3, 'Moyen'),
-(4, 'Médiocre'),
-(5, 'Mauvais');
+(1, 'Très bon',0.92),
+(2, 'Bon',0.77),
+(3, 'Moyen',0.64),
+(4, 'Médiocre',0.51),
+(5, 'Mauvais',-1);
 
 INSERT INTO typo
   (typo_id, typo_name, ibmr_ref, groupe)

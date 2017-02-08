@@ -36,9 +36,9 @@ public class CalculIBMR {
 	Unite_releves ur;
 	Ibmr ibmrClass;
 	Op_controle op_controle ;
+	ClasseEtat classeEtat;
 
 	public CalculIBMR() {
-
 	}
 
 	public void setListTaxon(List<Hashtable<String, String>> taxons) {
@@ -201,6 +201,7 @@ public class CalculIBMR {
 		lignes = new Lignes_op_controle();
 		ur = new Unite_releves();
 		ibmrClass = new Ibmr();
+		classeEtat = new ClasseEtat();
 		List<Hashtable<String, String>> unites;
 		Hashtable<String, String> ibmrData = new Hashtable<String,String>();
 		for (Hashtable<String, String> operation : operations) {
@@ -237,6 +238,36 @@ public class CalculIBMR {
 				 * Lancement du calcul
 				 */
 				calculer();
+				/*
+				 * Calcul de la classe d'etat
+				 */
+				List<Hashtable<String,String>> classes = classeEtat.getListOrderBy("classe_etat_id");
+				Double eqr;
+				int classeId = 0;
+				try {
+					eqr = ibmr / Double.parseDouble(operation.get("ibmr_ref"));
+					for (Hashtable<String, String>classe: classes) {
+						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
+						if (eqr > value && classeId == 0)
+							classeId = Integer.parseInt(classe.get("classe_etat_id"));
+					}
+					ibmrData.put("eqr_value", String.valueOf(eqr));
+					if (classeId > 0)
+					ibmrData.put("classe_etat_id", String.valueOf(classeId));
+					/*
+					 * Meme traitement pour la robustesse
+					 */
+					eqr = robustesse / Double.parseDouble(operation.get("ibmr_ref"));
+					for (Hashtable<String, String>classe: classes) {
+						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
+						if (eqr > value && classeId == 0)
+							classeId = Integer.parseInt(classe.get("classe_etat_id"));
+					}
+					ibmrData.put("robustesse_eqr_value", String.valueOf(eqr));
+					if (classeId > 0)
+					ibmrData.put("robustesse_classe_etat_id", String.valueOf(classeId));
+				} catch (Exception e) {
+				}
 				/*
 				 * Ecriture du resultat
 				 */

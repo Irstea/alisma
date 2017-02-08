@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import database.Op_controle;
 import database.Stations;
+import database.Typo;
 import utils.ComposantAlisma;
 import utils.GeoTransform;
 import utils.Langue;
@@ -66,6 +67,7 @@ public class Releve_tab1 extends ComposantAlisma {
 		Hashtable<String, String[]> stationList = new Hashtable<String, String[]>();
 		Object generalObj = this;
 		String station_cd_lu, station_id_lu;
+		Typo typo = new Typo();
 
 		public General(int pNbUR) {
 			/*
@@ -79,6 +81,10 @@ public class Releve_tab1 extends ComposantAlisma {
 					lambertBornes.put(borne, 0.0);
 				}
 			}
+			/*
+			 * Initialisation de Typo
+			 */
+			typo.readData();
 
 			/*
 			 * Definition des libelles
@@ -87,6 +93,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			// addLabel("nomStation", 2, 0, null);
 			// addLabel("nomRiv", 4, 0, null);
 			addLabel("station", 0, 0);
+			addLabel("typeNat", 6, 0);
 			addLabel("organisme", 0, 1, null);
 			addLabel("operateur", 2, 1, null);
 			addLabel("date", 4, 1, null);
@@ -109,6 +116,8 @@ public class Releve_tab1 extends ComposantAlisma {
 			addTextField("stationSearch", 1, 0, 1);
 			addCombo("station", 2, 0, 3);
 			addLabelAsValue("nom_rv", "", 5, 0, 1);
+			addCombo("typo_id", 7, 0, 1);
+			addComboItemList("typo_id", typo.getArray(true), true);
 			addTextMaxLength50("organisme", 1, 1, 1);
 			addTextMaxLength50("operateur", 3, 1, 1);
 			addDatePicker("date_op", new Date(), 5, 1, 1);
@@ -220,6 +229,8 @@ public class Releve_tab1 extends ComposantAlisma {
 		public void setData(Hashtable<String, String> data) {
 			super.setData(data);
 			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
+			if (!data.get("typo_id").equals(""))
+				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
 			/*
 			 * Mise a jour de releve_dce
 			 */
@@ -248,6 +259,10 @@ public class Releve_tab1 extends ComposantAlisma {
 					data.put("id_station", "");
 				}
 			}
+			/*
+			 * recuperation de typo
+			 */
+			data.put("typo_id", String.valueOf(typo.getKeyFromValue(data.get("typo_id"))));
 			return data;
 		}
 
@@ -525,7 +540,7 @@ public class Releve_tab1 extends ComposantAlisma {
 		general.setValue("seee_date", "");
 		general.setValue("seee_version", "");
 		general.setValue("seee_ibmr", "");
-		//general.setValue("seee_nbtaxon_contrib", "");
+		// general.setValue("seee_nbtaxon_contrib", "");
 		general.setValue("seee_robustesse_value", "");
 		general.setValue("seee_taxon_robustesse", "");
 	}
