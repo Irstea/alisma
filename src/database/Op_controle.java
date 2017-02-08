@@ -219,10 +219,16 @@ public class Op_controle extends DbObject {
 	public List<Hashtable<String, String>> getListeReleveComplet(Hashtable<String, String> param) {
 		String sql = " select op.id_op_controle, organisme, operateur, op.id_statut,"
 				+ " protocole_libelle, rive_libelle, hydrologie_libelle,"
-				+ " meteo_libelle, turbidite_libelle, date_op, observation, " + " ref_dossier, "
+				+ " meteo_libelle, turbidite_libelle, date_op, observation, " 
+				+ " ref_dossier, "
 				+ " coord_x, coord_y, wgs84_x, wgs84_y, altitude, longueur, largeur,"
-				+ " cd_station, station, x, y, cours_eau," + " libelle_statut, releve_dce, " + " ibmr.*"
-				+ " from Op_controle op" + " join Points_prelev prelev on (prelev.id_pt_prel = op.id_pt_prel)"
+				+ " cd_station, station, x, y, cours_eau," 
+				+ " libelle_statut, releve_dce, " 
+				+ " ibmr.*,"
+				+ " typo_id, typo_name, ibmr_ref, groupe,"
+				+ " classe_etat_id, classe_etat_libelle"
+				+ " from Op_controle op" 
+				+ " join Points_prelev prelev on (prelev.id_pt_prel = op.id_pt_prel)"
 				+ " join Stations station on (station.id_station = prelev.id_station)"
 				+ " join Cours_Eau cours on (cours.id_cours_eau = station.id_cours_eau)"
 				+ " left outer join ibmr on (op.id_op_controle = ibmr.id_op_controle)"
@@ -231,7 +237,9 @@ public class Op_controle extends DbObject {
 				+ " left outer join rive on (rive.rive_id = op.rive_id)"
 				+ " left outer join hydrologie on (hydrologie.hydrologie_id = op.hydrologie_id)"
 				+ " left outer join meteo on (meteo.meteo_id = op.meteo_id)"
-				+ " left outer join turbidite on (turbidite.turbidite_id = op.turbidite_id)";
+				+ " left outer join turbidite on (turbidite.turbidite_id = op.turbidite_id)"
+				+ " left outer join typo on (op.typo_id = typo.typo_id)"
+				+ " left outer join classe_etat on (ibmr.classe_etat_id = classe_etat.classe_etat_id)";
 		String order = " order by date_op";
 		return executeList(sql + getWhere(param) + order, false);
 	}
