@@ -38,6 +38,7 @@ import database.Ibmr;
 import database.Lignes_op_controle;
 import database.Op_controle;
 import database.Points_prelev;
+import database.Typo;
 import database.Unite_releves;
 import utils.Exportable;
 import utils.JFrameAlisma;
@@ -70,6 +71,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	/*
 	 * Calcul IBMR
 	 */
+	Typo typo = new Typo();
 	CalculIBMR calculIbmr = new CalculIBMR();
 
 	/*
@@ -319,7 +321,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			/*
 			 * Lecture des infos generales sur l'opControle
 			 */
-			Hashtable<String, String> ibmrData = ibmr.read(keyOp);
+			Hashtable<String, String> ibmrData = ibmr.lireComplet(String.valueOf(keyOp));
 			Hashtable<String, String> data = dbOpControle.lire(keyOp);
 			if (!data.get("id_pt_prel").isEmpty()) {
 				data = tab_1.hashtableFusionner(data, dbPointPrelev.read(data.get("id_pt_prel")));
@@ -752,15 +754,19 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 */
 		calculIbmr.setListTaxon(tab_3.getListTaxon());
 		/*
+		 * Recuperation de ibmr_ref
+		 */
+		calculIbmr.ibmrRef = Double.parseDouble(typo.getIbmrRef(tab_1.general.getData("typo_id")));
+		/*
 		 * Lancement du calcul
 		 */
-		calculIbmr.calculer();
+		Hashtable<String, String> resultat = calculIbmr.calculer();
 		/*
 		 * Fin des calculs - mise a jour des champs
 		 */
 		tab_1.resetCalcul();
-		tab_1.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon, calculIbmr.nbEK);
-		tab_3.setDataCalcul(calculIbmr.ibmr, calculIbmr.robustesse, calculIbmr.maxTaxon);
+		tab_1.setDataCalcul(resultat);
+		tab_3.setDataCalcul(resultat);
 		tab_1.setStatut(1);
 		isModif = true;
 		fenetre.setModified(isModif);

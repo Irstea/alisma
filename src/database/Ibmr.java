@@ -41,10 +41,13 @@ public class Ibmr extends DbObject {
 	}
 	
 	public Hashtable <String, String> lireComplet(String id) {
-		String sql = "select ibmr.*, nt.niveau_trophique_libelle, rnt.niveau_trophique_libelle as rnt_libelle"
+		String sql = "select ibmr.*, nt.niveau_trophique_libelle, rnt.niveau_trophique_libelle as rnt_libelle, "
+				+ " c1.classe_etat_libelle, c2.classe_etat_libelle as robustesse_classe_etat_libelle"
 				+ " from "+tableName
 				+ " left outer join niveau_trophique nt on (ibmr.niveau_trophique_id = nt.niveau_trophique_id)"
 				+ " left outer join niveau_trophique rnt on (ibmr.robustesse_niveau_trophique_id = rnt.niveau_trophique_id)"
+				+ " left outer join classe_etat c1 on (ibmr.classe_etat_id = c1.classe_etat_id)"
+				+ " left outer join classe_etat c2 on (ibmr.robustesse_classe_etat_id = c2.classe_etat_id)"
 				+ " where id_op_controle = "+id;
 		
 		

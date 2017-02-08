@@ -163,15 +163,21 @@ public class Releve_tab3 extends ComposantAlisma {
 	 * @param string
 	 *            maxTaxon
 	 */
-	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon) {
-		indice.setValue("ibmr_value", String.valueOf(ibmr));
-		indice.setValue("robustesse_value", String.valueOf(robustesse));
-		indice.setValue("taxon_robustesse", maxTaxon);
+	public void setDataCalcul(Hashtable<String, String> data) {
+		String [] fields = {"ibmr_value", "robustesse_value", "taxon_robustesse"};
+		try {
+		for (String field : fields)
+			indice.setValue(field, data.get(field));
+		Double ibmr = Double.parseDouble(data.get("ibmr_value"));
+		Double robustesse = Double.parseDouble(data.get("robustesse_value"));
 		indice.setValue("nivTroph", getNiveauTrophique(ibmr));
 		indice.setValue("nivTrophRob", getNiveauTrophique(robustesse));
 		indice.setValue("niveau_trophique_id", getIdNiveauTrophique(ibmr));
 		indice.setValue("robustesse_niveau_trophique_id",
-				getIdNiveauTrophique(ibmr));
+				getIdNiveauTrophique(robustesse));
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+		}
 
 	}
 

@@ -138,6 +138,8 @@ public class Releve_tab1 extends ComposantAlisma {
 			addCombo("releve_dce", 5, 2, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
+			addHidden("classe_etat_id");
+			addHidden("robustesse_classe_etat_id");
 			/*
 			 * Champs pour le calcul SEEE
 			 */
@@ -237,6 +239,9 @@ public class Releve_tab1 extends ComposantAlisma {
 		public void setData(Hashtable<String, String> data) {
 			super.setData(data);
 			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
+			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
+			this.setValue("robustesse_classe_etat_libelle", data.get("robustesse_classe_etat_libelle"));
+			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
 			if (!data.get("typo_id").equals(""))
 				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
 			/*
@@ -567,11 +572,15 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @param string
 	 *            maxTaxon
 	 */
-	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon, double nbEKmax) {
-		general.setValue("ibmr_value", String.valueOf(ibmr));
-		general.setValue("robustesse_value", String.valueOf(robustesse));
-		general.setValue("taxon_robustesse", maxTaxon);
-		general.setValue("ek_nb_robustesse", String.valueOf(nbEKmax));
+//	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon, double nbEKmax, double eqr, double robustesseEqr) {
+		public void setDataCalcul(Hashtable<String, String> data) {
+			String [] fields = {"ibmr_value", "robustesse_value", "taxon_robustesse",
+					"ek_nb_robustesse", "eqr_value", "robustesse_eqr_value", "classe_etat_libelle",
+					"robustesse_classe_etat_libelle","classe_etat_id","robustesse_classe_etat_id"
+			};
+			for (String field : fields) {
+				general.setValue(field, data.get(field));
+			}
 	}
 
 	/**

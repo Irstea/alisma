@@ -19,7 +19,7 @@ import utils.ConnexionDatabase;
 public class CalculIBMR {
 	static Logger logger = Logger.getLogger(CalculIBMR.class);
 	double tauxUR1 = 100, tauxUR2 = 0, txOccup, txOccup1, txOccup2;
-	public double ibmr = 0, robustesse = 0, nbEK = 0;
+	public double ibmr = 0, robustesse = 0, nbEK = 0, ibmrRef = 1;
 	double cote_spe, coef_steno;
 	double K, EK, EKCS;
 	double sumEK = 0, sumEKCS = 0;
@@ -29,16 +29,18 @@ public class CalculIBMR {
 	List<Hashtable<String, String>> data;
 	Hashtable<String, Hashtable<String, Double>> dataCalcule = new Hashtable<String, Hashtable<String, Double>>();
 	Hashtable<String, Double> taxonCalcule;
-
+	Hashtable<String, String> ibmrData = new Hashtable<String,String>();
+	List<Hashtable<String,String>> classes;
 	Statement query;
 	ResultSet res;
 	Lignes_op_controle lignes;
 	Unite_releves ur;
 	Ibmr ibmrClass;
 	Op_controle op_controle ;
-	ClasseEtat classeEtat;
+	ClasseEtat classeEtat = new ClasseEtat();
 
 	public CalculIBMR() {
+		classes = classeEtat.getListOrderBy("classe_etat_id");
 	}
 
 	public void setListTaxon(List<Hashtable<String, String>> taxons) {
@@ -54,7 +56,8 @@ public class CalculIBMR {
 		nbUR = nb;
 	}
 
-	public void calculer() {
+	public Hashtable<String, String> calculer() {
+		ibmrData.clear();
 		/*
 		 * Parcours de la liste
 		 */
@@ -187,6 +190,59 @@ public class CalculIBMR {
 		 * Calcul de l'arrondi
 		 */
 		robustesse = Math.floor(robustesse * 100 + 0.5) / 100;
+		/*
+		 * Stockage des resultats
+		 */
+		ibmrData.put("ibmr_value", String.valueOf(ibmr));
+		ibmrData.put("robustesse_value", String.valueOf(robustesse));
+		ibmrData.put("taxon_robustesse", maxTaxon);
+		ibmrData.put("ek_nb_robustesse", String.valueOf(nbEK));
+		
+		/*
+		 * Calcul de EQR et de la classe d'etat
+		 */
+		Double eqr;
+		int classeId = 0;
+		String classeLibelle = "";
+		try {
+			eqr = ibmr / ibmrRef;
+			for (Hashtable<String, String>classe: classes) {
+				Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
+				if (eqr > value && classeId == 0) {
+					classeId = Integer.parseInt(classe.get("classe_etat_id"));
+					classeLibelle = classe.get("classe_etat_libelle");
+				}
+			}
+			eqr = Math.floor(eqr * 100 + 0.5) / 100;
+			ibmrData.put("eqr_value", String.valueOf(eqr));
+			if (classeId > 0){
+			ibmrData.put("classe_etat_id", String.valueOf(classeId));
+			ibmrData.put("classe_etat_libelle", classeLibelle);
+			}
+			/*
+			 * Meme traitement pour la robustesse
+			 */
+			eqr = robustesse / ibmrRef;
+			classeId =0;
+			classeLibelle = "";
+			for (Hashtable<String, String>classe: classes) {
+				Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
+				if (eqr > value && classeId == 0) {
+					classeId = Integer.parseInt(classe.get("classe_etat_id"));
+					classeLibelle = classe.get("classe_etat_libelle");
+				}
+			}
+			eqr = Math.floor(eqr * 100 + 0.5) / 100;
+			ibmrData.put("robustesse_eqr_value", String.valueOf(eqr));
+			if (classeId > 0) {
+			ibmrData.put("robustesse_classe_etat_id", String.valueOf(classeId));
+			ibmrData.put("robustesse_classe_etat_libelle", classeLibelle);
+			}
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+		}
+		return ibmrData;
+
 
 	}
 
@@ -203,8 +259,8 @@ public class CalculIBMR {
 		ibmrClass = new Ibmr();
 		classeEtat = new ClasseEtat();
 		List<Hashtable<String, String>> unites;
-		Hashtable<String, String> ibmrData = new Hashtable<String,String>();
 		for (Hashtable<String, String> operation : operations) {
+			ibmrData.clear();
 			if (operation.get("id_statut").equals("1")) {
 				logger.debug("Recalcul operation : "+operation.get("id_op_controle"));
 				/*
@@ -215,6 +271,13 @@ public class CalculIBMR {
 				ibmr = 0;
 				robustesse = 0;
 				maxTaxon = "";
+				try {
+				ibmrRef = Double.parseDouble(operation.get("ibmr_ref"));
+				} catch (NullPointerException e) {
+					
+				}catch (Exception e) {
+					logger.debug(e.getMessage());
+				}
 				/*
 				 * Recuperation des taxons correspondants
 				 */
@@ -237,55 +300,10 @@ public class CalculIBMR {
 				/*
 				 * Lancement du calcul
 				 */
-				calculer();
-				/*
-				 * Calcul de EQR et de la classe d'etat
-				 */
-				List<Hashtable<String,String>> classes = classeEtat.getListOrderBy("classe_etat_id");
-				Double eqr;
-				int classeId = 0;
-				String classeLibelle = "";
-				try {
-					eqr = ibmr / Double.parseDouble(operation.get("ibmr_ref"));
-					for (Hashtable<String, String>classe: classes) {
-						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
-						if (eqr > value && classeId == 0) {
-							classeId = Integer.parseInt(classe.get("classe_etat_id"));
-							classeLibelle = classe.get("classe_etat_libelle");
-						}
-					}
-					ibmrData.put("eqr_value", String.valueOf(eqr));
-					if (classeId > 0){
-					ibmrData.put("classe_etat_id", String.valueOf(classeId));
-					ibmrData.put("classe_etat_libelle", classeLibelle);
-					}
-					/*
-					 * Meme traitement pour la robustesse
-					 */
-					eqr = robustesse / Double.parseDouble(operation.get("ibmr_ref"));
-					for (Hashtable<String, String>classe: classes) {
-						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
-						if (eqr > value && classeId == 0) {
-							classeId = Integer.parseInt(classe.get("classe_etat_id"));
-							classeLibelle = classe.get("classe_etat_libelle");
-						}
-					}
-					ibmrData.put("robustesse_eqr_value", String.valueOf(eqr));
-					if (classeId > 0) {
-					ibmrData.put("robustesse_classe_etat_id", String.valueOf(classeId));
-					ibmrData.put("robustesse_classe_etat_libelle", classeLibelle);
-					}
-				} catch (Exception e) {
-					logger.debug(e.getMessage());
-				}
+				ibmrData = calculer();
 				/*
 				 * Ecriture du resultat
 				 */
-				ibmrData.put("id_op_controle", operation.get("id_op_controle"));
-				ibmrData.put("ibmr_value", String.valueOf(ibmr));
-				ibmrData.put("robustesse_value", String.valueOf(robustesse));
-				ibmrData.put("taxon_robustesse", maxTaxon);
-				ibmrData.put("ek_nb_robustesse", String.valueOf(nbEK));
 				ibmrClass.write(ibmrData, Integer.parseInt(operation.get("id_op_controle")));
 			}
 

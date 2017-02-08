@@ -74,7 +74,7 @@ public class DbObjectCombo extends DbObject {
 		for (Hashtable<String, String> ligne : result) {
 			String value = ligne.get(libelleName);
 			String key = ligne.get(keyName);
-			logger.debug("contenu de "+tableName+" : "+ key +"/"+value);
+			//logger.debug("contenu de "+tableName+" : "+ key +"/"+value);
 			comboData.put(Integer.valueOf(key), value);
 			comboDataInv.put(value, Integer.valueOf(key));
 		}
