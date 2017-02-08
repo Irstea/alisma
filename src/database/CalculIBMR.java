@@ -239,34 +239,44 @@ public class CalculIBMR {
 				 */
 				calculer();
 				/*
-				 * Calcul de la classe d'etat
+				 * Calcul de EQR et de la classe d'etat
 				 */
 				List<Hashtable<String,String>> classes = classeEtat.getListOrderBy("classe_etat_id");
 				Double eqr;
 				int classeId = 0;
+				String classeLibelle = "";
 				try {
 					eqr = ibmr / Double.parseDouble(operation.get("ibmr_ref"));
 					for (Hashtable<String, String>classe: classes) {
 						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
-						if (eqr > value && classeId == 0)
+						if (eqr > value && classeId == 0) {
 							classeId = Integer.parseInt(classe.get("classe_etat_id"));
+							classeLibelle = classe.get("classe_etat_libelle");
+						}
 					}
 					ibmrData.put("eqr_value", String.valueOf(eqr));
-					if (classeId > 0)
+					if (classeId > 0){
 					ibmrData.put("classe_etat_id", String.valueOf(classeId));
+					ibmrData.put("classe_etat_libelle", classeLibelle);
+					}
 					/*
 					 * Meme traitement pour la robustesse
 					 */
 					eqr = robustesse / Double.parseDouble(operation.get("ibmr_ref"));
 					for (Hashtable<String, String>classe: classes) {
 						Double value = Double.parseDouble(classe.get("classe_etat_seuil"));
-						if (eqr > value && classeId == 0)
+						if (eqr > value && classeId == 0) {
 							classeId = Integer.parseInt(classe.get("classe_etat_id"));
+							classeLibelle = classe.get("classe_etat_libelle");
+						}
 					}
 					ibmrData.put("robustesse_eqr_value", String.valueOf(eqr));
-					if (classeId > 0)
+					if (classeId > 0) {
 					ibmrData.put("robustesse_classe_etat_id", String.valueOf(classeId));
+					ibmrData.put("robustesse_classe_etat_libelle", classeLibelle);
+					}
 				} catch (Exception e) {
+					logger.debug(e.getMessage());
 				}
 				/*
 				 * Ecriture du resultat

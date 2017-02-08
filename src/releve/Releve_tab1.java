@@ -104,11 +104,15 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("robustesse", 2, 3);
 			addLabel("taxonRob", 4, 3);
 			addLabel("nbTaxonEKmax", 6, 3);
-			addLabel("seeeIbmr", 0, 4);
-			addLabel("robustesse", 2, 4);
-			addLabel("taxonRob", 4, 4);
-			addLabel("seeeDate", 0, 5);
-			addLabel("seeeVersion", 2, 5);
+			addLabel("eqr", 0, 4);
+			addLabel("classeEtat", 2, 4);
+			addLabel("eqrRobustesse", 4, 4);
+			addLabel("classeEtat", 6, 4);
+			addLabel("seeeIbmr", 0, 5);
+			addLabel("robustesse", 2, 5);
+			addLabel("taxonRob", 4, 5);
+			addLabel("seeeDate", 0, 6);
+			addLabel("seeeVersion", 2, 6);
 
 			/*
 			 * Definition des champs
@@ -127,17 +131,21 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabelAsValue("robustesse_value", "", 3, 3, 1);
 			addLabelAsValue("taxon_robustesse", "", 5, 3, 1);
 			addLabelAsValue("ek_nb_robustesse", "", 7, 3, 1);
+			addLabelAsValue("eqr_value", "", 1, 4, 1);
+			addLabelAsValue("classe_etat_libelle", "", 3, 4, 1);
+			addLabelAsValue("robustesse_eqr_value","", 5, 4, 1);
+			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 4, 1);
 			addCombo("releve_dce", 5, 2, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
 			/*
 			 * Champs pour le calcul SEEE
 			 */
-			addLabelAsValue("seee_ibmr", "", 1, 4, 1);
-			addLabelAsValue("seee_robustesse_value", "", 3, 4, 1);
-			addLabelAsValue("seee_taxon_robustesse", "", 5, 4, 1);
-			addLabelAsValue("seee_date", "", 1, 5, 1);
-			addLabelAsValue("seee_version", "", 3, 5, 1);
+			addLabelAsValue("seee_ibmr", "", 1, 5, 1);
+			addLabelAsValue("seee_robustesse_value", "", 3, 5, 1);
+			addLabelAsValue("seee_taxon_robustesse", "", 5, 5, 1);
+			addLabelAsValue("seee_date", "", 1, 6, 1);
+			addLabelAsValue("seee_version", "", 3, 6, 1);
 
 			/*
 			 * Ajout des listeners
@@ -543,6 +551,10 @@ public class Releve_tab1 extends ComposantAlisma {
 		// general.setValue("seee_nbtaxon_contrib", "");
 		general.setValue("seee_robustesse_value", "");
 		general.setValue("seee_taxon_robustesse", "");
+		general.setValue("eqr_value", "");
+		general.setValue("robustesse_eqr_value", "");
+		general.setValue("classe_etat_libelle", "");
+		general.setValue("robustesse_classe_etat_libelle", "");
 	}
 
 	/**
