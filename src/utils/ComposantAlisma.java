@@ -499,6 +499,14 @@ public class ComposantAlisma extends Observable implements Observer {
 	public void setBordure(String field, int level) {
 		bordure.setBordure(fieldList.get(field), level);
 	}
+	/**
+	 * Colorie le fond du champ specifie
+	 * @param field: nom champ
+	 * @param color: couleur a utiliser
+	 */
+	public void setColorBorder(String field, Color color) {
+		fieldList.get(field).setBorder(BorderFactory.createLineBorder(color));
+	}
 
 	/**
 	 * Definit les libelles dans les objets inferieurs

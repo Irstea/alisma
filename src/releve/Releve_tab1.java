@@ -3,6 +3,7 @@
  */
 package releve;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -242,6 +243,9 @@ public class Releve_tab1 extends ComposantAlisma {
 			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
 			this.setValue("robustesse_classe_etat_libelle", data.get("robustesse_classe_etat_libelle"));
 			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
+			setQualityColor("classe_etat_libelle", "classe_etat_id");
+			setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
+			
 			if (!data.get("typo_id").equals(""))
 				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
 			/*
@@ -257,6 +261,32 @@ public class Releve_tab1 extends ComposantAlisma {
 			Hashtable<String, String> ligneStation = dbStation.readByKey("id_station", data.get("id_station"));
 			stationSearch(ligneStation.get("cd_station"));
 			stationName = ligneStation.get("station");
+		}
+		
+		void setQualityColor (String field, String level) {
+			try {
+			int couleur = Integer.parseInt(this.getData(level));
+			Color color = Color.white;
+			switch(couleur) {
+			case 1:
+				color = Color.blue;
+				break;
+			case 2:
+				color = Color.green;
+				break;
+			case 3:
+				color = Color.yellow;
+				break;
+			case 4:
+				color = Color.orange;
+				break;
+			case 5:
+				color = Color.red;
+			}
+			this.setColorBorder(field, color);
+			} catch (Exception e) {
+				
+			}
 		}
 
 		public Hashtable<String, String> getData() {
