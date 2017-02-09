@@ -61,6 +61,7 @@ public class CalculIBMR {
 		/*
 		 * Parcours de la liste
 		 */
+		logger.debug("nbUR:"+nbUR+" tauxUR1:"+tauxUR1+" tauxUR2:"+tauxUR2);
 		for (Hashtable<String, String> taxon : data) {
 			cote_spe = 0;
 			coef_steno = 0;
@@ -98,6 +99,9 @@ public class CalculIBMR {
 				cote_spe = Double.parseDouble(taxon.get("cote_spe"));
 				coef_steno = Double.parseDouble(taxon.get("coef_steno"));
 			}
+			logger.debug("cd_taxon:"+taxon.get("cd_taxon")+" cd_valide:"+
+			taxon.get("cd_valide")+" - cote_spe:"+cote_spe+" coef_steno:"+coef_steno
+			+ " pc_UR1:"+taxon.get("pc_UR1")+" PC_UR2:"+taxon.get("pc_UR2"));
 			/*
 			 * Lancement du traitement du taxon
 			 */
@@ -131,6 +135,7 @@ public class CalculIBMR {
 				EKCS = EK * cote_spe;
 				sumEK += EK;
 				sumEKCS += EKCS;
+				logger.debug("txOccup:"+txOccup+" K:"+K+" EK:"+EK+" EKCS:"+EKCS);
 				/*
 				 * Stockage des calculs pour la robustesse
 				 */
@@ -156,6 +161,8 @@ public class CalculIBMR {
 			ibmr = sumEKCS / sumEK;
 		} else
 			ibmr = 0;
+		logger.debug("sumEK:"+sumEK + " sumEKCS:"+sumEKCS+" ibmr:"+ibmr);
+
 		/*
 		 * Calcul de l'arrondi
 		 */
@@ -271,6 +278,10 @@ public class CalculIBMR {
 				ibmr = 0;
 				robustesse = 0;
 				maxTaxon = "";
+				sumEK = 0;
+				sumEKCS = 0;
+				maxEK = 0;
+				dataCalcule.clear();
 				try {
 				ibmrRef = Double.parseDouble(operation.get("ibmr_ref"));
 				} catch (NullPointerException e) {
@@ -293,9 +304,9 @@ public class CalculIBMR {
 				 */
 				for (Hashtable<String, String> unite : unites) {
 					if (unite.get("numUR").equals("1")) {
-						tauxUR1 = Double.parseDouble(unite.get("pc_UR"));
+						tauxUR1 = Double.parseDouble(unite.get("pc_UR"))/100;
 					} else
-						tauxUR2 = Double.parseDouble(unite.get("pc_UR"));
+						tauxUR2 = Double.parseDouble(unite.get("pc_UR"))/100;
 				}
 				/*
 				 * Lancement du calcul
