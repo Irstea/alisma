@@ -1,0 +1,33 @@
+ALISMA - nouveautés
+===================
+
+Version 1.1 du 9 février 2017
+-------------------------------
+ATTENTION : une mise à jour de la base de données est nécessaire : script database/update-1.0-1.1.sql
+
+Correction de bogues :
+- dans certains cas, la recherche d'opérations échouait à cause d'une erreur SQL
+- le calcul de l'IBMR, pour un ensemble de dossiers, était possiblement erroné
+
+Améliorations
+- il est maintenant possible d'exporter les données des relevés pour réaliser le calcul de l'IBMR auprès de SEEE http://www.seee.eaufrance.fr (calcul officiel), puis d'importer les résultats. Le statut des dossiers calculés évolue en conséquence.
+- rajout de plusieurs indicateurs :
+- lors du calcul de la robustesse, le nombre de taxons ayant la même valeur EK maximale est indiqué
+- si la classe officielle du cours d'eau est indiqué, le programme calcule la classe de qualité correspondante, tant pour le calcul de l'IBMR que de la robustesse
+- en consultation d'un dossier, la qualité de la station est mise en relief par une bordure colorée selon les règles officielles
+- si les chemins d'export ne sont pas reconnus, le programme affiche maintenant un message d'information
+- il est maintenant possible de rechercher des dossiers par année (les dates de recherche sont alors inopérantes)
+
+Version 1.0.3 du 6 janvier 2017
+-------------------------------
+Correction de bogues :
+- si une nouvelle opération de contrôle était enregistrée deux fois de suite sans fermer la fenêtre correspondante, les unités de relevé correspondantes étaient doublées, ainsi que le point de prélèvement
+- certaines requêtes SQL pouvaient échouer, si elles comprenaient une clause "order by"
+- l'absence de paramètres dans le fichier de configuration param.ini pouvait, dans certains cas de figure, faire planter l'application
+- il n'était pas possible de supprimer une opération (contrainte d'intégrité référentielle non respectée)
+- la version du runtime Java est maintenant testée, pour éviter une utilisation avec des versions obsolètes du JRE
+
+Améliorations :
+- le fichier XML d'export, et le fichier PDF généré, contiennent maintenant le numéro de la version du logiciel qui les a créé
+- mise à jour de la documentation, avec en particulier la procédure à suivre pour installer une nouvelle version.
+
