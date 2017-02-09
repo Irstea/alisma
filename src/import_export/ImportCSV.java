@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
@@ -106,6 +107,8 @@ public class ImportCSV {
 					op.ecrireSimple(lop, keynum);	
 					retour = true;
 				}
+				JOptionPane.showMessageDialog(null, Langue.getString("importSEEEok"), Langue.getString("exportKO"),
+						JOptionPane.INFORMATION_MESSAGE);
 
 			} catch (Exception e) {
 				logger.error(e.getMessage());
