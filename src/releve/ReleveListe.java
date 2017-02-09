@@ -96,7 +96,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 				/*
 				 * Declenche l'affichage de la fiche en modification
 				 */
-				if (e.getClickCount() >= 1) {
+				if (e.getClickCount() == 2) {
 					Point p = e.getPoint();
 					int row = table.rowAtPoint(p);
 					int column = table.convertColumnIndexToModel(table.columnAtPoint(p));
@@ -145,13 +145,15 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			setDimensionDefault(dimLabel);
 			addTextField("zoneSearch", 2, 0, 2);
 			addCombo("statut", 5, 0, 1);
-			addButton("boutonChercher", 'R', "rechercher", 0, 2, 1);
-			addButton("nouveau", 'N', "nouveau", 1, 2, 1);
-			addButton("exporter", 'E', "exporter", 2, 2, 1);
-			addButton("exportPdf", 'P', "exportPDF", 3, 2, 1);
-			addButton("recalculer", 'C', "recalculer", 4, 2, 1);
-			addButton("exportSEEE", 'S', "exportSEEE", 5, 2, 1);
-			addButton("importSEEE", 'I', "importSEEE", 6, 2, 1);
+			addButton("boutonChercher", 'R', "rechercher", 1, 2, 1);
+			addButton("ouvrir", 'O', "ouvrir", 2, 2, 1);
+			addButton("nouveau", 'N', "nouveau", 3, 2, 1);
+
+			addButton("exporter", 'E', "exporter", 0, 3, 1);
+			addButton("exportPdf", 'P', "exportPDF", 1, 3, 1);
+			addButton("recalculer", 'C', "recalculer", 2, 3, 1);
+			addButton("exportSEEE", 'S', "exportSEEE", 4, 3, 1);
+			addButton("importSEEE", 'I', "importSEEE", 5, 3, 1);
 			addComboItemList("statut", new String[] { "", Langue.getString("statut0"), Langue.getString("statut1"),
 					Langue.getString("statut2") }, true);
 			addDatePicker("fin", new Date(), 3, 1, 1);
@@ -174,6 +176,14 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 		case "nouveau":
 			setChanged();
 			notifyObservers("opNouveau");
+			break;
+		case "ouvrir":
+			int row = table.getSelectedRow();
+			if (row >= 0) {
+				id = Integer.parseInt((String) table.getValueAt(row, 0));
+				setChanged();
+				notifyObservers("opModif");
+			}
 			break;
 		case "exporter":
 			/*
@@ -203,10 +213,10 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			notifyObservers("exportSEEE");
 			break;
 		case "importSEEE":
-		setChanged();
-		notifyObservers("importSEEE");
-		search.getCombo("statut").setSelectedIndex(3);
-		initTable();
+			setChanged();
+			notifyObservers("importSEEE");
+			search.getCombo("statut").setSelectedIndex(3);
+			initTable();
 		}
 	}
 
@@ -259,13 +269,14 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 
 		return data;
 	}
+
 	/**
 	 * Lit le nom du fichier a importer, et le restitue
+	 * 
 	 * @return
 	 */
 	public String getFileName() {
 		return icsv.selectFile(this.fenetre);
 	}
-	
-	
+
 }
