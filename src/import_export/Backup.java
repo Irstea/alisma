@@ -78,7 +78,9 @@ public class Backup {
 			fichierSortie.println(texteDate);
 			fichierSortie.close();
 		} catch (Exception e) {
-			logger.error("Backup", e);
+			JOptionPane.showMessageDialog(null, Langue.getString("errorWriteBackupDate"),
+					Langue.getString("backup"), JOptionPane.ERROR_MESSAGE);
+			logger.error( e.getMessage());
 		}
 	}
 

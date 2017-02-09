@@ -162,40 +162,51 @@ public class ExportOp {
 	String ecrireFichierExport(String contenu, String suffixe, boolean silent, int cle) {
 		File f = null;
 		String scle = (cle > 0 ? "_" + (new Integer(cle).toString()) : "");
+		String fileName = "";
 		/*
 		 * Preparation du chemin d'export
 		 */
-		String fileName = Parametre.others.get("pathFolderExport") + File.separator
-				+ Parametre.others.get("exportFileNamePrefix") + scle
-				+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + "." + suffixe;
-		f = new File(fileName);
-
-		int rep = JOptionPane.YES_OPTION;
 		/*
-		 * Confirmation de l'ecrasement
+		 * Test du dossier d'exportation
 		 */
-		if (f.exists() && !silent) {
-			rep = JOptionPane.showOptionDialog(null, Langue.getString("confirmFileEcrasement"), null,
-					JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION, null, null, JOptionPane.NO_OPTION);
-		}
-		if (rep == JOptionPane.YES_OPTION) {
-			try {
-				BufferedWriter w = new BufferedWriter(new FileWriter(f));
-				w.write(contenu);
-				w.close();
-				if (!silent) {
-					String mess = "<html>" + Langue.getString("exportOKdetail") + "<ul>";
-					mess += "<li>" + f.getAbsolutePath() + "</li>";
-					mess += "</ul></html>";
-					JOptionPane.showMessageDialog(null, mess, Langue.getString("exportOK"),
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
+		String folderPath = Parametre.others.get("pathFolderExport");
+		File folder = new File(folderPath);
+		if (folder.isDirectory()) {
+
+			fileName = folderPath + File.separator + Parametre.others.get("exportFileNamePrefix") + scle
+					+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + "." + suffixe;
+			f = new File(fileName);
+
+			int rep = JOptionPane.YES_OPTION;
+			/*
+			 * Confirmation de l'ecrasement
+			 */
+			if (f.exists() && !silent) {
+				rep = JOptionPane.showOptionDialog(null, Langue.getString("confirmFileEcrasement"), null,
+						JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION, null, null, JOptionPane.NO_OPTION);
 			}
-		} else
-			JOptionPane.showMessageDialog(null, Langue.getString("exportKOdetail"), Langue.getString("exportKO"),
+			if (rep == JOptionPane.YES_OPTION) {
+				try {
+					BufferedWriter w = new BufferedWriter(new FileWriter(f));
+					w.write(contenu);
+					w.close();
+					if (!silent) {
+						String mess = "<html>" + Langue.getString("exportOKdetail") + "<ul>";
+						mess += "<li>" + f.getAbsolutePath() + "</li>";
+						mess += "</ul></html>";
+						JOptionPane.showMessageDialog(null, mess, Langue.getString("exportOK"),
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				JOptionPane.showMessageDialog(null, Langue.getString("exportKOdetail"), Langue.getString("exportKO"),
+						JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(null, Langue.getString("folderNotFound"), Langue.getString("exportKO"),
 					JOptionPane.INFORMATION_MESSAGE);
+		}
 		return fileName;
 	}
 
@@ -214,6 +225,9 @@ public class ExportOp {
 	 *            racine du nom du fichier exporte
 	 */
 	public void exportPdf(String fileNamePrefix) {
+		String folderPath = Parametre.others.get("pathFolderExport");
+		File folder = new File(folderPath);
+		if (folder.isDirectory()) {
 		/*
 		 * Teste si une seule fiche est exportee
 		 */
@@ -266,6 +280,10 @@ public class ExportOp {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		} else {
+			JOptionPane.showMessageDialog(null, Langue.getString("folderNotFound"), Langue.getString("exportKO"),
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
 
@@ -297,21 +315,21 @@ public class ExportOp {
 			int i = 0;
 			pcUR[0] = "";
 			pcUR[1] = "";
-			
+
 			for (Hashtable<String, String> ur : ldataUR) {
-				pcUR [i] = ur.get("pc_UR");
+				pcUR[i] = ur.get("pc_UR");
 				if (pcUR[i].equals(""))
 					pcUR[i] = "0";
 				i++;
 			}
-			
+
 			for (Hashtable<String, String> taxon : ldataTaxons) {
-				ligne = key + tab + operation.get("cd_station")+tab + dateOp + tab + taxon.get("id_taxon")+tab;
+				ligne = key + tab + operation.get("cd_station") + tab + dateOp + tab + taxon.get("id_taxon") + tab;
 				taxonpc[0] = taxon.get("pc_UR1");
 				taxonpc[1] = taxon.get("pc_UR2");
-				for (int j = 0; j < 2 ; j++) 
-					if (taxonpc[j].equals("")|| taxonpc[j].equals("null"))
-						taxonpc[j] = "0";							
+				for (int j = 0; j < 2; j++)
+					if (taxonpc[j].equals("") || taxonpc[j].equals("null"))
+						taxonpc[j] = "0";
 				/*
 				 * traitement de l'UR
 				 */
@@ -319,15 +337,15 @@ public class ExportOp {
 					/*
 					 * UR unique
 					 */
-					ligne += "FU" + tab + pcUR[0]+ tab + taxonpc[0]+newLine;
+					ligne += "FU" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
 					content += ligne;
 				} else {
 					/*
 					 * Traitement des deux UR
 					 */
-					
-					content += ligne + "F1" + tab + pcUR[0] + tab + taxonpc[0]+newLine;
-					content += ligne + "F2" + tab + pcUR[1] + tab + taxonpc[1]+newLine;
+
+					content += ligne + "F1" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
+					content += ligne + "F2" + tab + pcUR[1] + tab + taxonpc[1] + newLine;
 				}
 			}
 		}
