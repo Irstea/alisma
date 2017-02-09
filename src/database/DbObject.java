@@ -410,7 +410,7 @@ public class DbObject {
 		} catch (Exception e) {
 			logger.error(e);
 		}
-
+		logger.debug("nb lignes:"+data.size());
 		return data;
 	}
 

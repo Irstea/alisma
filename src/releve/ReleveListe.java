@@ -189,25 +189,25 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			/*
 			 * Impose le statut valide
 			 */
-			search.getCombo("statut").setSelectedIndex(2);
+			setIndexStatut(2, false);
 			initTable();
 			setChanged();
 			notifyObservers("exportXml");
 			break;
 		case "exportPDF":
-			search.getCombo("statut").setSelectedIndex(2);
+			setIndexStatut(2, false);
 			initTable();
 			setChanged();
 			notifyObservers("exportPDF");
 			break;
 		case "recalculer":
-			search.getCombo("statut").setSelectedIndex(2);
+			setIndexStatut(2, false);
 			initTable();
 			setChanged();
 			notifyObservers("recalculer");
 			break;
 		case "exportSEEE":
-			search.getCombo("statut").setSelectedIndex(2);
+			setIndexStatut(2, true);
 			initTable();
 			setChanged();
 			notifyObservers("exportSEEE");
@@ -215,9 +215,17 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 		case "importSEEE":
 			setChanged();
 			notifyObservers("importSEEE");
-			search.getCombo("statut").setSelectedIndex(3);
+			setIndexStatut(3, true);
 			initTable();
 		}
+	}
+
+	void setIndexStatut(int index, boolean exact) {
+		int indexCourant = search.getCombo("statut").getSelectedIndex();
+		if (exact) {
+			search.getCombo("statut").setSelectedIndex(index);
+		} else if (index > indexCourant)
+			search.getCombo("statut").setSelectedIndex(index);
 	}
 
 	/**

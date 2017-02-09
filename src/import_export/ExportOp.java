@@ -24,6 +24,7 @@ import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
+import org.apache.log4j.Logger;
 
 import alisma.Alisma;
 import database.Ibmr;
@@ -40,6 +41,7 @@ import utils.Parametre;
  *
  */
 public class ExportOp {
+	static Logger logger = Logger.getLogger(ExportOp.class);
 	Op_controle op = new Op_controle();
 	Unite_releves ur = new Unite_releves();
 	Lignes_op_controle taxons = new Lignes_op_controle();
@@ -69,70 +71,78 @@ public class ExportOp {
 	 */
 	private String generateXML() {
 		/*
-		 * Initialisations
-		 */
-		String encodage = (Alisma.isWindowsOs) ? "ISO-8859-15" : "UTF-8";
-		String newLine = System.getProperty("line.separator");
-		String xml = "<?xml version=\"1.0\" encoding=\"" + encodage + "\" ?>" + newLine;
-		/*
-		 * Operations
-		 */
-		xml = xml + "<operations>" + newLine;
-		/*
-		 * Versions
-		 */
-		xml = xml + "<versions>" + newLine;
-		xml = xml + "<softwareVersion>" + Alisma.VERSIONNUMBER + "</softwareVersion>" + newLine;
-		xml = xml + "</versions>" + newLine;
-		/*
-		 * Traitement des opérations
-		 */
-		String key;
-		List<Hashtable<String, String>> ldataFils;
-		/*
 		 * Recupere la liste des operations
 		 */
 		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
-		// if (Alisma.isWindowsOs)
-		// listeop = op.encodeAll(listeop);
-		for (Hashtable<String, String> operation : listeop) {
-			key = operation.get("id_op_controle");
-			xml += "<operation>" + newLine;
+		if (!listeop.isEmpty()) {
 			/*
-			 * ajout des donnees de l'operation
+			 * Initialisations
 			 */
-			xml += op.getXml(operation, true);
+			String encodage = (Alisma.isWindowsOs) ? "ISO-8859-15" : "UTF-8";
+			String newLine = System.getProperty("line.separator");
+			String xml = "<?xml version=\"1.0\" encoding=\"" + encodage + "\" ?>" + newLine;
 			/*
-			 * Ajout des donnees concernant l'ibmr
+			 * Operations
 			 */
-			xml += ibmr.getXml(ibmr.lireComplet(key));
+			xml = xml + "<operations>" + newLine;
 			/*
-			 * traitement des unites de releve
+			 * Versions
 			 */
+			xml = xml + "<versions>" + newLine;
+			xml = xml + "<softwareVersion>" + Alisma.VERSIONNUMBER + "</softwareVersion>" + newLine;
+			xml = xml + "</versions>" + newLine;
+			/*
+			 * Traitement des opérations
+			 */
+			String key;
+			List<Hashtable<String, String>> ldataFils;
 
-			ldataFils = ur.getListeFromOp(Integer.parseInt(key));
 			// if (Alisma.isWindowsOs)
-			// ldataFils = ur.encodeAll(ldataFils);
-			for (Hashtable<String, String> dataFils : ldataFils) {
-				xml += "<unite_releve>" + ur.getXml(dataFils, true) + "</unite_releve>" + newLine;
-			}
-			/*
-			 * Traitement des taxons
-			 */
-			ldataFils = taxons.getListFromOp(key);
-			if (!ldataFils.isEmpty()) {
+			// listeop = op.encodeAll(listeop);
+			for (Hashtable<String, String> operation : listeop) {
+				key = operation.get("id_op_controle");
+				logger.debug("operation en traitement:" + key);
+				xml += "<operation>" + newLine;
+				/*
+				 * ajout des donnees de l'operation
+				 */
+				xml += op.getXml(operation, true);
+				/*
+				 * Ajout des donnees concernant l'ibmr
+				 */
+				xml += ibmr.getXml(ibmr.lireComplet(key));
+				/*
+				 * traitement des unites de releve
+				 */
+
+				ldataFils = ur.getListeFromOp(Integer.parseInt(key));
+				// if (Alisma.isWindowsOs)
+				// ldataFils = ur.encodeAll(ldataFils);
 				for (Hashtable<String, String> dataFils : ldataFils) {
-					xml += "<taxon>" + taxons.getXml(dataFils, true) + "</taxon>" + newLine;
+					xml += "<unite_releve>" + ur.getXml(dataFils, true) + "</unite_releve>" + newLine;
 				}
-			} else
-				xml += "<taxon/>" + newLine;
-			/*
-			 * Fin de traitement de l'operation
-			 */
-			xml += "</operation>" + newLine;
+				/*
+				 * Traitement des taxons
+				 */
+				ldataFils = taxons.getListFromOp(key);
+				if (!ldataFils.isEmpty()) {
+					for (Hashtable<String, String> dataFils : ldataFils) {
+						xml += "<taxon>" + taxons.getXml(dataFils, true) + "</taxon>" + newLine;
+					}
+				} else
+					xml += "<taxon/>" + newLine;
+				/*
+				 * Fin de traitement de l'operation
+				 */
+				xml += "</operation>" + newLine;
+			}
+			xml += "</operations>";
+			return xml;
+		} else {
+			JOptionPane.showMessageDialog(null, Langue.getString("noItemSelected"), Langue.getString("exportKO"),
+					JOptionPane.INFORMATION_MESSAGE);
+			return "";
 		}
-		xml += "</operations>";
-		return xml;
 	}
 
 	/**
@@ -228,61 +238,65 @@ public class ExportOp {
 		String folderPath = Parametre.others.get("pathFolderExport");
 		File folder = new File(folderPath);
 		if (folder.isDirectory()) {
-		/*
-		 * Teste si une seule fiche est exportee
-		 */
-		int idOp;
-		String sid = "";
-		try {
-			if (!param.get("id_op_controle").isEmpty()) {
-				idOp = new Integer(param.get("id_op_controle"));
-				sid = "_" + param.get("id_op_controle");
-			} else
-				idOp = -1;
-		} catch (NullPointerException e) {
-			idOp = -1;
-		}
-		/*
-		 * Cree le fichier XML
-		 */
-		File xmlfile = new File(ecrireFichierExport(generateXML(), "xml", true, idOp));
-		/*
-		 * Rajoute le numero de l'operation si renseignee dans les parametres
-		 */
-		fileNamePrefix += sid;
-		/*
-		 * Lancement de la generation PDF
-		 */
-		FopFactory fopFactory = FopFactory.newInstance();
-		FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-
-		File xsltfile = new File(Parametre.others.get("xsltfile_" + Langue.languageSelect));
-		String fileNamePdf = Parametre.others.get("pathFolderExport") + File.separator + fileNamePrefix
-				+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + ".pdf";
-		File pdffile = new File(fileNamePdf);
-		OutputStream out;
-		try {
-			out = new BufferedOutputStream(new FileOutputStream(pdffile));
+			/*
+			 * Teste si une seule fiche est exportee
+			 */
+			int idOp;
+			String sid = "";
 			try {
-				TransformerFactory factory = TransformerFactory.newInstance();
-				Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
-
-				Source src = new StreamSource(xmlfile);
-
-				Transformer transformer = factory.newTransformer(new StreamSource(xsltfile));
-				Result res = new SAXResult(fop.getDefaultHandler());
-				transformer.transform(src, res);
-
-			} finally {
-				out.close();
-				Desktop.getDesktop().open(pdffile);
+				if (!param.get("id_op_controle").isEmpty()) {
+					idOp = new Integer(param.get("id_op_controle"));
+					sid = "_" + param.get("id_op_controle");
+				} else
+					idOp = -1;
+			} catch (NullPointerException e) {
+				idOp = -1;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		} else {
-			JOptionPane.showMessageDialog(null, Langue.getString("folderNotFound"), Langue.getString("exportKO"),
-					JOptionPane.INFORMATION_MESSAGE);
+			/*
+			 * Cree le fichier XML
+			 */
+			String xml = generateXML();
+			if (!xml.isEmpty()) {
+				File xmlfile = new File(ecrireFichierExport(xml, "xml", true, idOp));
+				/*
+				 * Rajoute le numero de l'operation si renseignee dans les
+				 * parametres
+				 */
+				fileNamePrefix += sid;
+				/*
+				 * Lancement de la generation PDF
+				 */
+				FopFactory fopFactory = FopFactory.newInstance();
+				FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+
+				File xsltfile = new File(Parametre.others.get("xsltfile_" + Langue.languageSelect));
+				String fileNamePdf = Parametre.others.get("pathFolderExport") + File.separator + fileNamePrefix
+						+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + ".pdf";
+				File pdffile = new File(fileNamePdf);
+				OutputStream out;
+				try {
+					out = new BufferedOutputStream(new FileOutputStream(pdffile));
+					try {
+						TransformerFactory factory = TransformerFactory.newInstance();
+						Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
+
+						Source src = new StreamSource(xmlfile);
+
+						Transformer transformer = factory.newTransformer(new StreamSource(xsltfile));
+						Result res = new SAXResult(fop.getDefaultHandler());
+						transformer.transform(src, res);
+
+					} finally {
+						out.close();
+						Desktop.getDesktop().open(pdffile);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, Langue.getString("folderNotFound"), Langue.getString("exportKO"),
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 
 	}
@@ -352,7 +366,10 @@ public class ExportOp {
 		/*
 		 * Fin de traitement de la liste
 		 */
-		ecrireFichierExport(content, "csv");
+		String filename = ecrireFichierExport(content, "csv", true, -1);
+		String mess = Langue.getString("exportSEEEok");
+		JOptionPane.showMessageDialog(null, mess + newLine + filename, Langue.getString("exportOK"),
+				JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

@@ -54,6 +54,11 @@
     <appender-ref ref="logfile"/>
     <appender-ref ref="console"/>
     </logger>
+     <logger name="import_export" additivity="false">
+    <level value="debug"/>
+    <appender-ref ref="logfile"/>
+    <appender-ref ref="console"/>
+    </logger>
     
     <!-- Any specific class log requests e.g.
     <logger name="org.apache.fop.pdf.AbstractPDFStream">

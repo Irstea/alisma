@@ -20,7 +20,7 @@
     </fo:static-content>
     <fo:static-content flow-name="xsl-region-before">
      <fo:block text-align="center" background-image="param/logo.gif" font-weight="bold" font-style="italic" background-position-horizontal="left" background-repeat="no-repeat" line-height="2.5cm">
- Récapitulatif des relevés - Macrophytes cours d'eau - v. <xsl:value-of select="versions/softwareVersion"/>
+ Récapitulatif des relevés - Macrophytes cours d'eau - Alisma v. <xsl:value-of select="versions/softwareVersion"/>
  </fo:block>
  
     </fo:static-content>
@@ -40,9 +40,10 @@
     <fo:block>
  Station :&#160;<fo:inline font-weight="bold"> <xsl:value-of select="cd_station"/>&#160;<xsl:value-of select="station"/></fo:inline>
  &#160;Date du relevé : <fo:inline font-weight="bold" > <xsl:value-of select="date_op"/></fo:inline> 
- &#160;Référence du dossier : <fo:inline font-weight="bold" > <xsl:value-of select="ref_dossier"/></fo:inline>
  </fo:block>
- <fo:block>Dossier &#160;<fo:inline font-style="italic"><xsl:value-of select="libelle_statut"/></fo:inline></fo:block>
+ <fo:block>
+ Référence du dossier : <fo:inline font-weight="bold" > <xsl:value-of select="ref_dossier"/></fo:inline>
+ &#160;Statut : <fo:inline font-style="italic"><xsl:value-of select="libelle_statut"/></fo:inline></fo:block>
  <fo:block></fo:block>
   <fo:block>
   Organisme :<fo:inline font-weight="bold" >  <xsl:value-of select="organisme"/> </fo:inline> 
@@ -64,6 +65,12 @@
 
   <fo:block>
   Cours d'eau :&#160;<xsl:value-of select="cours_eau"/>
+  <xsl:choose>
+  <xsl:when test="typo_id > 0">
+   &#160;Typologie nationale : <xsl:value-of select="typo_name"/>
+  &#160;IBMR de référence : <xsl:value-of select="ibmr_ref"/> 
+  </xsl:when>
+  </xsl:choose>
   </fo:block>
   <fo:block>
   X (L93) :&#160; <xsl:value-of select="coord_x"/>&#160;(wgs84 : 
@@ -87,13 +94,41 @@
   <fo:block font-weight="bold">Calcul IBMR :</fo:block>
   <fo:block>
   IBMR : <fo:inline font-weight="bold"> <xsl:value-of select="ibmr_value"/></fo:inline>
-  &#160;<xsl:value-of select="niveau_trophique_libelle"/>
+   <xsl:choose>
+  <xsl:when test="typo_id > 0">
+  &#160;Classe de qualité : <xsl:value-of select="classe_etat_libelle"/>
+  </xsl:when>
+  </xsl:choose>
+  &#160;Niveau trophique : <xsl:value-of select="niveau_trophique_libelle"/>
   </fo:block>
   <fo:block>
   Robustesse : <xsl:value-of select="robustesse_value"/>
-  &#160;<xsl:value-of select="rnt_libelle"/>
-  &#160;Taxon associé : <xsl:value-of select="taxon_robustesse"/>
+    <xsl:choose>
+  <xsl:when test="typo_id > 0">
+   &#160;Classe de qualité : <xsl:value-of select="robustesse_classe_etat_libelle"/>
+   </xsl:when>
+   </xsl:choose>
+  &#160;Niveau trophique : <xsl:value-of select="rnt_libelle"/>
   </fo:block>
+  <fo:block>
+  &#160;Taxon associé : <xsl:value-of select="taxon_robustesse"/>
+  &#160;Nb taxons avec même EK max : <xsl:value-of select="ek_nb_robustesse"/> 
+  </fo:block>
+  <xsl:choose>
+  <xsl:when test="seee_ibmr > 0">
+   <fo:block font-weight="bold">IBMR calculé par le SEEE :</fo:block>
+   <fo:block>
+   Calcul effectué le : <xsl:value-of select="seee_date"/>
+   &#160;Version : <xsl:value-of select="seee_version"/>
+   </fo:block>
+    <fo:block>
+  IBMR : <fo:inline font-weight="bold"> <xsl:value-of select="seee_ibmr"/></fo:inline>
+  &#160;Robustesse : <xsl:value-of select="seee_robustesse_value"/>
+  &#160;Taxon associé : <xsl:value-of select="seee_taxon_robustesse"/>
+  </fo:block>
+  </xsl:when>
+  </xsl:choose>
+  
   <fo:block keep-with-next.within-page="always">Coefficients :</fo:block>
   <fo:table table-layout="fixed" border-collapse="collapse" width="100%" border-style="solid"  keep-together.within-page="always">
   <fo:table-column column-width="30%"/>
