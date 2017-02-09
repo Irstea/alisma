@@ -77,6 +77,12 @@ Les scripts de création et d'alimentation de la base de données sont stockés 
 \item \textit{stations\_populate\_v1.0.sql} : import des stations du référentiel SANDRE.
 \end{enumerate}
 
+\subsection{Appliquer les mises à jour}
+
+Si la version du script de création est antérieure à la version de l'application, il est possible qu'il soit nécessaire d'appliquer un script de modification.
+
+Consultez le chapitre \ref{dbmaj} \textit{\nameref{dbmaj}}, page \pageref{dbmaj} pour plus de détails sur la numérotation des scripts de mise à jour.
+
 \section{Adapter les paramètres à votre installation}
 \label{sec:param}
 Le fichier \textit{param\textbackslash{}param.ini} contient les paramètres qui peuvent être modifiés facilement par l'utilisateur. Néanmoins, la plus grande prudence est de mise, le risque de créer des dysfonctionnements ultérieurement n'étant alors pas nul...
@@ -158,7 +164,7 @@ Cette section contient le code des couleurs employées, ainsi que les adresses d
 \end{description}
 
 \section{Mettre à jour le logiciel}
-
+\label{maj}
 Lors de la livraison d'une nouvelle version, voici les opérations à réaliser.
 
 Lisez le fichier \textit{news.txt} ou \textit{lisezmoi.txt}, qui peuvent contenir des informations complémentaires nécessaires pour la mise à jour.
@@ -172,6 +178,7 @@ Créez un nouveau dossier au nom identique au précédent (c:\textbackslash{}ali
 Décompressez la nouvelle version dans cd dossier. Récupérez ensuite l'ancien fichier \textit{param.ini} (en principe, c:\textbackslash{}alisma\textbackslash{}param\textbackslash{}param.ini) et écrasez la version livrée : cela vous permettra de conserver vos paramètres.
 
 \subsection{Vérifier si la base de données a besoin d'une mise à jour}
+\label{dbmaj}
 
 Dans le dossier \textit{database}, vérifiez s'il existe un script de modification correspondant à votre version, par exemple :
 
