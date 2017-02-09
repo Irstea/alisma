@@ -257,6 +257,10 @@ public class Op_controle extends DbObject {
 		String where = "";
 		String and = "";
 		try {
+			if (! param.get("annee").equals("")) {
+				where += and + " extract(year from date_op) = "+param.get("annee");
+				and = " and ";
+			} else
 			if (!param.get("debut").isEmpty() && !param.get("fin").isEmpty()) {
 				where += and + " date_op >= '" + param.get("debut") + "' " + "and date_op <= '" + param.get("fin")
 						+ "' ";

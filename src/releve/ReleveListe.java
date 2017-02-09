@@ -13,8 +13,10 @@ import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -142,12 +144,13 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addLabel("statut", 4, 0, dimLabel);
 			addLabel("dateDu", 0, 1, dimLabel);
 			addLabel("au", 2, 1, dimLabel);
+			addLabel("year", 0,2,dimLabel);
 			setDimensionDefault(dimLabel);
 			addTextField("zoneSearch", 2, 0, 2);
 			addCombo("statut", 5, 0, 1);
-			addButton("boutonChercher", 'R', "rechercher", 1, 2, 1);
-			addButton("ouvrir", 'O', "ouvrir", 2, 2, 1);
-			addButton("nouveau", 'N', "nouveau", 3, 2, 1);
+			addButton("boutonChercher", 'R', "rechercher", 2, 2, 1);
+			addButton("ouvrir", 'O', "ouvrir", 3, 2, 1);
+			addButton("nouveau", 'N', "nouveau", 4, 2, 1);
 
 			addButton("exporter", 'E', "exporter", 0, 3, 1);
 			addButton("exportPdf", 'P', "exportPDF", 1, 3, 1);
@@ -164,6 +167,16 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addLabel("releveDce", 4, 1, dimLabel);
 			addCombo("releve_dce", 5, 1, 1);
 			addComboItemList("releve_dce", new String[] { "", Langue.getString("oui"), Langue.getString("non") }, true);
+			/*
+			 * Preparation de la liste des 10 dernieres annees
+			 */
+			int year = new DateTime().getYear();
+			List<String> years = new ArrayList<String>();
+			years.add("");
+			for (int i = 0; i< 10; i++) 
+				years.add(String.valueOf(year - i));
+			addCombo("annee", 1, 2, 1);
+			addComboItemList("annee", years.toArray(new String [years.size()]), true);
 		}
 	}
 
