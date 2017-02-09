@@ -225,7 +225,7 @@ public class Op_controle extends DbObject {
 				+ " cd_station, station, x, y, cours_eau," 
 				+ " libelle_statut, releve_dce, " 
 				+ " ibmr.*,"
-				+ " typo_id, typo_name, ibmr_ref, groupe,"
+				+ " op.typo_id, typo_name, ibmr_ref, groupe,"
 				+ " ibmr.classe_etat_id, c1.classe_etat_libelle, eqr_value, robustesse_eqr_value,"
 				+ " ibmr.robustesse_classe_etat_id, c2.classe_etat_libelle as robustesse_classe_etat_libelle"
 				+ " from Op_controle op" 
