@@ -610,6 +610,9 @@ public class Releve_tab1 extends ComposantAlisma {
 			};
 			for (String field : fields) {
 				general.setValue(field, data.get(field));
+				general.setQualityColor("classe_etat_libelle", "classe_etat_id");
+				general.setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
+
 			}
 	}
 
