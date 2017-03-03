@@ -33,13 +33,12 @@ ALTER TABLE typo MODIFY COLUMN typo_name VARCHAR(255) COMMENT 'Code typologique 
 alter table typo modify column groupe integer comment 'Groupe de la typologie';
 
 ALTER TABLE typo MODIFY COLUMN ibmr_ref FLOAT COMMENT 'Valeur de référence de l''IBMR pour le type de cours d''eau considéré';
+
 ALTER TABLE Op_controle ADD CONSTRAINT typo_op_controle_fk
 FOREIGN KEY (typo_id)
 REFERENCES typo (typo_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
-
-
 
 CREATE TABLE classe_etat (
                 classe_etat_id INT NOT NULL,
@@ -66,11 +65,6 @@ REFERENCES classe_etat (classe_etat_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
-ALTER TABLE Op_controle ADD CONSTRAINT typo_op_controle_fk
-FOREIGN KEY (typo_id)
-REFERENCES typo (typo_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
 
 insert into classe_etat (classe_etat_id, classe_etat_libelle, classe_etat_seuil)
 values 
