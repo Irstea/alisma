@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
  */
 public class Parametre {
 	public static Hashtable<String, String> database = null, 
-			language = null, others=null, display=null, fieldsLevel=null;
+			language = null, others=null, display=null, fieldsLevel=null, seee=null;
 	public static ImageIcon icone;
 	public static Image iconeImage;
 	public static ImageIcon logo;
@@ -67,6 +67,7 @@ public class Parametre {
 				others = pr.getSection("others");
 				display = pr.getSection("display");
 				fieldsLevel = pr.getSection("fieldsLevel");
+				seee = pr.getSection("seee");
 				//modeDebug = new Boolean(others.get("modeDebug"));
 
 			} catch (Exception e) {

@@ -13,6 +13,13 @@ import java.util.Hashtable;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Form;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -25,6 +32,11 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.apache.log4j.Logger;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.media.multipart.BodyPart;
+import org.glassfish.jersey.media.multipart.FormDataMultiPart;
+import org.glassfish.jersey.media.multipart.MultiPart;
+import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 
 import alisma.Alisma;
 import database.Ibmr;
@@ -33,6 +45,7 @@ import database.Op_controle;
 import database.Unite_releves;
 import utils.Langue;
 import utils.Parametre;
+
 
 /**
  * Exporte les operations
@@ -301,7 +314,22 @@ public class ExportOp {
 
 	}
 
-	public void exportSEEE() {
+	/**
+	 * Prepare le fichier CSV pour calcul manuel de l'indicateur aupres du SEEE
+	 */
+	public String exportSEEE() {
+		String newLine = System.getProperty("line.separator");
+		String filename = ecrireFichierExport(generateContentForSEEE(), "csv", true, -1);
+		String mess = Langue.getString("exportSEEEok");
+		JOptionPane.showMessageDialog(null, mess + newLine + filename, Langue.getString("exportOK"),
+				JOptionPane.INFORMATION_MESSAGE);
+		return filename;
+	}
+	/**
+	 * Genere le contenu du fichier utilise pour calculer les indicateurs aupres du SEEE
+	 * @return String : CSV contenant les infos a transmettre
+	 */
+	String generateContentForSEEE() {
 		String newLine = System.getProperty("line.separator");
 		String tab = "\t";
 		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
@@ -336,7 +364,9 @@ public class ExportOp {
 					pcUR[i] = "0";
 				i++;
 			}
-
+			/*
+			 * Lecture des taxons
+			 */
 			for (Hashtable<String, String> taxon : ldataTaxons) {
 				ligne = key + tab + operation.get("cd_station") + tab + dateOp + tab + taxon.get("id_taxon") + tab;
 				taxonpc[0] = taxon.get("pc_UR1");
@@ -363,13 +393,50 @@ public class ExportOp {
 				}
 			}
 		}
-		/*
-		 * Fin de traitement de la liste
-		 */
-		String filename = ecrireFichierExport(content, "csv", true, -1);
-		String mess = Langue.getString("exportSEEEok");
-		JOptionPane.showMessageDialog(null, mess + newLine + filename, Langue.getString("exportOK"),
-				JOptionPane.INFORMATION_MESSAGE);
+		return content;
 	}
 
+	String getSeeeCalcul() {
+		String resultat = "";
+		String url, resource, indicateur, version;
+		try {
+		 url = Parametre.seee.get("url");
+		}catch (Exception e) {
+			url = "http://seee.eaufrance.fr";
+		}
+		try {
+			 resource = Parametre.seee.get("resourceIbmrCalc");
+			}catch (Exception e) {
+				resource = "/api/calcul/";
+			}
+		try {
+			 indicateur = Parametre.seee.get("indicator");
+			}catch (Exception e) {
+				indicateur = "IBMR";
+			}
+		try {
+			 version = Parametre.seee.get("version");
+			}catch (Exception e) {
+				version = "1.1.0";
+			}
+		try {
+			ClientConfig config = new ClientConfig();
+            Client client = ClientBuilder.newClient(config);
+
+            final FileDataBodyPart filePart = new FileDataBodyPart("alisma", new File(exportSEEE()));
+            @SuppressWarnings("resource")
+			final MultiPart multipart = new FormDataMultiPart()
+            		.field("indicateur", indicateur)
+            		.field("version", version)
+            		.bodyPart(filePart);
+			WebTarget target = client.target(url).path(resource);
+			final Response response = target.request()
+				    .post(Entity.entity(multipart, multipart.getMediaType()));
+			resultat = response.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultat;
+	}
 }
