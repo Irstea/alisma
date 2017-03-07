@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
@@ -40,10 +41,23 @@ public class ImportCSV {
 			return "";
 	}
 
-	public boolean importSEEE(String filename) {
+	/**
+	 * Declenche la lecture et l'ecriture du resultat des calculs SEEE
+	 * contenu dans le fichier fourni
+	 * @param String filename
+	 * @return true|false
+	 */
+	public boolean importSeeeFromFilename (String filename) {
+		return importSEEE(getContentCsv(filename));
+	}
+	/**
+	 * Lecture et ecriture du resultat des calculs SEEE
+	 * @param List<String> lines
+	 * @return true|false
+	 */
+	public boolean importSEEE(List<String> lines) {
 		boolean retour = false;
 		String version, calculDate;
-		List<String> lines = getContentCsv(filename);
 		if (!lines.isEmpty()) {
 			try {
 				Ibmr ibmr = new Ibmr();
@@ -54,6 +68,7 @@ public class ImportCSV {
 				 * generales
 				 */
 				String line = lines.get(0);
+				logger.debug("Import SEEE - line 0:" + line);
 				String[] lineHeader = line.split(";");
 				version = lineHeader[1];
 				calculDate = lineHeader[2];
@@ -63,6 +78,7 @@ public class ImportCSV {
 				 */
 				for (int i = 2; i < lines.size(); i++) {
 					line = lines.get(i);
+					logger.debug("Import SEEE - line "+i+":" + line);
 					Hashtable<String, String> lc = new Hashtable<String, String>();
 					String[] lineContent = line.split(";");
 					if (content.containsKey(lineContent[0])) {
@@ -149,5 +165,16 @@ public class ImportCSV {
 			}
 		}
 		return (ArrayList<String>) lines;
+	}
+	/**
+	 * ecriture du resultat du calcul SEEE a partir d'une chaine
+	 * contenant les donnees recuperees
+	 * @param content
+	 * @return
+	 */
+	public boolean importSeeeFromFileContent(String content) {
+		String[] slines =  content.split("\\r?\\n");
+		logger.debug("nb de lignes dans le fichier SEEE:" + slines.length);
+		return importSEEE ( Arrays.asList(slines));
 	}
 }

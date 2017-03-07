@@ -343,6 +343,12 @@ public class Controleur implements Observer {
 			ObservableExtended oe = (ObservableExtended) observable;
 			importSEEE(oe.getValue("filename"));
 			break;
+			
+		case "calculSEEEsw":
+			e = (Exportable) observable;
+			param = e.getParam();
+			calculSEEEsw(param);
+			break;
 
 		case "recalculer":
 			e = (Exportable) observable;
@@ -380,7 +386,16 @@ public class Controleur implements Observer {
 
 	private void importSEEE(Object object) {
 		ImportCSV csv = new ImportCSV();
-		csv.importSEEE(object.toString());
+		csv.importSeeeFromFilename(object.toString());
+	}
+	
+	private void calculSEEEsw(Hashtable<String, String> param) {
+		if (exportOp == null) 
+			exportOp = new ExportOp();	
+		ImportCSV csv = new ImportCSV();
+		exportOp.setSearchParam(param);
+		csv.importSeeeFromFileContent( exportOp.getSeeeCalcul());
+
 	}
 
 	private void exportSEEE(Hashtable<String, String> param) {

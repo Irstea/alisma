@@ -155,6 +155,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addButton("exporter", 'E', "exporter", 0, 3, 1);
 			addButton("exportPdf", 'P', "exportPDF", 1, 3, 1);
 			addButton("recalculer", 'C', "recalculer", 2, 3, 1);
+			addButton("calculSEEE", 'A', "calculSEEEsw", 3, 3, 1);
 			addButton("exportSEEE", 'S', "exportSEEE", 4, 3, 1);
 			addButton("importSEEE", 'I', "importSEEE", 5, 3, 1);
 			addComboItemList("statut", new String[] { "", Langue.getString("statut0"), Langue.getString("statut1"),
@@ -230,6 +231,15 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			notifyObservers("importSEEE");
 			setIndexStatut(3, true);
 			initTable();
+			break;
+		case "calculSEEEsw":
+			setChanged();
+			setIndexStatut(2, true);
+			initTable();
+			notifyObservers("calculSEEEsw");
+			setIndexStatut(3, true);
+			initTable();
+			break;
 		}
 	}
 
