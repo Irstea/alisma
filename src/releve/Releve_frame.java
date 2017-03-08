@@ -96,8 +96,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	private JMenuItem save_menu_item = new JMenuItem();
 	private JMenuItem calcul_menu_item = new JMenuItem();
 	private JMenuItem close_menu_item = new JMenuItem();
+	private JMenuItem seee_menu_item = new JMenuItem();
 
-	private JButton jbValider, jbCalculer, jbModifier, jbSupprimer, jbPDF;
+	private JButton jbValider, jbCalculer, jbModifier, jbSupprimer, jbPDF, jbSeee;
 
 	private Dimension dimDefault = new Dimension(1024, 768);
 
@@ -224,6 +225,9 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				}
 			}
 		});
+		/*
+		 * Bouton d'export au format PDF
+		 */
 		jbPDF = new JButton(Langue.getString("exportPdf"));
 		jbPDF.addActionListener(new ActionListener() {
 
@@ -233,6 +237,18 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				notifyObservers("exportPDF");
 			}
 		});
+		
+		/*
+		 * Bouton de calcul aupres du SEEE
+		 */
+		jbSeee = new JButton(Langue.getString("calculSEEE"));
+		jbSeee.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				calculSEEE();
+			}
+		});
 
 		/*
 		 * Ajout de la banniere
@@ -240,6 +256,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		banniere_pane.add(banniere);
 		banniere_pane.add(jbValider);
 		banniere_pane.add(jbCalculer);
+		banniere_pane.add(jbSeee);
 		banniere_pane.add(jbModifier);
 		banniere_pane.add(jbSupprimer);
 		banniere_pane.add(jbPDF);
@@ -311,12 +328,28 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		/*
 		 * Affichage des libelles
 		 */
-		this.setLibelle();
+		this.setLibelle();	
 
 		/*
 		 * Lecture des informations liees a l'operation (modification ou
 		 * consultation)
 		 */
+		setData();
+
+		/*
+		 * Redefinition du titre
+		 */
+		if (keyOp == -1) {
+			fenetre.setTitle(Langue.getString("alisma") + " - " + Langue.getString("opNouveau"));
+		} else {
+			fenetre.setTitle(
+					Langue.getString("alisma") + " - " + tab_1.stationName + " - " + tab_1.general.getData("date_op"));
+		}
+		fenetre.setPosition("TL");
+		fenetre.pack();
+	}
+	
+	void setData() {
 		if (keyOp > -1) {
 			/*
 			 * Lecture des infos generales sur l'opControle
@@ -363,7 +396,6 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 */
 			tab_3.setDataTaxon(dbLigneControle.readListFromKey("id_op_controle", keyOp));
 		}
-
 		/*
 		 * Lancement d'une validation a vide, pour pre-positionner les bordures
 		 */
@@ -384,18 +416,13 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Desactivation du bouton permettant de basculer en saisie
 			 */
 			jbModifier.setEnabled(false);
+			/*
+			 * Desactivation du calcul SEEE
+			 */
+			setSeeeOk(false);
 		}
-		/*
-		 * Redefinition du titre
-		 */
-		if (keyOp == -1) {
-			fenetre.setTitle(Langue.getString("alisma") + " - " + Langue.getString("opNouveau"));
-		} else {
-			fenetre.setTitle(
-					Langue.getString("alisma") + " - " + tab_1.stationName + " - " + tab_1.general.getData("date_op"));
-		}
-		fenetre.setPosition("TL");
-		fenetre.pack();
+		
+
 	}
 
 	private void menus() {
@@ -411,6 +438,12 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				calculIBMR();
 			}
 		});
+		
+		seee_menu_item.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculSEEE();
+			}
+		});
 
 		close_menu_item.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -420,6 +453,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 		file_menu.add(save_menu_item);
 		file_menu.add(calcul_menu_item);
+		file_menu.add(seee_menu_item);
 		file_menu.add(close_menu_item);
 
 		menu_bar.add(file_menu);
@@ -435,6 +469,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		// open_menu_item.setText(Langue.getString("ouvrir"));
 		save_menu_item.setText(Langue.getString("save"));
 		calcul_menu_item.setText(Langue.getString("calculer"));
+		seee_menu_item.setText(Langue.getString("calculSEEE"));
 		close_menu_item.setText(Langue.getString("close"));
 
 		banniere.setText(Langue.getString("titre"));
@@ -505,6 +540,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				tab_1.setStatut(0);
 				isResetCalcul = true;
 			}
+			if (isModif) 
+				setSeeeOk(false);
 			break;
 		}
 
@@ -527,8 +564,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			result = rep;
 		rep3 = tab_3.validation();
 		tabs.setIconAt(2, imageIcons.get(rep3));
-		if (rep > result)
-			result = rep;
+		if (rep3 > result)
+			result = rep3;
 		/*
 		 * Controles croises
 		 * 
@@ -553,6 +590,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 * Lance le recalcul des coefficients dans le 3eme onglet
 		 */
 		tab_3.calculIndicateurs();
+		logger.debug("result:"+result);
 		/*
 		 * Desactivation du menu ou des boutons de validation
 		 */
@@ -576,8 +614,10 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * l'utilisateur
 			 */
 			//setCalculOk(false);
-		} else
+		} else {
 			tab_1.setStatut(0);
+		}
+		
 		return result;
 
 	}
@@ -599,10 +639,17 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	 * 
 	 * @param calculOk
 	 */
-	private void setCalculOk(boolean calculOk) {
-		jbCalculer.setEnabled(calculOk);
-		calcul_menu_item.setEnabled(calculOk);
+	private void setCalculOk(boolean ok) {
+		jbCalculer.setEnabled(ok);
+		calcul_menu_item.setEnabled(ok);
+		setSeeeOk(ok);
 	}
+	
+	private void setSeeeOk(boolean ok) {
+		jbSeee.setEnabled(ok);
+		seee_menu_item.setEnabled(ok);
+	}
+	
 
 	// private void close() {
 	// boolean quitter = true;
@@ -713,8 +760,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			fenetre.setModified(isModif);
 			isResetCalcul = false;
 			setSaveOk(false);
-			if (statut == 1)
-				setCalculOk(false);
+			if (valid < 2)
+			setCalculOk(true);
 
 			/*
 			 * Activation du bouton supprimer
@@ -771,6 +818,26 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		isModif = true;
 		fenetre.setModified(isModif);
 		setSaveOk(true);
+		/*
+		 * Desactivation du calcul SEEE (modification)
+		 */
+		setSeeeOk(false);
+	}
+	/**
+	 * Declenchement du calcul des indicateurs a partir du SEEE par requete web
+	 */
+	void calculSEEE() {
+		setChanged();
+		notifyObservers("calculSEEEsw");
+		/*
+		 * Declenchement du rafraichissement de la liste des releves
+		 */
+		setObserversHasChanged();
+		/*
+		 * Relecture du dossier
+		 */
+		tab_3.cTable.resetTableData();
+		setData();
 	}
 
 	@Override

@@ -532,6 +532,15 @@ public class ReleveListeTable extends Observable implements TableModelListener {
 			}
 		}
 	}
+	/**
+	 * Reinitialise la table des especes
+	 */
+	public void resetTableData() {
+		for(int i=0; i < modele.getRowCount();i++)
+			modele.deleteRow(i);
+		ligne.clear();
+		modele.data.clear();
+	}
 
 	/**
 	 * Remplace la valeur de la cle de l'enregistrement
