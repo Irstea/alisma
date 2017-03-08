@@ -1,5 +1,15 @@
 ALISMA - nouveautés
 ===================
+Version 1.1.1 du 8 mars 2017
+-------------------------------
+Correction de bogues
+- le script de mise à jour de la base de la version précédente (database/update-1.0-1.1.sql) contenait une instruction dupliquée, qui bloquait son exécution
+- le calcul de l'IBMR était erroné dans un cas de figure : si le calcul était effectué plusieurs fois de suite, certaines valeurs n'étaient pas réinitialisées, et le résultat était incohérent
+- si aucun taxon ne servait au calcul IBMR, l'indice prenait la valeur 0. Aujourd'hui, l'indice prend la valeur -1 (calcul impossible)
+- le menu associé a la fenêtre de saisie d'un relevé était incomplet
+
+Améliorations
+- le calcul de l'IBMR peut être réalisé en interrogeant le service web mis à disposition par le SEEE, soit en mode "lot", soit directement en saisie d'un relevé. Dans ce dernier cas, le relevé doit être enregistré avant de pouvoir déclencher le calcul
 
 Version 1.1 du 9 février 2017
 -------------------------------
