@@ -838,6 +838,11 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		 */
 		tab_3.cTable.resetTableData();
 		setData();
+		/*
+		 * Activation du bouton pour basculer en modification
+		 */
+		jbModifier.setEnabled(true);
+		
 	}
 
 	@Override
