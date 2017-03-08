@@ -97,6 +97,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	private JMenuItem calcul_menu_item = new JMenuItem();
 	private JMenuItem close_menu_item = new JMenuItem();
 	private JMenuItem seee_menu_item = new JMenuItem();
+	private JMenuItem pdf_menu_item = new JMenuItem();
 
 	private JButton jbValider, jbCalculer, jbModifier, jbSupprimer, jbPDF, jbSeee;
 
@@ -253,7 +254,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		/*
 		 * Ajout de la banniere
 		 */
-		banniere_pane.add(banniere);
+		//banniere_pane.add(banniere);
 		banniere_pane.add(jbValider);
 		banniere_pane.add(jbCalculer);
 		banniere_pane.add(jbSeee);
@@ -450,10 +451,18 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 				fenetre.close();
 			}
 		});
+		
+		pdf_menu_item.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setChanged();
+				notifyObservers("exportPDF");
+			}
+		});
 
 		file_menu.add(save_menu_item);
 		file_menu.add(calcul_menu_item);
 		file_menu.add(seee_menu_item);
+		file_menu.add(pdf_menu_item);
 		file_menu.add(close_menu_item);
 
 		menu_bar.add(file_menu);
@@ -470,6 +479,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 		save_menu_item.setText(Langue.getString("save"));
 		calcul_menu_item.setText(Langue.getString("calculer"));
 		seee_menu_item.setText(Langue.getString("calculSEEE"));
+		pdf_menu_item.setText(Langue.getString("exportPdf"));
 		close_menu_item.setText(Langue.getString("close"));
 
 		banniere.setText(Langue.getString("titre"));
