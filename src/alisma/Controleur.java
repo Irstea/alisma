@@ -385,8 +385,13 @@ public class Controleur implements Observer {
 	}
 
 	private void importSEEE(Object object) {
+		try {
 		ImportCSV csv = new ImportCSV();
 		csv.importSeeeFromFilename(object.toString());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("exportKO"),
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 	
 	private void calculSEEEsw(Hashtable<String, String> param) {
@@ -394,7 +399,12 @@ public class Controleur implements Observer {
 			exportOp = new ExportOp();	
 		ImportCSV csv = new ImportCSV();
 		exportOp.setSearchParam(param);
+		try {
 		csv.importSeeeFromFileContent( exportOp.getSeeeCalcul());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("calculSEEE"),
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
 
@@ -402,7 +412,12 @@ public class Controleur implements Observer {
 		if (exportOp == null) 
 			exportOp = new ExportOp();		
 		exportOp.setSearchParam(param);
+		try {
 		exportOp.exportSEEE();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("exportKO"),
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	private void recalculer(Hashtable<String, String> param) {

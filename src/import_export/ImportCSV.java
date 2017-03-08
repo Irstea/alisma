@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import database.Ibmr;
 import database.Op_controle;
@@ -22,6 +24,7 @@ import utils.Langue;
 
 public class ImportCSV {
 	static Logger logger = Logger.getLogger(ImportCSV.class);
+	String newLine = System.getProperty("line.separator");
 
 	/**
 	 * Selectionne le fichier a importer
@@ -42,33 +45,54 @@ public class ImportCSV {
 	}
 
 	/**
-	 * Declenche la lecture et l'ecriture du resultat des calculs SEEE
-	 * contenu dans le fichier fourni
-	 * @param String filename
+	 * Declenche la lecture et l'ecriture du resultat des calculs SEEE contenu
+	 * dans le fichier fourni
+	 * 
+	 * @param String
+	 *            filename
 	 * @return true|false
+	 * @throws Exception 
 	 */
-	public boolean importSeeeFromFilename (String filename) {
+	public boolean importSeeeFromFilename(String filename) throws Exception {
 		return importSEEE(getContentCsv(filename));
 	}
+
 	/**
 	 * Lecture et ecriture du resultat des calculs SEEE
-	 * @param List<String> lines
+	 * 
+	 * @param List<String>
+	 *            lines
 	 * @return true|false
+	 * @throws Exception 
 	 */
-	public boolean importSEEE(List<String> lines) {
+	public boolean importSEEE(List<String> lines) throws Exception {
 		boolean retour = false;
 		String version, calculDate;
 		if (!lines.isEmpty()) {
+
+			Ibmr ibmr = new Ibmr();
+			Op_controle op = new Op_controle();
+			Hashtable<String, Hashtable<String, String>> content = new Hashtable<String, Hashtable<String, String>>();
+			/*
+			 * Lecture de la premiere ligne, qui contient les informations
+			 * generales
+			 */
+			String line = lines.get(0);
+			logger.debug("Import SEEE - line 0:" + line);
+			/*
+			 * Traitement des erreurs
+			 */
+			String status = "ok";
 			try {
-				Ibmr ibmr = new Ibmr();
-				Op_controle op = new Op_controle();
-				Hashtable<String, Hashtable<String, String>> content = new Hashtable<String, Hashtable<String, String>>();
-				/*
-				 * Lecture de la premiere ligne, qui contient les informations
-				 * generales
-				 */
-				String line = lines.get(0);
-				logger.debug("Import SEEE - line 0:" + line);
+				JSONObject jline = new JSONObject(line);
+				status = jline.getString("status");
+				if (status.equals("ko")) {
+					throw new Exception(Langue.getString("seeeMessage")+newLine+jline.getString("message"));
+				}
+			} catch (JSONException je) {
+
+			}
+			if (status.equals("ok")) {
 				String[] lineHeader = line.split(";");
 				version = lineHeader[1];
 				calculDate = lineHeader[2];
@@ -78,7 +102,7 @@ public class ImportCSV {
 				 */
 				for (int i = 2; i < lines.size(); i++) {
 					line = lines.get(i);
-					logger.debug("Import SEEE - line "+i+":" + line);
+					logger.debug("Import SEEE - line " + i + ":" + line);
 					Hashtable<String, String> lc = new Hashtable<String, String>();
 					String[] lineContent = line.split(";");
 					if (content.containsKey(lineContent[0])) {
@@ -120,16 +144,12 @@ public class ImportCSV {
 					 */
 					Hashtable<String, String> lop = new Hashtable<String, String>();
 					lop.put("id_statut", "2");
-					op.ecrireSimple(lop, keynum);	
+					op.ecrireSimple(lop, keynum);
 					retour = true;
 				}
-				JOptionPane.showMessageDialog(null, Langue.getString("importSEEEok"), Langue.getString("exportKO"),
+				JOptionPane.showMessageDialog(null, Langue.getString("importSEEEok"), Langue.getString("exportOK"),
 						JOptionPane.INFORMATION_MESSAGE);
-
-			} catch (Exception e) {
-				logger.error(e.getMessage());
 			}
-
 		}
 		return retour;
 	}
@@ -166,15 +186,18 @@ public class ImportCSV {
 		}
 		return (ArrayList<String>) lines;
 	}
+
 	/**
-	 * ecriture du resultat du calcul SEEE a partir d'une chaine
-	 * contenant les donnees recuperees
+	 * ecriture du resultat du calcul SEEE a partir d'une chaine contenant les
+	 * donnees recuperees
+	 * 
 	 * @param content
 	 * @return
+	 * @throws Exception 
 	 */
-	public boolean importSeeeFromFileContent(String content) {
-		String[] slines =  content.split("\\r?\\n");
+	public boolean importSeeeFromFileContent(String content) throws Exception {
+		String[] slines = content.split("\\r?\\n");
 		logger.debug("nb de lignes dans le fichier SEEE:" + slines.length);
-		return importSEEE ( Arrays.asList(slines));
+		return importSEEE(Arrays.asList(slines));
 	}
 }

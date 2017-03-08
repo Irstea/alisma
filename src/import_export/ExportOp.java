@@ -57,6 +57,7 @@ public class ExportOp {
 	Lignes_op_controle taxons = new Lignes_op_controle();
 	Ibmr ibmr = new Ibmr();
 	Hashtable<String, String> param = new Hashtable<String, String>();
+	String newLine = System.getProperty("line.separator");
 
 	/**
 	 * Assigne les parametres de recherche
@@ -315,18 +316,25 @@ public class ExportOp {
 	 * Prepare le fichier CSV pour calcul manuel de l'indicateur aupres du SEEE
 	 */
 	public String exportSEEE() {
-		return exportSEEE(true);
+		return exportSEEE(false);
 	}
 
 	public String exportSEEE(boolean silent) {
-		String filename = ecrireFichierExport(generateContentForSEEE(), "csv", silent, -1);
-		if (!silent) {
-			String newLine = System.getProperty("line.separator");
-			String mess = Langue.getString("exportSEEEok");
-			JOptionPane.showMessageDialog(null, mess + newLine + filename, Langue.getString("exportOK"),
+		String content = generateContentForSEEE();
+		String newLine = System.getProperty("line.separator");
+		if (content.length() > 0) {
+			String filename = ecrireFichierExport(content, "csv", true, -1);
+			if (!silent) {
+				String mess = Langue.getString("exportSEEEok");
+				JOptionPane.showMessageDialog(null, mess + newLine + filename, Langue.getString("exportOK"),
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			return filename;
+		} else {
+			JOptionPane.showMessageDialog(null, Langue.getString("noDossiers"), Langue.getString("exportKO"),
 					JOptionPane.INFORMATION_MESSAGE);
+			return "";
 		}
-		return filename;
 	}
 
 	/**
@@ -336,72 +344,75 @@ public class ExportOp {
 	 * @return String : CSV contenant les infos a transmettre
 	 */
 	String generateContentForSEEE() {
-		String newLine = System.getProperty("line.separator");
+		
 		String tab = "\t";
 		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
-		String key, dateOp, ligne;
-		List<Hashtable<String, String>> ldataTaxons, ldataUR;
-		String[] pcUR = new String[2];
-		String[] taxonpc = new String[2];
-		/*
-		 * Preparation de la ligne d'entete
-		 */
-		String content = "CODE_OPERATION" + tab + "CODE_STATION" + tab + "DATE" + tab + "CODE_TAXON" + tab + "UR" + tab
-				+ "POURCENTAGE_FACIES" + tab + "RESULTAT" + newLine;
+		if (!listeop.isEmpty()) {
+			String key, dateOp, ligne;
+			List<Hashtable<String, String>> ldataTaxons, ldataUR;
+			String[] pcUR = new String[2];
+			String[] taxonpc = new String[2];
+			/*
+			 * Preparation de la ligne d'entete
+			 */
+			String content = "CODE_OPERATION" + tab + "CODE_STATION" + tab + "DATE" + tab + "CODE_TAXON" + tab + "UR"
+					+ tab + "POURCENTAGE_FACIES" + tab + "RESULTAT" + newLine;
 
-		for (Hashtable<String, String> operation : listeop) {
-			key = operation.get("id_op_controle");
-			ldataTaxons = taxons.getListFromOp(key);
-			/*
-			 * Formatage de la date
-			 */
-			dateOp = operation.get("date_op");
-			/*
-			 * Recuperation des donnees concernant le point de prelevement
-			 */
-			ldataUR = ur.getListeFromOp(Integer.parseInt(key));
-			int i = 0;
-			pcUR[0] = "";
-			pcUR[1] = "";
-
-			for (Hashtable<String, String> ur : ldataUR) {
-				pcUR[i] = ur.get("pc_UR");
-				if (pcUR[i].equals(""))
-					pcUR[i] = "0";
-				i++;
-			}
-			/*
-			 * Lecture des taxons
-			 */
-			for (Hashtable<String, String> taxon : ldataTaxons) {
-				ligne = key + tab + operation.get("cd_station") + tab + dateOp + tab + taxon.get("id_taxon") + tab;
-				taxonpc[0] = taxon.get("pc_UR1");
-				taxonpc[1] = taxon.get("pc_UR2");
-				for (int j = 0; j < 2; j++)
-					if (taxonpc[j].equals("") || taxonpc[j].equals("null"))
-						taxonpc[j] = "0";
+			for (Hashtable<String, String> operation : listeop) {
+				key = operation.get("id_op_controle");
+				ldataTaxons = taxons.getListFromOp(key);
 				/*
-				 * traitement de l'UR
+				 * Formatage de la date
 				 */
-				if (i == 1) {
-					/*
-					 * UR unique
-					 */
-					ligne += "FU" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
-					content += ligne;
-				} else {
-					/*
-					 * Traitement des deux UR
-					 */
+				dateOp = operation.get("date_op");
+				/*
+				 * Recuperation des donnees concernant le point de prelevement
+				 */
+				ldataUR = ur.getListeFromOp(Integer.parseInt(key));
+				int i = 0;
+				pcUR[0] = "";
+				pcUR[1] = "";
 
-					content += ligne + "F1" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
-					content += ligne + "F2" + tab + pcUR[1] + tab + taxonpc[1] + newLine;
+				for (Hashtable<String, String> ur : ldataUR) {
+					pcUR[i] = ur.get("pc_UR");
+					if (pcUR[i].equals(""))
+						pcUR[i] = "0";
+					i++;
+				}
+				/*
+				 * Lecture des taxons
+				 */
+				for (Hashtable<String, String> taxon : ldataTaxons) {
+					ligne = key + tab + operation.get("cd_station") + tab + dateOp + tab + taxon.get("id_taxon") + tab;
+					taxonpc[0] = taxon.get("pc_UR1");
+					taxonpc[1] = taxon.get("pc_UR2");
+					for (int j = 0; j < 2; j++)
+						if (taxonpc[j].equals("") || taxonpc[j].equals("null"))
+							taxonpc[j] = "0";
+					/*
+					 * traitement de l'UR
+					 */
+					if (i == 1) {
+						/*
+						 * UR unique
+						 */
+						ligne += "FU" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
+						content += ligne;
+					} else {
+						/*
+						 * Traitement des deux UR
+						 */
+
+						content += ligne + "F1" + tab + pcUR[0] + tab + taxonpc[0] + newLine;
+						content += ligne + "F2" + tab + pcUR[1] + tab + taxonpc[1] + newLine;
+					}
 				}
 			}
-		}
-		return content;
-	}
 
+			return content;
+		} else
+			return "";
+	}
 
 	/**
 	 * interrogation du service web du SEEE pour calculer les indicateurs
@@ -434,18 +445,27 @@ public class ExportOp {
 		try {
 			ClientConfig config = new ClientConfig();
 			Client client = ClientBuilder.newClient(config);
+			String filename = exportSEEE(true);
+			if (filename.length() > 0) {
+				final FileDataBodyPart filePart = new FileDataBodyPart("alisma", new File(filename));
+				logger.debug(filePart);
+				@SuppressWarnings("resource")
+				final MultiPart multipart = new FormDataMultiPart().field("indicateur", indicateur)
+						.field("version", version).bodyPart(filePart);
+				WebTarget target = client.target(url).register(MultiPartFeature.class).path(resource);
+				final Response response = target.request().post(Entity.entity(multipart, multipart.getMediaType()));
+				if (response.getStatus() <= 200) {
+					resultat = response.readEntity(String.class);
+					logger.debug("resultat ws:" + resultat);
+				} else
+					throw new Exception(response.getStatusInfo().getReasonPhrase());
+			} else
+				throw new Exception(Langue.getString("noDossiers"));
 
-			final FileDataBodyPart filePart = new FileDataBodyPart("alisma", new File(exportSEEE(true)));
-			logger.debug(filePart);
-			@SuppressWarnings("resource")
-			final MultiPart multipart = new FormDataMultiPart().field("indicateur", indicateur)
-					.field("version", version).bodyPart(filePart);
-			WebTarget target = client.target(url).register(MultiPartFeature.class).path(resource);
-			final Response response = target.request().post(Entity.entity(multipart, multipart.getMediaType()));
-			resultat = response.readEntity(String.class);
-			logger.debug("resultat ws:"+resultat);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+			JOptionPane.showMessageDialog(null, Langue.getString("exportSEEEerror")+ newLine + e.getMessage(), Langue.getString("exportKO"),
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		return resultat;
