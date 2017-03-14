@@ -88,6 +88,7 @@ public class TaxonList extends Observable implements Observer,
 
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+		liste_scroll.setMinimumSize(new Dimension(900, 600));
 		liste_scroll.setPreferredSize(new Dimension(1000, 700));
 
 		gbc.gridy = 1;
@@ -163,10 +164,11 @@ public class TaxonList extends Observable implements Observer,
 		public TableData(DefaultTableModel defaultTableModel) {
 			super(defaultTableModel);
 			setAutoCreateRowSorter(true);
+			getTableHeader().setReorderingAllowed(false);
 			setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			getTableHeader().setResizingAllowed(true);
 			((DefaultTableModel) getModel()).setDataVector(
 					new String[1][9], columnName);
-			getTableHeader().setResizingAllowed(true);
 			getColumnModel().getColumn(0).setPreferredWidth(70);
 			getColumnModel().getColumn(1).setPreferredWidth(255);
 			getColumnModel().getColumn(2).setPreferredWidth(215);
@@ -180,11 +182,10 @@ public class TaxonList extends Observable implements Observer,
 					new ItalicCellRenderer());
 			TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 					this.getModel());
-			setRowSorter(sorter);
 			sorter.setComparator(4, new StringComparator());
 			sorter.setComparator(5, new StringComparator());
 			sorter.setComparator(6, new StringComparator());
-
+			setRowSorter(sorter);
 		}
 
 		/**

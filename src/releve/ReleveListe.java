@@ -118,6 +118,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+		liste_scroll.setMinimumSize(new Dimension(950, 600));
 		liste_scroll.setPreferredSize(new Dimension(1000, 700));
 
 		gbc.gridy = 1;
