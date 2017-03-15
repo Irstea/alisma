@@ -94,6 +94,7 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+		liste_scroll.setMinimumSize(new Dimension(400, 600));
 		liste_scroll.setPreferredSize(new Dimension(500, 700));
 
 		gbc.gridy = 1;

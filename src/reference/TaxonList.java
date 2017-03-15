@@ -88,7 +88,7 @@ public class TaxonList extends Observable implements Observer,
 
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-		liste_scroll.setMinimumSize(new Dimension(900, 600));
+		liste_scroll.setMinimumSize(new Dimension(900, 550));
 		liste_scroll.setPreferredSize(new Dimension(1000, 700));
 
 		gbc.gridy = 1;
