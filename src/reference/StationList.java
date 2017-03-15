@@ -107,6 +107,7 @@ public class StationList extends Observable implements Observer,
 
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+		liste_scroll.setMinimumSize(new Dimension(700, 600));
 		liste_scroll.setPreferredSize(new Dimension(800, 700));
 
 		gbc.gridy = 1;
