@@ -84,19 +84,20 @@ public class CalculIBMR {
 				 * Recherche s'il existe un taxon valide (dans le cas d'un
 				 * synonyme) qui aurait une cote spe
 				 */
-				if (!taxon.get("cd_valide").isEmpty()) {
+				if (!taxon.get("cd_contrib").isEmpty()) {
 					/*
 					 * Verification que les taxons sont bien differents
 					 */
-					if (!taxon.get("cd_valide").equals(taxon.get("cd_taxon"))) {
+					if (!taxon.get("cd_contrib").equals(taxon.get("id_taxon"))) {
 						try {
 							/*
 							 * Recuperation de cote_spe et coef_steno a partir
 							 * du cd_valide
 							 */
+							logger.debug("recherche cd_contrib pour "+ taxon.get("id_taxon")+ " : "+ taxon.get("cd_contrib"));
 							query = ConnexionDatabase.getConnexion().createStatement();
 							res = query.executeQuery("select cote_spe, coef_steno from Taxons_MP "
-									+ "where cd_taxon = '" + taxon.get("cd_valide") + "'");
+									+ "where cd_taxon = '" + taxon.get("cd_contrib") + "'");
 							if (res.first()) {
 								cote_spe = (res.getInt(1));
 								coef_steno = (res.getInt(2));
@@ -110,7 +111,7 @@ public class CalculIBMR {
 				cote_spe = Double.parseDouble(taxon.get("cote_spe"));
 				coef_steno = Double.parseDouble(taxon.get("coef_steno"));
 			}
-			logger.debug("cd_taxon:" + taxon.get("cd_taxon") + " cd_valide:" + taxon.get("cd_valide") + " - cote_spe:"
+			logger.debug("cd_taxon:" + taxon.get("id_taxon") + " cd_contrib:" + taxon.get("cd_contrib") + " - cote_spe:"
 					+ cote_spe + " coef_steno:" + coef_steno + " pc_UR1:" + taxon.get("pc_UR1") + " PC_UR2:"
 					+ taxon.get("pc_UR2"));
 			/*
