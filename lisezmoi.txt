@@ -1,5 +1,11 @@
 ALISMA - nouveautés
 ===================
+Version 1.1.2 du 22 mars 2017
+------------------------------
+Correction de bogues :
+- lors du calcul de l'indicateur, les taxons contributifs n'étaient pas correctement pris en compte
+- l'interrogation directe du seee ne fonctionnait pas si le poste de travail était derrière un serveur proxy (fichier param.ini à compléter)
+
 Version 1.1.1b du 15 mars 2017
 ------------------------------
 Correction de bogues
