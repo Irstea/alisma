@@ -8,6 +8,9 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.Authenticator;
+import java.net.ConnectException;
+import java.net.PasswordAuthentication;
 import java.text.SimpleDateFormat;
 import java.util.Hashtable;
 import java.util.List;
@@ -344,7 +347,7 @@ public class ExportOp {
 	 * @return String : CSV contenant les infos a transmettre
 	 */
 	String generateContentForSEEE() {
-		
+
 		String tab = "\t";
 		List<Hashtable<String, String>> listeop = op.getListeReleveComplet(param);
 		if (!listeop.isEmpty()) {
@@ -442,8 +445,37 @@ public class ExportOp {
 		} catch (Exception e) {
 			version = "1.1.0";
 		}
+		ClientConfig config = new ClientConfig();
 		try {
-			ClientConfig config = new ClientConfig();
+			/*
+			 * Recherche si le passage par un proxy est requis
+			 */
+			if (Parametre.seee.get("proxyEnabled").equals("true")) {
+				logger.debug("seee : interrogation via proxy " + Parametre.seee.get("proxyHost") + ":"
+						+ Parametre.seee.get("proxyPort"));
+				System.setProperty("http.proxyHost", Parametre.seee.get("proxyHost"));
+				System.setProperty("http.proxyPort", Parametre.seee.get("proxyPort"));
+				if (!Parametre.seee.get("proxyUser").isEmpty()) {
+					Authenticator.setDefault(new Authenticator() {
+						@Override
+						public PasswordAuthentication getPasswordAuthentication() {
+							return new PasswordAuthentication(Parametre.seee.get("proxyUser"),
+									Parametre.seee.get("proxyPassword").toCharArray());
+						}
+					});
+					System.setProperty("http.proxyUser", Parametre.seee.get("proxyUser"));
+					System.setProperty("http.proxyPassword", Parametre.seee.get("proxyPassword"));
+				}
+			}
+		} catch (Exception e) {
+			/*
+			 * Pas d'utilisation du proxy
+			 */
+		}
+		/*
+		 * Creation du client
+		 */
+		try {
 			Client client = ClientBuilder.newClient(config);
 			String filename = exportSEEE(true);
 			if (filename.length() > 0) {
@@ -462,10 +494,15 @@ public class ExportOp {
 			} else
 				throw new Exception(Langue.getString("noDossiers"));
 
+		} catch (ConnectException e) {
+			logger.error(e.getMessage());
+			JOptionPane.showMessageDialog(null,
+					Langue.getString("exportSEEEerror") + newLine + Langue.getString("connectError"),
+					Langue.getString("exportKO"), JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			JOptionPane.showMessageDialog(null, Langue.getString("exportSEEEerror")+ newLine + e.getMessage(), Langue.getString("exportKO"),
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, Langue.getString("exportSEEEerror") + newLine + e.getMessage(),
+					Langue.getString("exportKO"), JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		return resultat;
