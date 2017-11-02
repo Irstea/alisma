@@ -289,10 +289,10 @@
   <fo:block>
   <fo:block border="thin" space-before.optimum="1em"/>
   <fo:inline font-weight="bold">Description de l'unité de relevé : <xsl:value-of select="type_ur_libelle"/>
-  &#160;(<xsl:value-of select="pc_UR"/>%)</fo:inline>
+  &#160;(<xsl:value-of select="pc_ur"/>%)</fo:inline>
   </fo:block>
-  <fo:block>Longueur :&#160;<xsl:value-of select="longueur_UR"/>
-  &#160;Largeur :&#160;<xsl:value-of select="largeur_UR"/>
+  <fo:block>Longueur :&#160;<xsl:value-of select="longueur_ur"/>
+  &#160;Largeur :&#160;<xsl:value-of select="largeur_ur"/>
   Faciès dominant : &#160;<xsl:value-of select="facies_libelle"/>
   </fo:block>
   <fo:block font-style="italic" space-before.optimum="1em">Échelle : 0 : absent, 1 : &lt; 1%, 2 : &lt; 10%, 3 : &lt; 25%, 4 : &lt; 75%, 5 : &gt;=75%</fo:block>
@@ -742,12 +742,12 @@
   		</fo:table-cell>
   		<fo:table-cell border-left-style="solid" > 
   			<fo:block text-align="center">
-  			<xsl:value-of select="pc_UR1"/>
+  			<xsl:value-of select="pc_ur1"/>
   			</fo:block>
   		</fo:table-cell>
   		<fo:table-cell border-left-style="solid" border-right-style="solid" > 
   			<fo:block text-align="center">
-  			<xsl:value-of select="pc_UR2"/>
+  			<xsl:value-of select="pc_ur2"/>
   			</fo:block>
   		</fo:table-cell>
    		</fo:table-row>
