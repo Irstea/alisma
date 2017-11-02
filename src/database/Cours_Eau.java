@@ -16,7 +16,7 @@ public class Cours_Eau extends DbObject {
 	public String[] paramList = { "coursEau" };
 
 	public Cours_Eau() {
-		init("Cours_Eau", "id_cours_eau", true);
+		init("cours_eau", "id_cours_eau", true);
 		setStringList(new String[] { "cours_eau" });
 		setNumericList(new String[] {});
 
@@ -45,7 +45,7 @@ public class Cours_Eau extends DbObject {
 	 * @return List<Hashtable<String,String>>
 	 */
 	public List<Hashtable<String,String>> getListByParam(Hashtable<String,String>param) {
-		String sql = "select * from Cours_Eau ";
+		String sql = "select * from cours_eau ";
 		try {
 			if (param.containsKey("cours_eau")) {		
 			sql += " where upper(cours_eau) like upper('%" + param.get("cours_eau") + "%')";

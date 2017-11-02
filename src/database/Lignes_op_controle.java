@@ -16,9 +16,9 @@ import java.util.List;
 public class Lignes_op_controle extends DbObject {
 
 	public Lignes_op_controle() {
-		init("Lignes_op_controle", "id_ligne_op_controle", true);
+		init("lignes_op_controle", "id_ligne_op_controle", true);
 		setStringList(new String[] {"id_taxon"});
-		setNumericList(new String [] {"pc_UR1", "pc_UR2", "cf", "id_op_controle"});
+		setNumericList(new String [] {"pc_ur1", "pc_ur2", "cf", "id_op_controle"});
 	}
 
 	/**
@@ -29,10 +29,10 @@ public class Lignes_op_controle extends DbObject {
 	public int ecrire(Hashtable<String, String> item) {
 		int key = Integer.parseInt(item.get("id_ligne_op_controle"));
 		/*
-		 * Forcage de la valeur a 0 pour pc_UR1 si vide
+		 * Forcage de la valeur a 0 pour pc_ur1 si vide
 		 */
-		if (item.get("pc_UR1").isEmpty())
-			item.put("pc_UR1", "0");
+		if (item.get("pc_ur1").isEmpty())
+			item.put("pc_ur1", "0");
 		/*
 		 * Ecriture des donnees
 		 */
@@ -94,10 +94,10 @@ public class Lignes_op_controle extends DbObject {
 	public List<Hashtable<String, String>> getListFromOp(String id_op_controle) {
 		String sql = "select tv.cd_taxon, tv.nom_taxon, tx.cd_sandre, tx.cd_valide, tx.cote_spe, tx.coef_steno, "
 				+ " tx.cd_contrib, "
-				+ "pc_UR1, pc_UR2, cf, id_taxon, id_ligne_op_controle "
-				+ "from Lignes_op_controle ligne"
-				+ " join Taxons_details_view tv on (tv.cd_taxon = ligne.id_taxon)"
-				+ " left outer join Taxons_MP tx on (tv.cd_taxon = tx.cd_taxon)"
+				+ "pc_ur1, pc_ur2, cf, id_taxon, id_ligne_op_controle "
+				+ "from lignes_op_controle ligne"
+				+ " join taxons_details_view tv on (tv.cd_taxon = ligne.id_taxon)"
+				+ " left outer join taxons_mp tx on (tv.cd_taxon = tx.cd_taxon)"
 				+ " where id_op_controle = " + id_op_controle 
 				+ " order by tv.cd_taxon";
 		return executeList(sql);

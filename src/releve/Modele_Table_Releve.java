@@ -58,9 +58,9 @@ public class Modele_Table_Releve extends AbstractTableModel{
 			case 4:
 				return lignes.get(rowIndex).getAuteur();
 			case 5:
-				return lignes.get(rowIndex).getPc_UR1();
+				return lignes.get(rowIndex).getpc_ur1();
 			case 6:
-				return lignes.get(rowIndex).getPc_UR2();
+				return lignes.get(rowIndex).getpc_ur2();
 			case 7:
 				return lignes.get(rowIndex).getRef();
 			case 8:
@@ -87,7 +87,7 @@ public class Modele_Table_Releve extends AbstractTableModel{
 			case 4:
 				return lignes.get(rowIndex).getAuteur();
 			case 5:
-				return lignes.get(rowIndex).getPc_UR1();
+				return lignes.get(rowIndex).getpc_ur1();
 			case 6:
 				return lignes.get(rowIndex).getRef();
 			case 7:
@@ -137,11 +137,11 @@ public class Modele_Table_Releve extends AbstractTableModel{
 				ligne.setId((Integer)aValue);
 				break;
 			case 5:
-				ligne.setPc_UR1(Float.parseFloat((String)aValue));
+				ligne.setpc_ur1(Float.parseFloat((String)aValue));
 				break;
 			case 6:
 				if(nbUR == 2)
-					ligne.setPc_UR2(Float.parseFloat((String)aValue));
+					ligne.setpc_ur2(Float.parseFloat((String)aValue));
 				break;
 			}
 		}

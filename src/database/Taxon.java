@@ -6,7 +6,7 @@ import java.util.List;
 public class Taxon extends DbObject {
 
 	public Taxon() {
-		init("Taxons_MP", "cd_taxon", true);
+		init("taxons_mp", "cd_taxon", true);
 		setNumericList(new String[] { "cote_spe", "coef_steno", "cd_sandre",
 				"aquaticite", "id_groupe" });
 		setStringList(new String[] { "nom_taxon", "date_creation", "auteur",
@@ -21,7 +21,7 @@ public class Taxon extends DbObject {
 	 */
 	public List<Hashtable<String, String>> getListByParam(
 			Hashtable<String, String> param) {
-		String sql = "select * from Taxons_MP"
+		String sql = "select * from taxons_mp"
 				+ " left outer join Groupes using (id_groupe)";
 		String where = " where ";
 		boolean isWhere = false;

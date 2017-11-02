@@ -112,8 +112,8 @@ public class CalculIBMR {
 				coef_steno = Double.parseDouble(taxon.get("coef_steno"));
 			}
 			logger.debug("cd_taxon:" + taxon.get("id_taxon") + " cd_contrib:" + taxon.get("cd_contrib") + " - cote_spe:"
-					+ cote_spe + " coef_steno:" + coef_steno + " pc_UR1:" + taxon.get("pc_UR1") + " PC_UR2:"
-					+ taxon.get("pc_UR2"));
+					+ cote_spe + " coef_steno:" + coef_steno + " pc_ur1:" + taxon.get("pc_ur1") + " pc_ur2:"
+					+ taxon.get("pc_ur2"));
 			/*
 			 * Lancement du traitement du taxon
 			 */
@@ -122,9 +122,9 @@ public class CalculIBMR {
 				/*
 				 * Calcul du taux d'occupation
 				 */
-				txOccup1 = (taxon.get("pc_UR1").isEmpty() ? 0 : Double.parseDouble(taxon.get("pc_UR1")));
+				txOccup1 = (taxon.get("pc_ur1").isEmpty() ? 0 : Double.parseDouble(taxon.get("pc_ur1")));
 				if (nbUR == 2) {
-					txOccup2 = (taxon.get("pc_UR2").isEmpty() ? 0 : Double.parseDouble(taxon.get("pc_UR2")));
+					txOccup2 = (taxon.get("pc_ur2").isEmpty() ? 0 : Double.parseDouble(taxon.get("pc_ur2")));
 				} else
 					txOccup2 = 0;
 				txOccup = (txOccup1 / 100 * tauxUR1) + (txOccup2 / 100 * tauxUR2);
@@ -328,10 +328,10 @@ public class CalculIBMR {
 				 * Lecture des taux par ur
 				 */
 				for (Hashtable<String, String> unite : unites) {
-					if (unite.get("numUR").equals("1")) {
-						tauxUR1 = Double.parseDouble(unite.get("pc_UR")) / 100;
+					if (unite.get("numur").equals("1")) {
+						tauxUR1 = Double.parseDouble(unite.get("pc_ur")) / 100;
 					} else
-						tauxUR2 = Double.parseDouble(unite.get("pc_UR")) / 100;
+						tauxUR2 = Double.parseDouble(unite.get("pc_ur")) / 100;
 				}
 				/*
 				 * Lancement du calcul

@@ -20,15 +20,15 @@ public class Unite_releves extends DbObject {
 	static Logger logger = Logger.getLogger(Unite_releves.class);
 
 	public Unite_releves() {
-		init("Unite_releves", "id_UR", true);
+		init("unite_releves", "id_ur", true);
 		setStringList(new String[] {});
-		setNumericList(new String[] { "pc_UR", "longueur_UR", "largeur_UR", "pc_vegetalisation", "ch_lentique",
+		setNumericList(new String[] { "pc_ur", "longueur_ur", "largeur_ur", "pc_vegetalisation", "ch_lentique",
 				"pl_lentique", "mouille", "fosse_dissipation", "ch_lotique", "radier", "cascade", "pl_courant",
 				"rapide", "p1", "p2", "p3", "p4", "p5", "v1", "v2", "v3", "v4", "v5", "tres_ombrage", "ombrage",
 				"peu_ombrage", "eclaire", "tres_eclaire", "vase_limons", "terre_marne_tourbe", "cailloux_pierres",
 				"blocs_dalles", "sable_graviers", "racines", "debris_org", "artificiel", "pc_heterot", "pc_algues",
-				"pc_bryo", "pc_lichen", "pc_phanero", "pc_flottante", "pc_immerg", "pc_helophyte", "autreTypeClass",
-				"id_op_controle", "numUR", "type_ur_id", "periphyton_id", "facies_id", "facies_autre_type_id" });
+				"pc_bryo", "pc_lichen", "pc_phanero", "pc_flottante", "pc_immerg", "pc_helophyte", "autretypeclass",
+				"id_op_controle", "num_ur", "type_ur_id", "periphyton_id", "facies_id", "facies_autre_type_id" });
 		/*
 		 * Initialisation des tables de parametre
 		 */
@@ -113,7 +113,7 @@ public class Unite_releves extends DbObject {
 	 */
 	public int getNbReleve(int keyOp) {
 		int nbReleve = 2;
-		String sql = "select count(*) from Unite_releves where id_op_controle = " + keyOp;
+		String sql = "select count(*) from unite_releves where id_op_controle = " + keyOp;
 		try {
 			query = connection.createStatement();
 			rs = query.executeQuery(sql);
@@ -139,7 +139,7 @@ public class Unite_releves extends DbObject {
 				+ " left outer join periphyton on (ur.periphyton_id = periphyton.periphyton_id)"
 				+ " left outer join facies on (ur.facies_id = facies.facies_id)"
 				+ " left outer join facies_autre_type on (ur.facies_autre_type_id = facies_autre_type.facies_autre_type_id)";
-		String order = " order by id_UR limit 2";
+		String order = " order by id_ur limit 2";
 		return readListFromKey("id_op_controle", key, sql, order);
 	}
 

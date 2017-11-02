@@ -78,7 +78,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		 * ur unique
 		 */
 		if (nbUR == 1)
-			general[0].setValue("pc_UR", "100");
+			general[0].setValue("pc_ur", "100");
 		/*
 		 * Boite legende
 		 */
@@ -94,7 +94,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		faciesBox.setTitle("typeFacies");
 		faciesLabel.setDimensionDefault(dimLabel);
 		faciesLabel.addLabelList(new String[] { "ch_lotique", "radier", "cascade", "pl_courant", "rapide",
-				"pl_lentique", "mouille", "ch_lentique", "fosse_dissipation", "autreType", "autreTypeClass" }, 0, 0);
+				"pl_lentique", "mouille", "ch_lentique", "fosse_dissipation", "autreType", "autretypeclass" }, 0, 0);
 
 		gbc.gridx = 0;
 		faciesBox.addComposant(faciesLabel, gbc);
@@ -190,7 +190,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		 */
 		String part1, part2;
 		int level1 = 0, level2 = 0, level = 0;
-		part1 = general[0].getData("pc_UR");
+		part1 = general[0].getData("pc_ur");
 		if (part1.isEmpty())
 			level1 = 3;
 		if (1 == nbUR) {
@@ -201,7 +201,7 @@ public class Releve_tab2 extends ComposantAlisma {
 				level1 = 3;
 			}
 		} else {
-			part2 = general[1].getData("pc_UR");
+			part2 = general[1].getData("pc_ur");
 			if (part2.isEmpty()) {
 				level2 = 3;
 			} else {
@@ -213,9 +213,9 @@ public class Releve_tab2 extends ComposantAlisma {
 					}
 				}
 			}
-			general[1].setBordure("pc_UR", level2);
+			general[1].setBordure("pc_ur", level2);
 		}
-		general[0].setBordure("pc_UR", level1);
+		general[0].setBordure("pc_ur", level1);
 		if (level1 > level)
 			level = level1;
 		if (level2 > level)
@@ -249,22 +249,22 @@ public class Releve_tab2 extends ComposantAlisma {
 
 		public General() {
 			setDimensionDefault(dimDefault);
-			addTextPourcentage("pc_UR", 0, 0, 1);
+			addTextPourcentage("pc_ur", 0, 0, 1);
 			addCombo("type_ur", 0, 1, 1, false);
-			addTextNumeric("longueur_UR", 0, 2, 1);
-			addTextDecimal("largeur_UR", 0, 3, 1);
+			addTextNumeric("longueur_ur", 0, 2, 1);
+			addTextDecimal("largeur_ur", 0, 3, 1);
 			addCombo("facies", 0, 4, 1, false);
 			addComboItemList("facies", ur.params.get("facies").getArray(), false);
-			setFieldMandatory(new String[] { "type_ur", "pc_UR" });
+			setFieldMandatory(new String[] { "type_ur", "pc_ur" });
 			setFieldNecessary(new String[] {});
-			setFieldRecommanded(new String[] { "longueur_UR", "largeur_UR", "facies" });
+			setFieldRecommanded(new String[] { "longueur_ur", "largeur_ur", "facies" });
 		}
 
 		/**
 		 * Positionne le contenu du combo typeUR en fonction du numero d'UR et
 		 * du protocole
 		 * 
-		 * @param numUR
+		 * @param num_ur
 		 * @param protocole
 		 */
 		public void setTypeURList(int i, String protocole) {
@@ -276,21 +276,21 @@ public class Releve_tab2 extends ComposantAlisma {
 				protocole_id = 1;
 			}
 			logger.debug("protocole_id :" + String.valueOf(protocole_id));
-			int numUR = i + 1;
-			logger.debug("numUR : " + String.valueOf(numUR));
+			int num_ur = i + 1;
+			logger.debug("num_ur : " + String.valueOf(num_ur));
 			String[] liste = ur.params.get("type_ur").getArray();
 			if (nbUR == 1) {
 				addComboItemList("type_ur", new String[] { liste[4], liste[3] }, true);
 			} else {
 				switch (protocole_id) {
 				case 1:
-					if (numUR == 1) {
+					if (num_ur == 1) {
 						addComboItemList("type_ur", new String[] { liste[1] }, true);
 					} else
 						addComboItemList("type_ur", new String[] { liste[2] }, true);
 					break;
 				case 2:
-					if (numUR == 1) {
+					if (num_ur == 1) {
 						addComboItemList("type_ur",
 
 						new String[] { liste[5], liste[7], liste[3] }, true);
@@ -298,7 +298,7 @@ public class Releve_tab2 extends ComposantAlisma {
 						addComboItemList("type_ur", new String[] { liste[6], liste[8], liste[3] }, true);
 					break;
 				case 3:
-					if (numUR == 1) {
+					if (num_ur == 1) {
 						addComboItemList("type_ur",
 
 						new String[] { liste[1], liste[5], liste[7], liste[3] }, true);
@@ -330,7 +330,7 @@ public class Releve_tab2 extends ComposantAlisma {
 			addCombo("facies_autre_type", 0, 9, 1, false);
 			addComboItemList("facies_autre_type", ur.params.get("facies_autre_type").getArray(), false);
 			// addFieldRecommanded("autreType");
-			addComboMeso("autreTypeClass", 0, 10, 1);
+			addComboMeso("autretypeclass", 0, 10, 1);
 		}
 
 		public int validation() {
@@ -343,25 +343,25 @@ public class Releve_tab2 extends ComposantAlisma {
 			 * etre renseignee
 			 */
 			String autreType = getData("facies_autre_type");
-			String autreTypeClass = getData("autreTypeClass");
+			String autretypeclass = getData("autretypeclass");
 //			logger.debug("facies - autreType - empty ? " + String.valueOf(autreType.isEmpty()));
-//			logger.debug("facies - autreTypeClass - empty ? " + String.valueOf(autreTypeClass.isEmpty()));
+//			logger.debug("facies - autretypeclass - empty ? " + String.valueOf(autretypeclass.isEmpty()));
 			if (!autreType.isEmpty()) {
-				if (autreTypeClass.isEmpty()) {
-					setBordure("autreTypeClass", 3);
+				if (autretypeclass.isEmpty()) {
+					setBordure("autretypeclass", 3);
 					retour = 3;
 				} else {
-					setBordure("autreTypeClass", 0);
+					setBordure("autretypeclass", 0);
 				}
 				setBordure("facies_autre_type", 0);
 			} else {
-				if (!autreTypeClass.isEmpty()) {
+				if (!autretypeclass.isEmpty()) {
 					setBordure("facies_autre_type", 3);
 					retour = 3;
 				} else {
 					setBordure("facies_autre_type", 0);
 				}
-				setBordure("autreTypeClass", 0);
+				setBordure("autretypeclass", 0);
 			}
 //			logger.debug("facies - valeur retour en fin de validation : " + String.valueOf(retour));
 			this.bordure.setBordure(pane, retour);
@@ -401,12 +401,12 @@ public class Releve_tab2 extends ComposantAlisma {
 	/**
 	 * Recupere le taux d'occupation de l'UR dans la station
 	 * 
-	 * @param numUR
+	 * @param num_ur
 	 * @return double
 	 */
-	public double getpcUR(int numUR) {
+	public double getpcUR(int num_ur) {
 		double taux;
-		String sValue = general[numUR - 1].getData("pc_UR");
+		String sValue = general[num_ur - 1].getData("pc_ur");
 		if (sValue.isEmpty()) {
 			taux = 0.0;
 		} else {
@@ -418,18 +418,18 @@ public class Releve_tab2 extends ComposantAlisma {
 	/**
 	 * Retourne les donnees de l'onglet pour l'ur consideree
 	 * 
-	 * @param numUR
+	 * @param num_ur
 	 * @return Hashtable<String, String>
 	 */
-	public Hashtable<String, String> getDataUR(int numUR) {
-		int i = numUR - 1;
+	public Hashtable<String, String> getDataUR(int num_ur) {
+		int i = num_ur - 1;
 		Hashtable<String, String> data = eclairement[i].getData();
 		data = hashtableFusionner(data, facies[i].getData());
 		data = hashtableFusionner(data, general[i].getData());
 		data = hashtableFusionner(data, profondeur[i].getData());
 		data = hashtableFusionner(data, substrat[i].getData());
 		data = hashtableFusionner(data, vitesse[i].getData());
-		data.put("numUR", Integer.toString(numUR));
+		data.put("num_ur", Integer.toString(num_ur));
 		return data;
 	}
 
@@ -440,14 +440,14 @@ public class Releve_tab2 extends ComposantAlisma {
 	 *            <Hashtable<String, String>> lData : liste des donnees
 	 */
 	public void setDataGlobal(List<Hashtable<String, String>> lData) {
-		int numUR, i;
+		int num_ur, i;
 		for (Hashtable<String, String> ligne : lData) {
-			numUR = Integer.parseInt(ligne.get("numUR"));
+			num_ur = Integer.parseInt(ligne.get("num_ur"));
 			/*
 			 * mise a jour de la valeur de la cle
 			 */
-			setIdUR(numUR, Integer.parseInt(ligne.get("id_UR")));
-			i = numUR - 1;
+			setIdUR(num_ur, Integer.parseInt(ligne.get("id_ur")));
+			i = num_ur - 1;
 			/*
 			 * Mise a jour des donnees
 			 */
@@ -463,21 +463,21 @@ public class Releve_tab2 extends ComposantAlisma {
 	/**
 	 * Positionne la valeur de la cle de l'UR
 	 * 
-	 * @param numUR
+	 * @param num_ur
 	 * @param id
 	 */
-	public void setIdUR(int numUR, int id) {
-		idUR[numUR - 1] = id;
+	public void setIdUR(int num_ur, int id) {
+		idUR[num_ur - 1] = id;
 	}
 
 	/**
 	 * Retourne la valeur de la cle de l'UR consideree
 	 * 
-	 * @param numUR
+	 * @param num_ur
 	 * @return
 	 */
-	public int getIdUR(int numUR) {
-		return idUR[numUR - 1];
+	public int getIdUR(int num_ur) {
+		return idUR[num_ur - 1];
 	}
 
 }

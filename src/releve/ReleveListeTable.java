@@ -431,11 +431,11 @@ public class ReleveListeTable extends Observable implements TableModelListener {
 				ligne.put("nom_groupe", lData.get(6));
 				ligne.put("cote_spe", lData.get(7));
 				ligne.put("coef_steno", lData.get(8));
-				ligne.put("pc_UR1", lData.get(9));
+				ligne.put("pc_ur1", lData.get(9));
 				if (nbUR == 2) {
-					ligne.put("pc_UR2", lData.get(10));
+					ligne.put("pc_ur2", lData.get(10));
 				} else
-					ligne.put("pc_UR2", "");
+					ligne.put("pc_ur2", "");
 				ligne.put("id_ligne_op_controle", lData.get(11));
 				/*
 				 * Rajoute la ligne a la liste
@@ -524,8 +524,8 @@ public class ReleveListeTable extends Observable implements TableModelListener {
 						ligne.add((data.get("coef_steno_valide") != null ? data
 								.get("coef_steno_valide") : ""));
 					}
-					ligne.add(lData.get("pc_UR1"));
-					ligne.add(lData.get("pc_UR2"));
+					ligne.add(lData.get("pc_ur1"));
+					ligne.add(lData.get("pc_ur2"));
 					ligne.add(lData.get("id_ligne_op_controle"));
 					modele.addRow(ligne);
 				}

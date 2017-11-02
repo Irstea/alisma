@@ -584,8 +584,8 @@ public class Releve_tab3 extends ComposantAlisma {
 		String cd_taxon = null, nom_taxon = null;
 		private JCheckBox isCf = new JCheckBox();
 		private JButton addLigne;
-		private JTextField pc_UR1 = new JTextField();
-		private JTextField pc_UR2 = new JTextField();
+		private JTextField pc_ur1 = new JTextField();
+		private JTextField pc_ur2 = new JTextField();
 
 		/**
 		 * Constructeur
@@ -628,11 +628,11 @@ public class Releve_tab3 extends ComposantAlisma {
 			setDimension("id_taxon", new Dimension(70, 20));
 			addTextField("nom_taxon", 3, 0, 1);
 			setDimension("nom_taxon", new Dimension(150, 20));
-			addTextPourcentageDecimal("pc_UR1", 5, 0, 1);
-			setDimension("pc_UR1", dimPcUR);
+			addTextPourcentageDecimal("pc_ur1", 5, 0, 1);
+			setDimension("pc_ur1", dimPcUR);
 			if (nbUR == 2) {
-				addTextPourcentageDecimal("pc_UR2", 7, 0, 1);
-				setDimension("pc_UR2", dimPcUR);
+				addTextPourcentageDecimal("pc_ur2", 7, 0, 1);
+				setDimension("pc_ur2", dimPcUR);
 			}
 			addCheckBox("cf", false, 9, 0, 1);
 			fieldList.get("cf").setBackground(Parametre.cCentral);
@@ -696,11 +696,11 @@ public class Releve_tab3 extends ComposantAlisma {
 					Hashtable<String, String> data = new Hashtable<String, String>();
 					data.put("id_taxon", cd_taxon);
 					data.put("cf", obj.getData("cf"));
-					data.put("pc_UR1", obj.getData("pc_UR1"));
+					data.put("pc_ur1", obj.getData("pc_ur1"));
 					if (nbUR == 2) {
-						data.put("pc_UR2", obj.getData("pc_UR2"));
+						data.put("pc_ur2", obj.getData("pc_ur2"));
 					} else {
-						data.put("pc_UR2", "");
+						data.put("pc_ur2", "");
 					}
 					data.put("id_ligne_op_controle", "-1");
 					/*
@@ -725,9 +725,9 @@ public class Releve_tab3 extends ComposantAlisma {
 			 */
 			setValue("id_taxon", "");
 			setValue("cf", "0");
-			setValue("pc_UR1", "");
+			setValue("pc_ur1", "");
 			if (nbUR == 2)
-				setValue("pc_UR2", "");
+				setValue("pc_ur2", "");
 			setValue("nom_taxon", "");
 			cd_taxon = "";
 			addLigne.setEnabled(false);
@@ -856,8 +856,8 @@ public class Releve_tab3 extends ComposantAlisma {
 							lData.put("cf", "1");
 						} else
 							lData.put("cf", "0");
-						lData.put("pc_UR1", pc_UR1.getText());
-						lData.put("pc_UR2", pc_UR2.getText());
+						lData.put("pc_ur1", pc_ur1.getText());
+						lData.put("pc_ur2", pc_ur2.getText());
 						cTable.addLigne(lData);
 					}
 				}
@@ -886,11 +886,11 @@ public class Releve_tab3 extends ComposantAlisma {
 	/**
 	 * Retourne les donnees correspondant a l'UR
 	 * 
-	 * @param numUR
+	 * @param num_ur
 	 * @return Hashtable<String, String>
 	 */
-	public Hashtable<String, String> getDataUR(int numUR) {
-		int i = numUR - 1;
+	public Hashtable<String, String> getDataUR(int num_ur) {
+		int i = num_ur - 1;
 		return hashtableFusionner(vg[i].getData(), vd[i].getData());
 	}
 
@@ -913,7 +913,7 @@ public class Releve_tab3 extends ComposantAlisma {
 	public void setDataUr(List<Hashtable<String, String>> lData) {
 		int i;
 		for (Hashtable<String, String> ligne : lData) {
-			i = Integer.parseInt(ligne.get("numUR")) - 1;
+			i = Integer.parseInt(ligne.get("num_ur")) - 1;
 			vg[i].setData(ligne);
 			vd[i].setData(ligne);
 		}

@@ -1,11 +1,11 @@
 package releve;
 
-//modèle de données correspondant à une ligne dans la JTable du releve floristique
+//modï¿½le de donnï¿½es correspondant ï¿½ une ligne dans la JTable du releve floristique
 public class Ligne_Releve {
 	private int     id;
 	private String  code;
-	private float   pc_UR1;
-	private float   pc_UR2;
+	private float   pc_ur1;
+	private float   pc_ur2;
 	private String  ref;
 	private String  contrib;
 	private String  groupe;
@@ -15,11 +15,11 @@ public class Ligne_Releve {
 	private String  nom;
 	private String cf;
 
-	public Ligne_Releve(int id, String code, float pc_UR1, float pc_UR2,String ref, String contrib, String groupe, String csi, String ei, String nom, String auteur, String cf) {
+	public Ligne_Releve(int id, String code, float pc_ur1, float pc_ur2,String ref, String contrib, String groupe, String csi, String ei, String nom, String auteur, String cf) {
 		this.id = id;
 		this.code = code;
-		this.pc_UR1 = pc_UR1;
-		this.pc_UR2 = pc_UR2;
+		this.pc_ur1 = pc_ur1;
+		this.pc_ur2 = pc_ur2;
 		this.ref = ref;
 		this.contrib = contrib;
 		this.groupe = groupe;
@@ -46,20 +46,20 @@ public class Ligne_Releve {
 		this.code = code;
 	}
 	
-	public float getPc_UR1() {
-		return pc_UR1;
+	public float getpc_ur1() {
+		return pc_ur1;
 	}
 	
-	public void setPc_UR1(float pc_UR1) {
-		this.pc_UR1 = pc_UR1;
+	public void setpc_ur1(float pc_ur1) {
+		this.pc_ur1 = pc_ur1;
 	}
 	
-	public float getPc_UR2() {
-		return pc_UR2;
+	public float getpc_ur2() {
+		return pc_ur2;
 	}
 	
-	public void setPc_UR2(float pc_UR2) {
-		this.pc_UR2 = pc_UR2;
+	public void setpc_ur2(float pc_ur2) {
+		this.pc_ur2 = pc_ur2;
 	}
 	
 	public String getRef() {

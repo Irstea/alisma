@@ -377,7 +377,7 @@ public class ExportOp {
 				pcUR[1] = "";
 
 				for (Hashtable<String, String> ur : ldataUR) {
-					pcUR[i] = ur.get("pc_UR");
+					pcUR[i] = ur.get("pc_ur");
 					if (pcUR[i].equals(""))
 						pcUR[i] = "0";
 					i++;
@@ -387,8 +387,8 @@ public class ExportOp {
 				 */
 				for (Hashtable<String, String> taxon : ldataTaxons) {
 					ligne = key + tab + operation.get("cd_station") + tab + dateOp + tab + taxon.get("id_taxon") + tab;
-					taxonpc[0] = taxon.get("pc_UR1");
-					taxonpc[1] = taxon.get("pc_UR2");
+					taxonpc[0] = taxon.get("pc_ur1");
+					taxonpc[1] = taxon.get("pc_ur2");
 					for (int j = 0; j < 2; j++)
 						if (taxonpc[j].equals("") || taxonpc[j].equals("null"))
 							taxonpc[j] = "0";

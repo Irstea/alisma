@@ -26,7 +26,7 @@ public class Op_controle extends DbObject {
 	public Hashtable<String, Integer> yesNoForKey;
 
 	public Op_controle() {
-		init("Op_controle", "id_op_controle", true);
+		init("op_controle", "id_op_controle", true);
 		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier" });
 		setNumericList(new String[] { "id_pt_prel", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id",
 				"turbidite_id", "releve_dce", "typo_id" });
@@ -123,10 +123,10 @@ public class Op_controle extends DbObject {
 	 */
 	public void deleteOperation(int keyOp, int keyPointPrelevement) {
 		if (keyOp > -1) {
-			String[] queries = { "DELETE FROM Unite_releves WHERE id_op_controle = " + keyOp,
-					"DELETE FROM Lignes_op_controle WHERE id_op_controle = " + keyOp,
+			String[] queries = { "DELETE FROM unite_releves WHERE id_op_controle = " + keyOp,
+					"DELETE FROM lignes_op_controle WHERE id_op_controle = " + keyOp,
 					"DELETE from ibmr where id_op_controle = " + keyOp,
-					"DELETE FROM Op_controle WHERE id_op_controle = " + keyOp };
+					"DELETE FROM op_controle WHERE id_op_controle = " + keyOp };
 			try {
 				query = connection.createStatement();
 				for (String sql : queries) {
@@ -134,7 +134,7 @@ public class Op_controle extends DbObject {
 					query.execute(sql);
 				}
 				if (keyPointPrelevement > -1) {
-					String sql = "delete from Points_prelev  where id_pt_prel = " + keyPointPrelevement;
+					String sql = "delete from points_prelev  where id_pt_prel = " + keyPointPrelevement;
 					logger.debug(sql);
 					query.execute(sql);
 				}
@@ -154,10 +154,10 @@ public class Op_controle extends DbObject {
 		ArrayList<Object> data = new ArrayList<Object>();
 		String sql = "SELECT id_op_controle,cd_station, station,cours_eau,operateur,date_op, op.id_statut, "
 				+ "cd_station, releve_dce "
-				+ "FROM Op_controle op "
-				+ "JOIN Points_prelev ON op.id_pt_prel = Points_prelev.id_pt_prel "
-				+ "JOIN Stations ON Points_prelev.id_station = Stations.id_station "
-				+ "JOIN Cours_Eau ON Stations.id_cours_eau = Cours_Eau.id_cours_eau "
+				+ "FROM op_controle op "
+				+ "JOIN points_prelev ON op.id_pt_prel = points_prelev.id_pt_prel "
+				+ "JOIN stations ON points_prelev.id_station = stations.id_station "
+				+ "JOIN cours_eau ON stations.id_cours_eau = cours_eau.id_cours_eau "
 				;
 
 		String where = getWhere(param);
@@ -228,12 +228,12 @@ public class Op_controle extends DbObject {
 				+ " op.typo_id, typo_name, ibmr_ref, groupe,"
 				+ " ibmr.classe_etat_id, c1.classe_etat_libelle, eqr_value, robustesse_eqr_value,"
 				+ " ibmr.robustesse_classe_etat_id, c2.classe_etat_libelle as robustesse_classe_etat_libelle"
-				+ " from Op_controle op" 
-				+ " join Points_prelev prelev on (prelev.id_pt_prel = op.id_pt_prel)"
-				+ " join Stations station on (station.id_station = prelev.id_station)"
-				+ " join Cours_Eau cours on (cours.id_cours_eau = station.id_cours_eau)"
+				+ " from op_controle op" 
+				+ " join points_prelev prelev on (prelev.id_pt_prel = op.id_pt_prel)"
+				+ " join stations station on (station.id_station = prelev.id_station)"
+				+ " join cours_eau cours on (cours.id_cours_eau = station.id_cours_eau)"
 				+ " left outer join ibmr on (op.id_op_controle = ibmr.id_op_controle)"
-				+ " left outer join Statut on (op.id_statut = Statut.id_statut)"
+				+ " left outer join statut on (op.id_statut = Statut.id_statut)"
 				+ " left outer join protocole on ( protocole.protocole_id = op.protocole_id)"
 				+ " left outer join rive on (rive.rive_id = op.rive_id)"
 				+ " left outer join hydrologie on (hydrologie.hydrologie_id = op.hydrologie_id)"

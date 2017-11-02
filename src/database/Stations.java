@@ -14,7 +14,7 @@ import java.util.List;
 public class Stations extends DbObject {
 
 	public Stations() {
-		init("Stations", "id_station", true);
+		init("stations", "id_station", true);
 		setNumericList(new String[] { "x", "y", "id_cours_eau", "id_station" });
 		setStringList(new String[] { "cd_station", "station" });
 	}
@@ -36,7 +36,7 @@ public class Stations extends DbObject {
 	 */
 	public String getNomRiv(String libelle) {
 		String result = "";
-		String sql = "SELECT cours_Eau FROM Stations JOIN Cours_Eau ON Stations.id_cours_eau = Cours_Eau.id_cours_eau "
+		String sql = "SELECT cours_eau FROM stations JOIN cours_eau ON stations.id_cours_eau = cours_eau.id_cours_eau "
 				+ "where station = '"
 				+ libelle
 				+ "' or cd_station = '"
@@ -86,8 +86,8 @@ public class Stations extends DbObject {
 
 	public List<Hashtable<String,String>> getListStationFromSearch(String search) {
 			String sql = "select id_station, cd_station, station, s.id_cours_eau, cours_eau "
-					+ "from Stations s "
-					+ "join Cours_Eau c on (c.id_cours_eau = s.id_cours_eau) "
+					+ "from stations s "
+					+ "join cours_eau c on (c.id_cours_eau = s.id_cours_eau) "
 					+ "where upper(cd_station) like upper('%"
 					+ search
 					+ "%') "
@@ -106,8 +106,8 @@ public class Stations extends DbObject {
 			search = "";
 		}
 		String sql = "select id_station, cd_station, station, cours_eau "
-				+ "from Stations s "
-				+ "join Cours_Eau c on (c.id_cours_eau = s.id_cours_eau) ";
+				+ "from stations s "
+				+ "join cours_eau c on (c.id_cours_eau = s.id_cours_eau) ";
 		try {
 			if (search.length() > 0) {
 

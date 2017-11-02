@@ -15,7 +15,7 @@ import java.util.List;
 public class TaxonPerso extends DbObject {
 
 	public TaxonPerso() {
-		init("Taxons_MP_persos", "cd_taxon_perso", false);
+		init("taxons_perso", "cd_taxon_perso", false);
 		isKeyText = true;
 		setNumericList(new String[] { "cd_sandre", "id_groupe" });
 		setStringList(new String[] { "cd_taxon_perso", "nom_taxon_perso",
@@ -31,8 +31,8 @@ public class TaxonPerso extends DbObject {
 	 */
 	public List<Hashtable<String, String>> getListByParam(
 			Hashtable<String, String> param) {
-		String sql = "select * from Taxons_MP_persos"
-				+ " left outer join Groupes using (id_groupe)";
+		String sql = "select * from taxons_perso"
+				+ " left outer join groupes using (id_groupe)";
 		String where = " where ";
 		boolean isWhere = false;
 		try {
@@ -64,14 +64,14 @@ public class TaxonPerso extends DbObject {
 			returned[i][3] = result.get(i).get("nom_groupe");
 			returned[i][4] = result.get(i).get("createur");
 			returned[i][5] = result.get(i).get("cd_sandre");
-			returned[i][6] = result.get(i).get("date_creationP");
+			returned[i][6] = result.get(i).get("date_creation_perso");
 		}
 		return returned;
 	}
 
 	public String getNewCode() {
 		String newCode = "";
-		String sql = "select cd_taxon_perso from Taxons_MP_persos "
+		String sql = "select cd_taxon_perso from taxons_perso "
 				+ " order by cd_taxon_perso desc limit 1";
 
 		List<Hashtable<String, String>> result = executeList(sql);
@@ -91,11 +91,11 @@ public class TaxonPerso extends DbObject {
 	public String write(Hashtable<String, String> data, String key) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-		if (data.get("date_creationP").isEmpty() && key.isEmpty()) {
-			data.put("date_creationP", sdf.format(new Date()));
+		if (data.get("date_creation_perso").isEmpty() && key.isEmpty()) {
+			data.put("date_creation_perso", sdf.format(new Date()));
 		}
 		} catch (NullPointerException e) {
-			data.put("date_creationP",sdf.format(new Date()) );
+			data.put("date_creation_perso",sdf.format(new Date()) );
 		}
 		return super.write(data, key);
 	}
