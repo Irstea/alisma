@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 
@@ -27,7 +28,7 @@ public class Op_controle extends DbObject {
 
 	public Op_controle() {
 		init("op_controle", "id_op_controle", true);
-		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier" });
+		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier", "uuid" });
 		setNumericList(new String[] { "id_pt_prel", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id",
 				"turbidite_id", "releve_dce", "typo_id" });
 		/*
@@ -72,6 +73,12 @@ public class Op_controle extends DbObject {
 		if (data.containsKey("releve_dce")) {
 			data.put("releve_dce", yesNoForKey.get(data.get("releve_dce")).toString());
 			logger.debug("releve_dce value : " + data.get("releve_dce"));
+		}
+		/*
+		 * Traitement de l'uuid
+		 */
+		if (data.get("uuid").isEmpty()) {
+			data.put("uuid", UUID.randomUUID().toString());
 		}
 		keyOp = write(data, keyOp);
 		return keyOp;

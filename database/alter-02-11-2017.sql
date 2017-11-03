@@ -50,10 +50,12 @@ rename table Statut to statut;
 alter table lignes_op_controle change pc_UR1 pc_ur1 double not null,
 change pc_UR2 pc_ur2 double;
 alter table taxons_perso change date_creationP date_creation_perso date not null;
-alter table unite_releves change id_UR id_ur integer not null ,
+alter table unite_releves change id_UR id_ur integer not null auto_increment ,
 change numUR num_ur integer not null,
 change pc_UR pc_ur double,
 change longueur_UR longueur_ur double,
 change largeur_UR largeur_ur double
 ;
 alter table unite_releves change autreTypeClass autretypeclass integer;
+alter table op_controle add column uuid varchar(36);
+update op_controle set uuid = uuid();

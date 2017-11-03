@@ -5141,7 +5141,7 @@ C’est une clé étrangère.</remarks>
   <table id="TAB1603" populated="true" UUID="67bebaf1-c9db-4488-96a7-f78d3e1ea7a0" name="unite_releves" objectType="TABLE" physicalName="unite_releves" >
    <remarks></remarks>
    <folder id="FOLTAB16031" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL1604" populated="true" UUID="9835121f-11cf-4b31-ae25-4cc4d40a79c5" autoIncrement="true" defaultValue="" name="id_UR" nullable="0" physicalName="id_UR" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL1333" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL1604" populated="true" UUID="9835121f-11cf-4b31-ae25-4cc4d40a79c5" autoIncrement="true" autoIncrementSequenceName="unite_releves_id_UR_seq" defaultValue="" name="id_ur" nullable="0" physicalName="id_ur" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL1333" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL1605" populated="true" UUID="13ae0c01-67f7-4be9-a07a-08c065236d30" autoIncrement="false" defaultValue="" name="id_op_controle" nullable="0" physicalName="id_op_controle" precision="0" referenceCount="2" scale="0" source-column-ref="COL1383" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -5159,16 +5159,16 @@ C’est une clé étrangère.</remarks>
     <column id="COL1609" populated="true" UUID="3384ba47-2118-4fed-8dc4-5cdc3005913a" autoIncrement="false" autoIncrementSequenceName="unite_releves_facies_autre_type_id_seq" defaultValue="" name="facies_autre_type_id" nullable="1" physicalName="facies_autre_type_id" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL1610" populated="true" UUID="d68f2750-d612-4afb-a28d-7a75bb37c16c" autoIncrement="false" autoIncrementSequenceName="unite_releves_numUR_seq" defaultValue="1" name="numUR" nullable="0" physicalName="numUR" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL1610" populated="true" UUID="d68f2750-d612-4afb-a28d-7a75bb37c16c" autoIncrement="false" autoIncrementSequenceName="unite_releves_numUR_seq" defaultValue="1" name="num_ur" nullable="0" physicalName="num_ur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks>1 ou 2</remarks>
     </column>
-    <column id="COL1611" populated="true" UUID="cd573339-6d58-4d62-93e4-04d71f7e5f18" autoIncrement="false" defaultValue="" name="pc_UR" nullable="1" physicalName="pc_UR" precision="0" referenceCount="1" scale="0" source-column-ref="COL1334" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+    <column id="COL1611" populated="true" UUID="cd573339-6d58-4d62-93e4-04d71f7e5f18" autoIncrement="false" autoIncrementSequenceName="unite_releves_pc_UR_seq" defaultValue="" name="pc_ur" nullable="1" physicalName="pc_ur" precision="0" referenceCount="1" scale="0" source-column-ref="COL1334" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
-    <column id="COL1612" populated="true" UUID="5c8865fa-faaa-4b23-abb6-73d1af891c83" autoIncrement="false" defaultValue="" name="longueur_UR" nullable="1" physicalName="longueur_UR" precision="0" referenceCount="1" scale="0" source-column-ref="COL1335" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+    <column id="COL1612" populated="true" UUID="5c8865fa-faaa-4b23-abb6-73d1af891c83" autoIncrement="false" autoIncrementSequenceName="unite_releves_longueur_UR_seq" defaultValue="" name="longueur_ur" nullable="1" physicalName="longueur_ur" precision="0" referenceCount="1" scale="0" source-column-ref="COL1335" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
-    <column id="COL1613" populated="true" UUID="6d428cc1-871c-4f84-a690-2fefd8ac7958" autoIncrement="false" defaultValue="" name="largeur_UR" nullable="1" physicalName="largeur_UR" precision="0" referenceCount="1" scale="0" source-column-ref="COL1336" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+    <column id="COL1613" populated="true" UUID="6d428cc1-871c-4f84-a690-2fefd8ac7958" autoIncrement="false" autoIncrementSequenceName="unite_releves_largeur_UR_seq" defaultValue="" name="largeur_ur" nullable="1" physicalName="largeur_ur" precision="0" referenceCount="1" scale="0" source-column-ref="COL1336" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
     <column id="COL1614" populated="true" UUID="ec7a6bcd-fa3c-4198-a26d-637be271fca5" autoIncrement="false" defaultValue="" name="pc_vegetalisation" nullable="1" physicalName="pc_vegetalisation" precision="0" referenceCount="1" scale="0" source-column-ref="COL1338" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
@@ -5294,7 +5294,7 @@ C’est une clé étrangère.</remarks>
     <column id="COL1654" populated="true" UUID="f4889bcc-c0d3-4cf4-8db7-099b001b689e" autoIncrement="false" defaultValue="" name="pc_helophyte" nullable="1" physicalName="pc_helophyte" precision="0" referenceCount="1" scale="0" source-column-ref="COL1379" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
-    <column id="COL1655" populated="true" UUID="9bed9787-42d2-4e5a-9c95-2f05d04d185c" autoIncrement="false" defaultValue="" name="autreTypeClass" nullable="1" physicalName="autreTypeClass" precision="0" referenceCount="1" scale="0" source-column-ref="COL1381" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL1655" populated="true" UUID="9bed9787-42d2-4e5a-9c95-2f05d04d185c" autoIncrement="false" autoIncrementSequenceName="unite_releves_autreTypeClass_seq" defaultValue="" name="autretypeclass" nullable="1" physicalName="autretypeclass" precision="0" referenceCount="1" scale="0" source-column-ref="COL1381" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -5304,7 +5304,7 @@ C’est une clé étrangère.</remarks>
     </folder>
     <folder id="FOLTAB16034" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX1656" populated="true" UUID="a2e137ac-142c-4e6b-8245-eb6f85d25919" clustered="false" name="Unite_releves_PK" physicalName="unite_releves_pk" primaryKeyIndex="true" qualifier="" unique="true" >
-     <index-column id="IDC1657" populated="true" UUID="f6ccecd5-1ccb-4a93-b6e4-b041783d7666" ascendingOrDescending="UNSPECIFIED" column-ref="COL1604" name="id_UR" physicalName="id_UR" />
+     <index-column id="IDC1657" populated="true" UUID="f6ccecd5-1ccb-4a93-b6e4-b041783d7666" ascendingOrDescending="UNSPECIFIED" column-ref="COL1604" name="id_ur" physicalName="id_ur" />
     </index>
    </folder>
   </table>

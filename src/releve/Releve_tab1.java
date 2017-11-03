@@ -141,6 +141,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			addHidden("id_statut");
 			addHidden("classe_etat_id");
 			addHidden("robustesse_classe_etat_id");
+			addHidden ("uuid");
 			/*
 			 * Champs pour le calcul SEEE
 			 */
@@ -457,7 +458,8 @@ public class Releve_tab1 extends ComposantAlisma {
 			 * Definition des champs obligatoire
 			 */
 			setFieldMandatory(new String[] { "protocole", "nbUR" });
-			setFieldRecommanded(new String[] { "longueur", "largeur", "rive", "hydrologie", "meteo", "turbidite", });
+			setFieldNecessary(new String[]{"longueur"});
+			setFieldRecommanded(new String[] {  "largeur", "rive", "hydrologie", "meteo", "turbidite", });
 			/*
 			 * Ajout dynamique des champs selon leur niveau defini
 			 */
