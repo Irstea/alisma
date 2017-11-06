@@ -1,8 +1,11 @@
 package utils;
 
 import org.geotools.geometry.jts.JTS;
+import org.geotools.geometry.jts.JTSFactoryFinder;
 import org.geotools.referencing.CRS;
+import org.opengis.geometry.Geometry;
 import org.opengis.geometry.MismatchedDimensionException;
+//import org.opengis.geometry.coordinate.GeometryFactory;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.NoSuchAuthorityCodeException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
@@ -10,6 +13,7 @@ import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 
 import com.vividsolutions.jts.geom.Coordinate;
+
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
@@ -20,8 +24,8 @@ import com.vividsolutions.jts.geom.Point;
  */
 public class GeoTransform {
 
-	GeometryFactory gf = new GeometryFactory();
-	Coordinate c;
+	//GeometryFactory gf = new GeometryFactory();
+	//Coordinate c;
 	
 	String WKT_lambert93 = "PROJCS[\"RGF93 / Lambert-93\","
 			+ "GEOGCS[\"RGF93\","
@@ -60,22 +64,46 @@ public class GeoTransform {
 			+ "AUTHORITY[\"EPSG\",\"4326\"]]";
 
 
+
+	/**
+	 * 
+	 * @param point
+	 * @return double[]
+	 */
+	public double[] wgs84toLambert93(double point[]) {
+		return transform(point, "wgs84-lambert");
+	}
+	
+	/**
+	 * 
+	 * @param point
+	 * @return double[]
+	 */
+	public double[] lambert93ToWgs84 (double point[]) {
+		return transform(point, "lambert-wgs84");
+	}
 	/**
 	 * Transforme un point XY fourni en WGS84 vers le Lambert93
 	 * @param point : double[X, Y]
+	 * @param sens : wgs84-lambert|lambert-wgs84
 	 * @return double[X, Y]
 	 */
-	public double[] wgs84toLambert93(double point[]) {
+	public double[] transform(double [] point, String sens) {
 		double[] newPoint = new double[2];
-
+		MathTransform mathTransform;
 		if (!Double.isNaN(point[0]) && !Double.isNaN(point[1])) {
-			c = new Coordinate(point[0], point[1]);
-			Point p = gf.createPoint(c);
+			GeometryFactory geometryFactory = (GeometryFactory) JTSFactoryFinder.getGeometryFactory( null );
+			Coordinate coord = new Coordinate( point[0], point[1] );
+			Point pointgeom = geometryFactory.createPoint( coord );
 			try {
-				CoordinateReferenceSystem sourceCRS = CRS.parseWKT(WKT_wgs84);
-				CoordinateReferenceSystem targetCRS = CRS.parseWKT(WKT_lambert93);
-				MathTransform mathTransform = CRS.findMathTransform(sourceCRS, targetCRS, true);
-				Point p1 = (Point) JTS.transform(p, mathTransform);
+				CoordinateReferenceSystem wgsCRS = CRS.parseWKT(WKT_wgs84);
+				CoordinateReferenceSystem lambertCRS = CRS.parseWKT(WKT_lambert93);
+				if (sens.equals("wgs84-lambert")) {
+					mathTransform = CRS.findMathTransform(wgsCRS, lambertCRS, false);
+				} else {
+					mathTransform = CRS.findMathTransform(lambertCRS, wgsCRS, false);
+				}
+				Point p1 = (Point) JTS.transform(pointgeom, mathTransform);
 				newPoint[0] = p1.getX();
 				newPoint[1] = p1.getY();
 			} catch (NoSuchAuthorityCodeException e) {

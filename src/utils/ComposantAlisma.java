@@ -372,6 +372,13 @@ public class ComposantAlisma extends Observable implements Observer {
 		gbc.gridwidth = 1;
 		this.addComposant(pComposant);
 	}
+	
+	public void addComposant (ComposantAlisma pComposant, int x, int y, int z) {
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = z;
+		this.addComposant(pComposant);
+	}
 
 	/**
 	 * Definit les parametres classiques du GridBagConstraint

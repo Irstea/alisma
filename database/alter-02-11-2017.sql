@@ -59,3 +59,8 @@ change largeur_UR largeur_ur double
 alter table unite_releves change autreTypeClass autretypeclass integer;
 alter table op_controle add column uuid varchar(36);
 update op_controle set uuid = uuid();
+
+ALTER TABLE points_prelev ADD COLUMN lambert_x_aval INT  COMMENT 'Coordonnée x du point aval, en Lambert 93';
+ALTER TABLE points_prelev ADD COLUMN lambert_y_aval INT  COMMENT 'Coordonnée Y du point aval, en Lambert 93';
+ALTER TABLE points_prelev ADD COLUMN wgs84_x_aval VARCHAR(20)  COMMENT 'Coordonnée X du point aval, en WGS84';
+ALTER TABLE points_prelev ADD COLUMN wgs84_y_aval VARCHAR(20)  COMMENT 'Coordonnée Y du point aval, en WGS84';

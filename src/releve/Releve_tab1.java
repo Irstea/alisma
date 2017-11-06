@@ -46,6 +46,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	Hashtable<String, Double> lambertBornes = new Hashtable<String, Double>();
 	GeoTransform geoTransform = new GeoTransform();
 	static Logger logger = Logger.getLogger(Releve_tab1.class);
+	boolean lambertVisible = true;
+	Dimension dimNormal = new Dimension(120, 20), dimLarge = new Dimension(165, 20);
 
 	public Releve_tab1(int pNbUR, Op_controle oc) {
 		nbUR = pNbUR;
@@ -134,14 +136,14 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabelAsValue("ek_nb_robustesse", "", 7, 3, 1);
 			addLabelAsValue("eqr_value", "", 1, 4, 1);
 			addLabelAsValue("classe_etat_libelle", "", 3, 4, 1);
-			addLabelAsValue("robustesse_eqr_value","", 5, 4, 1);
+			addLabelAsValue("robustesse_eqr_value", "", 5, 4, 1);
 			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 4, 1);
 			addCombo("releve_dce", 5, 2, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
 			addHidden("classe_etat_id");
 			addHidden("robustesse_classe_etat_id");
-			addHidden ("uuid");
+			addHidden("uuid");
 			/*
 			 * Champs pour le calcul SEEE
 			 */
@@ -246,7 +248,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
 			setQualityColor("classe_etat_libelle", "classe_etat_id");
 			setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
-			
+
 			if (!data.get("typo_id").equals(""))
 				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
 			/*
@@ -263,30 +265,30 @@ public class Releve_tab1 extends ComposantAlisma {
 			stationSearch(ligneStation.get("cd_station"));
 			stationName = ligneStation.get("station");
 		}
-		
-		void setQualityColor (String field, String level) {
+
+		void setQualityColor(String field, String level) {
 			try {
-			int couleur = Integer.parseInt(this.getData(level));
-			Color color = Color.white;
-			switch(couleur) {
-			case 1:
-				color = Color.blue;
-				break;
-			case 2:
-				color = Color.green;
-				break;
-			case 3:
-				color = Color.yellow;
-				break;
-			case 4:
-				color = Color.orange;
-				break;
-			case 5:
-				color = Color.red;
-			}
-			this.setColorBorder(field, color);
+				int couleur = Integer.parseInt(this.getData(level));
+				Color color = Color.white;
+				switch (couleur) {
+				case 1:
+					color = Color.blue;
+					break;
+				case 2:
+					color = Color.green;
+					break;
+				case 3:
+					color = Color.yellow;
+					break;
+				case 4:
+					color = Color.orange;
+					break;
+				case 5:
+					color = Color.red;
+				}
+				this.setColorBorder(field, color);
 			} catch (Exception e) {
-				
+
 			}
 		}
 
@@ -366,7 +368,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * 
 	 */
 	class PointPrelevement extends ComposantAlisma {
-		boolean lambertVisible = true;
+		Aval aval = new Aval();
+		Amont amont = new Amont();
 
 		// ConvertWgs84ToLambert93 convertCoord = new ConvertWgs84ToLambert93();
 		public PointPrelevement(int pNbUR) {
@@ -377,13 +380,7 @@ public class Releve_tab1 extends ComposantAlisma {
 				lambertVisible = false;
 			addLabel("protocol", 0, 0, null);
 			addLabel("nbUR", 2, 0, null);
-			addLabel("coordXwgs84", 0, 1, null);
-			addLabel("coordYwgs84", 2, 1, null);
-			if (lambertVisible) {
-				addLabel("coordX", 0, 2, null);
-				addLabel("coordY", 2, 2, null);
-			}
-			addLabel("rive", 4, 2, null);
+			addLabel("rive", 4, 0, null);
 			addLabel("longueur", 0, 3, null);
 			addLabel("largeur", 2, 3, null);
 			addLabel("altitude", 4, 3, null);
@@ -398,17 +395,8 @@ public class Releve_tab1 extends ComposantAlisma {
 			addTextField("nbUR", 3, 0, 1);
 			setValue("nbUR", String.valueOf(pNbUR));
 			setFieldDisabled("nbUR");
-			addTextDecimal("wgs84_x", 1, 1, 1);
-			addTextDecimal("wgs84_y", 3, 1, 1);
-			if (lambertVisible)
-				addButton("boutonWgs84", 'C', "calculLambert93", 4, 1, 2);
-			addTextNumeric("coord_x", 1, 2, 1);
-			addTextNumeric("coord_y", 3, 2, 1);
-			if (!lambertVisible) {
-				setFieldVisible("coord_x", false);
-				setFieldVisible("coord_y", false);
-			}
-			addCombo("rive", 5, 2, 1);
+
+			addCombo("rive", 5, 0, 1);
 			addTextDecimal("longueur", 1, 3, 1);
 			addTextDecimal("largeur", 3, 3, 1);
 			addTextNumeric("altitude", 5, 3, 1);
@@ -417,6 +405,11 @@ public class Releve_tab1 extends ComposantAlisma {
 			addCombo("turbidite", 5, 4, 1);
 			addTextArea("observation", 0, 7, 6, 600, 50);
 			addHidden("id_pt_prel");
+			/*
+			 * Ajout des boites de gestion des coordonnees geographiques
+			 */
+			this.addComposant(amont, 0, 1, 6);
+			this.addComposant(aval, 0, 2, 6);
 			/*
 			 * Ajout du contenu des tables de parametres dans les combo
 			 */
@@ -436,17 +429,17 @@ public class Releve_tab1 extends ComposantAlisma {
 			if (pNbUR == 1) {
 				addComboItemList("protocole", new String[] { dbOpControle.params.get("protocole").getValueFromKey(1),
 						dbOpControle.params.get("protocole").getValueFromKey(3) }, true);
-			} else
+			} else {
 				addComboItemList("protocole", dbOpControle.params.get("protocole").getArray(false), false);
+			}
+
 
 			/*
 			 * Definition des tailles par defaut
 			 */
-			Dimension dimNormal = new Dimension(120, 20), dimLarge = new Dimension(165, 20);
+			
 			setDimension("protocole", dimLarge);
 			setDimension("nbUR", dimNormal);
-			setDimension("coord_x", dimLarge);
-			setDimension("coord_y", dimNormal);
 			setDimension("rive", dimNormal);
 			setDimension("longueur", dimLarge);
 			setDimension("largeur", dimNormal);
@@ -458,28 +451,178 @@ public class Releve_tab1 extends ComposantAlisma {
 			 * Definition des champs obligatoire
 			 */
 			setFieldMandatory(new String[] { "protocole", "nbUR" });
-			setFieldNecessary(new String[]{"longueur"});
-			setFieldRecommanded(new String[] {  "largeur", "rive", "hydrologie", "meteo", "turbidite", });
-			/*
+			setFieldNecessary(new String[] { "longueur" });
+			setFieldRecommanded(new String[] { "largeur", "rive", "hydrologie", "meteo", "turbidite", });
+
+		}
+
+
+	class Amont extends ComposantAlisma {
+		public Amont() {
+			setTitle("amont");
+			addLabel("coordXwgs84", 0, 0, null);
+			addLabel("coordYwgs84", 2, 0, null);
+			addTextDecimal("wgs84_x", 1, 0, 1);
+			addTextDecimal("wgs84_y", 3, 0, 1);
+			if (lambertVisible) {
+				addLabel("coordX", 0, 1, null);
+				addLabel("coordY", 2, 1, null);
+				addButton("boutonWgs84", 'C', "calculLambert93", 4, 0, 2);
+				addButton("boutonLambert93", 'W', "calculWgs84", 4, 1, 2);
+			}
+			addTextNumeric("coord_x", 1, 1, 1);
+			addTextNumeric("coord_y", 3, 1, 1);
+			if (!lambertVisible) {
+				setFieldVisible("coord_x", false);
+				setFieldVisible("coord_y", false);
+			}
+			setDimension("coord_x", dimLarge);
+			setDimension("coord_y", dimNormal);
+
+		/*
 			 * Ajout dynamique des champs selon leur niveau defini
 			 */
-			String[] fields = { "coord_x", "coord_y", "wgs84_x", "wgs84_y" };
-			for (String field : fields) {
-				String param = Parametre.fieldsLevel.get(field);
-				switch (param) {
-				case "mandatory":
-					addFieldMandatory(field);
-					break;
-				case "necessary":
-					addFieldNecessary(field);
-					break;
-				case "recommanded":
-					addFieldRecommanded(field);
-					break;
+
+		String[] fields = new String[]  { "coord_x", "coord_y", "wgs84_x", "wgs84_y" } ;
+		for (
+		String field:fields)
+		{
+			String param = Parametre.fieldsLevel.get(field);
+			switch (param) {
+			case "mandatory":
+				addFieldMandatory(field);
+				break;
+			case "necessary":
+				addFieldNecessary(field);
+				break;
+			case "recommanded":
+				addFieldRecommanded(field);
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
+	 */
+	public void setAction() {
+		switch (actionLibelle) {
+
+		case "calculLambert93":
+			if (!getData("wgs84_x").isEmpty() && !getData("wgs84_y").isEmpty()) {
+				try {
+					double[] point = new double[2];
+					point[0] = Double.parseDouble(getData("wgs84_x"));
+					point[1] = Double.parseDouble(getData("wgs84_y"));
+					point = geoTransform.wgs84toLambert93(point);
+					setValue("coord_x", String.valueOf((int) point[0]));
+					setValue("coord_y", String.valueOf((int) point[1]));
+				} catch (Exception e) {
 				}
+			}
+			break;
+		case "calculWgs84":
+			if (!getData("coord_x").isEmpty() && !getData("coord_y").isEmpty()) {
+				try {
+					double[] point = new double[2];
+					point[0] = Double.parseDouble(getData("coord_x"));
+					point[1] = Double.parseDouble(getData("coord_y"));
+					point = geoTransform.lambert93ToWgs84(point);
+					setValue("wgs84_x", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
+					setValue("wgs84_y", String.valueOf((double) Math.round(point[1] *100000)/100000));
+				} catch (Exception e) {
+				}
+			}
+			break;
+		}
+
+		/*
+		 * Repositionnement de la valeur de actionLibelle, pour les autres appels
+		 */
+		actionLibelle = "change";
+
+		super.setAction();
+	}
+	public int validation() {
+		int rep = 0;
+		rep = super.validation();
+		double value;
+		/*
+		 * Teste si les coordonnees lambert sont dans les bonnes valeurs
+		 */
+		if (!getData("coord_x").isEmpty()) {
+			try {
+				value = Double.parseDouble(getData("coord_x"));
+				if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
+					setBordure("coord_x", 2);
+					if (rep < 2)
+						rep = 2;
+				}
+			} catch (Exception e) {
+				setBordure("coord_x", 1);
+				rep = 1;
 			}
 		}
 
+		if (!getData("coord_y").isEmpty()) {
+			try {
+				value = Double.parseDouble(getData("coord_y"));
+				if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
+					setBordure("coord_y", 2);
+					if (rep < 2)
+						rep = 2;
+				}
+			} catch (Exception e) {
+				setBordure("coord_y", 1);
+				rep = 1;
+			}
+		}
+		return rep;
+	}
+
+}
+
+}
+
+class Aval extends ComposantAlisma {
+	public Aval() {
+		setTitle("aval");
+		addLabel("coordXwgs84", 0, 0, null);
+		addLabel("coordYwgs84", 2, 0, null);
+		addTextDecimal("wgs84_x_aval", 1, 0, 1);
+		addTextDecimal("wgs84_y_aval", 3, 0, 1);
+		if (lambertVisible) {
+			addLabel("coordX", 0, 1, null);
+			addLabel("coordY", 2, 1, null);
+			addButton("boutonWgs84", 'C', "calculLambert93", 4, 0, 2);
+			addButton("boutonLambert93", 'W', "calculWgs84", 4, 1, 2);
+		}
+		addTextNumeric("lambert_x_aval", 1, 1, 1);
+		addTextNumeric("lambert_y_aval", 3, 1, 1);
+		if (!lambertVisible) {
+			setFieldVisible("lambert_x_aval", false);
+			setFieldVisible("lambert_y_aval", false);
+		}
+		setDimension("lambert_x_aval", dimLarge);
+		setDimension("lambert_y_aval", dimNormal);
+		String[] fields = new String[]  { "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" } ;
+		for (
+		String field:fields)
+		{
+			String param = Parametre.fieldsLevel.get(field);
+			switch (param) {
+			case "mandatory":
+				addFieldMandatory(field);
+				break;
+			case "necessary":
+				addFieldNecessary(field);
+				break;
+			case "recommanded":
+				addFieldRecommanded(field);
+				break;
+			}
+		}
+	}
 		public int validation() {
 			int rep = 0;
 			rep = super.validation();
@@ -487,7 +630,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			/*
 			 * Teste si les coordonnees lambert sont dans les bonnes valeurs
 			 */
-			if (!getData("coord_x").isEmpty()) {
+			if (!getData("lambert_x_aval").isEmpty()) {
 				try {
 					value = Double.parseDouble(getData("coord_x"));
 					if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
@@ -496,12 +639,12 @@ public class Releve_tab1 extends ComposantAlisma {
 							rep = 2;
 					}
 				} catch (Exception e) {
-					setBordure("coord_x", 1);
+					setBordure("lambert_x_aval", 1);
 					rep = 1;
 				}
 			}
 
-			if (!getData("coord_y").isEmpty()) {
+			if (!getData("lambert_y_aval").isEmpty()) {
 				try {
 					value = Double.parseDouble(getData("coord_y"));
 					if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
@@ -510,39 +653,57 @@ public class Releve_tab1 extends ComposantAlisma {
 							rep = 2;
 					}
 				} catch (Exception e) {
-					setBordure("coord_y", 1);
+					setBordure("lambert_y_aval", 1);
 					rep = 1;
 				}
 			}
 			return rep;
 		}
 
-		/**
-		 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
-		 */
-		public void setAction() {
-			if (actionLibelle == "calculLambert93") {
-				if (!getData("wgs84_x").isEmpty() && !getData("wgs84_y").isEmpty()) {
-					try {
-						double[] point = new double[2];
-						point[0] = Double.parseDouble(getData("wgs84_x"));
-						point[1] = Double.parseDouble(getData("wgs84_y"));
-						point = geoTransform.wgs84toLambert93(point);
-						setValue("coord_x", String.valueOf((int) point[0]));
-						setValue("coord_y", String.valueOf((int) point[1]));
-					} catch (Exception e) {
-					}
-				}
+	/**
+	 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
+	 */
+	public void setAction() {
+		switch (actionLibelle) {
 
-				/*
-				 * Repositionnement de la valeur de actionLibelle, pour les
-				 * autres appels
-				 */
-				actionLibelle = "change";
+		case "calculLambert93":
+			if (!getData("wgs84_x_aval").isEmpty() && !getData("wgs84_y_aval").isEmpty()) {
+				try {
+					double[] point = new double[2];
+					point[0] = Double.parseDouble(getData("wgs84_x_aval"));
+					point[1] = Double.parseDouble(getData("wgs84_y_aval"));
+					point = geoTransform.wgs84toLambert93(point);
+					setValue("lambert_x_aval", String.valueOf((int) point[0]));
+					setValue("lambert_y_aval", String.valueOf((int) point[1]));
+				} catch (Exception e) {
+				}
 			}
-			super.setAction();
+			break;
+		case "calculWgs84":
+			if (!getData("lambert_x_aval").isEmpty() && !getData("lambert_y_aval").isEmpty()) {
+				try {
+					double[] point = new double[2];
+					point[0] = Double.parseDouble(getData("lambert_x_aval"));
+					point[1] = Double.parseDouble(getData("lambert_y_aval"));
+					point = geoTransform.lambert93ToWgs84(point);
+					setValue("wgs84_x_aval", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
+					setValue("wgs84_y_aval", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
+				} catch (Exception e) {
+				}
+			}
+			break;
 		}
+
+		/*
+		 * Repositionnement de la valeur de actionLibelle, pour les autres appels
+		 */
+		actionLibelle = "change";
+
+		super.setAction();
 	}
+}
+
+	
 
 	/**
 	 * Mise a jour du statut du dossier
@@ -604,18 +765,18 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @param string
 	 *            maxTaxon
 	 */
-//	public void setDataCalcul(double ibmr, double robustesse, String maxTaxon, double nbEKmax, double eqr, double robustesseEqr) {
-		public void setDataCalcul(Hashtable<String, String> data) {
-			String [] fields = {"ibmr_value", "robustesse_value", "taxon_robustesse",
-					"ek_nb_robustesse", "eqr_value", "robustesse_eqr_value", "classe_etat_libelle",
-					"robustesse_classe_etat_libelle","classe_etat_id","robustesse_classe_etat_id"
-			};
-			for (String field : fields) {
-				general.setValue(field, data.get(field));
-				general.setQualityColor("classe_etat_libelle", "classe_etat_id");
-				general.setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
+	// public void setDataCalcul(double ibmr, double robustesse, String maxTaxon,
+	// double nbEKmax, double eqr, double robustesseEqr) {
+	public void setDataCalcul(Hashtable<String, String> data) {
+		String[] fields = { "ibmr_value", "robustesse_value", "taxon_robustesse", "ek_nb_robustesse", "eqr_value",
+				"robustesse_eqr_value", "classe_etat_libelle", "robustesse_classe_etat_libelle", "classe_etat_id",
+				"robustesse_classe_etat_id" };
+		for (String field : fields) {
+			general.setValue(field, data.get(field));
+			general.setQualityColor("classe_etat_libelle", "classe_etat_id");
+			general.setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
 
-			}
+		}
 	}
 
 	/**

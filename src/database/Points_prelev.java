@@ -17,7 +17,8 @@ public class Points_prelev extends DbObject {
 		setStringList(new String[] {});
 		setNumericList(new String [] {"coord_x", "coord_y", 
 				"altitude", "longueur", "largeur", "id_station",
-				"wgs84_x", "wgs84_y"});
+				"wgs84_x", "wgs84_y", 
+				"lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval"});
 	}
 
 	/**
