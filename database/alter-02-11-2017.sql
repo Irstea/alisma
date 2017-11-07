@@ -64,3 +64,24 @@ ALTER TABLE points_prelev ADD COLUMN lambert_x_aval INT  COMMENT 'Coordonnée x 
 ALTER TABLE points_prelev ADD COLUMN lambert_y_aval INT  COMMENT 'Coordonnée Y du point aval, en Lambert 93';
 ALTER TABLE points_prelev ADD COLUMN wgs84_x_aval VARCHAR(20)  COMMENT 'Coordonnée X du point aval, en WGS84';
 ALTER TABLE points_prelev ADD COLUMN wgs84_y_aval VARCHAR(20)  COMMENT 'Coordonnée Y du point aval, en WGS84';
+
+
+insert into rive (rive_id, rive_libelle) values 
+(3, 'Amont milieu rive'),
+(4, 'Aval rive droite'),
+(5, 'Aval rive gauche'),
+(6, 'Aval milieu rive');
+update op_controle set rive_id = 3 where rive_id = 1;
+update op_controle set rive_id = 1 where rive_id = 2;
+update op_controle set rive_id = 2 where rive_id = 3;
+update rive set rive_libelle = 'Amont rive droite' where rive_id = 1;
+update rive set rive_libelle = 'Amont rive gauche' where rive_id = 2;
+
+insert into turbidite (turbidite_id, turbidite_libelle) values (4, 'forte');
+update turbidite set turbidite_libelle = 'moyenne' where turbidite_id = 3;
+update turbidite set turbidite_libelle = 'faible' where turbidite_id = 2;
+update turbidite set turbidite_libelle = 'nulle' where turbidite_id = 1;
+
+update op_controle set turbidite_id = 4 where turbidite_id = 3;
+update op_controle set turbidite_id = 3 where turbidite_id = 2;
+update op_controle set turbidite_id = 2 where turbidite_id = 1;
