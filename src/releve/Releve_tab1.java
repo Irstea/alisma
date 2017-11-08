@@ -582,6 +582,17 @@ public class Releve_tab1 extends ComposantAlisma {
 
 }
 
+	/**
+	 * Retourne la liste de toutes les donnees du composant
+	 * @return Hashtable<String, String>
+	 */
+	public Hashtable<String, String> getDataGlobal() {
+		Hashtable<String, String> data;
+		data = hashtableFusionner(this.getData(), amont.getData());
+		data = hashtableFusionner(data, aval.getData());
+		return data;
+	}
+
 }
 
 class Aval extends ComposantAlisma {
@@ -786,7 +797,7 @@ class Aval extends ComposantAlisma {
 	 */
 	public Hashtable<String, String> getDataGlobal() {
 		Hashtable<String, String> data;
-		data = hashtableFusionner(general.getData(), pointPrelevement.getData());
+		data = hashtableFusionner(general.getData(), pointPrelevement.getDataGlobal());
 		return data;
 	}
 
