@@ -7,6 +7,8 @@ import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author quinton
  * 
@@ -16,6 +18,7 @@ import javax.swing.JTextField;
 public class NumericVerifier extends InputVerifier {
 	public boolean isPourcentage = false;
 	public boolean isDecimal = false;
+	public static Logger logger = Logger.getLogger(NumericVerifier.class);
 
 	@Override
 	public boolean verify(JComponent comp) {
@@ -29,9 +32,23 @@ public class NumericVerifier extends InputVerifier {
 			 */
 			if (isDecimal) {
 				try {
+					/*
+					 * Rercherche si le separateur decimal a ete saisi en virgule
+					 */
+					boolean is_comma = false;
+					if (texte.contains(",")) {
+						logger.debug("initial value : "+texte);
+						texte = texte.replace(",", ".");
+						logger.debug("new value : "+texte);
+						is_comma = true;
+					}
 					double iValue = Double.parseDouble(texte);
-					if (isPourcentage && (iValue < 0 || iValue > 100))
+					if (isPourcentage && (iValue < 0 || iValue > 100)) {
 						isValid = false;
+					}
+					if (is_comma) {
+						jt.setText(texte);
+					}
 				} catch (NumberFormatException e) {
 					isValid = false;
 				}
