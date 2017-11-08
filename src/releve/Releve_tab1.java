@@ -433,11 +433,10 @@ public class Releve_tab1 extends ComposantAlisma {
 				addComboItemList("protocole", dbOpControle.params.get("protocole").getArray(false), false);
 			}
 
-
 			/*
 			 * Definition des tailles par defaut
 			 */
-			
+
 			setDimension("protocole", dimLarge);
 			setDimension("nbUR", dimNormal);
 			setDimension("rive", dimNormal);
@@ -456,7 +455,33 @@ public class Releve_tab1 extends ComposantAlisma {
 
 		}
 
+		
+		/**
+		 * Retourne la liste de toutes les donnees du composant
+		 * 
+		 * @return Hashtable<String, String>
+		 */
+		public Hashtable<String, String> getDataGlobal() {
+			Hashtable<String, String> data;
+			data = hashtableFusionner(this.getData(), amont.getData());
+			data = hashtableFusionner(data, aval.getData());
+			return data;
+		}
 
+		public void setDataGlobal(Hashtable<String, String> data) {
+			this.setData(data);
+			amont.setData(data);
+			aval.setData(data);
+
+		}
+
+	}
+
+	/**
+	 * Saisie des coordonnees geographiques du point amont
+	 * @author quinton
+	 *
+	 */
 	class Amont extends ComposantAlisma {
 		public Amont() {
 			setTitle("amont");
@@ -479,161 +504,152 @@ public class Releve_tab1 extends ComposantAlisma {
 			setDimension("coord_x", dimLarge);
 			setDimension("coord_y", dimNormal);
 
-		/*
+			/*
 			 * Ajout dynamique des champs selon leur niveau defini
 			 */
 
-		String[] fields = new String[]  { "coord_x", "coord_y", "wgs84_x", "wgs84_y" } ;
-		for (
-		String field:fields)
-		{
-			String param = Parametre.fieldsLevel.get(field);
-			switch (param) {
-			case "mandatory":
-				addFieldMandatory(field);
-				break;
-			case "necessary":
-				addFieldNecessary(field);
-				break;
-			case "recommanded":
-				addFieldRecommanded(field);
-				break;
+			String[] fields = new String[] { "coord_x", "coord_y", "wgs84_x", "wgs84_y" };
+			for (String field : fields) {
+				String param = Parametre.fieldsLevel.get(field);
+				switch (param) {
+				case "mandatory":
+					addFieldMandatory(field);
+					break;
+				case "necessary":
+					addFieldNecessary(field);
+					break;
+				case "recommanded":
+					addFieldRecommanded(field);
+					break;
+				}
 			}
 		}
+
+		/**
+		 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
+		 */
+		public void setAction() {
+			switch (actionLibelle) {
+
+			case "calculLambert93":
+				if (!getData("wgs84_x").isEmpty() && !getData("wgs84_y").isEmpty()) {
+					try {
+						double[] point = new double[2];
+						point[0] = Double.parseDouble(getData("wgs84_x"));
+						point[1] = Double.parseDouble(getData("wgs84_y"));
+						point = geoTransform.wgs84toLambert93(point);
+						setValue("coord_x", String.valueOf((int) point[0]));
+						setValue("coord_y", String.valueOf((int) point[1]));
+					} catch (Exception e) {
+					}
+				}
+				break;
+			case "calculWgs84":
+				if (!getData("coord_x").isEmpty() && !getData("coord_y").isEmpty()) {
+					try {
+						double[] point = new double[2];
+						point[0] = Double.parseDouble(getData("coord_x"));
+						point[1] = Double.parseDouble(getData("coord_y"));
+						point = geoTransform.lambert93ToWgs84(point);
+						setValue("wgs84_x", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
+						setValue("wgs84_y", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
+					} catch (Exception e) {
+					}
+				}
+				break;
+			}
+
+			/*
+			 * Repositionnement de la valeur de actionLibelle, pour les autres appels
+			 */
+			actionLibelle = "change";
+
+			super.setAction();
+		}
+
+		public int validation() {
+			int rep = 0;
+			rep = super.validation();
+			double value;
+			/*
+			 * Teste si les coordonnees lambert sont dans les bonnes valeurs
+			 */
+			if (!getData("coord_x").isEmpty()) {
+				try {
+					value = Double.parseDouble(getData("coord_x"));
+					if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
+						setBordure("coord_x", 2);
+						if (rep < 2)
+							rep = 2;
+					}
+				} catch (Exception e) {
+					setBordure("coord_x", 1);
+					rep = 1;
+				}
+			}
+
+			if (!getData("coord_y").isEmpty()) {
+				try {
+					value = Double.parseDouble(getData("coord_y"));
+					if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
+						setBordure("coord_y", 2);
+						if (rep < 2)
+							rep = 2;
+					}
+				} catch (Exception e) {
+					setBordure("coord_y", 1);
+					rep = 1;
+				}
+			}
+			return rep;
+		}
+
 	}
 
 	/**
-	 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
+	 * Saisies des coordonnees geographiques du point aval
+	 * 
+	 * @author quinton
+	 *
 	 */
-	public void setAction() {
-		switch (actionLibelle) {
-
-		case "calculLambert93":
-			if (!getData("wgs84_x").isEmpty() && !getData("wgs84_y").isEmpty()) {
-				try {
-					double[] point = new double[2];
-					point[0] = Double.parseDouble(getData("wgs84_x"));
-					point[1] = Double.parseDouble(getData("wgs84_y"));
-					point = geoTransform.wgs84toLambert93(point);
-					setValue("coord_x", String.valueOf((int) point[0]));
-					setValue("coord_y", String.valueOf((int) point[1]));
-				} catch (Exception e) {
+	class Aval extends ComposantAlisma {
+		public Aval() {
+			setTitle("aval");
+			addLabel("coordXwgs84", 0, 0, null);
+			addLabel("coordYwgs84", 2, 0, null);
+			addTextDecimal("wgs84_x_aval", 1, 0, 1);
+			addTextDecimal("wgs84_y_aval", 3, 0, 1);
+			if (lambertVisible) {
+				addLabel("coordX", 0, 1, null);
+				addLabel("coordY", 2, 1, null);
+				addButton("boutonWgs84", 'C', "calculLambert93", 4, 0, 2);
+				addButton("boutonLambert93", 'W', "calculWgs84", 4, 1, 2);
+			}
+			addTextNumeric("lambert_x_aval", 1, 1, 1);
+			addTextNumeric("lambert_y_aval", 3, 1, 1);
+			if (!lambertVisible) {
+				setFieldVisible("lambert_x_aval", false);
+				setFieldVisible("lambert_y_aval", false);
+			}
+			setDimension("lambert_x_aval", dimLarge);
+			setDimension("lambert_y_aval", dimNormal);
+			String[] fields = new String[] { "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" };
+			for (String field : fields) {
+				String param = Parametre.fieldsLevel.get(field);
+				switch (param) {
+				case "mandatory":
+					addFieldMandatory(field);
+					break;
+				case "necessary":
+					addFieldNecessary(field);
+					break;
+				case "recommanded":
+					addFieldRecommanded(field);
+					break;
 				}
 			}
-			break;
-		case "calculWgs84":
-			if (!getData("coord_x").isEmpty() && !getData("coord_y").isEmpty()) {
-				try {
-					double[] point = new double[2];
-					point[0] = Double.parseDouble(getData("coord_x"));
-					point[1] = Double.parseDouble(getData("coord_y"));
-					point = geoTransform.lambert93ToWgs84(point);
-					setValue("wgs84_x", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
-					setValue("wgs84_y", String.valueOf((double) Math.round(point[1] *100000)/100000));
-				} catch (Exception e) {
-				}
-			}
-			break;
 		}
 
-		/*
-		 * Repositionnement de la valeur de actionLibelle, pour les autres appels
-		 */
-		actionLibelle = "change";
-
-		super.setAction();
-	}
-	public int validation() {
-		int rep = 0;
-		rep = super.validation();
-		double value;
-		/*
-		 * Teste si les coordonnees lambert sont dans les bonnes valeurs
-		 */
-		if (!getData("coord_x").isEmpty()) {
-			try {
-				value = Double.parseDouble(getData("coord_x"));
-				if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
-					setBordure("coord_x", 2);
-					if (rep < 2)
-						rep = 2;
-				}
-			} catch (Exception e) {
-				setBordure("coord_x", 1);
-				rep = 1;
-			}
-		}
-
-		if (!getData("coord_y").isEmpty()) {
-			try {
-				value = Double.parseDouble(getData("coord_y"));
-				if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
-					setBordure("coord_y", 2);
-					if (rep < 2)
-						rep = 2;
-				}
-			} catch (Exception e) {
-				setBordure("coord_y", 1);
-				rep = 1;
-			}
-		}
-		return rep;
-	}
-
-}
-
-	/**
-	 * Retourne la liste de toutes les donnees du composant
-	 * @return Hashtable<String, String>
-	 */
-	public Hashtable<String, String> getDataGlobal() {
-		Hashtable<String, String> data;
-		data = hashtableFusionner(this.getData(), amont.getData());
-		data = hashtableFusionner(data, aval.getData());
-		return data;
-	}
-
-}
-
-class Aval extends ComposantAlisma {
-	public Aval() {
-		setTitle("aval");
-		addLabel("coordXwgs84", 0, 0, null);
-		addLabel("coordYwgs84", 2, 0, null);
-		addTextDecimal("wgs84_x_aval", 1, 0, 1);
-		addTextDecimal("wgs84_y_aval", 3, 0, 1);
-		if (lambertVisible) {
-			addLabel("coordX", 0, 1, null);
-			addLabel("coordY", 2, 1, null);
-			addButton("boutonWgs84", 'C', "calculLambert93", 4, 0, 2);
-			addButton("boutonLambert93", 'W', "calculWgs84", 4, 1, 2);
-		}
-		addTextNumeric("lambert_x_aval", 1, 1, 1);
-		addTextNumeric("lambert_y_aval", 3, 1, 1);
-		if (!lambertVisible) {
-			setFieldVisible("lambert_x_aval", false);
-			setFieldVisible("lambert_y_aval", false);
-		}
-		setDimension("lambert_x_aval", dimLarge);
-		setDimension("lambert_y_aval", dimNormal);
-		String[] fields = new String[]  { "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" } ;
-		for (
-		String field:fields)
-		{
-			String param = Parametre.fieldsLevel.get(field);
-			switch (param) {
-			case "mandatory":
-				addFieldMandatory(field);
-				break;
-			case "necessary":
-				addFieldNecessary(field);
-				break;
-			case "recommanded":
-				addFieldRecommanded(field);
-				break;
-			}
-		}
-	}
 		public int validation() {
 			int rep = 0;
 			rep = super.validation();
@@ -671,50 +687,48 @@ class Aval extends ComposantAlisma {
 			return rep;
 		}
 
-	/**
-	 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
-	 */
-	public void setAction() {
-		switch (actionLibelle) {
-
-		case "calculLambert93":
-			if (!getData("wgs84_x_aval").isEmpty() && !getData("wgs84_y_aval").isEmpty()) {
-				try {
-					double[] point = new double[2];
-					point[0] = Double.parseDouble(getData("wgs84_x_aval"));
-					point[1] = Double.parseDouble(getData("wgs84_y_aval"));
-					point = geoTransform.wgs84toLambert93(point);
-					setValue("lambert_x_aval", String.valueOf((int) point[0]));
-					setValue("lambert_y_aval", String.valueOf((int) point[1]));
-				} catch (Exception e) {
-				}
-			}
-			break;
-		case "calculWgs84":
-			if (!getData("lambert_x_aval").isEmpty() && !getData("lambert_y_aval").isEmpty()) {
-				try {
-					double[] point = new double[2];
-					point[0] = Double.parseDouble(getData("lambert_x_aval"));
-					point[1] = Double.parseDouble(getData("lambert_y_aval"));
-					point = geoTransform.lambert93ToWgs84(point);
-					setValue("wgs84_x_aval", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
-					setValue("wgs84_y_aval", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
-				} catch (Exception e) {
-				}
-			}
-			break;
-		}
-
-		/*
-		 * Repositionnement de la valeur de actionLibelle, pour les autres appels
+		/**
+		 * Surcharge de setAction pour lancer le calcul des coordonnees Lambert
 		 */
-		actionLibelle = "change";
+		public void setAction() {
+			switch (actionLibelle) {
 
-		super.setAction();
+			case "calculLambert93":
+				if (!getData("wgs84_x_aval").isEmpty() && !getData("wgs84_y_aval").isEmpty()) {
+					try {
+						double[] point = new double[2];
+						point[0] = Double.parseDouble(getData("wgs84_x_aval"));
+						point[1] = Double.parseDouble(getData("wgs84_y_aval"));
+						point = geoTransform.wgs84toLambert93(point);
+						setValue("lambert_x_aval", String.valueOf((int) point[0]));
+						setValue("lambert_y_aval", String.valueOf((int) point[1]));
+					} catch (Exception e) {
+					}
+				}
+				break;
+			case "calculWgs84":
+				if (!getData("lambert_x_aval").isEmpty() && !getData("lambert_y_aval").isEmpty()) {
+					try {
+						double[] point = new double[2];
+						point[0] = Double.parseDouble(getData("lambert_x_aval"));
+						point[1] = Double.parseDouble(getData("lambert_y_aval"));
+						point = geoTransform.lambert93ToWgs84(point);
+						setValue("wgs84_x_aval", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
+						setValue("wgs84_y_aval", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
+					} catch (Exception e) {
+					}
+				}
+				break;
+			}
+
+			/*
+			 * Repositionnement de la valeur de actionLibelle, pour les autres appels
+			 */
+			actionLibelle = "change";
+
+			super.setAction();
+		}
 	}
-}
-
-	
 
 	/**
 	 * Mise a jour du statut du dossier
@@ -817,7 +831,7 @@ class Aval extends ComposantAlisma {
 	 */
 	public void setDataGlobal(Hashtable<String, String> data) {
 		general.setData(data);
-		pointPrelevement.setData(data);
+		pointPrelevement.setDataGlobal(data);
 		setStatut(Integer.parseInt(data.get("id_statut")));
 	}
 

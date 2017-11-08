@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -47,7 +49,6 @@ public class Releve_tab3 extends ComposantAlisma {
 	public Coef coef = new Coef();
 	int nbUR = 2;
 
-
 	public Releve_tab3(int pnbUR, Unite_releves fur) {
 		obj = this;
 		nbUR = pnbUR;
@@ -77,12 +78,10 @@ public class Releve_tab3 extends ComposantAlisma {
 		}
 
 		vl1.setDimensionDefault(dimLabel);
-		vl1.addLabelList(new String[] { "pc_veg", "periph", "flottante",
-				"immerg", "helophytes" }, 0, 0);
+		vl1.addLabelList(new String[] { "pc_veg", "periph", "flottante", "immerg", "helophytes" }, 0, 0);
 		vegetalBox.addComposant(vl1, 0, 1);
 		vl2.setDimensionDefault(dimLabel);
-		vl2.addLabelList(new String[] { "heterotro", "algues", "pcbryo",
-				"pterido", "phanero" }, 0, 0);
+		vl2.addLabelList(new String[] { "heterotro", "algues", "pcbryo", "pterido", "phanero" }, 0, 0);
 		vegetalBox.addComposant(vl2, 3, 1);
 
 		/*
@@ -158,23 +157,24 @@ public class Releve_tab3 extends ComposantAlisma {
 	/**
 	 * Met a jour les donnees issues du calcul de l'indice
 	 * 
-	 * @param double ibmr
-	 * @param double robustesse
+	 * @param double
+	 *            ibmr
+	 * @param double
+	 *            robustesse
 	 * @param string
 	 *            maxTaxon
 	 */
 	public void setDataCalcul(Hashtable<String, String> data) {
-		String [] fields = {"ibmr_value", "robustesse_value", "taxon_robustesse"};
+		String[] fields = { "ibmr_value", "robustesse_value", "taxon_robustesse" };
 		try {
-		for (String field : fields)
-			indice.setValue(field, data.get(field));
-		Double ibmr = Double.parseDouble(data.get("ibmr_value"));
-		Double robustesse = Double.parseDouble(data.get("robustesse_value"));
-		indice.setValue("nivTroph", getNiveauTrophique(ibmr));
-		indice.setValue("nivTrophRob", getNiveauTrophique(robustesse));
-		indice.setValue("niveau_trophique_id", getIdNiveauTrophique(ibmr));
-		indice.setValue("robustesse_niveau_trophique_id",
-				getIdNiveauTrophique(robustesse));
+			for (String field : fields)
+				indice.setValue(field, data.get(field));
+			Double ibmr = Double.parseDouble(data.get("ibmr_value"));
+			Double robustesse = Double.parseDouble(data.get("robustesse_value"));
+			indice.setValue("nivTroph", getNiveauTrophique(ibmr));
+			indice.setValue("nivTrophRob", getNiveauTrophique(robustesse));
+			indice.setValue("niveau_trophique_id", getIdNiveauTrophique(ibmr));
+			indice.setValue("robustesse_niveau_trophique_id", getIdNiveauTrophique(robustesse));
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 		}
@@ -182,8 +182,8 @@ public class Releve_tab3 extends ComposantAlisma {
 	}
 
 	/**
-	 * Calcul des donnees affichees dans le tableau des resultats, hormis
-	 * l'indice, et mise a jour des donnees dans les tableaux
+	 * Calcul des donnees affichees dans le tableau des resultats, hormis l'indice,
+	 * et mise a jour des donnees dans les tableaux
 	 */
 	public void calculIndicateurs() {
 		Hashtable<String, Double> cs = new Hashtable<String, Double>();
@@ -280,8 +280,7 @@ public class Releve_tab3 extends ComposantAlisma {
 			 * Nbre de taxons contributifs
 			 */
 
-			if (!data.get("cote_spe").isEmpty()
-					|| !data.get("coef_steno").isEmpty())
+			if (!data.get("cote_spe").isEmpty() || !data.get("coef_steno").isEmpty())
 				taxons.put("contrib", taxons.get("contrib") + 1);
 			/*
 			 * Nbre de taxons par coef steno
@@ -289,8 +288,7 @@ public class Releve_tab3 extends ComposantAlisma {
 			if (!data.get("coef_steno").isEmpty()) {
 				valString = data.get("coef_steno");
 				try {
-					taxons.put("steno" + valString,
-							taxons.get("steno" + valString) + 1);
+					taxons.put("steno" + valString, taxons.get("steno" + valString) + 1);
 				} catch (Exception e) {
 				}
 			}
@@ -337,8 +335,7 @@ public class Releve_tab3 extends ComposantAlisma {
 	 * @param value
 	 * @return Hashtable<String, Double>
 	 */
-	Hashtable<String, Double> coefPopulate(Hashtable<String, Double> coef,
-			Double value) {
+	Hashtable<String, Double> coefPopulate(Hashtable<String, Double> coef, Double value) {
 		coef.put("nb", coef.get("nb") + 1);
 		coef.put("total", coef.get("total") + value);
 		if (value < coef.get("min"))
@@ -433,8 +430,7 @@ public class Releve_tab3 extends ComposantAlisma {
 		public VegeGauche() {
 			addTextPourcentageDecimal("pc_vegetalisation", 0, 0, 1);
 			addCombo("periphyton", 0, 1, 1, false);
-			addComboItemList("periphyton", ur.params.get("periphyton")
-					.getArray(), false);
+			addComboItemList("periphyton", ur.params.get("periphyton").getArray(), false);
 			addTextPourcentage("pc_flottante", 0, 2, 1);
 			addTextPourcentage("pc_immerg", 0, 3, 1);
 			addTextPourcentage("pc_helophyte", 0, 4, 1);
@@ -614,6 +610,24 @@ public class Releve_tab3 extends ComposantAlisma {
 			addLigne = new JButton(Langue.getString("ajouter"));
 			addLigne.setPreferredSize(new Dimension(90, 20));
 			addLigne.addActionListener(al_addligne);
+			addLigne.addKeyListener(new KeyListener() {
+
+				@Override
+				public void keyPressed(KeyEvent e) {
+				}
+
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+						insertLine();
+					}
+				}
+
+				@Override
+				public void keyTyped(KeyEvent e) {
+
+				}
+			});
 			addLigne.setEnabled(false);
 			gbc.gridx = 10;
 			gbc.gridy = 0;
@@ -693,28 +707,32 @@ public class Releve_tab3 extends ComposantAlisma {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Hashtable<String, String> data = new Hashtable<String, String>();
-					data.put("id_taxon", cd_taxon);
-					data.put("cf", obj.getData("cf"));
-					data.put("pc_ur1", obj.getData("pc_ur1"));
-					if (nbUR == 2) {
-						data.put("pc_ur2", obj.getData("pc_ur2"));
-					} else {
-						data.put("pc_ur2", "");
-					}
-					data.put("id_ligne_op_controle", "-1");
-					/*
-					 * Ajout de la ligne dans la table
-					 */
-					cTable.addLigne(data);
-					/*
-					 * Reinitialise la ligne de saisie
-					 */
-					reset();
+					insertLine();
 				}
 			};
+
 		}
 
+		void insertLine() {
+			Hashtable<String, String> data = new Hashtable<String, String>();
+			data.put("id_taxon", cd_taxon);
+			data.put("cf", obj.getData("cf"));
+			data.put("pc_ur1", obj.getData("pc_ur1"));
+			if (nbUR == 2) {
+				data.put("pc_ur2", obj.getData("pc_ur2"));
+			} else {
+				data.put("pc_ur2", "");
+			}
+			data.put("id_ligne_op_controle", "-1");
+			/*
+			 * Ajout de la ligne dans la table
+			 */
+			cTable.addLigne(data);
+			/*
+			 * Reinitialise la ligne de saisie
+			 */
+			reset();
+		}
 
 		/**
 		 * Reintialise la ligne de saisie
@@ -754,8 +772,7 @@ public class Releve_tab3 extends ComposantAlisma {
 				/*
 				 * Recuperation du nom du taxon
 				 */
-				Hashtable<String, String> ligne = taxonViewDb
-						.getFirstFromCd(id);
+				Hashtable<String, String> ligne = taxonViewDb.getFirstFromCd(id);
 				/*
 				 * Suppression de l'ecouteur pour la zone nom
 				 */
@@ -763,8 +780,7 @@ public class Releve_tab3 extends ComposantAlisma {
 				try {
 					if (!ligne.isEmpty()) {
 						/*
-						 * Affectation du nom du taxon et stockage en variable
-						 * globale de classe
+						 * Affectation du nom du taxon et stockage en variable globale de classe
 						 */
 						nom_taxon = ligne.get("nom_taxon");
 						jtf.setText(nom_taxon);
@@ -794,29 +810,26 @@ public class Releve_tab3 extends ComposantAlisma {
 		 */
 		private void setCodeTaxonFromNom() {
 			String nom = obj.getData("nom_taxon");
-			logger.debug("nom_taxon : "+nom);
+			logger.debug("nom_taxon : " + nom);
 			if (!nom.isEmpty()) {
-			JTextField jtfnom = (JTextField) obj.fieldList.get("nom_taxon");
-			JTextField jtfid = (JTextField) obj.fieldList.get("id_taxon");
-			jtfnom.getDocument().removeDocumentListener(dl_nom_taxon);
-			jtfid.getDocument().removeDocumentListener(dl_id_taxon);
+				JTextField jtfnom = (JTextField) obj.fieldList.get("nom_taxon");
+				JTextField jtfid = (JTextField) obj.fieldList.get("id_taxon");
+				jtfnom.getDocument().removeDocumentListener(dl_nom_taxon);
+				jtfid.getDocument().removeDocumentListener(dl_id_taxon);
 
-			
-			/*
-			 * Mise a vide du champ nom
-			 */
-			jtfid.setText(null);
-			
+				/*
+				 * Mise a vide du champ nom
+				 */
+				jtfid.setText(null);
+
 				/*
 				 * Suppression de l'ecouteur pour la zone nom
 				 */
-				Hashtable<String, String> ligne = taxonViewDb
-						.getFirstFromName(nom);
+				Hashtable<String, String> ligne = taxonViewDb.getFirstFromName(nom);
 				try {
 					if (!ligne.isEmpty()) {
 						/*
-						 * Affectation du nom du taxon et stockage en variable
-						 * globale de classe
+						 * Affectation du nom du taxon et stockage en variable globale de classe
 						 */
 						nom_taxon = ligne.get("nom_taxon");
 						cd_taxon = ligne.get("cd_taxon");
@@ -839,8 +852,6 @@ public class Releve_tab3 extends ComposantAlisma {
 				jtfid.getDocument().addDocumentListener(dl_id_taxon);
 
 			}
-
-			
 
 			/*
 			 * Ajoute une ligne dans le tableau
@@ -946,23 +957,19 @@ public class Releve_tab3 extends ComposantAlisma {
 	}
 
 	public void resetDataIbmr() {
-		for (Enumeration<String> keys = indice.fieldList.keys(); keys
-				.hasMoreElements();) {
+		for (Enumeration<String> keys = indice.fieldList.keys(); keys.hasMoreElements();) {
 			String key = keys.nextElement();
 			indice.setValue(key, "");
 		}
-		for (Enumeration<String> keys = coef.fieldList.keys(); keys
-				.hasMoreElements();) {
+		for (Enumeration<String> keys = coef.fieldList.keys(); keys.hasMoreElements();) {
 			String key = keys.nextElement();
 			coef.setValue(key, "");
 		}
-		for (Enumeration<String> keys = groupe.fieldList.keys(); keys
-				.hasMoreElements();) {
+		for (Enumeration<String> keys = groupe.fieldList.keys(); keys.hasMoreElements();) {
 			String key = keys.nextElement();
 			groupe.setValue(key, "");
 		}
-		for (Enumeration<String> keys = taxon.fieldList.keys(); keys
-				.hasMoreElements();) {
+		for (Enumeration<String> keys = taxon.fieldList.keys(); keys.hasMoreElements();) {
 			String key = keys.nextElement();
 			taxon.setValue(key, "");
 		}
