@@ -87,3 +87,6 @@ update op_controle set turbidite_id = 3 where turbidite_id = 2;
 update op_controle set turbidite_id = 2 where turbidite_id = 1;
 
 alter table points_prelev change wgs84_x wgs84_x double, change wgs84_y wgs84_y double, change wgs84_x_aval wgs84_x_aval double, change wgs84_y_aval wgs84_y_aval double;
+
+
+insert into facies_autre_type (facies_autre_type_id, facies_autre_type_libelle) values (9, 'autre');
