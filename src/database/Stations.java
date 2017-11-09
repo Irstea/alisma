@@ -37,10 +37,7 @@ public class Stations extends DbObject {
 	public String getNomRiv(String libelle) {
 		String result = "";
 		String sql = "SELECT cours_eau FROM stations JOIN cours_eau ON stations.id_cours_eau = cours_eau.id_cours_eau "
-				+ "where station = '"
-				+ libelle
-				+ "' or cd_station = '"
-				+ libelle + "'";
+				+ "where station = '" + libelle + "' or cd_station = '" + libelle + "'";
 		try {
 			rs = query.executeQuery(sql);
 			if (rs.next())
@@ -69,7 +66,7 @@ public class Stations extends DbObject {
 	public String getCodeStation(String name) {
 		return readByKey("station", name).get("cd_station");
 	}
-	
+
 	public String getCdStationFromId(String id) {
 		return readByKey("id_station", id).get("cd_station");
 	}
@@ -84,20 +81,18 @@ public class Stations extends DbObject {
 		return readByKey("cd_station", cd).get("station");
 	}
 
-	public List<Hashtable<String,String>> getListStationFromSearch(String search) {
-			String sql = "select id_station, cd_station, station, s.id_cours_eau, cours_eau "
-					+ "from stations s "
-					+ "join cours_eau c on (c.id_cours_eau = s.id_cours_eau) "
-					+ "where upper(cd_station) like upper('%"
-					+ search
-					+ "%') "
-					+ "or upper(station) like upper('%"
-					+ search
-					+ "%') "
-					+ " order by cd_station";
+	public List<Hashtable<String, String>> getListStationFromSearch(String search) {
+		String sql = "select id_station, cd_station, station, s.id_cours_eau, cours_eau " + "from stations s "
+				+ "join cours_eau c on (c.id_cours_eau = s.id_cours_eau) ";
+		if (search.matches("[0-9]+")) {
+			sql += " where cd_station like '" + search + "%'";
+		} else {
+			sql += " where upper(station) like upper('%" + search + "%') ";
+		}
+		sql += " order by cd_station";
 		return executeList(sql);
 	}
-	
+
 	public String[][] searchByName(Hashtable<String, String> param) {
 		String search;
 		try {
@@ -105,18 +100,18 @@ public class Stations extends DbObject {
 		} catch (NullPointerException e) {
 			search = "";
 		}
-		String sql = "select id_station, cd_station, station, cours_eau "
-				+ "from stations s "
+		String sql = "select id_station, cd_station, station, cours_eau " + "from stations s "
 				+ "join cours_eau c on (c.id_cours_eau = s.id_cours_eau) ";
 		try {
-			if (search.length() > 0) {
 
-				sql += " where upper(cd_station) like upper('%"
-				+ search
-				+ "%') "
-				+ "or upper(station) like upper('%"
-				+ search
-				+ "%') ";
+			if (search.length() > 0) {
+				logger.debug("search : " + search);
+				if (search.matches("[0-9]+")) {
+					logger.debug("digit trouve");
+					sql += " where cd_station like '" + search + "%'";
+				} else {
+					sql += " where upper(station) like upper('%" + search + "%') ";
+				}
 			}
 		} catch (NullPointerException e) {
 		}
