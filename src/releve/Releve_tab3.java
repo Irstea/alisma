@@ -641,7 +641,7 @@ public class Releve_tab3 extends ComposantAlisma {
 			addTextField("id_taxon", 1, 0, 1);
 			setDimension("id_taxon", new Dimension(70, 20));
 			addTextField("nom_taxon", 3, 0, 1);
-			setDimension("nom_taxon", new Dimension(150, 20));
+			setDimension("nom_taxon", new Dimension(200, 20));
 			addTextPourcentageDecimal("pc_ur1", 5, 0, 1);
 			setDimension("pc_ur1", dimPcUR);
 			if (nbUR == 2) {
@@ -783,8 +783,9 @@ public class Releve_tab3 extends ComposantAlisma {
 						 * Affectation du nom du taxon et stockage en variable globale de classe
 						 */
 						nom_taxon = ligne.get("nom_taxon");
-						jtf.setText(nom_taxon);
 						cd_taxon = ligne.get("cd_taxon");
+						jtf.setText(cd_taxon+" "+nom_taxon);
+						jtf.setCaretPosition(0);
 						addLigne.setEnabled(true);
 					} else {
 						nom_taxon = "";
