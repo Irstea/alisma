@@ -93,8 +93,9 @@ public class Releve_tab2 extends ComposantAlisma {
 
 		faciesBox.setTitle("typeFacies");
 		faciesLabel.setDimensionDefault(dimLabel);
-		faciesLabel.addLabelList(new String[] { "ch_lotique", "radier", "cascade", "pl_courant", "rapide",
-				"pl_lentique", "mouille", "ch_lentique", "fosse_dissipation", "autreType", "autretypeclass" }, 0, 0);
+		faciesLabel.addLabelList(new String[] { "ch_lentique", "pl_lentique","mouille","fosse_dissipation",
+				"ch_lotique","radier","cascade","pl_courant","rapide",
+				"autreType", "autreTypeClass" }, 0, 0);
 
 		gbc.gridx = 0;
 		faciesBox.addComposant(faciesLabel, gbc);
@@ -322,8 +323,11 @@ public class Releve_tab2 extends ComposantAlisma {
 
 		public Facies() {
 			setDimensionDefault(dimDefault);
-			addComboMesoList(new String[] { "ch_lotique", "radier", "cascade", "pl_courant", "rapide", "pl_lentique",
-					"mouille", "ch_lentique", "fosse_dissipation" });
+
+			addComboMesoList(new String[] { "ch_lentique", "pl_lentique","mouille","fosse_dissipation",
+					"ch_lotique","radier","cascade","pl_courant","rapide"
+					/*,"autreType"*/
+					});
 			/*
 			 * Rajout du champ autreType
 			 */
