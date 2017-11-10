@@ -90,3 +90,5 @@ alter table points_prelev change wgs84_x wgs84_x double, change wgs84_y wgs84_y 
 
 
 insert into facies_autre_type (facies_autre_type_id, facies_autre_type_libelle) values (9, 'autre');
+
+alter table stations add column typo_id integer after id_station, add constraint foreign key (typo_id) references typo(typo_id);
