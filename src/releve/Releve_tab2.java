@@ -142,7 +142,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		ComposantAlisma eclairementBox = new ComposantAlisma(), eclairementLabel = new ComposantAlisma();
 		eclairementBox.setTitle("eclair");
 		eclairementLabel.setDimensionDefault(dimLabel);
-		eclairementLabel.addLabelList(new String[] { "tresOmbr", "ombr", "peuOmbr", "eclair", "tresEcl" }, 0, 0);
+		eclairementLabel.addLabelList(new String[] { "tresOmbr", "ombr", "peuOmbr", "eclaire", "tresEcl" }, 0, 0);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		eclairementBox.addComposant(eclairementLabel, gbc);
