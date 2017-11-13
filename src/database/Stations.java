@@ -3,15 +3,21 @@
  */
 package database;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+
+import com.opencsv.CSVReader;
 
 /**
  * @author quinton
  * 
  */
 public class Stations extends DbObject {
+	String message ;
 
 	public Stations() {
 		init("stations", "id_station", true);
@@ -127,6 +133,56 @@ public class Stations extends DbObject {
 		}
 		return returned;
 
+	}
+	
+
+	public boolean importFromCsv(String filename, char separator) {
+		
+		boolean result = false;
+		/*
+		 * Recuperation de la liste des classes d'etat
+		 */
+		ClasseEtat ce = new ClasseEtat();
+		List<Hashtable<String, String>> celist = ce.getListOrderBy("1");
+		/*
+		 * Recuperation de la liste des cours d'eau
+		 */
+		Cours_Eau riviere = new Cours_Eau();
+		List<Hashtable<String, String>> rivierelist = riviere.getListOrderBy("1");
+		int lrl = rivierelist.size();
+				
+		try {
+			@SuppressWarnings("deprecation")
+			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			String [] ligne;
+			while ((ligne = reader.readNext()) != null) {
+				data.clear();
+				data.put("cd_station", ligne[0]);
+				data.put("station", ligne[1]);
+				data.put("x", ligne[3]);
+				data.put("y", ligne[4]);
+				/*
+				 * Recherche de la riviere
+				 */
+				if (ligne[5].length() > 0) {
+					for (int i = 0; i < lrl; i++) {
+						if (rivierelist.get(i).containsValue(ligne[5])) {
+							data.put("id_cours_eau", rivierelist.get(i).));
+						}
+					}
+				}
+			}
+			reader.close();
+		
+			
+		
+		} catch (FileNotFoundException  e) {
+			message = "Fichier non trouvé";
+		} catch (IOException e) {
+			message = "Impossible de lire le fichier";
+		}
+		
+		return result;
 	}
 
 }
