@@ -396,6 +396,11 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Lecture des lignes de taxons
 			 */
 			tab_3.setDataTaxon(dbLigneControle.readListFromKey("id_op_controle", keyOp));
+		} else {
+			/*
+			 * mise a jour des parametres par defaut
+			 */
+			tab_1.setDefault();
 		}
 		/*
 		 * Lancement d'une validation a vide, pour pre-positionner les bordures

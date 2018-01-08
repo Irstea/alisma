@@ -251,7 +251,7 @@ public class Releve_tab2 extends ComposantAlisma {
 		public General() {
 			setDimensionDefault(dimDefault);
 			addTextPourcentage("pc_ur", 0, 0, 1);
-			addCombo("type_ur", 0, 1, 1, false);
+			addCombo("type_ur", 0, 1, 1, false, new Dimension (200,20));
 			addTextNumeric("longueur_ur", 0, 2, 1);
 			addTextDecimal("largeur_ur", 0, 3, 1);
 			addCombo("facies", 0, 4, 1, false);

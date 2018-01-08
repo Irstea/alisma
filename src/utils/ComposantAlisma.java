@@ -968,7 +968,7 @@ public class ComposantAlisma extends Observable implements Observer {
 	 * @param Z
 	 * @param editable
 	 */
-	public void addCombo(String name, int X, int Y, int Z, boolean editable) {
+	public void addCombo(String name, int X, int Y, int Z, boolean editable, Dimension dim) {
 		JComboBox<Object> combo = new JComboBox<Object>();
 		BoundsPopupMenuListener bpm = new BoundsPopupMenuListener(true, false);
 		combo.addPopupMenuListener(bpm);
@@ -977,9 +977,12 @@ public class ComposantAlisma extends Observable implements Observer {
 		combo.setEditable(editable);
 
 		fieldList.put(name, combo);
-		setDimension(name, dimensionDefault);
+		setDimension(name, dim);
 		gbcSetPos(X, Y, Z);
 		pane.add(fieldList.get(name), gbc);
+	}
+	public void addCombo(String name, int X, int Y, int Z, boolean editable) {
+		addCombo (name, X, Y, Z, editable, dimensionDefault);
 	}
 
 	/**
@@ -1195,10 +1198,14 @@ public class ComposantAlisma extends Observable implements Observer {
 	 * @param Z
 	 */
 	public void addDatePicker(String name, Date pDate, int X, int Y, int Z) {
+	addDatePicker(name, pDate, X, Y, Z, dimensionDefault);
+	}
+	
+	public void addDatePicker (String name, Date pDate, int X, int Y, int Z, Dimension dim) {
 		DatePicker dp = new DatePicker(pDate);
 		dp.addActionListener(actionListener);
 		fieldList.put(name, dp);
-		setDimension(name, dimensionDefault);
+		setDimension(name, dim);
 		gbcSetPos(X, Y, Z);
 		pane.add(fieldList.get(name), gbc);
 	}

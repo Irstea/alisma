@@ -4963,22 +4963,22 @@ C’est une clé étrangère.</remarks>
     <column id="COL1548" populated="true" UUID="34a653cb-210a-4572-92ac-212ba4787fca" autoIncrement="false" autoIncrementSequenceName="op_controle_uuid_seq" defaultValue="" name="uuid" nullable="1" physicalName="uuid" precision="36" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Unique identifier generate by uuid function</remarks>
     </column>
-    <column id="COL1549" populated="true" UUID="ec9df49a-dfba-4162-88ca-53fc8def0749" autoIncrement="false" autoIncrementSequenceName="op_controle_producteur_code_seq" defaultValue="" name="producteur_code" nullable="1" physicalName="producteur_code" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1549" populated="true" UUID="ec9df49a-dfba-4162-88ca-53fc8def0749" autoIncrement="false" autoIncrementSequenceName="op_controle_producteur_code_seq" defaultValue="" name="producteur_code" nullable="1" physicalName="producteur_code" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Code du producteur</remarks>
     </column>
-    <column id="COL1550" populated="true" UUID="4d1946f0-1d4a-4918-8d08-dfb3468d9524" autoIncrement="false" autoIncrementSequenceName="op_controle_producteur_name_seq" defaultValue="" name="producteur_name" nullable="1" physicalName="producteur_name" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1550" populated="true" UUID="4d1946f0-1d4a-4918-8d08-dfb3468d9524" autoIncrement="false" autoIncrementSequenceName="op_controle_producteur_name_seq" defaultValue="" name="producteur_name" nullable="1" physicalName="producteur_name" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Nom du producteur</remarks>
     </column>
-    <column id="COL1551" populated="true" UUID="53699e68-4018-4431-a264-4386ca50a7ab" autoIncrement="false" autoIncrementSequenceName="op_controle_preleveur_code_seq" defaultValue="" name="preleveur_code" nullable="1" physicalName="preleveur_code" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1551" populated="true" UUID="53699e68-4018-4431-a264-4386ca50a7ab" autoIncrement="false" autoIncrementSequenceName="op_controle_preleveur_code_seq" defaultValue="" name="preleveur_code" nullable="1" physicalName="preleveur_code" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Code du préleveur</remarks>
     </column>
-    <column id="COL1552" populated="true" UUID="e4116bfd-e1fc-4ada-99c7-76604f083010" autoIncrement="false" autoIncrementSequenceName="op_controle_preleveur_name_seq" defaultValue="" name="preleveur_name" nullable="1" physicalName="preleveur_name" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1552" populated="true" UUID="e4116bfd-e1fc-4ada-99c7-76604f083010" autoIncrement="false" autoIncrementSequenceName="op_controle_preleveur_name_seq" defaultValue="" name="preleveur_name" nullable="1" physicalName="preleveur_name" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Nom du préleveur</remarks>
     </column>
-    <column id="COL1553" populated="true" UUID="767e711e-edfa-4c2d-80bb-2e716233d3a9" autoIncrement="false" autoIncrementSequenceName="op_controle_determinateur_code_seq" defaultValue="" name="determinateur_code" nullable="1" physicalName="determinateur_code" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1553" populated="true" UUID="767e711e-edfa-4c2d-80bb-2e716233d3a9" autoIncrement="false" autoIncrementSequenceName="op_controle_determinateur_code_seq" defaultValue="" name="determinateur_code" nullable="1" physicalName="determinateur_code" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Code du déterminateur</remarks>
     </column>
-    <column id="COL1554" populated="true" UUID="da3cc06f-2f69-441e-900c-b0f90938f628" autoIncrement="false" autoIncrementSequenceName="op_controle_determinateur_name_seq" defaultValue="" name="determinateur_name" nullable="1" physicalName="determinateur_name" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1554" populated="true" UUID="da3cc06f-2f69-441e-900c-b0f90938f628" autoIncrement="false" autoIncrementSequenceName="op_controle_determinateur_name_seq" defaultValue="" name="determinateur_name" nullable="1" physicalName="determinateur_name" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Nom du déterminateur</remarks>
     </column>
     </folder>

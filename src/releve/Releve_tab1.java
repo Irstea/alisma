@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 import org.apache.log4j.Logger;
 
@@ -47,7 +48,7 @@ public class Releve_tab1 extends ComposantAlisma {
 	GeoTransform geoTransform = new GeoTransform();
 	static Logger logger = Logger.getLogger(Releve_tab1.class);
 	boolean lambertVisible = true;
-	Dimension dimNormal = new Dimension(120, 20), dimLarge = new Dimension(165, 20);
+	Dimension dimNormal = new Dimension(110, 20), dimLarge = new Dimension(165, 20);
 
 	public Releve_tab1(int pNbUR, Op_controle oc) {
 		nbUR = pNbUR;
@@ -71,6 +72,23 @@ public class Releve_tab1 extends ComposantAlisma {
 		Object generalObj = this;
 		String station_cd_lu, station_id_lu;
 		Typo typo = new Typo();
+		DocumentListener dl_preleveur = new DocumentListener() {
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				determinateurUpdate();
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				determinateurUpdate();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				determinateurUpdate();
+			}
+		};
 
 		public General(int pNbUR) {
 			/*
@@ -100,9 +118,9 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("organisme", 0, 1, null);
 			addLabel("operateur", 2, 1, null);
 			addLabel("producteur", 4, 1, null);
-			addLabel("preleveur", 0, 3, null);
+			addLabel("preleveur", 0, 2, null);
 			addLabel("determinateur", 4, 2, null);
-			
+
 			addLabel("ref", 0, 3, null);
 			addLabel("statut", 2, 3, null);
 			addLabel("releveDce", 4, 3);
@@ -132,12 +150,12 @@ public class Releve_tab1 extends ComposantAlisma {
 			addTextMaxLength50("organisme", 1, 1, 1);
 			addTextMaxLength50("operateur", 3, 1, 1);
 			addTextMaxLength50("producteur_code", 5, 1, 1);
-			addTextMaxLength50("producteur_nom", 6, 1, 1);
+			addTextMaxLength50("producteur_name", 6, 1, 2);
 			addTextMaxLength50("preleveur_code", 1, 2, 1);
-			addTextMaxLength50("preleveur_nom", 2, 2, 2);
-			addTextMaxLength50("determinateur_code", 4, 2, 1);
-			addTextMaxLength50("determinateur_nom", 5, 2, 2);
-			addDatePicker("date_op", new Date(), 7, 3, 1);
+			addTextMaxLength50("preleveur_name", 2, 2, 2);
+			addTextMaxLength50("determinateur_code", 5, 2, 1);
+			addTextMaxLength50("determinateur_name", 6, 2, 2);
+			addDatePicker("date_op", new Date(), 7, 3, 2, new Dimension(120, 20));
 			addTextField("ref_dossier", 1, 3, 1);
 			addLabelAsValue("statut", "", 3, 3, 1);
 			addLabelAsValue("ibmr_value", "", 1, 4, 1);
@@ -148,7 +166,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabelAsValue("classe_etat_libelle", "", 3, 5, 1);
 			addLabelAsValue("robustesse_eqr_value", "", 5, 5, 1);
 			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 5, 1);
-			addCombo("releve_dce", 5, 2, 1);
+			addCombo("releve_dce", 5, 3, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
 			addHidden("classe_etat_id");
@@ -184,7 +202,11 @@ public class Releve_tab1 extends ComposantAlisma {
 					stationSearch(jtf.getText());
 				}
 			});
+			final JTextField prelcode = (JTextField) fieldList.get("preleveur_code");
+			prelcode.getDocument().addDocumentListener(dl_preleveur);
 
+			final JTextField prelname = (JTextField) fieldList.get("preleveur_name");
+			prelname.getDocument().addDocumentListener(dl_preleveur);
 			@SuppressWarnings("unchecked")
 			JComboBox<Object> jcb = (JComboBox<Object>) fieldList.get("station");
 			jcb.addItemListener(new ItemListener() {
@@ -201,7 +223,6 @@ public class Releve_tab1 extends ComposantAlisma {
 						}
 					} else
 						setValue("nom_rv", "");
-
 				}
 			});
 
@@ -224,6 +245,17 @@ public class Releve_tab1 extends ComposantAlisma {
 			 * Mise en place du statut par defaut
 			 */
 			this.setStatut(statut);
+		}
+
+		protected void determinateurUpdate() {
+			JTextField code = (JTextField) fieldList.get("determinateur_code");
+			JTextField name = (JTextField) fieldList.get("determinateur_name");
+			if (code.getText().isEmpty()) {
+				code.setText(((JTextField) fieldList.get("preleveur_code")).getText());
+			}
+			if (name.getText().isEmpty()) {
+				name.setText(((JTextField) fieldList.get("preleveur_name")).getText());
+			}
 		}
 
 		public int validation() {
@@ -250,7 +282,29 @@ public class Releve_tab1 extends ComposantAlisma {
 			return retour;
 		}
 
+		public void setDefault() {
+			JTextField code = (JTextField) fieldList.get("preleveur_code");
+
+			String value = Parametre.others.get("preleveur_code");
+			if (!value.isEmpty()) {
+				code.setText(value);
+				((JTextField) fieldList.get("preleveur_name")).setText(Parametre.others.get("preleveur_name"));
+				/*
+				 * Ajout des valeurs par defaut pour le determinateur
+				 */
+				((JTextField) fieldList.get("determinateur_code")).setText(value);
+				((JTextField) fieldList.get("determinateur_name")).setText(Parametre.others.get("preleveur_name"));
+			}
+
+		}
+
 		public void setData(Hashtable<String, String> data) {
+			/*
+			 * Desactivation des listeners
+			 */
+			((JTextField) fieldList.get("preleveur_code")).getDocument().removeDocumentListener(dl_preleveur);
+			((JTextField) fieldList.get("preleveur_name")).getDocument().removeDocumentListener(dl_preleveur);
+
 			super.setData(data);
 			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
 			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
@@ -274,6 +328,31 @@ public class Releve_tab1 extends ComposantAlisma {
 			Hashtable<String, String> ligneStation = dbStation.readByKey("id_station", data.get("id_station"));
 			stationSearch(ligneStation.get("cd_station"));
 			stationName = ligneStation.get("station");
+			/*
+			 * Preleveur par defaut
+			 */
+			JTextField code = (JTextField) fieldList.get("preleveur_code");
+			if (code.getText().isEmpty()) {
+				String value = Parametre.others.get("preleveur_code");
+				if (!value.isEmpty()) {
+					code.setText(value);
+					((JTextField) fieldList.get("preleveur_name")).setText(Parametre.others.get("preleveur_name"));
+					/*
+					 * Ajout des valeurs par defaut pour le determinateur
+					 */
+					if (((JTextField) fieldList.get("determinateur_code")).getText().isEmpty()) {
+						((JTextField) fieldList.get("determinateur_code")).setText(value);
+						((JTextField) fieldList.get("determinateur_name"))
+								.setText(Parametre.others.get("preleveur_name"));
+					}
+				}
+			}
+			/*
+			 * Reactivation des listeners
+			 */
+			((JTextField) fieldList.get("preleveur_code")).getDocument().addDocumentListener(dl_preleveur);
+			((JTextField) fieldList.get("preleveur_name")).getDocument().addDocumentListener(dl_preleveur);
+
 		}
 
 		void setQualityColor(String field, String level) {
@@ -465,7 +544,6 @@ public class Releve_tab1 extends ComposantAlisma {
 
 		}
 
-		
 		/**
 		 * Retourne la liste de toutes les donnees du composant
 		 * 
@@ -489,6 +567,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 	/**
 	 * Saisie des coordonnees geographiques du point amont
+	 * 
 	 * @author quinton
 	 *
 	 */
@@ -860,5 +939,10 @@ public class Releve_tab1 extends ComposantAlisma {
 
 	public String getIBMRSEEE() {
 		return general.getData("seee_ibmr");
+	}
+
+	public void setDefault() {
+		general.setDefault();
+
 	}
 }
