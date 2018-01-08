@@ -99,23 +99,27 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("typeNat", 6, 0);
 			addLabel("organisme", 0, 1, null);
 			addLabel("operateur", 2, 1, null);
-			addLabel("date", 4, 1, null);
-			addLabel("ref", 0, 2, null);
-			addLabel("statut", 2, 2, null);
-			addLabel("releveDce", 4, 2);
-			addLabel("ibmr", 0, 3);
-			addLabel("robustesse", 2, 3);
-			addLabel("taxonRob", 4, 3);
-			addLabel("nbTaxonEKmax", 6, 3);
-			addLabel("eqr", 0, 4);
-			addLabel("classeEtat", 2, 4);
-			addLabel("eqrRobustesse", 4, 4);
-			addLabel("classeEtat", 6, 4);
-			addLabel("seeeIbmr", 0, 5);
-			addLabel("robustesse", 2, 5);
-			addLabel("taxonRob", 4, 5);
-			addLabel("seeeDate", 0, 6);
-			addLabel("seeeVersion", 2, 6);
+			addLabel("producteur", 4, 1, null);
+			addLabel("preleveur", 0, 3, null);
+			addLabel("determinateur", 4, 2, null);
+			
+			addLabel("ref", 0, 3, null);
+			addLabel("statut", 2, 3, null);
+			addLabel("releveDce", 4, 3);
+			addLabel("date", 6, 3, null);
+			addLabel("ibmr", 0, 4);
+			addLabel("robustesse", 2, 4);
+			addLabel("taxonRob", 4, 4);
+			addLabel("nbTaxonEKmax", 6, 4);
+			addLabel("eqr", 0, 5);
+			addLabel("classeEtat", 2, 5);
+			addLabel("eqrRobustesse", 4, 5);
+			addLabel("classeEtat", 6, 5);
+			addLabel("seeeIbmr", 0, 6);
+			addLabel("robustesse", 2, 6);
+			addLabel("taxonRob", 4, 6);
+			addLabel("seeeDate", 0, 7);
+			addLabel("seeeVersion", 2, 7);
 
 			/*
 			 * Definition des champs
@@ -127,17 +131,23 @@ public class Releve_tab1 extends ComposantAlisma {
 			addComboItemList("typo_id", typo.getArray(true), true);
 			addTextMaxLength50("organisme", 1, 1, 1);
 			addTextMaxLength50("operateur", 3, 1, 1);
-			addDatePicker("date_op", new Date(), 5, 1, 1);
-			addTextField("ref_dossier", 1, 2, 1);
-			addLabelAsValue("statut", "", 3, 2, 1);
-			addLabelAsValue("ibmr_value", "", 1, 3, 1);
-			addLabelAsValue("robustesse_value", "", 3, 3, 1);
-			addLabelAsValue("taxon_robustesse", "", 5, 3, 1);
-			addLabelAsValue("ek_nb_robustesse", "", 7, 3, 1);
-			addLabelAsValue("eqr_value", "", 1, 4, 1);
-			addLabelAsValue("classe_etat_libelle", "", 3, 4, 1);
-			addLabelAsValue("robustesse_eqr_value", "", 5, 4, 1);
-			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 4, 1);
+			addTextMaxLength50("producteur_code", 5, 1, 1);
+			addTextMaxLength50("producteur_nom", 6, 1, 1);
+			addTextMaxLength50("preleveur_code", 1, 2, 1);
+			addTextMaxLength50("preleveur_nom", 2, 2, 2);
+			addTextMaxLength50("determinateur_code", 4, 2, 1);
+			addTextMaxLength50("determinateur_nom", 5, 2, 2);
+			addDatePicker("date_op", new Date(), 7, 3, 1);
+			addTextField("ref_dossier", 1, 3, 1);
+			addLabelAsValue("statut", "", 3, 3, 1);
+			addLabelAsValue("ibmr_value", "", 1, 4, 1);
+			addLabelAsValue("robustesse_value", "", 3, 4, 1);
+			addLabelAsValue("taxon_robustesse", "", 5, 4, 1);
+			addLabelAsValue("ek_nb_robustesse", "", 7, 4, 1);
+			addLabelAsValue("eqr_value", "", 1, 5, 1);
+			addLabelAsValue("classe_etat_libelle", "", 3, 5, 1);
+			addLabelAsValue("robustesse_eqr_value", "", 5, 5, 1);
+			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 5, 1);
 			addCombo("releve_dce", 5, 2, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
@@ -147,11 +157,11 @@ public class Releve_tab1 extends ComposantAlisma {
 			/*
 			 * Champs pour le calcul SEEE
 			 */
-			addLabelAsValue("seee_ibmr", "", 1, 5, 1);
-			addLabelAsValue("seee_robustesse_value", "", 3, 5, 1);
-			addLabelAsValue("seee_taxon_robustesse", "", 5, 5, 1);
-			addLabelAsValue("seee_date", "", 1, 6, 1);
-			addLabelAsValue("seee_version", "", 3, 6, 1);
+			addLabelAsValue("seee_ibmr", "", 1, 6, 1);
+			addLabelAsValue("seee_robustesse_value", "", 3, 6, 1);
+			addLabelAsValue("seee_taxon_robustesse", "", 5, 6, 1);
+			addLabelAsValue("seee_date", "", 1, 7, 1);
+			addLabelAsValue("seee_version", "", 3, 7, 1);
 
 			/*
 			 * Ajout des listeners

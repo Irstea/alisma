@@ -28,7 +28,7 @@ public class Op_controle extends DbObject {
 
 	public Op_controle() {
 		init("op_controle", "id_op_controle", true);
-		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier", "uuid" });
+		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier", "uuid", "producteur_code", "producteur_name", "preleveur_code", "preleveur_name", "determinateur_code", "determinateur_name" });
 		setNumericList(new String[] { "id_pt_prel", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id",
 				"turbidite_id", "releve_dce", "typo_id" });
 		/*
