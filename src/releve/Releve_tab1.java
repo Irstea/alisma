@@ -16,7 +16,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
 
 import org.apache.log4j.Logger;
 
@@ -283,19 +282,19 @@ public class Releve_tab1 extends ComposantAlisma {
 		}
 
 		public void setDefault() {
-			JTextField code = (JTextField) fieldList.get("preleveur_code");
-
-			String value = Parametre.others.get("preleveur_code");
-			if (!value.isEmpty()) {
-				code.setText(value);
-				((JTextField) fieldList.get("preleveur_name")).setText(Parametre.others.get("preleveur_name"));
-				/*
-				 * Ajout des valeurs par defaut pour le determinateur
-				 */
-				((JTextField) fieldList.get("determinateur_code")).setText(value);
-				((JTextField) fieldList.get("determinateur_name")).setText(Parametre.others.get("preleveur_name"));
-			}
-
+			/*
+			 * Recuperation des valeurs par defaut du fichier de parametres
+			 */
+			((JTextField) fieldList.get("preleveur_code")).setText(Parametre.getValue("others", "preleveur_code"));
+			((JTextField) fieldList.get("preleveur_name")).setText(Parametre.getValue("others", "preleveur_name"));
+			((JTextField) fieldList.get("determinateur_code"))
+					.setText(Parametre.getValue("others", "determinateur_code"));
+			((JTextField) fieldList.get("determinateur_name"))
+					.setText(Parametre.getValue("others", "determinateur_name"));
+			((JTextField) fieldList.get("organisme")).setText(Parametre.getValue("others", "organisme"));
+			((JTextField) fieldList.get("operateur")).setText(Parametre.getValue("others", "operateur"));
+			((JTextField) fieldList.get("producteur_code")).setText(Parametre.getValue("others", "producteur_code"));
+			((JTextField) fieldList.get("producteur_name")).setText(Parametre.getValue("others", "producteur_name"));
 		}
 
 		public void setData(Hashtable<String, String> data) {
