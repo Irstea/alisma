@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
@@ -21,7 +20,7 @@ import org.apache.log4j.Logger;
  *         classe contenant les parametres generaux de l'application
  */
 public class Parametre {
-	public static Hashtable<String, String> database = null, language = null, others = null, display = null,
+	private static Hashtable<String, String> database = null, language = null, others = null, display = null,
 			fieldsLevel = null, seee = null;
 	public static Hashtable<String, Hashtable<String, String>> param = new Hashtable<String, Hashtable<String, String>>();
 	public static ImageIcon icone;

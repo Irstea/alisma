@@ -96,7 +96,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			String[] lambertListeBorne = { "lambert93Emin", "lambert93Emax", "lambert93Nmin", "lambert93Nmax" };
 			for (String borne : lambertListeBorne) {
 				try {
-					lambertBornes.put(borne, Double.parseDouble(Parametre.others.get(borne)));
+					lambertBornes.put(borne, Double.parseDouble(Parametre.getValue("others",borne)));
 				} catch (Exception e) {
 					lambertBornes.put(borne, 0.0);
 				}
@@ -332,17 +332,17 @@ public class Releve_tab1 extends ComposantAlisma {
 			 */
 			JTextField code = (JTextField) fieldList.get("preleveur_code");
 			if (code.getText().isEmpty()) {
-				String value = Parametre.others.get("preleveur_code");
+				String value = Parametre.getValue("others","preleveur_code");
 				if (!value.isEmpty()) {
 					code.setText(value);
-					((JTextField) fieldList.get("preleveur_name")).setText(Parametre.others.get("preleveur_name"));
+					((JTextField) fieldList.get("preleveur_name")).setText(Parametre.getValue("others","preleveur_name"));
 					/*
 					 * Ajout des valeurs par defaut pour le determinateur
 					 */
 					if (((JTextField) fieldList.get("determinateur_code")).getText().isEmpty()) {
 						((JTextField) fieldList.get("determinateur_code")).setText(value);
 						((JTextField) fieldList.get("determinateur_name"))
-								.setText(Parametre.others.get("preleveur_name"));
+								.setText(Parametre.getValue("others","preleveur_name"));
 					}
 				}
 			}
@@ -461,7 +461,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 		// ConvertWgs84ToLambert93 convertCoord = new ConvertWgs84ToLambert93();
 		public PointPrelevement(int pNbUR) {
-			String plambert = Parametre.others.get("lambert");
+			String plambert = Parametre.getValue("others","lambert");
 			if (plambert == null)
 				plambert = "false";
 			if (plambert.equals("false"))
@@ -598,7 +598,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 			String[] fields = new String[] { "coord_x", "coord_y", "wgs84_x", "wgs84_y" };
 			for (String field : fields) {
-				String param = Parametre.fieldsLevel.get(field);
+				String param = Parametre.getValue("fieldsLevel",field);
 				switch (param) {
 				case "mandatory":
 					addFieldMandatory(field);
@@ -723,7 +723,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			setDimension("lambert_y_aval", dimNormal);
 			String[] fields = new String[] { "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" };
 			for (String field : fields) {
-				String param = Parametre.fieldsLevel.get(field);
+				String param = Parametre.getValue("fieldsLevel",field);
 				switch (param) {
 				case "mandatory":
 					addFieldMandatory(field);
