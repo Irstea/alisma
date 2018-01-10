@@ -167,7 +167,7 @@ public class Stations extends DbObject {
 				if (ligne[5].length() > 0) {
 					for (int i = 0; i < lrl; i++) {
 						if (rivierelist.get(i).containsValue(ligne[5])) {
-							//data.put("id_cours_eau", rivierelist.get(i));
+							data.put("id_cours_eau", rivierelist.get(i).get("id_cours_eau"));
 						}
 					}
 				}

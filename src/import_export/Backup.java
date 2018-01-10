@@ -35,7 +35,7 @@ public class Backup {
 	SimpleDateFormat dateFormat;
 
 	public Backup() {
-		String df = Parametre.database.get("backupDateFormat");
+		String df = Parametre.getValue("database","backupDateFormat");
 		if (df.isEmpty())
 			df = "dd/MM/yyyy";
 		dateFormat = new SimpleDateFormat(df);
@@ -44,8 +44,8 @@ public class Backup {
 	public boolean isBackupNecessary() {
 		boolean retour = false;
 		try {
-			String chemin = Parametre.database.get("pathFileDateSave");
-			if (!Parametre.database.get("backupDelay").equals("-1")) {
+			String chemin = Parametre.getValue("database","pathFileDateSave");
+			if (!Parametre.getValue("database","backupDelay").equals("-1")) {
 				File f = new File(chemin);
 				if (!f.exists()) {
 					retour = true;
@@ -89,7 +89,7 @@ public class Backup {
 	private Date limiteDate() {
 		GregorianCalendar aujourdhui = new GregorianCalendar();
 		try {
-			Integer delay = new Integer(Parametre.database.get("backupDelay"));
+			Integer delay = new Integer(Parametre.getValue("database","backupDelay"));
 			aujourdhui.add(Calendar.DATE, -delay);
 		} catch (Exception e) {
 			logger.error("Backup", e);
@@ -136,7 +136,7 @@ public class Backup {
 			/*
 			 * Test de l'existence du chemin de sauvegarde
 			 */
-			String folder = Parametre.database.get("pathFolderDataSave");
+			String folder = Parametre.getValue("database","pathFolderDataSave");
 			File folderFile = new File(folder);
 			if (!folderFile.isDirectory()) {
 				JOptionPane.showMessageDialog(null, Langue.getString("folderBackupNotFound") + nl + folder,
@@ -145,7 +145,7 @@ public class Backup {
 				/*
 				 * Preparation du fichier de sauvegarde
 				 */
-				String path = folder + File.separator + Parametre.database.get("backupFileNamePrefix")
+				String path = folder + File.separator + Parametre.getValue("database","backupFileNamePrefix")
 						+ new SimpleDateFormat("_yyyyMMdd" + "_HHmmss").format(new java.util.Date()) + ".sql";
 				f = new File(path);
 
@@ -158,17 +158,17 @@ public class Backup {
 					/*
 					 * Test de l'existence du programme de sauvegarde
 					 */
-					String backupPg = Parametre.database.get("backupProgram");
+					String backupPg = Parametre.getValue("database","backupProgram");
 					File backupPgFile = new File(backupPg);
 					if (!backupPgFile.exists()) {
 						JOptionPane.showMessageDialog(null, Langue.getString("backupSoftwareNotFound") + nl + backupPg,
 								Langue.getString("backup"), JOptionPane.ERROR_MESSAGE);
 					} else {
-						String mysql_cmd = backupPg + " -h " + Parametre.database.get("server") + " -u "
-								+ Parametre.database.get("dbuser");
-						if (!Parametre.database.get("dbpass").isEmpty())
-							mysql_cmd += " -p" + Parametre.database.get("dbpass");
-						mysql_cmd += " --opt " + Parametre.database.get("dbname");
+						String mysql_cmd = backupPg + " -h " + Parametre.getValue("database","server") + " -u "
+								+ Parametre.getValue("database","dbuser");
+						if (!Parametre.getValue("database","dbpass").isEmpty())
+							mysql_cmd += " -p" + Parametre.getValue("database","dbpass");
+						mysql_cmd += " --opt " + Parametre.getValue("database","dbname");
 						logger.info("mysql_cmd");
 						try {
 							Process p = Runtime.getRuntime().exec(mysql_cmd);
@@ -182,7 +182,7 @@ public class Backup {
 							p.destroy();
 							r.close();
 							w.close();
-							writeDate(Parametre.database.get("pathFileDateSave"));
+							writeDate(Parametre.getValue("database","pathFileDateSave"));
 							String mess = "<html>" + Langue.getString("export") + "<ul>";
 							mess += "<li>" + f.getAbsolutePath() + "</li>";
 							mess += "</ul></html>";

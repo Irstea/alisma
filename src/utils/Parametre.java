@@ -123,6 +123,14 @@ public class Parametre {
 	}
 
 	/**
+	 * Retourne une section entiere
+	 * @param section
+	 * @return
+	 */
+	public static Hashtable <String, String> getSection (String section) {
+		return param.get(section);
+	}
+	/**
 	 * Prepare les couleurs
 	 * 
 	 * @param pCouleur

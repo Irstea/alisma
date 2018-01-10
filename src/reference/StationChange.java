@@ -167,16 +167,14 @@ public class StationChange extends JFrameAlisma {
 		/*
 		 * Verification des coordonnees lambert
 		 */
-		String lambert = Parametre.others.get("lambert");
+		String lambert = Parametre.getValue("others","lambert");
 		if (lambert == null)
 			lambert = "false";
 		if (lambert.equals("true")) {
 			try {
 				val = Double.parseDouble(data.get("x"));
-				if (val < Double.parseDouble(Parametre.others
-						.get("lambert93Emin"))
-						|| val > Double.parseDouble(Parametre.others
-								.get("lambert93Emax")))
+				if (val < Double.parseDouble(Parametre.getValue("others","lambert93Emin"))
+						|| val > Double.parseDouble(Parametre.getValue("others","lambert93Emax")))
 					level = 2;
 			} catch (Exception e) {
 				level = 3;
@@ -187,10 +185,8 @@ public class StationChange extends JFrameAlisma {
 			level = 0;
 			try {
 				val = Double.parseDouble(data.get("y"));
-				if (val < Double.parseDouble(Parametre.others
-						.get("lambert93Nmin"))
-						|| val > Double.parseDouble(Parametre.others
-								.get("lambert93Nmax")))
+				if (val < Double.parseDouble(Parametre.getValue("others","lambert93Nmin"))
+						|| val > Double.parseDouble(Parametre.getValue("others","lambert93Nmax")))
 					level = 2;
 			} catch (Exception e) {
 				level = 3;
@@ -240,7 +236,7 @@ public class StationChange extends JFrameAlisma {
 			addFieldMandatory("station");
 			addFieldMandatory("coursEauList");
 			try {
-			if (Parametre.others.get("lambert").equals("true")) {
+			if (Parametre.getValue("others","lambert").equals("true")) {
 				addFieldMandatory("x");
 				addFieldMandatory("y");
 			}

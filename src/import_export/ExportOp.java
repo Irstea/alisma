@@ -193,11 +193,11 @@ public class ExportOp {
 		/*
 		 * Test du dossier d'exportation
 		 */
-		String folderPath = Parametre.others.get("pathFolderExport");
+		String folderPath = Parametre.getValue("others","pathFolderExport");
 		File folder = new File(folderPath);
 		if (folder.isDirectory()) {
 
-			fileName = folderPath + File.separator + Parametre.others.get("exportFileNamePrefix") + scle
+			fileName = folderPath + File.separator + Parametre.getValue("others","exportFileNamePrefix") + scle
 					+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + "." + suffixe;
 			f = new File(fileName);
 
@@ -239,7 +239,7 @@ public class ExportOp {
 	 * dans la premiere etape le fichier XML
 	 */
 	public void exportPdf() {
-		exportPdf(Parametre.others.get("exportFileNamePrefix"));
+		exportPdf(Parametre.getValue("others","exportFileNamePrefix"));
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class ExportOp {
 	 *            racine du nom du fichier exporte
 	 */
 	public void exportPdf(String fileNamePrefix) {
-		String folderPath = Parametre.others.get("pathFolderExport");
+		String folderPath = Parametre.getValue("others","pathFolderExport");
 		File folder = new File(folderPath);
 		if (folder.isDirectory()) {
 			/*
@@ -283,8 +283,8 @@ public class ExportOp {
 				FopFactory fopFactory = FopFactory.newInstance();
 				FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
-				File xsltfile = new File(Parametre.others.get("xsltfile_" + Langue.languageSelect));
-				String fileNamePdf = Parametre.others.get("pathFolderExport") + File.separator + fileNamePrefix
+				File xsltfile = new File(Parametre.getValue("others","xsltfile_" + Langue.languageSelect));
+				String fileNamePdf = Parametre.getValue("others","pathFolderExport") + File.separator + fileNamePrefix
 						+ new SimpleDateFormat("_yyyyMMdd").format(new java.util.Date()) + ".pdf";
 				File pdffile = new File(fileNamePdf);
 				OutputStream out;
@@ -426,22 +426,22 @@ public class ExportOp {
 		String resultat = "";
 		String url, resource, indicateur, version;
 		try {
-			url = Parametre.seee.get("url");
+			url = Parametre.getValue("seee","url");
 		} catch (Exception e) {
 			url = "http://seee.eaufrance.fr";
 		}
 		try {
-			resource = Parametre.seee.get("resourceIbmrCalc");
+			resource = Parametre.getValue("seee","resourceIbmrCalc");
 		} catch (Exception e) {
 			resource = "/api/calcul/";
 		}
 		try {
-			indicateur = Parametre.seee.get("indicator");
+			indicateur = Parametre.getValue("seee","indicator");
 		} catch (Exception e) {
 			indicateur = "IBMR";
 		}
 		try {
-			version = Parametre.seee.get("version");
+			version = Parametre.getValue("seee","version");
 		} catch (Exception e) {
 			version = "1.1.0";
 		}
@@ -450,21 +450,21 @@ public class ExportOp {
 			/*
 			 * Recherche si le passage par un proxy est requis
 			 */
-			if (Parametre.seee.get("proxyEnabled").equals("true")) {
-				logger.debug("seee : interrogation via proxy " + Parametre.seee.get("proxyHost") + ":"
-						+ Parametre.seee.get("proxyPort"));
-				System.setProperty("http.proxyHost", Parametre.seee.get("proxyHost"));
-				System.setProperty("http.proxyPort", Parametre.seee.get("proxyPort"));
-				if (!Parametre.seee.get("proxyUser").isEmpty()) {
+			if (Parametre.getValue("seee","proxyEnabled").equals("true")) {
+				logger.debug("seee : interrogation via proxy " + Parametre.getValue("seee","proxyHost") + ":"
+						+ Parametre.getValue("seee","proxyPort"));
+				System.setProperty("http.proxyHost", Parametre.getValue("seee","proxyHost"));
+				System.setProperty("http.proxyPort", Parametre.getValue("seee","proxyPort"));
+				if (!Parametre.getValue("seee","proxyUser").isEmpty()) {
 					Authenticator.setDefault(new Authenticator() {
 						@Override
 						public PasswordAuthentication getPasswordAuthentication() {
-							return new PasswordAuthentication(Parametre.seee.get("proxyUser"),
-									Parametre.seee.get("proxyPassword").toCharArray());
+							return new PasswordAuthentication(Parametre.getValue("seee","proxyUser"),
+									Parametre.getValue("seee","proxyPassword").toCharArray());
 						}
 					});
-					System.setProperty("http.proxyUser", Parametre.seee.get("proxyUser"));
-					System.setProperty("http.proxyPassword", Parametre.seee.get("proxyPassword"));
+					System.setProperty("http.proxyUser", Parametre.getValue("seee","proxyUser"));
+					System.setProperty("http.proxyPassword", Parametre.getValue("seee","proxyPassword"));
 				}
 			}
 		} catch (Exception e) {

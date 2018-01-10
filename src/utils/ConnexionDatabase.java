@@ -22,7 +22,7 @@ public class ConnexionDatabase {
 	public static String messageConnect ;
 
 	public ConnexionDatabase() {
-		dbParam = Parametre.database;
+		dbParam = Parametre.getSection("database");
 		if (!dbParam.isEmpty()) {
 			if (connection == null) {
 				connect();
@@ -42,7 +42,6 @@ public class ConnexionDatabase {
 				connect();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;

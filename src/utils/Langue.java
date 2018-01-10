@@ -33,7 +33,7 @@ public class Langue {
 	 * Initialisation de la langue par defaut
 	 */
 	public Langue() {
-		langueParam = Parametre.language;
+		langueParam = Parametre.getSection("language");
 		String infosLang[] = langueParam.get("default").split("_");
 		locale = new Locale(infosLang[0], infosLang[1]);
 		rbDefaut = ResourceBundle.getBundle(nomResource, locale);

@@ -60,14 +60,8 @@ public class DbObject {
 		} catch (Exception e) {
 			logger.error(e);
 		}
-		if (Parametre.database.containsKey("dbencode_iso8859") == true) {
-			logger.debug("dbencode_iso8859 : "+ Parametre.database.get("dbencode_iso8859"));
-			try {
-				encode_iso8859 = Boolean.getBoolean(Parametre.database.get("dbencode_iso8859"));
-			} catch (Exception e) {
-				logger.error("impossible de lire la valeur de database/encode_iso8859 ("+Parametre.database.get("dbencode_iso8859")+")");
-			}
-		}
+
+		encode_iso8859 = Boolean.getBoolean(Parametre.getValue("database", "dbencode_iso8859"));
 
 	}
 
@@ -99,8 +93,7 @@ public class DbObject {
 	}
 
 	/**
-	 * Script permettant de mettre a jour un enregistrement dans la base de
-	 * donnees
+	 * Script permettant de mettre a jour un enregistrement dans la base de donnees
 	 * 
 	 * @param key
 	 *            <String|int>
@@ -257,8 +250,8 @@ public class DbObject {
 	}
 
 	/**
-	 * Fonction permettant de supprimer un (ou plusieurs) enregistrement(s) a
-	 * partir de la colonne et de la valeur indiques
+	 * Fonction permettant de supprimer un (ou plusieurs) enregistrement(s) a partir
+	 * de la colonne et de la valeur indiques
 	 * 
 	 * @param field
 	 *            : nom de la colonne
@@ -323,8 +316,8 @@ public class DbObject {
 	}
 
 	/**
-	 * Retourne la liste des enregistrements correspondant a une cle Utilise
-	 * pour retrouver les enregistrements fils d'une table
+	 * Retourne la liste des enregistrements correspondant a une cle Utilise pour
+	 * retrouver les enregistrements fils d'une table
 	 * 
 	 * @param String
 	 *            pKeyName : nom de la colonne utilisee pour la selection
@@ -349,27 +342,29 @@ public class DbObject {
 	 * @return List<Hashtable<String, String>>
 	 */
 	public List<Hashtable<String, String>> readListFromKey(String pKeyName, Object key, String sqlClause) {
-		return readListFromKey(pKeyName, key, sqlClause, "") ;
+		return readListFromKey(pKeyName, key, sqlClause, "");
 	}
+
 	/**
 	 * retourne la liste des enregistrements correspondants à une clé, avec
 	 * intégration d'une clause order
+	 * 
 	 * @param pKeyName
 	 * @param key
 	 * @param sqlClause
 	 * @param orderClause
 	 * @return
 	 */
-	public List<Hashtable<String, String>> readListFromKey(String pKeyName, Object key, String sqlClause, String orderClause) {
+	public List<Hashtable<String, String>> readListFromKey(String pKeyName, Object key, String sqlClause,
+			String orderClause) {
 		String where = " where " + identProtect + pKeyName + identProtect + " = ";
 		if (key.getClass().getSimpleName() == "String") {
 			where += "'" + key + "'";
 		} else
 			where += key;
-		return executeList(sqlClause + where +" " + orderClause);	
+		return executeList(sqlClause + where + " " + orderClause);
 
 	}
-	
 
 	public List<Hashtable<String, String>> getListOrderBy(String colOrder) {
 		String sql = "select * from " + tableName + " order by " + identProtect + colOrder + identProtect;
@@ -410,7 +405,7 @@ public class DbObject {
 		} catch (Exception e) {
 			logger.error(e);
 		}
-		logger.debug("nb lignes:"+data.size());
+		logger.debug("nb lignes:" + data.size());
 		return data;
 	}
 
@@ -446,17 +441,17 @@ public class DbObject {
 	 */
 	public List<Hashtable<String, String>> encodeAll(List<Hashtable<String, String>> data) {
 		if (encode_iso8859) {
-		List<Hashtable<String, String>> retour = new ArrayList<Hashtable<String, String>>();
-		for (Hashtable<String, String> ligne : data) {
-			Hashtable<String, String> newLine = new Hashtable<String, String>();
-			Enumeration<?> cles = ligne.keys();
-			while (cles.hasMoreElements()) {
-				String cle = (String) cles.nextElement();
-				newLine.put(cle, encodeIso8859(ligne.get(cle)));
+			List<Hashtable<String, String>> retour = new ArrayList<Hashtable<String, String>>();
+			for (Hashtable<String, String> ligne : data) {
+				Hashtable<String, String> newLine = new Hashtable<String, String>();
+				Enumeration<?> cles = ligne.keys();
+				while (cles.hasMoreElements()) {
+					String cle = (String) cles.nextElement();
+					newLine.put(cle, encodeIso8859(ligne.get(cle)));
+				}
+				retour.add(newLine);
 			}
-			retour.add(newLine);
-		}
-		return retour;
+			return retour;
 		} else {
 			return data;
 		}
@@ -554,8 +549,7 @@ public class DbObject {
 	}
 
 	/**
-	 * Ecrit le contenu de l'enregistrement, dans le cas ou la cle est de type
-	 * texte
+	 * Ecrit le contenu de l'enregistrement, dans le cas ou la cle est de type texte
 	 * 
 	 * @param data
 	 * @param key
@@ -581,8 +575,7 @@ public class DbObject {
 	}
 
 	/**
-	 * Realise l'insertion d'un nouvel enregistrement si la cle est de type
-	 * texte
+	 * Realise l'insertion d'un nouvel enregistrement si la cle est de type texte
 	 * 
 	 * @return
 	 */
