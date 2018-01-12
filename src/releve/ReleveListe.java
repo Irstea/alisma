@@ -202,16 +202,16 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			break;
 		case "exporter":
 			/*
-			 * Impose le statut valide
+			 * Impose le statut valide (obsolete)
 			 */
-			setIndexStatut(2, false);
-			initTable();
+			//setIndexStatut(2, false);
+			//initTable();
 			setChanged();
 			notifyObservers("exportXml");
 			break;
 		case "exportPDF":
-			setIndexStatut(2, false);
-			initTable();
+			//setIndexStatut(2, false);
+			//initTable();
 			setChanged();
 			notifyObservers("exportPDF");
 			break;

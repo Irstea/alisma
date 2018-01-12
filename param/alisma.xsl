@@ -44,11 +44,14 @@
  <fo:block>
  Référence du dossier : <fo:inline font-weight="bold" > <xsl:value-of select="ref_dossier"/></fo:inline>
  &#160;Statut : <fo:inline font-style="italic"><xsl:value-of select="libelle_statut"/></fo:inline></fo:block>
- <fo:block></fo:block>
+ <fo:block>Identifiant unique (UUID) : <xsl:value-of select="uuid"/></fo:block>
   <fo:block>
-  Organisme :<fo:inline font-weight="bold" >  <xsl:value-of select="organisme"/> </fo:inline> 
-   Opérateur : <fo:inline font-weight="bold" >  <xsl:value-of select="operateur"/> </fo:inline> 
+  Organisme :&#160; <fo:inline font-weight="bold" >&#160;  <xsl:value-of select="organisme"/> </fo:inline> 
+   Opérateur :&#160; <fo:inline font-weight="bold" >&#160;  <xsl:value-of select="operateur"/> </fo:inline> 
    </fo:block>
+   <fo:block>Producteur : <xsl:value-of select="producteur_code"/>&#160; <xsl:value-of select="producteur_name"/></fo:block>
+   <fo:block>Préleveur : <xsl:value-of select="preleveur_code"/>&#160; <xsl:value-of select="preleveur_name"/></fo:block>
+   <fo:block>Déterminateur : <xsl:value-of select="determinateur_code"/>&#160; <xsl:value-of select="determinateur_name"/></fo:block>
    <fo:block>
   <xsl:choose>
   <xsl:when test="releve_dce = 1">Relevé réalisé dans le cadre de la DCE</xsl:when> 
@@ -67,18 +70,21 @@
   Cours d'eau :&#160;<xsl:value-of select="cours_eau"/>
   <xsl:choose>
   <xsl:when test="typo_id > 0">
-   &#160;Typologie nationale : <xsl:value-of select="typo_name"/>
-  &#160;IBMR de référence : <xsl:value-of select="ibmr_ref"/> 
+   &#160;Typologie nationale :&#160; <xsl:value-of select="typo_name"/>
+  &#160;IBMR de référence :&#160; <xsl:value-of select="ibmr_ref"/> 
   </xsl:when>
   </xsl:choose>
   </fo:block>
   <fo:block>
-  X (L93) :&#160; <xsl:value-of select="coord_x"/>&#160;(wgs84 : 
+  Coordonnées amont : X (L93) :&#160; <xsl:value-of select="coord_x"/>&#160;(wgs84 : 
   <xsl:value-of select="wgs84_x"/>)
   &#160; Y (L93) : &#160;<xsl:value-of select="coord_y"/>&#160;
   (wgs84 :&#160;<xsl:value-of select="wgs84_y"/>)
   </fo:block>
-  
+  <fo:block>Coordonnées aval : X (L93) :&#160; <xsl:value-of select="lambert_x_aval"/>&#160; (wgs84 : <xsl:value-of select="wgs84_x_aval"/>)
+  Y (L93) : &#160;<xsl:value-of select="lambert_y_aval"/>&#160;
+  (wgs84 :&#160;<xsl:value-of select="wgs84_y_aval"/>)
+  </fo:block>
   <fo:block>Altitude : <xsl:value-of select="altitude"/>
    &#160;rive : &#160;<xsl:value-of select="rive_libelle"/>
   &#160;Longueur : &#160; <xsl:value-of select="longueur"/>
@@ -690,7 +696,7 @@
   		<fo:table-cell><fo:block text-align="center"  border-left-style="solid"  linefeed-treatment="preserve">cd&#160;&#xA;taxon&#160;&#160;&#160;</fo:block></fo:table-cell>
   		<fo:table-cell><fo:block text-align="center"  border-left-style="solid" linefeed-treatment="preserve">&#160;cd &#160;&#160;&#xA;valid&#160;&#160;</fo:block></fo:table-cell>
   		<fo:table-cell><fo:block text-align="center"  border-left-style="solid"  border-right-style="solid" linefeed-treatment="preserve">&#160;cd &#160;&#160;&#xA;contrib&#160;</fo:block></fo:table-cell>
-  		<fo:table-cell><fo:block text-align="center"  border-left-style="solid"  border-right-style="solid" linefeed-treatment="preserve">&#xA;&#160;&#160;Sandre&#160;&#160;&#160;&#160;&#160;&#160;&#160;</fo:block></fo:table-cell>
+  		<fo:table-cell><fo:block text-align="center"  border-left-style="solid"  border-right-style="solid" linefeed-treatment="preserve">&#160;&#xA;&#160;&#160;&#160;&#160;Sandre&#160;&#160;</fo:block></fo:table-cell>
   		<fo:table-cell><fo:block text-align="center"  border-left-style="solid" linefeed-treatment="preserve">&#160;&#xA;&#160;&#160;cf&#160;&#160;&#160;&#160;</fo:block></fo:table-cell>
    		<fo:table-cell><fo:block text-align="center"  border-left-style="solid" border-right-style="solid" linefeed-treatment="preserve">Cote&#xA;&#160;spe&#160;&#160;</fo:block></fo:table-cell>
   		<fo:table-cell><fo:block text-align="center"  border-left-style="solid" linefeed-treatment="preserve">Coef steno</fo:block></fo:table-cell>
@@ -721,7 +727,7 @@
   			</fo:block>
   		</fo:table-cell>
   		<fo:table-cell border-left-style="solid" > 
-  			<fo:block>
+  			<fo:block text-align="center">
   			<xsl:value-of select="cd_sandre"/>
   			</fo:block>
   		</fo:table-cell>
