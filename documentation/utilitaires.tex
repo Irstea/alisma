@@ -1,0 +1,37 @@
+\chapter{Utilitaires}
+
+\section{Présentation}
+Les utilitaires sont des programmes complémentaires qui permettent de réaliser des opérations soit pour préparer l'import de données, soit pour transformer les données extraites de la base de données.
+
+Ils génèrent des fichiers qui sont stockés dans le dossier décrit dans le fichier de paramétrage (\textit{param/param.ini}, section \textit{[others]}, champ \textit{pathFolderExport}).
+
+Pour lancer un des programmes :
+\begin{itemize}
+\item positionnez-vous dans le dossier \textit{utilitaires}
+\item lancez le fichier .bat (ou .sh avec des machines Linux) correspondant.
+\end{itemize}
+
+\section{Liste des programmes utilitaires}
+\subsection{Récupération de la liste des stations auprès du Sandre}
+Ce programme permet de récupérer la liste des stations du Sandre, pour pouvoir les importer dans le logiciel.
+
+\begin{description}
+\item [Nom du programme à lancer] : {extract\_stations\_sandre.bat}
+\item [Objectif] : récupérer la liste des stations de prélèvement auprès du Sandre
+\item [Fonctionnement] : le programme interroge le Sandre avec une requête pré-définie, pour récupérer la liste des stations\\
+Une fois la liste récupérée, celle-ci est remise en forme sous la forme d'un fichier CSV, qui pourra ensuite être importé dans ALISMA
+\item [Limitations] : la procédure d'interrogation ne fonctionne pas si le poste de travail ne dispose pas d'un accès direct à Internet (connexion nécessitant le paramétrage d'un serveur Proxy HTTP, notamment dans certains organismes)
+\item [Remarques] : il est possible que l'interrogation ne fonctionne pas la première fois qu'elle est lancée : il faut alors la relancer manuellement.
+\end{description}
+
+\subsection{Export des données au format CSV}
+Ce programme permet d'extraire certaines informations à partir du fichier XML d'export d'Alisma. Il génère deux fichiers pour chaque fichier XML : l'un contient les informations concernant les relevés floristiques, l'autre les données générales de la station.
+
+Le premier fichier est normalisé selon le document \url{ http://www.onema.fr/sites/default/files/notice_echange_mphytce_v1.1.pdf}
+
+\begin{description}
+\item[Nom du programme à lancer] : export\_csv.bat
+\item [Objectif] : extraire certaines informations présentes dans le fichier XML d'export d'Alisma au format CSV
+\item [Fonctionnement] : le programme exporte toutes les fiches présentes dans tous les fichiers XML d'export présents dans le dossier indiqué dans le fichier de paramètres. Il crée deux fichiers, dont le nom commence par le nom du fichier XML et suffixés par \textit{\_taxon.csv} ou \textit{\_facies.csv}
+\item [Remarque] : ce programme ne saurait remplacer les extractions réalisées en SQL directement dans la base de données, ce qui est recommandé par le concepteur du logiciel.
+\end{description}

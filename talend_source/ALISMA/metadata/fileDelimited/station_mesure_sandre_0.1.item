@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_oAx5kLEREeSQmZpWj9h5Fw" name="station_mesure_sandre" dataPackage="_oAygoLEREeSQmZpWj9h5Fw" Server="Localhost 127.0.0.1" FilePath="/home/quinton/Documents/databases/alisma/database/StationMesureEauxSurfaceAppartRsx.csv" Encoding="UTF-8" FieldSeparatorValue="&quot;\t&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" FieldSeparatorType="Tabulation"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_oAygoLEREeSQmZpWj9h5Fw" name="default" dataManager="_oAx5kLEREeSQmZpWj9h5Fw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_oAygobEREeSQmZpWj9h5Fw" id="_YfgkELEREeSQmZpWj9h5Fw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygorEREeSQmZpWj9h5Fw" label="CdStationMesureEauxSurface" length="8" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygo7EREeSQmZpWj9h5Fw" label="CdPointEauxSurf" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygpLEREeSQmZpWj9h5Fw" label="CodeSandreRdd" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygpbEREeSQmZpWj9h5Fw" label="NomRdd" length="122" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygprEREeSQmZpWj9h5Fw" label="DateDebutAppartReseauMesure" length="10" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oAygp7EREeSQmZpWj9h5Fw" label="DateFinAppartReseauMesure" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
