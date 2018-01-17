@@ -134,6 +134,14 @@ Cette section permet de définir la langue utilisée par défaut dans le logicie
 \item [exportFileNamePrefix] : préfixe utilisé pour les fichiers exportés (alisma)
 \item [xsltfile\_fr] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en français (param/alisma.xsl)
 \item [xsltfile\_en] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en anglais (param/alisma.xsl)
+\item [preleveur\_code] : code par défaut du préleveur
+\item [preleveur\_name] : nom par défaut du préleveur
+\item [organisme] : nom par défaut de l'organisme réalisant le prélèvement
+\item [operateur] : nom par défaut de l'opérateur (codification interne)
+\item [producteur\_code] : code par défaut du producteur
+\item [producteur\_name] : nom par défaut du producteur
+\item [determinateur\_code] : code par défaut du déterminateur
+\item [determinateur\_name] : nom par défaut du déterminateur
 
 \end{description}
 
@@ -149,7 +157,9 @@ Cette section permet de rendre certains champs obligatoires ou non. Quatre nivea
 Dans la pratique, ces niveaux ne sont modifiables que pour les informations suivantes :
 \begin{description}
 \item [coord\_x et coord\_y] : coordonnées Lambert. Les valeurs doivent être vidées si le logiciel est utilisé hors de France (modification à réaliser en même temps pour le paramètre \textit{others/lambert}) 
-\item [wgs84\_x et wgs84\_y] : coordonnées WGS84 (recommanded).
+\item [wgs84\_x et wgs84\_y] : coordonnées WGS84 (recommanded)
+\item [lambert\_x\_aval et lambert\_y\_amont] : coordonnées Lambert du point aval (recommanded)
+\item [wgs84\_x\_aval et wgs84\_y\_aval] : coordonnées WGS84 du point aval (recommanded)
 \end{description}
 
 \subsection{display}
@@ -161,6 +171,20 @@ Cette section contient le code des couleurs employées, ainsi que les adresses d
 \item [colorTab] : couleur des onglets (0,20,205)
 \item [icone] : nom du fichier contenant l'icône de l'application (ressources/alisma.png)
 \item [logo] : nom du fichier contenant le logo d'IRSTEA (ressources/logo.png)
+\end{description}
+
+\subsection{seee}
+Cette section est utilisée pour l'interrogation et le calcul SEEE de l'indicateur.
+\begin{description}
+\item[url] : adresse du site web
+\item [resourceIbmrCalc] : chemin d'accès au programme de calcul
+\item [indicator] : code de l'indicateur
+\item [version] : version utilisée pour le calcul de l'indicateur
+\item [proxyEnabled] : si à \textit{true}, la connexion est réalisée en utilisant un proxy d'entreprise
+\item [proxyHost] : nom DNS (ou adresse IP) du serveur Proxy (ne pas préfixer par http://, indiquer uniquement le nom,par exemple \textit{proxy.masociete.com})
+\item [proxyPort] : port de connexion au proxy (8080 par défaut)
+\item [proxyUser] : si le proxy requiert une identification, code de l'utilisateur concerné
+\item [proxyPassword] : mot de passe associé
 \end{description}
 
 \section{Mettre à jour le logiciel}
