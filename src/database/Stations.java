@@ -157,6 +157,10 @@ public class Stations extends DbObject {
 			CSVReader reader = new CSVReader(new FileReader(filename), separator);
 			String[] ligne;
 			result = true;
+			/*
+			 * Suppression de la premiere ligne
+			 */
+			reader.readNext();
 			while ((ligne = reader.readNext()) != null) {
 				data.clear();
 				if (ligne.length > 4) {
