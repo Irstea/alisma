@@ -12,12 +12,13 @@ import java.util.List;
 
 import com.opencsv.CSVReader;
 
+import utils.Langue;
+
 /**
  * @author quinton
  * 
  */
 public class Stations extends DbObject {
-	String message ;
 
 	public Stations() {
 		init("stations", "id_station", true);
@@ -134,10 +135,9 @@ public class Stations extends DbObject {
 		return returned;
 
 	}
-	
 
 	public boolean importFromCsv(String filename, char separator) {
-		
+
 		boolean result = false;
 		/*
 		 * Recuperation de la liste des classes d'etat
@@ -150,38 +150,58 @@ public class Stations extends DbObject {
 		Cours_Eau riviere = new Cours_Eau();
 		List<Hashtable<String, String>> rivierelist = riviere.getListOrderBy("1");
 		int lrl = rivierelist.size();
-				
+
 		try {
 			@SuppressWarnings("deprecation")
 			CSVReader reader = new CSVReader(new FileReader(filename), separator);
-			String [] ligne;
+			String[] ligne;
+			result = true;
 			while ((ligne = reader.readNext()) != null) {
 				data.clear();
-				data.put("cd_station", ligne[0]);
-				data.put("station", ligne[1]);
-				data.put("x", ligne[3]);
-				data.put("y", ligne[4]);
-				/*
-				 * Recherche de la riviere
-				 */
-				if (ligne[5].length() > 0) {
-					for (int i = 0; i < lrl; i++) {
-						if (rivierelist.get(i).containsValue(ligne[5])) {
-							data.put("id_cours_eau", rivierelist.get(i).get("id_cours_eau"));
+				if (ligne.length > 4) {
+					data.put("cd_station", ligne[0]);
+					data.put("station", ligne[1]);
+					data.put("x", ligne[3]);
+					data.put("y", ligne[4]);
+					/*
+					 * Recherche de la riviere
+					 */
+					if (ligne[5].length() > 0) {
+						for (int i = 0; i < lrl; i++) {
+							if (rivierelist.get(i).containsValue(ligne[5])) {
+								data.put("id_cours_eau", rivierelist.get(i).get("id_cours_eau"));
+								break;
+							}
 						}
 					}
+					/*
+					 * Recherche si la station existe deja
+					 */
+					Integer id = 0;
+					try {
+						id = Integer.valueOf(readByKey("cd_station", ligne[0]).get("id_station"));
+						if (id > 0) {
+							data.put("id_station", String.valueOf(id));
+						} else {
+							id = 0;
+						}
+					} catch (Exception e) {
+					}
+					/*
+					 * Ecriture dans la base de donnees
+					 */
+					write(data, id);
 				}
 			}
 			reader.close();
-		
-			
-		
-		} catch (FileNotFoundException  e) {
-			message = "Fichier non trouvé";
+		} catch (FileNotFoundException e) {
+			message = Langue.getString("filenotfound");
+			result = false;
 		} catch (IOException e) {
-			message = "Impossible de lire le fichier";
+			message = Langue.getString("filenotreadable");
+			result = false;
 		}
-		
+
 		return result;
 	}
 

@@ -39,6 +39,7 @@ public class DbObject {
 	char identProtect = '`';
 	static Logger logger = Logger.getLogger(DbObject.class);
 	static boolean encode_iso8859 = false;
+	String message = "";
 
 	/**
 	 * Initialise la classe avec les valeurs de base
@@ -640,5 +641,13 @@ public class DbObject {
 		}
 		return data.get(keyName);
 
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public void resetMessage() {
+		message = "";
 	}
 }

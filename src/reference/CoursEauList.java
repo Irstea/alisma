@@ -15,6 +15,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,14 +26,14 @@ import org.apache.log4j.Logger;
 
 import database.Cours_Eau;
 import utils.ComposantAlisma;
+import utils.FileChooser;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
 import utils.Parametre;
 
-
 @SuppressWarnings("serial")
-public class CoursEauList extends Observable implements Observer, ObservableExtended{
+public class CoursEauList extends Observable implements Observer, ObservableExtended {
 	public JFrameAlisma fenetre = new JFrameAlisma();
 	private JLabel banniere = new JLabel(" ", Parametre.logo, JLabel.TRAILING);
 	private GridBagConstraints gbc = new GridBagConstraints();
@@ -40,9 +41,8 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 	private ComposantAlisma search = new Search();
 	private Cours_Eau coursEauDb = new Cours_Eau();
 	static Logger logger = Logger.getLogger(CoursEauList.class);
-	private String[] columnName = { Langue.getString("id"), Langue.getString("cours_eau")};
+	private String[] columnName = { Langue.getString("id"), Langue.getString("cours_eau") };
 	private int selectedId = 0;
-
 
 	public CoursEauList() {
 		super();
@@ -72,7 +72,7 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 		fenetre.getContentPane().add(contenu, BorderLayout.CENTER);
 
 		// JTable
-		table = new TableData(new DefaultTableModel()); 
+		table = new TableData(new DefaultTableModel());
 		table.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				/*
@@ -91,7 +91,6 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 			}
 		});
 
-
 		JScrollPane liste_scroll = new JScrollPane(table);
 		liste_scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
 		liste_scroll.setMinimumSize(new Dimension(400, 600));
@@ -104,18 +103,18 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 		fenetre.draw(512, 768);
 
 	}
-	
+
 	private void initTable() {
 		((DefaultTableModel) this.table.getModel()).setDataVector(coursEauDb.searchByName(this.getParam()), columnName);
 		table.getColumnModel().getColumn(0).setMinWidth(0);
 		table.getColumnModel().getColumn(0).setMaxWidth(0);
 	}
-	
+
 	public Object getValue(String value) {
-		logger.debug("CoursEauList.getValue "+value);
+		logger.debug("CoursEauList.getValue " + value);
 		return selectedId;
 	}
-	
+
 	class Search extends ComposantAlisma {
 		Dimension dimLabel = new Dimension(120, 25);
 
@@ -126,10 +125,12 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 			addButton("boutonChercher", 'R', "rechercher", 0, 1, 1);
 			addButton("boutonModif", 'M', "modifier", 1, 1, 1);
 			addButton("boutonNouveau", 'N', "nouveau", 2, 1, 1);
+			addButton("boutonImporter", 'I', "importer", 3, 1, 1);
 		}
 
 		/**
 		 * Renvoie les parametres saisis
+		 * 
 		 * @return Hashtable<String, String>
 		 */
 		public Hashtable<String, String> getParam() {
@@ -159,15 +160,36 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 			setChanged();
 			notifyObservers("coursEauChange");
 			break;
+		case "importer":
+			importer();
+			break;
 		}
-		
+
 	}
+
 	public void dataRefresh() {
 		initTable();
 	}
 
+	public void importer() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(fenetre);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = coursEauDb.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(fenetre, Langue.getString("importOk"));
+				dataRefresh();
+			} else {
+				JOptionPane.showMessageDialog(fenetre,
+						Langue.getString("importKo") + System.getProperty("line.separator") + coursEauDb.getMessage());
+			}
+		}
+	}
+
 	/**
 	 * Table d'affichage de la liste
+	 * 
 	 * @author quinton
 	 *
 	 */
@@ -178,28 +200,30 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 			setAutoCreateRowSorter(true);
 			getTableHeader().setReorderingAllowed(false);
 			setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			getTableHeader().setResizingAllowed(true);	
+			getTableHeader().setResizingAllowed(true);
 		}
 
 		/**
 		 * Retourne l'identifiant selectionne
+		 * 
 		 * @return id sous forme de String
 		 */
 		public int getId() {
 			int id = 0;
 			try {
-				id = Integer.parseInt( (String) getValueAt(getSelectedRow(), 0));
+				id = Integer.parseInt((String) getValueAt(getSelectedRow(), 0));
 			} catch (ClassCastException e) {
 				logger.debug(getValueAt(getSelectedRow(), 0));
-			} catch (IndexOutOfBoundsException e1) {}
-			logger.debug("id : "+id);
+			} catch (IndexOutOfBoundsException e1) {
+			}
+			logger.debug("id : " + id);
 			return id;
 		}
 
 		public boolean isCellEditable(int rowIndex, int colIndex) {
 			return false;
 		}
-		
+
 	}
 
 }
