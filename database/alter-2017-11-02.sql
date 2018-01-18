@@ -99,3 +99,5 @@ add column preleveur_code varchar(255) comment 'Code du preleveur',
 add column preleveur_name varchar(255) comment 'Nom du preleveur',
 add column determinateur_code varchar(255) comment 'Code du determinateur',
 add column determinateur_name varchar(255) comment 'Nom du determinateur';
+
+alter table stations change id_cours_eau id_cours_eau integer;

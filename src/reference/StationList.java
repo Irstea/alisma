@@ -18,6 +18,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -27,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 
 import utils.ComposantAlisma;
+import utils.FileChooser;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
@@ -140,6 +142,7 @@ public class StationList extends Observable implements Observer,
 			addButton("boutonChercher", 'R', "rechercher", 0, 1, 1);
 			addButton("boutonModif", 'M', "modifier", 1, 1, 1);
 			addButton("boutonNouveau", 'N', "nouveau", 2, 1, 1);
+			addButton("boutonImporter", 'I', "importer", 3, 1, 1);
 		}
 
 		/**
@@ -176,12 +179,31 @@ public class StationList extends Observable implements Observer,
 			setChanged();
 			notifyObservers("stationChange");
 			break;
+		case "importer":
+			importer();
+			break;	
 		}
 
 	}
 
 	public void dataRefresh() {
 		initTable();
+	}
+	
+	public void importer() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(fenetre);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = stationDb.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(fenetre, Langue.getString("importOk"));
+				dataRefresh();
+			} else {
+				JOptionPane.showMessageDialog(fenetre,
+						Langue.getString("importKo") + System.getProperty("line.separator") + stationDb.getMessage());
+			}
+		}
 	}
 
 	/**

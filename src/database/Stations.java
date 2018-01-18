@@ -139,16 +139,17 @@ public class Stations extends DbObject {
 	public boolean importFromCsv(String filename, char separator) {
 
 		boolean result = false;
+		data = new Hashtable <String, String>();
 		/*
 		 * Recuperation de la liste des classes d'etat
 		 */
 		ClasseEtat ce = new ClasseEtat();
-		List<Hashtable<String, String>> celist = ce.getListOrderBy("1");
+		List<Hashtable<String, String>> celist = ce.getListOrderBy("classe_etat_libelle");
 		/*
 		 * Recuperation de la liste des cours d'eau
 		 */
 		Cours_Eau riviere = new Cours_Eau();
-		List<Hashtable<String, String>> rivierelist = riviere.getListOrderBy("1");
+		List<Hashtable<String, String>> rivierelist = riviere.getListOrderBy("cours_eau");
 		int lrl = rivierelist.size();
 
 		try {
@@ -161,14 +162,16 @@ public class Stations extends DbObject {
 				if (ligne.length > 4) {
 					data.put("cd_station", ligne[0]);
 					data.put("station", ligne[1]);
-					data.put("x", ligne[3]);
-					data.put("y", ligne[4]);
+					data.put("x", ligne[2]);
+					data.put("y", ligne[3]);
 					/*
 					 * Recherche de la riviere
 					 */
-					if (ligne[5].length() > 0) {
+					if (ligne[4].length() > 0) {
+						logger.debug(ligne[4]);
 						for (int i = 0; i < lrl; i++) {
-							if (rivierelist.get(i).containsValue(ligne[5])) {
+							if (rivierelist.get(i).containsValue(ligne[4])) {
+								logger.debug("id_cours_eau:"+rivierelist.get(i).get("id_cours_eau")+" "+rivierelist.get(i).get("cours_eau"));
 								data.put("id_cours_eau", rivierelist.get(i).get("id_cours_eau"));
 								break;
 							}
@@ -179,7 +182,7 @@ public class Stations extends DbObject {
 					 */
 					Integer id = 0;
 					try {
-						id = Integer.valueOf(readByKey("cd_station", ligne[0]).get("id_station"));
+						id = Integer.valueOf(readByKey("cd_station", ligne[0].replace("'", "''")).get("id_station"));
 						if (id > 0) {
 							data.put("id_station", String.valueOf(id));
 						} else {

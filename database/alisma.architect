@@ -5069,7 +5069,7 @@ C’est une clé étrangère.</remarks>
     <column id="COL1581" populated="true" UUID="6dc3291f-134b-4103-8b93-9a3011b9708b" autoIncrement="false" defaultValue="" name="y" nullable="1" physicalName="y" precision="0" referenceCount="1" scale="0" source-column-ref="COL1288" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
-    <column id="COL1582" populated="true" UUID="bd65dd09-3b12-4993-bc40-7e3dd41e6bf3" autoIncrement="false" defaultValue="" name="id_cours_eau" nullable="0" physicalName="id_cours_eau" precision="0" referenceCount="2" scale="0" source-column-ref="COL1289" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL1582" populated="true" UUID="bd65dd09-3b12-4993-bc40-7e3dd41e6bf3" autoIncrement="false" defaultValue="" name="id_cours_eau" nullable="1" physicalName="id_cours_eau" precision="0" referenceCount="2" scale="0" source-column-ref="COL1289" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL1583" populated="true" UUID="ced03f16-3bbc-4571-b64f-18e28ec5aa91" autoIncrement="false" autoIncrementSequenceName="classe_etat_classe_etat_id_seq" defaultValue="" name="classe_etat_id" nullable="1" physicalName="classe_etat_id" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -5864,7 +5864,7 @@ C’est une clé étrangère.</remarks>
   <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  </compare-dm-settings>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="118" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1511" x="402" y="1147" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1516" x="22" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1521" x="400" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
