@@ -1,3 +1,3 @@
 %~d0
 cd %~dp0
-java -Xms512M -Xmx2048M -cp .;../lib/routines.jar;../lib/commons-collections-3.2.jar;../lib/ini4j-0.5.1.jar;../lib/log4j-1.2.16.jar;../lib/dom4j-1.6.1.jar;../lib/jcifs-1.3.0.jar;../lib/talendcsv.jar;../lib/commons-httpclient-3.0.1.jar;../lib/xpathutil-1.0.0.jar;../lib/jaxen-1.1.1.jar;../lib/commons-logging-1.1.jar;../lib/commons-codec-1.6.jar;../lib/advancedPersistentLookupLib-1.0.jar;extract_stations_from_sandre_0_1.jar; alisma.extract_stations_from_sandre_0_1.extract_stations_from_sandre --context=Default %* 
+java -Xms512M -Xmx2048M -cp .;../lib/routines.jar;../lib/ini4j-0.5.1.jar;../lib/log4j-1.2.16.jar;../lib/dom4j-1.6.1.jar;../lib/jcifs-1.3.0.jar;../lib/talendcsv.jar;../lib/commons-httpclient-3.0.1.jar;../lib/xpathutil-1.0.0.jar;../lib/jaxen-1.1.1.jar;../lib/commons-codec-1.6.jar;../lib/commons-logging-1.1.jar;extract_stations_from_sandre_0_1.jar; alisma.extract_stations_from_sandre_0_1.extract_stations_from_sandre --context=Default %* 
