@@ -6,12 +6,15 @@ package database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
+import org.w3c.dom.Node;
 
+import import_export.ImportXml;
 import utils.Langue;
 
 /**
@@ -316,6 +319,96 @@ public class Op_controle extends DbObject {
 		if (!where.isEmpty())
 			where = " where " + where;
 		return where;
+	}
+	
+	boolean importFromXml(String filename) {
+		boolean ok = true;
+		ImportXml ix = new ImportXml(filename);
+		Hashtable<String, String> op_releve = new Hashtable<String, String>();
+		List<Hashtable<String, String>>op_unite = new ArrayList<Hashtable<String, String>>();
+		List<Hashtable<String, String>>op_taxon = new ArrayList<Hashtable<String, String>>();
+		Hashtable <String, Object> releve = new Hashtable<String, Object>();
+		String key;
+		int itaxon = 0, iunite = 0;
+
+		if (ix.getNbNode() > 0) {
+			/*
+			 * Lecture des dossiers successifs
+			 */
+			for (int i = 0; i < ix.getNbNode(); i++) {
+				Node node = ix.getNode(i);
+				op_releve.clear();
+				op_taxon.clear();
+				op_unite.clear();
+				itaxon = 0;
+				iunite = 0;
+				/*
+				 * Recuperation du contenu du dossier
+				 */
+				releve = ix.getNodeContent(node);
+				/*
+				 * Traitement du contenu
+				 */
+				Enumeration<String> keys =  releve.keys();
+				while (keys.hasMoreElements()) {
+					key = keys.nextElement();
+					if (releve.get(key) instanceof String) {
+						op_releve.put(key, (String) releve.get(key));
+					} else {
+						/*
+						 * Traitement des taxons
+						 */
+						if (key.equals("taxon")) {
+							op_taxon.add(itaxon, getHashContent(releve.get(keys)));
+							itaxon ++;
+						} else if (key.equals("unite_releve")){
+						/*
+						 * Traitement des releves
+						 */
+						op_unite.add(iunite,getHashContent(releve.get(keys)));
+						}
+					}
+				}
+				/*
+				 * Recherche des identifiants et des informations complementaires
+				 */
+				String op_id = "0";
+				if ( ! op_releve.get("uuid").isEmpty()) {
+					op_id = getIdFromUUID(op_releve.get("uuid"));
+				}
+				op_releve.put("id_op_controle", op_id);
+			}
+		}
+		
+		return ok;
+	}
+	/**
+	 * Retourne le contenu d'un hashtable de type Hashtable 
+	 * (depilement d'un hashtable imbrique)
+	 * @param object
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	Hashtable<String, String> getHashContent(Object objet) {
+		Hashtable <String, String> val = new Hashtable<String, String>();
+		Enumeration<String> keys =  ( (Hashtable<String, Object>) objet).keys();
+		String key;
+		while (keys.hasMoreElements()) {
+			key = keys.nextElement();
+			if (((Hashtable<String, Object>) objet).get(key) instanceof String) {
+				val.put(key, (String) val.get(key));
+			}
+		}
+		return val;
+	}
+	
+	/**
+	 * Retourne l'identifiant de l'operation de controle a partir de l'uuid
+	 * @param uuid
+	 * @return
+	 */
+	public String getIdFromUUID (String uuid) {
+		return getIdFromField("uuid", uuid);
 	}
 
 }

@@ -650,4 +650,18 @@ public class DbObject {
 	public void resetMessage() {
 		message = "";
 	}
+	
+	public String getIdFromField(String field, Object value) {
+		String quote = "", id = "";
+		if (value instanceof String) {
+			quote = "'";
+		}
+		String sql = "select "+ keyName + " from " + tableName 
+				+ " where "+identProtect + field + identProtect + " = " + quote + value + quote;
+		List<Hashtable<String, String>> result = executeList(sql);
+		if (!result.isEmpty()) {
+			id = result.get(0).get(keyName);
+		}
+		return id;
+	}
 }
