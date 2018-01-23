@@ -5842,32 +5842,32 @@ C’est une clé étrangère.</remarks>
  </compare-dm-settings>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="111" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
-  <table-pane table-ref="TAB1511" x="396" y="1263" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1516" x="19" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1521" x="396" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1532" x="396" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1569" x="19" y="1269" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1582" x="19" y="28" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1598" x="19" y="443" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1610" x="1207" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1665" x="19" y="644" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1671" x="19" y="789" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1675" x="19" y="895" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1680" x="795" y="789" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1717" x="1207" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1722" x="795" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1727" x="795" y="330" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1732" x="795" y="443" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1737" x="795" y="546" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1742" x="795" y="644" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1747" x="1582" y="235" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1752" x="1582" y="443" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1757" x="1582" y="644" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1762" x="1582" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1767" x="19" y="1062" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1774" x="396" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1511" x="397" y="1382" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1516" x="20" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1521" x="397" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1532" x="397" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1569" x="20" y="1269" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1582" x="20" y="28" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1598" x="20" y="443" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1610" x="1208" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1665" x="20" y="644" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1671" x="20" y="789" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1675" x="20" y="895" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1680" x="796" y="789" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1717" x="1208" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1722" x="796" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1727" x="796" y="330" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1732" x="796" y="443" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1737" x="796" y="546" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1742" x="796" y="644" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1747" x="1583" y="235" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1752" x="1583" y="443" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1757" x="1583" y="644" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1762" x="1583" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1767" x="20" y="1062" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1774" x="397" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL1786" pkConnection="0.23046875" fkConnection="0.6013071895424836" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL1780" pkConnection="0.13" fkConnection="0.6148648648648649" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
+  <table-link relationship-ref="REL1780" pkConnection="0.5694444444444444" fkConnection="0.46774193548387094" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL1782" pkConnection="0.6311111111111111" fkConnection="0.06329113924050633" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL1784" pkConnection="0.26222222222222225" fkConnection="0.928082191780822" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL1788" pkConnection="0.8366533864541833" fkConnection="0.17287234042553193" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
@@ -5888,8 +5888,8 @@ C’est une clé étrangère.</remarks>
   <table-link relationship-ref="REL1822" pkConnection="0.8176638176638177" fkConnection="0.2235294117647059" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL1824" pkConnection="0.8717948717948718" fkConnection="0.33088235294117646" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL1820" pkConnection="0.4965986394557823" fkConnection="0.4983922829581994" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL1826" pkConnection="0.7692307692307693" fkConnection="0.3763440860215054" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="18"/>
-  <table-link relationship-ref="REL1792" pkConnection="0.05913978494623656" fkConnection="0.03058103975535168" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="65"/>
+  <table-link relationship-ref="REL1826" pkConnection="0.4301994301994302" fkConnection="0.3763440860215054" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="20"/>
+  <table-link relationship-ref="REL1792" pkConnection="0.0" fkConnection="0.03058103975535168" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="65"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">

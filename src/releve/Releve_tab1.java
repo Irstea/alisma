@@ -628,6 +628,7 @@ public class Releve_tab1 extends ComposantAlisma {
 						point = geoTransform.wgs84toLambert93(point);
 						setValue("coord_x", String.valueOf((int) point[0]));
 						setValue("coord_y", String.valueOf((int) point[1]));
+						validation();
 					} catch (Exception e) {
 					}
 				}
@@ -641,6 +642,7 @@ public class Releve_tab1 extends ComposantAlisma {
 						point = geoTransform.lambert93ToWgs84(point);
 						setValue("wgs84_x", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
 						setValue("wgs84_y", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
+						validation();
 					} catch (Exception e) {
 					}
 				}
@@ -747,7 +749,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			 */
 			if (!getData("lambert_x_aval").isEmpty()) {
 				try {
-					value = Double.parseDouble(getData("coord_x"));
+					value = Double.parseDouble(getData("lambert_x_aval"));
 					if (value < lambertBornes.get("lambert93Emin") || value > lambertBornes.get("lambert93Emax")) {
 						setBordure("coord_x", 2);
 						if (rep < 2)
@@ -761,7 +763,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 			if (!getData("lambert_y_aval").isEmpty()) {
 				try {
-					value = Double.parseDouble(getData("coord_y"));
+					value = Double.parseDouble(getData("lambert_y_aval"));
 					if (value < lambertBornes.get("lambert93Nmin") || value > lambertBornes.get("lambert93Nmax")) {
 						setBordure("coord_y", 2);
 						if (rep < 2)
@@ -790,6 +792,7 @@ public class Releve_tab1 extends ComposantAlisma {
 						point = geoTransform.wgs84toLambert93(point);
 						setValue("lambert_x_aval", String.valueOf((int) point[0]));
 						setValue("lambert_y_aval", String.valueOf((int) point[1]));
+						validation();
 					} catch (Exception e) {
 					}
 				}
@@ -803,6 +806,7 @@ public class Releve_tab1 extends ComposantAlisma {
 						point = geoTransform.lambert93ToWgs84(point);
 						setValue("wgs84_x_aval", String.valueOf((double) Math.round(point[0] * 100000) / 100000));
 						setValue("wgs84_y_aval", String.valueOf((double) Math.round(point[1] * 100000) / 100000));
+						validation();
 					} catch (Exception e) {
 					}
 				}
