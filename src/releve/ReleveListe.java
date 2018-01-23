@@ -21,18 +21,22 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 
 import database.Op_controle;
 import import_export.ImportCSV;
 import utils.ComposantAlisma;
 import utils.Exportable;
+import utils.FileChooser;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
@@ -57,6 +61,8 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 	String[] columnName = { Langue.getString("id"), Langue.getString("cd_station"), Langue.getString("nomStation"),
 			Langue.getString("nomRiv"), Langue.getString("operateur"), Langue.getString("dateListe"),
 			Langue.getString("statut"), Langue.getString("releveDce") };
+	static Logger logger = Logger.getLogger(ReleveListe.class);
+
 
 	public ReleveListe() {
 		super();
@@ -152,6 +158,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			addButton("boutonChercher", 'R', "rechercher", 2, 2, 1);
 			addButton("ouvrir", 'O', "ouvrir", 3, 2, 1);
 			addButton("nouveau", 'N', "nouveau", 4, 2, 1);
+			addButton("importXml",'X',"import", 5, 2, 1);
 
 			addButton("exporter", 'E', "exporter", 0, 3, 1);
 			addButton("exportPdf", 'P', "exportPDF", 1, 3, 1);
@@ -241,7 +248,28 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 			setIndexStatut(3, true);
 			initTable();
 			break;
+		case "import":
+			importXml();
+			initTable();
+			break;
 		}
+	}
+
+	private void importXml() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile (fenetre, new FileNameExtensionFilter("Fichiers XML", "xml"));
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = operation.importFromXml(filename);
+			if (result) {
+				JOptionPane.showMessageDialog(fenetre, Langue.getString("importOk"));
+				dataRefresh();
+			} else {
+				JOptionPane.showMessageDialog(fenetre,
+						Langue.getString("importKo"));
+			}
+		}
+		
 	}
 
 	void setIndexStatut(int index, boolean exact) {

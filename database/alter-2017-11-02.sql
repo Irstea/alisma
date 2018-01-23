@@ -47,7 +47,7 @@ rename table Unite_releves to unite_releves;
 rename table Cours_Eau to cours_eau;
 rename table Statut to statut;
 
-alter table lignes_op_controle change pc_UR1 pc_ur1 double not null,
+alter table lignes_op_controle change pc_UR1 pc_ur1 double ,
 change pc_UR2 pc_ur2 double;
 alter table taxons_perso change date_creationP date_creation_perso date not null;
 alter table unite_releves change id_UR id_ur integer not null auto_increment ,
@@ -60,10 +60,12 @@ alter table unite_releves change autreTypeClass autretypeclass integer;
 alter table op_controle add column uuid varchar(36);
 update op_controle set uuid = uuid();
 
+/*
 ALTER TABLE points_prelev ADD COLUMN lambert_x_aval INT  COMMENT 'Coordonnée x du point aval, en Lambert 93';
 ALTER TABLE points_prelev ADD COLUMN lambert_y_aval INT  COMMENT 'Coordonnée Y du point aval, en Lambert 93';
 ALTER TABLE points_prelev ADD COLUMN wgs84_x_aval VARCHAR(20)  COMMENT 'Coordonnée X du point aval, en WGS84';
 ALTER TABLE points_prelev ADD COLUMN wgs84_y_aval VARCHAR(20)  COMMENT 'Coordonnée Y du point aval, en WGS84';
+*/
 
 
 insert into rive (rive_id, rive_libelle) values 
@@ -85,9 +87,6 @@ update turbidite set turbidite_libelle = 'nulle' where turbidite_id = 1;
 update op_controle set turbidite_id = 4 where turbidite_id = 3;
 update op_controle set turbidite_id = 3 where turbidite_id = 2;
 update op_controle set turbidite_id = 2 where turbidite_id = 1;
-
-alter table points_prelev change wgs84_x wgs84_x double, change wgs84_y wgs84_y double, change wgs84_x_aval wgs84_x_aval double, change wgs84_y_aval wgs84_y_aval double;
-
 
 insert into facies_autre_type (facies_autre_type_id, facies_autre_type_libelle) values (9, 'autre');
 
@@ -118,7 +117,8 @@ alter table op_controle add constraint stations_op_controle_fk foreign key (id_s
 
 update op_controle o, points_prelev p 
 set o.coord_x = p.coord_x, o.coord_y = p.coord_y, o.altitude = p.altitude, o.longueur = p.longueur, o.largeur = p.largeur, o.wgs84_x = p.wgs84_y, 
-o.id_station = p.id_station, o.lambert_x_aval = p.lambert_x_aval, o.lambert_y_aval = p.lambert_y_aval, o.wgs84_x_aval = p.wgs84_x_aval, o.wgs84_y_aval = p.wgs84_y_aval
+o.id_station = p.id_station
+/*, o.lambert_x_aval = p.lambert_x_aval, o.lambert_y_aval = p.lambert_y_aval, o.wgs84_x_aval = p.wgs84_x_aval, o.wgs84_y_aval = p.wgs84_y_aval*/
 where o.id_pt_prel = p.id_pt_prel;
 
 alter table op_controle drop foreign key fk_op_controle_points_prelev;

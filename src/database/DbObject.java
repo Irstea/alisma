@@ -263,7 +263,7 @@ public class DbObject {
 	 */
 	public boolean delete(String field, String value, boolean isNumeric) {
 		boolean retour = true;
-		String sql = "delete from " + identProtect + tableName + identProtect + " where " + identProtect + keyName
+		String sql = "delete from " + identProtect + tableName + identProtect + " where " + identProtect + field
 				+ identProtect + " = ";
 		if (!isNumeric) {
 			sql = sql + '"' + value + '"';
