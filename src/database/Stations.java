@@ -77,6 +77,10 @@ public class Stations extends DbObject {
 	public String getCdStationFromId(String id) {
 		return readByKey("id_station", id).get("cd_station");
 	}
+	
+	public String getIdStationFromCd(String cd) {
+		return readByKey("cd_station", cd).get("id_station");
+	}
 
 	/**
 	 * Retourne le nom d'une station correspondant au cd

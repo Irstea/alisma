@@ -334,17 +334,23 @@ public class Op_controle extends DbObject {
 		return where;
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	boolean importFromXml(String filename) {
 		boolean ok = true;
 		ImportXml ix = new ImportXml(filename);
-		Hashtable<String, String> op_releve = new Hashtable<String, String>();
-		List<Hashtable<String, String>>op_unite = new ArrayList<Hashtable<String, String>>();
-		List<Hashtable<String, String>>op_taxon = new ArrayList<Hashtable<String, String>>();
-		Hashtable <String, Object> releve = new Hashtable<String, Object>();
-		String key;
-		int itaxon = 0, iunite = 0;
+
 
 		if (ix.getNbNode() > 0) {
+			Hashtable<String, String> op_releve = new Hashtable<String, String>();
+			List<Hashtable<String, String>>op_unite = new ArrayList<Hashtable<String, String>>();
+			List<Hashtable<String, String>>op_taxon = new ArrayList<Hashtable<String, String>>();
+			Hashtable <String, Object> releve = new Hashtable<String, Object>();
+			String key, op_id ;
+			int itaxon = 0, iunite = 0;
+			Stations station = new Stations();
+			Lignes_op_controle lop = new Lignes_op_controle();
+			Unite_releves ur = new Unite_releves();
+			Ibmr ibmr = new Ibmr();
 			/*
 			 * Lecture des dossiers successifs
 			 */
@@ -355,6 +361,8 @@ public class Op_controle extends DbObject {
 				op_unite.clear();
 				itaxon = 0;
 				iunite = 0;
+				op_id = "0";
+				
 				/*
 				 * Recuperation du contenu du dossier
 				 */
@@ -385,11 +393,54 @@ public class Op_controle extends DbObject {
 				/*
 				 * Recherche des identifiants et des informations complementaires
 				 */
-				String op_id = "0";
+				
 				if ( ! op_releve.get("uuid").isEmpty()) {
 					op_id = getIdFromUUID(op_releve.get("uuid"));
 				}
 				op_releve.put("id_op_controle", op_id);
+				/*
+				 * Recherche de la station
+				 */
+				if (! op_releve.get("cd_station").isEmpty()) {
+					String id_station = station.getIdStationFromCd(op_releve.get("cd_station"));
+					if (id_station.isEmpty()) {
+						/*
+						 * Generation de l'enregistrement dans la table station
+						 */
+						Hashtable<String, String> newStation = new Hashtable<String, String>();
+						//newStation.put("id_station", "0");
+						newStation.put("cd_station", op_releve.get("cd_station"));
+						newStation.put("station", op_releve.get("station"));
+						id_station = station.write(newStation, "0");
+					}
+					op_releve.put("id_station", id_station);
+				}
+				/*
+				 * Ecriture des informations en base
+				 */
+				op_id = write(op_releve, op_id);
+				ibmr.write(op_releve, op_id);
+				
+				/*
+				 * Traitement des taxons
+				 * Suppression des lignes precedentes
+				 */
+				lop.delete("id_op_controle", op_id, true);
+				for (int it = 0; it < op_taxon.size(); it ++) {
+					Hashtable <String, String> dtaxon = op_taxon.get(it);
+					dtaxon.put("id_op_controle", op_id);
+					lop.write(dtaxon, 0);
+				}
+				/*
+				 * Traitement des unites de releve
+				 */
+				ur.delete("id_op_controle", op_id, true);
+				for (int iur = 0 ; iur < op_unite.size(); iur ++) {
+					Hashtable<String, String> dur = op_unite.get(iur);
+					dur.put("id_op_controle", op_id);
+					ur.write(dur, 0);
+				}
+				
 			}
 		}
 		
