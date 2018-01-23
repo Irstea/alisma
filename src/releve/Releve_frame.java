@@ -37,7 +37,6 @@ import database.CalculIBMR;
 import database.Ibmr;
 import database.Lignes_op_controle;
 import database.Op_controle;
-import database.Points_prelev;
 import database.Typo;
 import database.Unite_releves;
 import utils.Exportable;
@@ -65,7 +64,6 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 	 */
 	Op_controle dbOpControle = new Op_controle();
 	Lignes_op_controle dbLigneControle = new Lignes_op_controle();
-	Points_prelev dbPointPrelev = new Points_prelev();
 	Unite_releves dbUR = new Unite_releves();
 	Ibmr ibmr = new Ibmr();
 	/*
@@ -357,12 +355,8 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 */
 			Hashtable<String, String> ibmrData = ibmr.lireComplet(String.valueOf(keyOp));
 			Hashtable<String, String> data = dbOpControle.lire(keyOp);
-			if (!data.get("id_pt_prel").isEmpty()) {
-				data = tab_1.hashtableFusionner(data, dbPointPrelev.read(data.get("id_pt_prel")));
 				data = tab_1.hashtableFusionner(data, ibmrData);
 				logger.debug("seee_robustesse_value :"+data.get("seee_robustesse_value"));
-
-			}
 			tab_1.setDataGlobal(data);
 			/*
 			 * Mise a jour de la combo typeUR en fonction du protocole
@@ -717,14 +711,6 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 			 * Points_prelev et Op_controle
 			 */
 			data = tab_1.getDataGlobal();
-			try {
-				keyPointPrelev = new Integer(data.get("id_pt_prel"));
-			} catch (Exception e) {
-				keyPointPrelev = -1;
-			}
-			keyPointPrelev = dbPointPrelev.ecrire(data, keyPointPrelev);
-			data.put("id_pt_prel", String.valueOf(keyPointPrelev));
-			tab_1.pointPrelevement.setValue("id_pt_prel", String.valueOf(keyPointPrelev));
 			logger.debug("id_op_controle before ecrire() : " + keyOp);
 			keyOp = dbOpControle.ecrire(data, keyOp);
 			logger.debug("id_op_controle after ecrire() : " + keyOp);

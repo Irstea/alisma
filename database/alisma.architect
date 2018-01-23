@@ -4982,28 +4982,28 @@ C’est une clé étrangère.</remarks>
      <remarks>Nom du déterminateur</remarks>
     </column>
     <column id="COL1555" populated="true" UUID="0415d322-41d1-4666-8f50-f60e619315e6" autoIncrement="false" defaultValue="" name="coord_x" nullable="1" physicalName="coord_x" precision="0" referenceCount="1" scale="0" source-column-ref="COL1273" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
-     <remarks></remarks>
+     <remarks>Coordonnée X du point amont, en Lambert 93</remarks>
     </column>
     <column id="COL1556" populated="true" UUID="ac90a306-7c83-4f63-845b-564a0b56aedc" autoIncrement="false" defaultValue="" name="coord_y" nullable="1" physicalName="coord_y" precision="0" referenceCount="1" scale="0" source-column-ref="COL1274" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
-     <remarks></remarks>
+     <remarks>Coordonnée Y du point amont, en Lambert 93</remarks>
     </column>
     <column id="COL1557" populated="true" UUID="f866681d-9e83-450d-87dc-a3f8b9d6b61a" autoIncrement="false" defaultValue="" name="altitude" nullable="1" physicalName="altitude" precision="0" referenceCount="1" scale="0" source-column-ref="COL1275" sourceDataTypeName="FLOAT" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
-     <remarks></remarks>
+     <remarks>Altitude du point amont, en mètres</remarks>
     </column>
     <column id="COL1558" populated="true" UUID="d93066e8-556f-43ed-b089-9e8f2803e28c" autoIncrement="false" defaultValue="" name="longueur" nullable="1" physicalName="longueur" precision="0" referenceCount="1" scale="0" source-column-ref="COL1276" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
-     <remarks></remarks>
+     <remarks>Longueur de la station, en mètres</remarks>
     </column>
     <column id="COL1559" populated="true" UUID="6027b83d-ed5b-401f-be38-a0b91323226a" autoIncrement="false" defaultValue="" name="largeur" nullable="1" physicalName="largeur" precision="0" referenceCount="1" scale="0" source-column-ref="COL1277" sourceDataTypeName="DOUBLE" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks>Largeur du cours d&apos;&apos;eau, en mètres</remarks>
+    </column>
+    <column id="COL1560" populated="true" UUID="aed64edc-38d6-45d6-88b0-567a1d014ece" autoIncrement="false" defaultValue="" name="id_station" nullable="1" physicalName="id_station" precision="0" referenceCount="2" scale="0" source-column-ref="COL1278" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL1560" populated="true" UUID="aed64edc-38d6-45d6-88b0-567a1d014ece" autoIncrement="false" defaultValue="" name="id_station" nullable="0" physicalName="id_station" precision="0" referenceCount="2" scale="0" source-column-ref="COL1278" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
-     <remarks></remarks>
+    <column id="COL1561" populated="true" UUID="d420e759-19a3-478b-b07b-fa7537c2ae6a" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_x_seq" defaultValue="" name="wgs84_x" nullable="1" physicalName="wgs84_x" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks>Coordonnée X du point amont, en WGS84</remarks>
     </column>
-    <column id="COL1561" populated="true" UUID="d420e759-19a3-478b-b07b-fa7537c2ae6a" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_x_seq" defaultValue="" name="wgs84_x" nullable="1" physicalName="wgs84_x" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
-     <remarks>Coordonnée X du point de prélèvement, en WGS84</remarks>
-    </column>
-    <column id="COL1562" populated="true" UUID="c322a33f-2aa1-43a8-8f03-b59e76f09b53" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_y_seq" defaultValue="" name="wgs84_y" nullable="1" physicalName="wgs84_y" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
-     <remarks>Coordonnée Y du point de prélèvement, en wgs84</remarks>
+    <column id="COL1562" populated="true" UUID="c322a33f-2aa1-43a8-8f03-b59e76f09b53" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_y_seq" defaultValue="" name="wgs84_y" nullable="1" physicalName="wgs84_y" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks>Coordonnée Y du point amont, en wgs84</remarks>
     </column>
     <column id="COL1563" populated="true" UUID="fbe3a296-608f-46e4-add5-8d97535d5cf6" autoIncrement="false" autoIncrementSequenceName="points_prelev_lambert_x_aval_seq" defaultValue="" name="lambert_x_aval" nullable="1" physicalName="lambert_x_aval" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks>Coordonnée X du point aval, en Lambert 93</remarks>
@@ -5011,10 +5011,10 @@ C’est une clé étrangère.</remarks>
     <column id="COL1564" populated="true" UUID="2b1946e4-486b-4e8b-a7aa-50ddf29edc89" autoIncrement="false" autoIncrementSequenceName="points_prelev_lambert_y_aval_seq" defaultValue="" name="lambert_y_aval" nullable="1" physicalName="lambert_y_aval" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks>Coordonnée Y du point aval, en Lambert 93</remarks>
     </column>
-    <column id="COL1565" populated="true" UUID="68160fce-7eb5-415b-afa1-013aba356889" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_x_aval_seq" defaultValue="" name="wgs84_x_aval" nullable="1" physicalName="wgs84_x_aval" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1565" populated="true" UUID="68160fce-7eb5-415b-afa1-013aba356889" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_x_aval_seq" defaultValue="" name="wgs84_x_aval" nullable="1" physicalName="wgs84_x_aval" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks>Coordonnée X du point aval, en WGS84</remarks>
     </column>
-    <column id="COL1566" populated="true" UUID="75b52cf3-6748-42fe-8f66-e0e1a054c28a" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_y_aval_seq" defaultValue="" name="wgs84_y_aval" nullable="1" physicalName="wgs84_y_aval" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL1566" populated="true" UUID="75b52cf3-6748-42fe-8f66-e0e1a054c28a" autoIncrement="false" autoIncrementSequenceName="points_prelev_wgs84_y_aval_seq" defaultValue="" name="wgs84_y_aval" nullable="1" physicalName="wgs84_y_aval" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks>Coordonnée Y du point aval, en WGS84</remarks>
     </column>
     </folder>
@@ -5841,20 +5841,20 @@ C’est une clé étrangère.</remarks>
   <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  </compare-dm-settings>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="118" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
-  <table-pane table-ref="TAB1511" x="402" y="1147" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1516" x="22" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1521" x="400" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1532" x="400" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1569" x="20" y="1269" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1582" x="22" y="28" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1598" x="22" y="443" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+ <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="111" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB1511" x="396" y="1263" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1516" x="19" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1521" x="396" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1532" x="396" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1569" x="19" y="1269" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1582" x="19" y="28" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1598" x="19" y="443" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1610" x="1207" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1665" x="22" y="644" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1665" x="19" y="644" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1671" x="19" y="789" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1675" x="22" y="895" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1675" x="19" y="895" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1680" x="795" y="789" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1717" x="1207" y="1063" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1717" x="1207" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1722" x="795" y="235" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1727" x="795" y="330" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1732" x="795" y="443" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
@@ -5864,17 +5864,17 @@ C’est une clé étrangère.</remarks>
   <table-pane table-ref="TAB1752" x="1582" y="443" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1757" x="1582" y="644" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1762" x="1582" y="28" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1767" x="30" y="1042" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB1774" x="400" y="1261" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1767" x="19" y="1062" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1774" x="396" y="1062" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL1786" pkConnection="0.23046875" fkConnection="0.6013071895424836" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL1780" pkConnection="0.25" fkConnection="0.6148648648648649" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL1780" pkConnection="0.13" fkConnection="0.6148648648648649" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
   <table-link relationship-ref="REL1782" pkConnection="0.6311111111111111" fkConnection="0.06329113924050633" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL1784" pkConnection="0.26222222222222225" fkConnection="0.928082191780822" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL1788" pkConnection="0.8366533864541833" fkConnection="0.17287234042553193" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
-  <table-link relationship-ref="REL1794" pkConnection="0.6323024054982818" fkConnection="0.0" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
+  <table-link relationship-ref="REL1794" pkConnection="1.0" fkConnection="0.6808823529411765" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL1790" pkConnection="0.8940397350993378" fkConnection="0.125" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL1796" pkConnection="0.5694444444444444" fkConnection="0.49065420560747663" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
-  <table-link relationship-ref="REL1798" pkConnection="0.2125984251968504" fkConnection="0.9710982658959537" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
+  <table-link relationship-ref="REL1796" pkConnection="0.10687022900763359" fkConnection="0.5647058823529412" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
+  <table-link relationship-ref="REL1798" pkConnection="0.2125984251968504" fkConnection="0.6191176470588236" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
   <table-link relationship-ref="REL1800" pkConnection="0.5416666666666666" fkConnection="0.12225705329153605" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL1802" pkConnection="0.5384615384615384" fkConnection="0.27647058823529413" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL1804" pkConnection="0.1282051282051282" fkConnection="0.42205882352941176" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
@@ -5884,12 +5884,12 @@ C’est une clé étrangère.</remarks>
   <table-link relationship-ref="REL1812" pkConnection="0.5384615384615384" fkConnection="0.41336633663366334" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL1814" pkConnection="0.1" fkConnection="0.8855185909980431" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
   <table-link relationship-ref="REL1816" pkConnection="0.421875" fkConnection="0.136986301369863" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="20"/>
-  <table-link relationship-ref="REL1818" pkConnection="0.39090909090909093" fkConnection="0.11746031746031746" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="65"/>
-  <table-link relationship-ref="REL1822" pkConnection="0.8091168091168092" fkConnection="0.6720588235294118" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
-  <table-link relationship-ref="REL1824" pkConnection="0.7521367521367521" fkConnection="0.6367647058823529" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
+  <table-link relationship-ref="REL1818" pkConnection="0.39090909090909093" fkConnection="0.7838235294117647" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL1822" pkConnection="0.8176638176638177" fkConnection="0.2235294117647059" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
+  <table-link relationship-ref="REL1824" pkConnection="0.8717948717948718" fkConnection="0.33088235294117646" rLineColor="0x484848" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL1820" pkConnection="0.4965986394557823" fkConnection="0.4983922829581994" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL1826" pkConnection="0.7692307692307693" fkConnection="0.3763440860215054" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="18"/>
-  <table-link relationship-ref="REL1792" pkConnection="0.6620689655172414" fkConnection="0.0" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="40"/>
+  <table-link relationship-ref="REL1792" pkConnection="0.05913978494623656" fkConnection="0.03058103975535168" rLineColor="0x313739" pkLabelText="" fkLabelText="" orientation="65"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">

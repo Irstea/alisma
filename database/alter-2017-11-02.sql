@@ -101,3 +101,27 @@ add column determinateur_code varchar(255) comment 'Code du determinateur',
 add column determinateur_name varchar(255) comment 'Nom du determinateur';
 
 alter table stations change id_cours_eau id_cours_eau integer;
+
+ALTER TABLE op_controle ADD COLUMN coord_x INT  COMMENT 'Coordonnée X du point amont, en Lambert 93';
+ALTER TABLE op_controle ADD COLUMN coord_y INT  COMMENT 'Coordonnée Y du point amont, en Lambert 93';
+ALTER TABLE op_controle ADD COLUMN altitude float  COMMENT 'Altitude du point amont, en mètres';
+ALTER TABLE op_controle ADD COLUMN longueur double  COMMENT 'Longueur de la station, en mètres';
+ALTER TABLE op_controle ADD COLUMN largeur double  COMMENT 'Largeur du cours d''eau, en mètres';
+ALTER TABLE op_controle ADD COLUMN wgs84_x VARCHAR(20)  COMMENT 'Coordonnée X du point amont, en WGS84';
+ALTER TABLE op_controle ADD COLUMN wgs84_y VARCHAR(20)  COMMENT 'Coordonnée Y du point amont, en WGS84';
+ALTER TABLE op_controle ADD COLUMN id_station INT  COMMENT '';
+ALTER TABLE op_controle ADD COLUMN lambert_x_aval INT  COMMENT 'Coordonnée x du point aval, en Lambert 93';
+ALTER TABLE op_controle ADD COLUMN lambert_y_aval INT  COMMENT 'Coordonnée Y du point aval, en Lambert 93';
+ALTER TABLE op_controle ADD COLUMN wgs84_x_aval VARCHAR(20)  COMMENT 'Coordonnée X du point aval, en WGS84';
+ALTER TABLE op_controle ADD COLUMN wgs84_y_aval VARCHAR(20)  COMMENT 'Coordonnée Y du point aval, en WGS84';
+alter table op_controle add constraint stations_op_controle_fk foreign key (id_station) references stations(id_station) on update no action on delete no action;
+
+update op_controle o, points_prelev p 
+set o.coord_x = p.coord_x, o.coord_y = p.coord_y, o.altitude = p.altitude, o.longueur = p.longueur, o.largeur = p.largeur, o.wgs84_x = p.wgs84_y, 
+o.id_station = p.id_station, o.lambert_x_aval = p.lambert_x_aval, o.lambert_y_aval = p.lambert_y_aval, o.wgs84_x_aval = p.wgs84_x_aval, o.wgs84_y_aval = p.wgs84_y_aval
+where o.id_pt_prel = p.id_pt_prel;
+
+alter table op_controle drop foreign key fk_op_controle_points_prelev;
+drop table points_prelev;
+alter table op_controle drop column id_pt_prel;
+

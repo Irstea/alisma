@@ -33,7 +33,11 @@ public class Op_controle extends DbObject {
 		init("op_controle", "id_op_controle", true);
 		setStringList(new String[] { "organisme", "operateur", "date_op", "observation", "ref_dossier", "uuid", "producteur_code", "producteur_name", "preleveur_code", "preleveur_name", "determinateur_code", "determinateur_name" });
 		setNumericList(new String[] { "id_pt_prel", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id",
-				"turbidite_id", "releve_dce", "typo_id" });
+				"turbidite_id", "releve_dce", "typo_id",
+				"coord_x", "coord_y", 
+				"altitude", "longueur", "largeur", "id_station",
+				"wgs84_x", "wgs84_y", 
+				"lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" });
 		/*
 		 * Initialisation des tables de parametre
 		 */
@@ -76,6 +80,22 @@ public class Op_controle extends DbObject {
 		if (data.containsKey("releve_dce")) {
 			data.put("releve_dce", yesNoForKey.get(data.get("releve_dce")).toString());
 			logger.debug("releve_dce value : " + data.get("releve_dce"));
+		}
+		
+		/*
+		 * Recherche de id_station
+		 */
+		if (data.get("cd_station") != null) {
+			String sql = "select id_station from stations where cd_station = " + data.get("cd_station");
+			try {
+				query = connection.createStatement();
+				rs =query.executeQuery(sql);
+				if (rs.next()) {
+					data.put("id_station", rs.getString(1));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		/*
 		 * Traitement de l'uuid
