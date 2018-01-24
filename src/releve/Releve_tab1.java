@@ -306,6 +306,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 			super.setData(data);
 			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
+			this.setValue("seee_date", data.get("seee_date"));
 			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
 			this.setValue("robustesse_classe_etat_libelle", data.get("robustesse_classe_etat_libelle"));
 			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
@@ -882,8 +883,6 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @param string
 	 *            maxTaxon
 	 */
-	// public void setDataCalcul(double ibmr, double robustesse, String maxTaxon,
-	// double nbEKmax, double eqr, double robustesseEqr) {
 	public void setDataCalcul(Hashtable<String, String> data) {
 		String[] fields = { "ibmr_value", "robustesse_value", "taxon_robustesse", "ek_nb_robustesse", "eqr_value",
 				"robustesse_eqr_value", "classe_etat_libelle", "robustesse_classe_etat_libelle", "classe_etat_id",

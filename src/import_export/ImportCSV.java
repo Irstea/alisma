@@ -96,6 +96,7 @@ public class ImportCSV {
 				String[] lineHeader = line.split(";");
 				version = lineHeader[1];
 				calculDate = lineHeader[2];
+				logger.debug(calculDate);
 				/*
 				 * Traitement des lignes contenant les resultats La seconde
 				 * ligne contient les champs d'entete, et est ignoree

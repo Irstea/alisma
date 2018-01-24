@@ -443,7 +443,7 @@ public class ExportOp {
 		try {
 			version = Parametre.getValue("seee","version");
 		} catch (Exception e) {
-			version = "1.1.0";
+			version = "1.1.1";
 		}
 		ClientConfig config = new ClientConfig();
 		try {
