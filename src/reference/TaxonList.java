@@ -151,9 +151,11 @@ public class TaxonList extends Observable implements Observer,
 			break;
 		case "importTaxon":
 			importTaxon();
+			dataRefresh();
 			break;
 		case "importParam":
 			importParam();
+			dataRefresh();
 			break;
 		}
 	}

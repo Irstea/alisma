@@ -16,7 +16,7 @@ public class Taxon extends DbObject {
 		init("taxons_mp", "cd_taxon", true);
 		setNumericList(new String[] { "cote_spe", "coef_steno", "cd_sandre", "aquaticite", "id_groupe" });
 		setStringList(new String[] { "nom_taxon", "date_creation", "auteur", "cd_valide", "cd_contrib" });
-
+		isKeyText = true;
 	}
 
 	/**
@@ -79,8 +79,13 @@ public class Taxon extends DbObject {
 		return returned;
 	}
 
+	/**
+	 * Import de la liste officielle des taxons
+	 * @param filename
+	 * @param separator
+	 * @return boolean
+	 */
 	public boolean importFromCsv(String filename, char separator) {
-		// TODO Auto-generated method stub
 		boolean result = false;
 		data = new Hashtable<String, String>();
 		try {
@@ -102,10 +107,15 @@ public class Taxon extends DbObject {
 					data.put("auteur", ligne[4]);
 					data.put("cd_valide", ligne[5]);
 					data.put("cd_contrib", ligne[6]);
+					try {
 					write(data, ligne[0]);
+				} catch (Exception e) {
+					message = "System error:"+e.getMessage();
+					result = false;
+					break;
+				}
 				}
 			}
-
 			reader.close();
 		} catch (FileNotFoundException e) {
 			message = Langue.getString("filenotfound");
@@ -114,12 +124,50 @@ public class Taxon extends DbObject {
 			message = Langue.getString("filenotreadable");
 			result = false;
 		}
-
 		return result;
 	}
 
-	public boolean importParamFromCsv(String filename, char c) {
-		// TODO Auto-generated method stub
-		return false;
+	/**
+	 * Import des parametres officiels utilises pour le calcul de l'indicateur
+	 * @param filename
+	 * @param separator
+	 * @return boolean
+	 */
+	public boolean importParamFromCsv(String filename, char separator) {
+		boolean result = false;
+		data = new Hashtable<String, String>();
+		try {
+			@SuppressWarnings("deprecation")
+			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			String[] ligne;
+			result = true;
+			/*
+			 * Suppression de la premiere ligne
+			 */
+			reader.readNext();
+			while ((ligne = reader.readNext()) != null) {
+				data.clear();
+				if (ligne.length > 2) {
+					data.put("cote_spe", ligne[1]);
+					data.put("coef_steno", ligne[2]);
+					try {
+					write(data, ligne[0]);
+					} catch (Exception e) {
+						message = "System error:"+e.getMessage();
+						result = false;
+						break;
+					}
+				}
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			message = Langue.getString("filenotfound");
+			result = false;
+		} catch (IOException e) {
+			message = Langue.getString("filenotreadable");
+			result = false;
+		
+		}
+		return result;
 	}
 }
