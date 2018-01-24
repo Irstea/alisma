@@ -41,6 +41,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	// Saisi_Releve_Tab1_Query();
 	int statut = 0, nbUR = 2;
 	public General general;
+	public Ibmr ibmr;
+	public IbmrRobuste ibmrRobuste;
 	public String stationName;
 	Stations dbStation = new Stations();
 	Hashtable<String, Double> lambertBornes = new Hashtable<String, Double>();
@@ -55,10 +57,16 @@ public class Releve_tab1 extends ComposantAlisma {
 		dbOpControle = oc;
 		general = new General(nbUR);
 		general.setTitle("donneesGen");
+		ibmr = new Ibmr();
+		ibmr.setTitle("ibmr");
+		ibmrRobuste = new IbmrRobuste();
+		ibmrRobuste.setTitle("robustesse");
 		pointPrelevement = new PointPrelevement(nbUR);
 		pointPrelevement.setTitle("pointPrel");
 		this.addComposant(general, 0, 0);
-		this.addComposant(pointPrelevement, 0, 1);
+		this.addComposant(ibmr, 0, 1);
+		this.addComposant(ibmrRobuste, 0, 2);
+		this.addComposant(pointPrelevement, 0, 3);
 	}
 
 	public void setOpControle(Op_controle op) {
@@ -96,7 +104,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			String[] lambertListeBorne = { "lambert93Emin", "lambert93Emax", "lambert93Nmin", "lambert93Nmax" };
 			for (String borne : lambertListeBorne) {
 				try {
-					lambertBornes.put(borne, Double.parseDouble(Parametre.getValue("others",borne)));
+					lambertBornes.put(borne, Double.parseDouble(Parametre.getValue("others", borne)));
 				} catch (Exception e) {
 					lambertBornes.put(borne, 0.0);
 				}
@@ -124,19 +132,6 @@ public class Releve_tab1 extends ComposantAlisma {
 			addLabel("statut", 2, 3, null);
 			addLabel("releveDce", 4, 3);
 			addLabel("date", 6, 3, null);
-			addLabel("ibmr", 0, 4);
-			addLabel("robustesse", 2, 4);
-			addLabel("taxonRob", 4, 4);
-			addLabel("nbTaxonEKmax", 6, 4);
-			addLabel("eqr", 0, 5);
-			addLabel("classeEtat", 2, 5);
-			addLabel("eqrRobustesse", 4, 5);
-			addLabel("classeEtat", 6, 5);
-			addLabel("seeeIbmr", 0, 6);
-			addLabel("robustesse", 2, 6);
-			addLabel("taxonRob", 4, 6);
-			addLabel("seeeDate", 0, 7);
-			addLabel("seeeVersion", 2, 7);
 
 			/*
 			 * Definition des champs
@@ -157,28 +152,13 @@ public class Releve_tab1 extends ComposantAlisma {
 			addDatePicker("date_op", new Date(), 7, 3, 2, new Dimension(120, 20));
 			addTextField("ref_dossier", 1, 3, 1);
 			addLabelAsValue("statut", "", 3, 3, 1);
-			addLabelAsValue("ibmr_value", "", 1, 4, 1);
-			addLabelAsValue("robustesse_value", "", 3, 4, 1);
-			addLabelAsValue("taxon_robustesse", "", 5, 4, 1);
-			addLabelAsValue("ek_nb_robustesse", "", 7, 4, 1);
-			addLabelAsValue("eqr_value", "", 1, 5, 1);
-			addLabelAsValue("classe_etat_libelle", "", 3, 5, 1);
-			addLabelAsValue("robustesse_eqr_value", "", 5, 5, 1);
-			addLabelAsValue("robustesse_classe_etat_libelle", "", 7, 5, 1);
 			addCombo("releve_dce", 5, 3, 1);
 			addComboItemList("releve_dce", new String[] { Langue.getString("oui"), Langue.getString("non") }, true);
 			addHidden("id_statut");
-			addHidden("classe_etat_id");
-			addHidden("robustesse_classe_etat_id");
 			addHidden("uuid");
 			/*
 			 * Champs pour le calcul SEEE
 			 */
-			addLabelAsValue("seee_ibmr", "", 1, 6, 1);
-			addLabelAsValue("seee_robustesse_value", "", 3, 6, 1);
-			addLabelAsValue("seee_taxon_robustesse", "", 5, 6, 1);
-			addLabelAsValue("seee_date", "", 1, 7, 1);
-			addLabelAsValue("seee_version", "", 3, 7, 1);
 
 			/*
 			 * Ajout des listeners
@@ -305,13 +285,6 @@ public class Releve_tab1 extends ComposantAlisma {
 			((JTextField) fieldList.get("preleveur_name")).getDocument().removeDocumentListener(dl_preleveur);
 
 			super.setData(data);
-			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
-			this.setValue("seee_date", data.get("seee_date"));
-			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
-			this.setValue("robustesse_classe_etat_libelle", data.get("robustesse_classe_etat_libelle"));
-			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
-			setQualityColor("classe_etat_libelle", "classe_etat_id");
-			setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
 
 			if (!data.get("typo_id").equals(""))
 				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
@@ -333,17 +306,18 @@ public class Releve_tab1 extends ComposantAlisma {
 			 */
 			JTextField code = (JTextField) fieldList.get("preleveur_code");
 			if (code.getText().isEmpty()) {
-				String value = Parametre.getValue("others","preleveur_code");
+				String value = Parametre.getValue("others", "preleveur_code");
 				if (!value.isEmpty()) {
 					code.setText(value);
-					((JTextField) fieldList.get("preleveur_name")).setText(Parametre.getValue("others","preleveur_name"));
+					((JTextField) fieldList.get("preleveur_name"))
+							.setText(Parametre.getValue("others", "preleveur_name"));
 					/*
 					 * Ajout des valeurs par defaut pour le determinateur
 					 */
 					if (((JTextField) fieldList.get("determinateur_code")).getText().isEmpty()) {
 						((JTextField) fieldList.get("determinateur_code")).setText(value);
 						((JTextField) fieldList.get("determinateur_name"))
-								.setText(Parametre.getValue("others","preleveur_name"));
+								.setText(Parametre.getValue("others", "preleveur_name"));
 					}
 				}
 			}
@@ -353,32 +327,6 @@ public class Releve_tab1 extends ComposantAlisma {
 			((JTextField) fieldList.get("preleveur_code")).getDocument().addDocumentListener(dl_preleveur);
 			((JTextField) fieldList.get("preleveur_name")).getDocument().addDocumentListener(dl_preleveur);
 
-		}
-
-		void setQualityColor(String field, String level) {
-			try {
-				int couleur = Integer.parseInt(this.getData(level));
-				Color color = Color.white;
-				switch (couleur) {
-				case 1:
-					color = Color.blue;
-					break;
-				case 2:
-					color = Color.green;
-					break;
-				case 3:
-					color = Color.yellow;
-					break;
-				case 4:
-					color = Color.orange;
-					break;
-				case 5:
-					color = Color.red;
-				}
-				this.setColorBorder(field, color);
-			} catch (Exception e) {
-
-			}
 		}
 
 		public Hashtable<String, String> getData() {
@@ -462,7 +410,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 		// ConvertWgs84ToLambert93 convertCoord = new ConvertWgs84ToLambert93();
 		public PointPrelevement(int pNbUR) {
-			String plambert = Parametre.getValue("others","lambert");
+			String plambert = Parametre.getValue("others", "lambert");
 			if (plambert == null)
 				plambert = "false";
 			if (plambert.equals("false"))
@@ -599,7 +547,7 @@ public class Releve_tab1 extends ComposantAlisma {
 
 			String[] fields = new String[] { "coord_x", "coord_y", "wgs84_x", "wgs84_y" };
 			for (String field : fields) {
-				String param = Parametre.getValue("fieldsLevel",field);
+				String param = Parametre.getValue("fieldsLevel", field);
 				switch (param) {
 				case "mandatory":
 					addFieldMandatory(field);
@@ -726,7 +674,7 @@ public class Releve_tab1 extends ComposantAlisma {
 			setDimension("lambert_y_aval", dimNormal);
 			String[] fields = new String[] { "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" };
 			for (String field : fields) {
-				String param = Parametre.getValue("fieldsLevel",field);
+				String param = Parametre.getValue("fieldsLevel", field);
 				switch (param) {
 				case "mandatory":
 					addFieldMandatory(field);
@@ -857,20 +805,20 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * Reinitialise les zones d'affichage du calcul
 	 */
 	public void resetCalcul() {
-		general.setValue("ibmr_value", "");
-		general.setValue("robustesse_value", "");
-		general.setValue("taxon_robustesse", "");
-		general.setValue("ek_nb_robustesse", "");
-		general.setValue("seee_date", "");
-		general.setValue("seee_version", "");
-		general.setValue("seee_ibmr", "");
+		ibmr.setValue("ibmr_value", "");
+		ibmrRobuste.setValue("robustesse_value", "");
+		ibmrRobuste.setValue("taxon_robustesse", "");
+		ibmrRobuste.setValue("ek_nb_robustesse", "");
+		ibmr.setValue("seee_date", "");
+		ibmr.setValue("seee_version", "");
+		ibmr.setValue("seee_ibmr", "");
 		// general.setValue("seee_nbtaxon_contrib", "");
-		general.setValue("seee_robustesse_value", "");
-		general.setValue("seee_taxon_robustesse", "");
-		general.setValue("eqr_value", "");
-		general.setValue("robustesse_eqr_value", "");
-		general.setValue("classe_etat_libelle", "");
-		general.setValue("robustesse_classe_etat_libelle", "");
+		ibmrRobuste.setValue("seee_robustesse_value", "");
+		ibmrRobuste.setValue("seee_taxon_robustesse", "");
+		ibmr.setValue("eqr_value", "");
+		ibmrRobuste.setValue("robustesse_eqr_value", "");
+		ibmr.setValue("classe_etat_libelle", "");
+		ibmrRobuste.setValue("robustesse_classe_etat_libelle", "");
 	}
 
 	/**
@@ -884,15 +832,18 @@ public class Releve_tab1 extends ComposantAlisma {
 	 *            maxTaxon
 	 */
 	public void setDataCalcul(Hashtable<String, String> data) {
-		String[] fields = { "ibmr_value", "robustesse_value", "taxon_robustesse", "ek_nb_robustesse", "eqr_value",
-				"robustesse_eqr_value", "classe_etat_libelle", "robustesse_classe_etat_libelle", "classe_etat_id",
-				"robustesse_classe_etat_id" };
+		String[] fields = { "ibmr_value", "eqr_value", "classe_etat_libelle", "classe_etat_id" };
+		String[] fieldsRobuste = { "robustesse_value", "robustesse_classe_etat_libelle", "taxon_robustesse",
+				"ek_nb_robustesse", "robustesse_eqr_value", "robustesse_classe_etat_id" };
 		for (String field : fields) {
-			general.setValue(field, data.get(field));
-			general.setQualityColor("classe_etat_libelle", "classe_etat_id");
-			general.setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
-
+			ibmr.setValue(field, data.get(field));
 		}
+		for (String field : fieldsRobuste) {
+			ibmrRobuste.setValue(field, data.get(field));
+		}
+		ibmr.setQualityColor("classe_etat_libelle", "classe_etat_id");
+		ibmrRobuste.setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
+
 	}
 
 	/**
@@ -912,7 +863,7 @@ public class Releve_tab1 extends ComposantAlisma {
 	 * @return
 	 */
 	public String getIBMR() {
-		return general.getData("ibmr_value");
+		return ibmr.getData("ibmr_value");
 	}
 
 	/**
@@ -922,6 +873,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	 */
 	public void setDataGlobal(Hashtable<String, String> data) {
 		general.setData(data);
+		ibmr.setData(data);
+		ibmrRobuste.setData(data);
 		pointPrelevement.setDataGlobal(data);
 		setStatut(Integer.parseInt(data.get("id_statut")));
 	}
@@ -940,11 +893,130 @@ public class Releve_tab1 extends ComposantAlisma {
 	}
 
 	public String getIBMRSEEE() {
-		return general.getData("seee_ibmr");
+		return ibmr.getData("seee_ibmr");
 	}
 
 	public void setDefault() {
 		general.setDefault();
+	}
 
+	/**
+	 * Classe d'affichage des valeurs de l'IBMR
+	 * 
+	 * @author quinton
+	 *
+	 */
+	class Ibmr extends ComposantAlisma {
+		public Ibmr() {
+
+			addLabel("ibmr", 0, 0);
+			addLabel("eqr", 2, 0);
+			addLabel("classeEtat", 4, 0);
+			addLabel("seeeIbmr", 0, 1, new Dimension(150, 20));
+			addLabel("seeeDate", 2, 1);
+			addLabel("seeeVersion", 4, 1);
+
+			addLabelAsValue("ibmr_value", "", 1, 0, 1);
+			addLabelAsValue("eqr_value", "", 3, 0, 1);
+			addLabelAsValue("classe_etat_libelle", "", 5, 0, 1);
+			addLabelAsValue("seee_ibmr", "", 1, 1, 1);
+			addLabelAsValue("seee_date", "", 3, 1, 1);
+			addLabelAsValue("seee_version", "", 5, 1, 1);
+			addHidden("classe_etat_id");
+		}
+
+		public void setData(Hashtable<String, String> data) {
+			super.setData(data);
+			this.setValue("seee_date", data.get("seee_date"));
+			this.setValue("classe_etat_libelle", data.get("classe_etat_libelle"));
+			setQualityColor("classe_etat_libelle", "classe_etat_id");
+		}
+
+		void setQualityColor(String field, String level) {
+			try {
+				int couleur = Integer.parseInt(this.getData(level));
+				Color color = Color.white;
+				switch (couleur) {
+				case 1:
+					color = Color.blue;
+					break;
+				case 2:
+					color = Color.green;
+					break;
+				case 3:
+					color = Color.yellow;
+					break;
+				case 4:
+					color = Color.orange;
+					break;
+				case 5:
+					color = Color.red;
+				}
+				this.setColorBorder(field, color);
+			} catch (Exception e) {
+
+			}
+		}
+	}
+
+	/**
+	 * Classe d'affichage des valeurs de l'IBMR robuste
+	 * 
+	 * @author quinton
+	 *
+	 */
+	class IbmrRobuste extends ComposantAlisma {
+		public IbmrRobuste() {
+			addLabel("ibmr", 0, 0);
+			addLabel("eqr", 2, 0);
+			addLabel("classeEtat", 4, 0);
+			addLabel("taxonRob", 0, 1);
+			addLabel("nbTaxonEKmax", 2, 1);
+			addLabel("seeeIbmr", 4, 1, new Dimension(150, 20));
+			addLabel("taxonRob", 6, 1);
+
+			addLabelAsValue("robustesse_value", "", 1, 0, 1);
+			addLabelAsValue("robustesse_eqr_value", "", 3, 0, 1);
+			addLabelAsValue("robustesse_classe_etat_libelle", "", 5, 0, 1);
+			addLabelAsValue("taxon_robustesse", "", 1, 1, 1);
+			addLabelAsValue("ek_nb_robustesse", "", 3, 1, 1);
+			addLabelAsValue("seee_robustesse_value", "", 5, 1, 1);
+			addLabelAsValue("seee_taxon_robustesse", "", 7, 1, 1);
+			addHidden("robustesse_classe_etat_id");
+		}
+
+		public void setData(Hashtable<String, String> data) {
+			super.setData(data);
+			this.setValue("seee_robustesse_value", data.get("seee_robustesse_value"));
+			this.setValue("robustesse_classe_etat_libelle", data.get("robustesse_classe_etat_libelle"));
+			this.setValue("robustesse_eqr_value", data.get("robustesse_eqr_value"));
+			setQualityColor("robustesse_classe_etat_libelle", "robustesse_classe_etat_id");
+		}
+
+		void setQualityColor(String field, String level) {
+			try {
+				int couleur = Integer.parseInt(this.getData(level));
+				Color color = Color.white;
+				switch (couleur) {
+				case 1:
+					color = Color.blue;
+					break;
+				case 2:
+					color = Color.green;
+					break;
+				case 3:
+					color = Color.yellow;
+					break;
+				case 4:
+					color = Color.orange;
+					break;
+				case 5:
+					color = Color.red;
+				}
+				this.setColorBorder(field, color);
+			} catch (Exception e) {
+
+			}
+		}
 	}
 }

@@ -99,7 +99,7 @@ public class Releve_frame extends Observable implements Observer, Exportable {
 
 	private JButton jbValider, jbCalculer, jbModifier, jbSupprimer, jbPDF, jbSeee;
 
-	private Dimension dimDefault = new Dimension(1024, 800);
+	private Dimension dimDefault = new Dimension(1024, 900);
 
 	/*
 	 * Divers
