@@ -145,11 +145,6 @@ public class Stations extends DbObject {
 		boolean result = false;
 		data = new Hashtable <String, String>();
 		/*
-		 * Recuperation de la liste des classes d'etat
-		 */
-		ClasseEtat ce = new ClasseEtat();
-		List<Hashtable<String, String>> celist = ce.getListOrderBy("classe_etat_libelle");
-		/*
 		 * Recuperation de la liste des cours d'eau
 		 */
 		Cours_Eau riviere = new Cours_Eau();

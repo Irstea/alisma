@@ -1,0 +1,1445 @@
+cd_taxon;nom_taxon;cd_sandre;id_groupe;auteur;cd_valide;cd_contrib
+ACHMIL;Achillea millefolium;30107;9;L.;ACHMIL;ACHMIL
+ACHPTA;Achillea ptarmica;1723;8;L.;ACHPTA;ACHPTA
+ACNCAL;Achnatherum calamagrostis;35493;9;(L.) P.Beauv.;ACNCAL;ACNCAL
+ACOCAL;Acorus calamus;1459;7;L.;ACOCAL;ACOCAL
+ACOGRA;Acorus gramineus;19748;7;Sol.;ACOGRA;ACOGRA
+ACOSPX;Acorus sp.;1458;9;L.;ACOSPX;ACOSPX
+ACOVUL;Acorus vulgaris;31515;7;Simonk.;ACOCAL;ACOCAL
+ACRCOR;Acrocladium cordifolium;31517;4;(Hedw.) P.Rich. & Wallace;CAICOR;CAICOR
+ACRCUS;Acrocladium cuspidatum ;1221;4;(Hedw.) Lindb.;CAECUS;CAECUS
+ADICAP;Adiantum capillus-veneris;1406;6;L.;ADICAP;ADICAP
+AGPCAN;Agropyron caninum;1540;9;(L.) P.Beauv.;ROECAC;ROECAC
+AGPREP;Agropyron repens;1541;9;(L.) Beauv.;ELTRER;ELTREP
+AGRCAC;Agrostis capillaris subsp. capillaris;31534;9;L.;AGRCAC;AGRCAP
+AGRCAN;Agrostis canina;19749;8;L.;AGRCAN;AGRCAN
+AGRCAP;Agrostis capillaris;31516;9;L.;AGRCAP;AGRCAP
+AGRCUR;Agrostis curtisii;29909;9;Vahl.;AGRCUR;AGRCUR
+AGRGIG;Agrostis gigantea;19750;8;Roth.;AGRGIG;AGRGIG
+AGRSPX;Agrostis sp.;1542;9;L.;AGRSPX;AGRSPX
+AGRSTO;Agrostis stolonifera;1543;7;L.;AGRSTO;AGRSTO
+AGRVUL;Agrostis vulgaris;19751;9;With.;AGRCAC;AGRCAP
+AJUREP;Ajuga reptans;29911;9;L.;AJUREP;AJUREP
+ALAOFF;Althaea officinalis;34422;9;L.;ALAOFF;ALAOFF
+ALCSCA;Alicularia scalaris ;31532;5;(Schrad.) Corda;NARSCA;NARSCA
+ALDVES;Aldrovanda vesiculosa;19752;10;L.;ALDVES;ALDVES
+ALIBRE;Alisma brevipes ;31529;10;Greene;ALIPLA;ALIPLA
+ALIGRA;Alisma gramineum;1445;10;Lej.;ALIGRA;ALIGRA
+ALILAN;Alisma lanceolatum;1446;10;With.;ALILAN;ALILAN
+ALINAT;Alisma natans;31518;10;L.;LURNAT;LURNAT
+ALIPLA;Alisma plantago-aquatica;1447;10;L.;ALIPLA;ALIPLA
+ALISPX;Alisma sp.;1444;10;L.;ALISPX;ALISPX
+ALISTE;Alisma stenophyllum ;31533;10;(Asch. & Graebn.) Sam.;ALILAN;ALILAN
+ALISUB;Alisma subcordatum ;31519;10;Raf.;ALIPLA;ALIPLA
+ALIWAH;Alisma wahlenbergii;19753;10;(Holmb.) Juz.;ALIGRA;ALIGRA
+ALOAEQ;Alopecurus aequalis;19754;8;Sobol.;ALOAEQ;ALOAEQ
+ALOGEN;Alopecurus geniculatus;1547;8;L.;ALOGEN;ALOGEN
+ALOPRA;Alopecurus pratensis;19755;8;L.;ALOPRA;ALOPRA
+ALOSPX;Alopecurus sp.;1544;9;L.;ALOSPX;ALOSPX
+ALTFIL;Althenia filiformis;19756;10;Petit;ALTFIL;ALTFIL
+ALTORI;Althenia orientalis;19757;10;(Tzvelev) Garcia-Mur. & Talavera;ALTORI;ALTORI
+AMABLI;Amaranthus blitum;32250;9;L.;AMABLI;AMABLI
+AMARET;Amaranthus retroflexus;34423;9;L.;AMARET;AMARET
+AMASPX;Amaranthus sp.;19758;9;L.;AMASPX;AMASPX
+AMBFLU;Amblystegium fluviatile;1223;4;(Hedw.) Schimp.;HYAFLU;AMBFLU
+AMBHUM;Amblystegium humile;19759;4;(P.Beauv.) Crundw.;HYAHUM;AMBHUM
+AMBRIP;Amblystegium riparium;1219;4;(Hedw.) Schimp.;LEORIP;AMBRIP
+AMBSER;Amblystegium serpens;19760;4;(Hedw.) Schimp.;AMBSER;AMBSER
+AMBSPX;Amblystegium sp.;1222;4;B., S. & G.;AMBSPX;AMBSPX
+AMBTEN;Amblystegium tenax;10210;4;(Hedw.) C.E.O. Jensen;HYATEN;AMBTEN
+AMBVAR;Amblystegium varium;19761;4;(Hedw.) Lindb.;HYAVAR;AMBVAR
+AMOFRU;Amorpha fruticosa;1804;9;L.;AMOFRU;AMOFRU
+AMRART;Ambrosia artemisiifolia;34424;9;L.;AMRART;AMRART
+ANASPX;Anabaena sp.;1101;2;Bory de Saint-Vincent;ANASPX;ANASPX
+ANEPIN;Aneura pinguis;10206;5;(L.) Dumort.;ANEPIN;ANEPIN
+ANGARC;Angelica archangelica;19514;8;L.;ANGARC;ANGARC
+ANGSYL;Angelica sylvestris;1971;8;L.;ANGSYL;ANGSYL
+ANHSYL;Anthriscus sylvestris;19516;8;(L.) Hoffm.;ANHSYL;ANHSYL
+ANIPAL;Anisothecium palustre ;31528;4;(Dicks.) I.Hag.;DIHPAL;DIHPAL
+ANLTEN;Anagallis tenella;19513;8;(L.) L.;LYSTEN;LYSTEN
+ANOATT;Anomodon attenuatus;29913;4;(Hedw.) Huebener;ANOATT;ANOATT
+ANOSPX;Anomodon sp.;29912;4;Hook. & Tayl.;ANOSPX;ANOSPX
+ANTJUL;Anthelia julacea;19515;5;(L.) Dumort.;ANTJUL;ANTJUL
+APHSPX;Aphanizomenon sp.;1103;2;Morren;APHSPX;APHSPX
+APIGRA;Apium graveolens;19517;8;L.;APIGRA;APIGRA
+APIINU;Apium inundatum;1973;7;(L.) Rchb.f.;HELINU;APIINU
+APINOD;Apium nodiflorum;1974;7;(L.) Lag.;HELNOD;APINOD
+APIREP;Apium repens;1975;7;(Jacq.) Lag.;HELREP;HELREP
+APISPX;Apium sp.;1972;9;L.;APISPX;APISPX
+APIXMO;Apium x moorei;19518;10;(Syme) Druce;HELXMO;HELXMO
+APODIS;Aponogeton distachyos;1456;10;L.f.;APODIS;APODIS
+ARCSPX;Arctium sp. ;34419;9;L.;ARCSPX;ARCSPX
+ARMSPX;Arum sp.;32033;9;L.;ARMSPX;ARMSPX
+ARRELA;Arrhenatherum elatius;29914;9;(L.) P.Beauv. ex J.Presl & C.Presl;ARRELA;ARRELA
+ARTVUL;Artemisia vulgaris;29915;9;L.;ARTVUL;ARTVUL
+ARUDON;Arundo donax;1551;6;L.;ARUDON;ARUDON
+ASPSPX;Asplenium sp.;1409;6;L.;ASPSPX;ASPSPX
+ATHFIL;Athyrium filix-femina;1412;6;(L.) Roth.;ATHFIL;ATHFIL
+ATICAL;Atriplex calotheca;19519;9;(Rafn) Fries;ATICAL;ATICAL
+ATIPRO;Atriplex prostrata;19520;9;Boucher ex DC.;ATIPRO;ATIPRO
+ATISPX;Atriplex sp.;1720;9;L.;ATISPX;ATISPX
+ATRUND;Atrichum undulatum;1358;4;(Hedw.) P.Beauv.;ATRUND;ATRUND
+AUASPX;Aulacoseira sp.;9476;2;Thwaites;AUASPX;AUASPX
+AUDSPX;Audouinella sp.;6076;2;Bory de Saint-Vincent;AUDSPX;AUDSPX
+AULPAL;Aulacomnium palustre;19521;4;(Hedw.) Schwaegr.;AULPAL;AULPAL
+AVESAT;Avena sativa;32217;9;L.;AVESAT;AVESAT
+AZOCAR;Azolla caroliniana;1438;6;Willd.;AZOFIL;AZOFIL
+AZOFIL;Azolla filiculoides;1439;6;Lam.;AZOFIL;AZOFIL
+AZOSPX;Azolla sp.;1437;6;Lam.;AZOSPX;AZOSPX
+BABCYL;Barbula cylindrica;34421;4;(Taylor) Schimp.;DIDINS;DIDINS
+BABREF;Barbula reflexa;34545;4;(Brid.) Brid.;DIDFER;DIDFER
+BABTOP;Barbula tophacea;30104;4;(Brid.) Mitt.;DIDTOP;DIDTOP
+BABVIN;Barbula vinealis;34547;4;Brid.;DIDVIN;DIDVIN
+BACMON;Bacopa monnieri;19522;7;(C. Linnaeus) R. Wettstein;BACMON;BACMON
+BAGATR;Bangiadulcis atropurpurea;31523;2;(Roth) W.A. Nelson;BAGATR;BANATR
+BALALP;Baldellia alpestris;19523;10;(Coss.) M. Lanz;BALALP;BALALP
+BALRAN;Baldellia ranunculoides;1449;10;(L.) Parl.;BALRAN;BALRAN
+BALRAR;Baldellia ranunculoides subsp. ranunculoides;29995;10;(L.) Parl.;BALRAR;BALRAN
+BALREP;Baldellia repens;19524;10;(Lam.) Ooststr. ex Lawalr;BALRAE;BALRAN
+BANATR;Bangia atropurpurea;6067;2;(Roth) C.Agardh;BAGATR;BANATR
+BANSPX;Bangia sp.;1153;2;Lyngbye;BANSPX;BANATR
+BARHOR;Barbula hornschuchiana;35495;4;Schultz;PSOHOR;BARHOR
+BARINT;Barbarea intermedia;19525;9;Boreau;BARINT;BARINT
+BARSTR;Barbarea stricta;19526;8;Andrz.;BARSTR;BARSTR
+BARVUL;Barbarea vulgaris;19527;9;R.Br.;BARVUL;BARVUL
+BATSPX;Batrachospermum sp.;1155;2;Roth.;BATSPX;BATSPX
+BECERU;Beckmannia eruciformis;19528;9;(L.) Host;BECERU;BECERU
+BECSYZ;Beckmannia syzigachne;19529;9;(Steud.) Fernald;BECSYZ;BECSYZ
+BEGCAP;Bergia capensis;19530;7;L.;BEGCAP;BEGCAP
+BELBEL;Bellium bellidioides;35485;9;L.;BELBEL;BELBEL
+BERERE;Berula erecta;1977;7;(Huds.) Coville     ;BERERE;BERERE
+BERSPX;Berula sp.;1976;9;W.D.J.Koch;BERSPX;BERSPX
+BIDCER;Bidens cernua;1725;8;L.;BIDCER;BIDCER
+BIDCON;Bidens connata;1726;8;Muhlenb. ex Willd.;BIDCON;BIDCON
+BIDFRO;Bidens frondosa;1727;8;L.;BIDFRO;BIDFRO
+BIDRAD;Bidens radiata;1728;9;Thuill.;BIDRAD;BIDRAD
+BIDSPX;Bidens sp.;1724;9;L.;BIDSPX;BIDSPX
+BIDTRI;Bidens tripartita;1729;8;L.;BIDTRI;BIDTRI
+BINSPX;Binuclearia sp.;5987;2;Wittrock      ;BINSPX;BINSPX
+BIUSPX;Biddulphia;9478;2;S.F.Gray;BIUSPX;BIUSPX
+BLESPI;Blechnum spicant;1414;6;(L.) Roth.;BLESPI;BLESPI
+BLIACU;Blindia acuta;1271;4;(Hedw.) Bruch & Schimp.;BLIACU;BLIACU
+BLPTRI;Blepharostoma trichophyllum;19531;5;(L.) Dumort.;BLPTRI;BLPTRI
+BLYCOM;Blysmus compressus;19532;8;(L.) Panz. ex Link;BLYCOM;BLYCOM
+BOLMAR;Bolboschoenus maritimus;19533;7;(L.) Palla;BOLMAR;BOLMAR
+BRAPLU;Brachythecium plumosum;1259;4;(Hedw.) Schimp.;SCMPLU;BRAPLU
+BRARIV;Brachythecium rivulare;1260;4;Schimp.;BRARIV;BRARIV
+BRARUT;Brachythecium rutabulum;1261;4;(Hedw.) Schimp.;BRARUT;BRARUT
+BRASPX;Brachythecium sp.;1258;4;B., S. & G.;BRASPX;BRASPX
+BRCERU;Brachiaria eruciformis;19534;8;(Sm.) Griseb.;BRCERU;BRCERU
+BRHSYL;Brachypodium sylvaticum;29916;8;(Huds.) P.Beauv.;BRHSYL;BRHSYL
+BRHSYS;Brachypodium sylvaticum  subsp. sylvaticum;29989;8;(Huds.) P.Beauv.;BRHSYS;BRHSYL
+BRMSPX;Bromus sp.;29918;9;L.;BRMSPX;BRMSPX
+BRODIO;Bryonia dioica;19535;9;Jacq.;BRODIO;BRODIO
+BRSNIG;Brassica nigra;29917;9;(L.) W.D.J.Koch;BRSNIG;BRSNIG
+BRYALP;Bryum alpinum;19536;4;Huds. ex With.;BRYALP;BRYALP
+BRYARG;Bryum argenteum;19537;4;Hedw.;BRYARG;BRYARG
+BRYBIC;Bryum bicolor;19538;4;Dicks.;BRYDIC;BRYDIC
+BRYDIC;Bryum dichotomum;31522;4;Hedw.;BRYDIC;BRYDIC
+BRYDUV;Bryum duvalii;31526;4;Voit;BRYWEI;BRYWEI
+BRYPAL;Bryum pallens;19539;4;Sw. ex anon.     ;BRYPAL;BRYPAL
+BRYPAS;Bryum pallescens;19540;4;Schleich. ex Schwaegr. ;BRYPAS;BRYPAS
+BRYPSE;Bryum pseudotriquetrum;1274;4;(Hedw.) P.Gaertn. et al.;BRYPSE;BRYPSE
+BRYSCH;Bryum schleicheri;19541;4;DC.;BRYSCH;BRYSCH
+BRYSPX;Bryum sp.;1272;4;Hedw.;BRYSPX;BRYSPX
+BRYTUR;Bryum turbinatum;19542;4;(Hedw.) Turner;BRYTUR;BRYTUR
+BRYWEI;Bryum weigelii;19543;4;Spreng.      ;BRYWEI;BRYWEI
+BULSPX;Bulbochaete sp.;5956;2;C. Agardh;BULSPX;BULSPX
+BUTUMB;Butomus umbellatus;1464;7;L.;BUTUMB;BUTUMB
+CAAPAL;Calla palustris;1461;10;L.;CAAPAL;CAAPAL
+CABCAR;Cabomba caroliniana;19544;10;A.Gray      ;CABCAR;CABCAR
+CADPAR;Caldesia parnassifolia;19546;10;(L.) Parl.;CADPAR;CADPAR
+CAECUS;Calliergonella cuspidata;1228;4;(Hedw.) Loeske;CAECUS;CAECUS
+CAGARU;Calamagrostis arundinacea;30237;8;(L.) Roth.;CAGARU;CAGARU
+CAGCAN;Calamagrostis canescens;19545;8;(Weber) Roth.;CAGCAN;CAGCAN
+CAGEPI;Calamagrostis epigejos;1553;8;(L.) Roth.;CAGEPI;CAGEPI
+CAGSPX;Calamagrostis sp.;1552;9;Adans.;CAGSPX;CAGSPX
+CAHMIN;Caltha minor;1892;7;Mill.;CAHPAP;CAHPAL
+CAHPAL;Caltha palustris;1893;7;L.;CAHPAL;CAHPAL
+CAHPAP;Caltha palustris subsp. palustris;30913;7;L.;CAHPAP;CAHPAL
+CAICOR;Calliergon cordifolium;1225;4;(Hedw.) Kindb.;CAICOR;CAICOR
+CAICUP;Calliergon cuspidatum;31521;4;(Hedw.) Kindb.;CAECUS;CAECUS
+CAIGIG;Calliergon giganteum;1226;4;(Schimp.) Kindb.;CAIGIG;CAIGIG
+CAISAR;Calliergon sarmentosum;19547;4;(Wahenl.) Kindb.;WARSAR;WARSAR
+CAISPX;Calliergon sp.;1224;4;(Sull.) Kindb.;CAISPX;CAISPX
+CAISTR;Calliergon stramineum;19548;4;(Brid.) Kindb.;STMSTR;STMSTR
+CALBRH;Callitriche brutia var. hamulata;30912;10;NULL;CALHAM;CALHAM
+CALBRU;Callitriche brutia;1697;10;Petagna;CALBRU;CALBRU
+CALCOP;Callitriche cophocarpa;19549;10;Sendtn.;CALCOP;CALCOP
+CALCRI;Callitriche cribrosa;19550;10;Schotsman;CALCRI;CALCRI
+CALHAM;Callitriche hamulata;1698;10;Ktzing ex Koch;CALHAM;CALHAM
+CALHER;Callitriche hermaphrodita;19551;10;L.;CALPAL;CALPAL
+CALHRM;Callitriche hermaphroditica;1699;10;L.;CALHRM;CALHRM
+CALLEN;Callitriche lenisulca;19554;10;Clavaud;CALLEN;CALLEN
+CALLUS;Callitriche lusitanica;19555;10;Schotsman;CALLUS;CALLUS
+CALOBT;Callitriche obtusangula;1700;10;Le Gall;CALOBT;CALOBT
+CALPAL;Callitriche palustris;1701;10;L.;CALPAL;CALPAL
+CALPLA;Callitriche platycarpa;1702;10;Ktzing;CALPLA;CALPLA
+CALPUL;Callitriche pulchra;19556;10;Schotsman;CALPUL;CALPUL
+CALREG;Callitriche regis-jubae;19557;10;Schotsman;CALREG;CALREG
+CALSPX;Callitriche sp.;1696;10;L.;CALSPX;CALSPX
+CALSTA;Callitriche stagnalis;1703;10;Scop.;CALSTA;CALSTA
+CALTRF;Callitriche truncata subsp. fimbriata;19558;10;Schotsman;CALTRF;CALTRU
+CALTRO;Callitriche truncata subsp. occidentalis;19559;10;(Rouy) Braun-Blanq.;CALTRO;CALTRO
+CALTRU;Callitriche truncata;1704;10;Guss.;CALTRU;CALTRU
+CALXVI;Callitriche x vigens;19560;10;Martinsson;CALXVI;CALXVI
+CAMAMA;Cardamine amara;1758;8;L.;CAMAMA;CAMAMA
+CAMFLE;Cardamine flexuosa;19565;8;With.;CAMFLE;CAMFLE
+CAMHIR;Cardamine hirsuta;1759;9;L.;CAMHIR;CAMHIR
+CAMLAT;Cardamine latifolia;19566;8;Vahl.;CAMRAR;CAMRAP
+CAMPRA;Cardamine pratensis;1760;8;L.;CAMPRA;CAMPRA
+CAMRAP;Cardamine raphanifolia;31520;8;Pourr.;CAMRAP;CAMRAP
+CAMRAR;Cardamine raphanifolia  subsp. raphanifolia;31541;8;Pourr.;CAMRAR;CAMRAP
+CAMRES;Cardamine resedifolia;19567;8;L.;CAMRES;CAMRES
+CAMSPX;Cardamine sp.;1757;9;L.;CAMSPX;CAMSPX
+CAOSPX;Calothrix sp.;6294;2;C.Agardh ex Bornet & Flahault;CAOSPX;CAOSPX
+CAPSTE;Campylium stellatum;1230;4;(Hedw.) Lange & C.E.O.Jensen;CAPSTE;CAPSTE
+CARACT;Carex acutiformis;1468;8;Ehrh.;CARACT;CARACT
+CARACU;Carex acuta;1467;7;L.;CARACU;CARACU
+CARAQU;Carex aquatilis;1469;7;Ten.;CARAQU;CARAQU
+CARBUE;Carex buekii;19568;7;Wimm.;CARBUE;CARBUE
+CARCUC;Carex cuprina var. cuprina;30064;8;(Sandor ex Heuff.) Nendtv. ex A.Kern.;CARCUC;CARCUP
+CARCUP;Carex cuprina;31525;8;(Sandor ex Heuff.) Nendtv. ex A.Kern.;CARCUP;CARCUP
+CARCUR;Carex curta ;1471;7;Gooden;CARCUR;CARCUR
+CARDEM;Carex demissa;1472;8;Vahl ex Hartm.;CARVIO;CARVIR
+CARDIA;Carex diandra;19570;8;Schrank;CARDIA;CARDIA
+CARDIS;Carex disticha;1473;8;Huds.;CARDIS;CARDIS
+CARECH;Carex echinata;1474;8;Murray;CARECH;CARECH
+CARELA;Carex elata;1475;8;All.;CARELA;CARELA
+CARELO;Carex elongata;19571;8;L.;CARELO;CARELO
+CARFLA;Carex flava;1477;8;L.;CARFLA;CARFLA
+CARFLC;Carex flacca;19572;8;Schreb.;CARFLC;CARFLC
+CARFLS;Carex flacca subsp. serrulata;37085;8;(Biv.) Greuter;CARFLS;CARFLS
+CARGRA;Carex gracilis ;31524;7;Curtis;CARACU;CARACU
+CARHAL;Carex halophila;19573;8;F.Nyland;CARHAL;CARHAL
+CARHIR;Carex hirta;1478;8;L.;CARHIR;CARHIR
+CARHOS;Carex hostiana;19574;8;DC.;CARHOS;CARHOS
+CARLAS;Carex lasiocarpa;19575;7;Ehrh.;CARLAS;CARLAS
+CARLEP;Carex lepidocarpa;19576;8;Tausch;CARVIE;CARVIR
+CARLIM;Carex limosa;19577;7;L.;CARLIM;CARLIM
+CARMIC;Carex microcarpa;35488;8;Bertol. ex Moris,;CARMIC;CARMIC
+CARNIG;Carex nigra;1480;8;(L.) Reichard;CARNIG;CARNIG
+CAROTR;Carex otrubae;1481;8;Podp.;CARCUC;CARCUP
+CAROVA;Carex ovalis;1482;8;Gooden;CAROVA;CAROVA
+CARPAI;Carex panicea;1483;8;L.;CARPAI;CARPAI
+CARPAN;Carex paniculata;1484;7;L.;CARPAN;CARPAN
+CARPEN;Carex pendula;1485;8;Huds.;CARPEN;CARPEN
+CARPSE;Carex pseudocyperus;1486;7;L.;CARPSE;CARPSE
+CARREM;Carex remota;1488;7;L.;CARREM;CARREM
+CARRIP;Carex riparia;1489;8;Curtis;CARRIP;CARRIP
+CARROS;Carex rostrata;1490;7;Stokes;CARROS;CARROS
+CARSPI;Carex spicata;19578;8;Huds.;CARSPI;CARSPI
+CARSPX;Carex sp.;1466;9;L.;CARSPX;CARSPX
+CARSTR;Carex strigosa;19579;8;Huds.;CARSTR;CARSTR
+CARSYL;Carex sylvatica;32251;8;Huds.;CARSYL;CARSYL
+CARVES;Carex vesicaria;1491;7;L.;CARVES;CARVES
+CARVIE;Carex viridula var. elatior;30063;8;(Schltr.) Crins;CARVIE;CARVIR
+CARVIO;Carex viridula subsp. oedocarpa;19580;8;(Andersson) B.Schmid;CARVIO;CARVIR
+CARVIR;Carex viridula;10235;8;Michx.;CARVIR;CARVIR
+CARVUL;Carex vulpina;19581;7;L.;CARVUL;CARVUL
+CASSEP;Calystegia sepium;1731;9;(L.) R.Br.;CASSEP;CASSEP
+CASSES;Calystegia sepium subsp. silvatica;29967;9;(Kit.) Batt.;CASSES;CASSEP
+CASSIL;Calystegia silvatica;29966;9;(Kit.) Griseb.;CASSES;CASSEP
+CATAQU;Catabrosa aquatica;1555;7;(L.) Beauv.;CATAQU;CATAQU
+CAUVER;Carum verticillatum;1979;8;(L.) W.D.J.Koch;CAUVER;CAUVER
+CAYARG;Calypogeia arguta;19562;5;Nees & Mont.;CAYARG;CAYARG
+CAYFIS;Calypogeia fissa;19563;5;(L.) Raddi;CAYFIS;CAYFIS
+CAYSPX;Calypogeia sp.;19564;5;Raddi;CAYSPX;CAYSPX
+CEATHA;Ceratopteris thalictroides;19584;6;(C. Linnaeus) A.T.Brongniart;CEATHA;CEATHA
+CERDEA;Ceratophyllum demersum var. apiculatum;19582;10;(Cham.) Asch.;CERDEM;CERDEM
+CERDED;Ceratophyllum demersum var. demersum;29990;10;L.;CERDEM;CERDEM
+CERDEI;Ceratophyllum demersum var. inerme;31596;10;Gay ex R.R.Sm.;CERDEM;CERDEM
+CERDEM;Ceratophyllum demersum;1717;10;L.;CERDEM;CERDEM
+CERMUR;Ceratophyllum muricatum;31540;10;Cham.;CERSUB;CERSUB
+CERPLA;Ceratophyllum platyacanthum;19583;10;Cham.;CERPLA;CERPLA
+CERSPX;Ceratophyllum sp.;1716;10;L.;CERSPX;CERSPX
+CERSUB;Ceratophyllum submersum;1718;10;L.;CERSUB;CERSUB
+CESAQU;Cerastium aquaticum;29920;8;L.;MYSAQU;MYSAQU
+CHAACU;Chara aculeolata;5252;2;Ktzing;CHAACU;CHAACU
+CHAASP;Chara aspera;5253;2;Deth. ex Wild.;CHAASP;CHAASP
+CHABRA;Chara braunii;5254;2;C.C.Gmel.;CHABRA;CHABRA
+CHACAN;Chara canescens;5255;2;Desv. & Lois;CHACAN;CHACAN
+CHACON;Chara contraria;5256;2;A.Braun;CHACON;CHACON
+CHAFAG;Chara fragilis;25557;2;Desv.;CHAFAG;CHAFAG
+CHAFRA;Chara fragifera;19399;2;Durieu;CHAFRA;CHAFRA
+CHAGLO;Chara globularis;5257;2;Thuill.;CHAGLO;CHAGLO
+CHAGYM;Chara gymnophylla;25559;2;A.Braun;CHAGYM;CHAGYM
+CHAHIM;Chara hispida var. major;19587;2;(Hartm.) R.D.Wood;CHAHIM;CHAHIS
+CHAHIS;Chara hispida;5258;2;(L.) Vaillant;CHAHIS;CHAHIS
+CHAINT;Chara intermedia;5259;2;A.Braun;CHAINT;CHAINT
+CHASPX;Chara sp.;1121;2;L. ex Vaillant;CHASPX;CHASPX
+CHASTR;Chara strigosa;19588;2;A.Braun;CHASTR;CHASTR
+CHATOM;Chara tomentosa;19589;2;L.;CHATOM;CHATOM
+CHAVIR;Chara virgata;19590;2;Ktzing;CHAVIR;CHAVIR
+CHAVUG;Chara vulgaris var. gymnophylla;5262;2;(A. Braun) Nym.;CHAGYM;CHAGYM
+CHAVUL;Chara vulgaris;5261;2;L.;CHAVUL;CHAVUL
+CHAVUO;Chara vulgaris var. longibracteata;19591;2;(Kuetz.) J.Gr. & B.w.;CHAVUO;CHAVUL
+CHAVUP;Chara vulgaris var. papillata;19592;2;Wallroth;CHAVUP;CHAVUL
+CHESPX;Chaetophora sp.;1117;2;Schrank;CHESPX;CHESPX
+CHHHIS;Chaerophyllum hirsutum;32422;8;L.;CHHHIS;CHHHIS
+CHICOA;Chiloscyphus coadunatus;19593;5;(Sw.) J.J.Engel & R.M.Schust.;CHICOA;CHICOA
+CHIPAL;Chiloscyphus pallescens;1185;5;(Ehrh. ex Hoffm.) Dumort.;CHIPAL;CHIPAL
+CHIPOL;Chiloscyphus polyanthos;1186;5;L.Corda;CHIPOL;CHIPOL
+CHISPX;Chiloscyphus sp.;1182;5;Corda;CHISPX;CHISPX
+CHLSPX;Chlorhormidium sp.;1141;2;Fott;CHLSPX;CHLSPX
+CHMSPX;Chamaesiphon sp.;19585;2;A.Braun et Grunow;CHMSPX;CHMSPX
+CHNSPX;Chantransia sp.;19586;2;A.P. de Candolle;CHNSPX;CHNSPX
+CHOSPX;Chlorotylium sp.;19594;2;Ktzing;CHOSPX;CHOSPX
+CHPALB;Chenopodium album ;32252;9;L.;CHPALB;CHPALB
+CHPHYB;Chenopodium hybridum;32037;9;L.;CHPHYB;CHPHYB
+CHPPOL;Chenopodium polyspermum;29978;9;L.;CHPPOL;CHPPOL
+CHPRUB;Chenopodium rubrum;34428;9;L.;OXBRUB;OXBRUB
+CHPSPX;Chenopodium sp.;30098;9;L.;CHPSPX;CHPSPX
+CHRALT;Chrysosplenium alternifolium;1938;8;L.;CHRALT;CHRALT
+CHROPP;Chrysosplenium oppositifolium;1939;8;L.;CHROPP;CHROPP
+CICVIR;Cicuta virosa;1981;8;L.;CICVIR;CICVIR
+CINAQU;Cinclidotus aquaticus;1318;4;(Hedw.) B., S. & G.;CINAQU;CINAQU
+CINDAN;Cinclidotus danubicus;1319;4;Schiffn. & Baumg.;CINDAN;CINDAN
+CINFON;Cinclidotus fontinaloides;1320;4;(Hedw.) P.Beauv.;CINFON;CINFON
+CINMUC;Cinclidotus mucronatus;19595;4;(Brid.) Mach.;DILMUC;DILMUC
+CINNIG;Cinclidotus nigricans ;31530;4;(Brid.) Wijk & Marg.;CINRIP;CINRIP
+CINRIP;Cinclidotus riparius;1321;4;(Brid.) Arnott;CINRIP;CINRIP
+CINSPX;Cinclidotus sp.;1317;4;P. Beauv.;CINSPX;CINSPX
+CIRLUT;Circaea lutetiana;19596;8;L.;CIRLUT;CIRLUT
+CISARV;Cirsium arvense;1733;9;(L.) Scop.;CISARV;CISARV
+CISDIS;Cirsium dissectum;1734;8;(L.) Hill.;CISDIS;CISDIS
+CISOLE;Cirsium oleraceum;1737;8;(L.) Scop.;CISOLE;CISOLE
+CISPAL;Cirsium palustre;1738;8;(L.) Scop.;CISPAL;CISPAL
+CISSPX;Cirsium sp.;1732;9;Mill.;CISSPX;CISSPX
+CISTUB;Cirsium tuberosum;32042;8;(L.) All.;CISTUB;CISTUB
+CLAAEG;Cladophora aegagropila;5937;2;(L.) Rabenh.;CLAAEG;CLASPX
+CLAGLO;Cladophora glomerata;5939;2;(Linnaeus) Ktzing;CLAGLO;CLASPX
+CLASPX;Cladophora sp.;1124;2;Ktzing;CLASPX;CLASPX
+CLDMAR;Cladium mariscus;1493;7;(L.) Pohl;CLDMAR;CLDMAR
+CLIDEN;Climacium dendroides;19597;4;(Hedw.) Web. & Mohr;CLIDEN;CLIDEN
+COCSPX;Cocconeis sp.;9361;2;Ehrenberg;COCSPX;COCSPX
+COESUB;Coleanthus subtilis;19599;7;(Tratt.) Seidl;COESUB;COESUB
+COILAC;Coix lacryma-jobi;19598;9;L.;COILAC;COILAC
+COLFLU;Collema fluviatile;19600;11;(Huds.) Steudel;COLFLU;COLFLU
+COLSPX;Collema sp.;9675;11;Weber ex F.H.Wigg.;COLSPX;COLSPX
+COMSPX;Compsopogon sp.;6071;2;Mont.;COMSPX;COMSPX
+CONCON;Conocephalum conicum;1176;5;(L.) Dumort.;CONCON;CONCON
+CORLIT;Corrigiola littoralis;19601;8;L.;CORLIT;CORLIT
+COTCOR;Cotula coronopifolia;19602;7;L.;COTCOR;COTCOR
+COVARV;Convolvulus arvensis;29961;9;L.;COVARV;COVARV
+CRACOF;Cratoneuron commutatum var. falcatum;19605;4;NULL;PALFAL;PALFAL
+CRACOL;Cratoneuron commutatum var. fluctuans;19606;4;(Schimp.) Wijk & Margad.;PALCOM;CRACOM
+CRACOM;Cratoneuron commutatum;1232;4;(Hedw.) G.Roth;PALCOM;CRACOM
+CRAFIL;Cratoneuron filicinum;1233;4;(Hedw.) Spruce;CRAFIL;CRAFIL
+CRASPX;Cratoneuron sp.;1231;4;(Sull.) Spruce;CRASPX;CRASPX
+CRDSPX;Carduus sp.;34426;9;L.;CRDSPX;CRDSPX
+CREPAL;Crepis paludosa;19607;8;(L.) Moench;CREPAL;CREPAL
+CROXCR;Crocosmia x crocosmiifolia ;19608;8;(Lemoine) B.E.Br.;CROXCR;CROXCR
+CRPVER;Caropsis verticillato-inundata ;31593;7;(Thore) Rauschert;CRPVER;CRPVER
+CRSAQU;Crassula aquatica;19603;7;(L.) Schnland;CRSAQU;CRSAQU
+CRSHEL;Crassula helmsii;19604;7;(Kirk) Cockayne;CRSHEL;CRSHEL
+CRULAE;Cruciata laevipes;32213;9;Opiz;CRULAE;CRULAE
+CRYLAM;Cryphaea lamyana;19609;4;(Mont.) Mll.Hal.;DENLAM;DENLAM
+CTEMOL;Ctenidium molluscum;19610;4;(Hedw.) Mitt.;CTEMOL;CTEMOL
+CYBSPX;Cymbella sp.;7368;2;C.Agardh ;CYBSPX;CYBSPX
+CYLSPX;Cylindrospermum sp.;1104;2;Ktzing;CYLSPX;CYLSPX
+CYMMUR;Cymbalaria muralis;32039;9;P.Gaertn., B.Mey. & Scherb.;CYMMUR;CYMMUR
+CYNDAC;Cynodon dactylon;29976;9;(L.) Pers.;CYNDAC;CYNDAC
+CYPERA;Cyperus eragrostis;19611;8;Lam.;CYPERA;CYPERA
+CYPESC;Cyperus esculentus;1497;8;L.;CYPESC;CYPESC
+CYPFLA;Cyperus flavescens;1498;7;L.;CYPFLA;CYPFLA
+CYPFUS;Cyperus fuscus;1499;8;L.;CYPFUS;CYPFUS
+CYPLON;Cyperus longus;1500;8;L.;CYPLON;CYPLON
+CYPSER;Cyperus serotinus;1502;7;Rottb.;CYPSER;CYPSER
+CYPSPX;Cyperus sp.;1494;9;L.;CYPSPX;CYPSPX
+CYSFRA;Cystopteris fragilis;1416;6;(L.) Bernh.;CYSFRA;CYSFRA
+DAMALB;Damasonium alisma subsp. bourgaei;30060;7;Mill., (Coss.) Maire;DAMALB;DAMALI
+DAMALI;Damasonium alisma;1895;7;Mill.;DAMALI;DAMALI
+DAMALP;Damasonium alisma subsp. polyspermum;30061;7;Mill., (Coss.) Maire;DAMALP;DAMALI
+DAMBOU;Damasonium bourgaei;19612;7;Coss.;DAMALB;DAMALI
+DAMPOL;Damasonium polyspermum;19613;7;Coss.;DAMALP;DAMALI
+DATSPX;Datura sp.;29977;9;L.;DATSPX;DATSPX
+DATSTR;Datura stramonium;29975;9;L.;DATSTR;DATSTR
+DEBSPX;Debarya sp.;37031;2;Wittrock;TRNSPX;DEBSPX
+DENLAM;Dendrocryphaea lamyana;31546;4;(Mont.) P.Rao;DENLAM;DENLAM
+DERSPX;Dermatocarpon sp.;19614;11;Eschw.;DERSPX;DERSPX
+DERWEB;Dermatocarpon weberi;10217;11;(Ach.) Mann.;DERWEB;DERWEB
+DESCES;Deschampsia cespitosa;1557;8;(L.) P.Beauv.;DESCES;DESCES
+DESSET;Deschampsia setacea;19615;7;(Huds.) Hack.;DESSET;DESSET
+DIASPX;Diatoma sp.;6627;2;Bory de Saint-Vincent;DIASPX;DIASPX
+DICPAL;Dicranella palustris;1280;4;(Dicks.) Crundw. ex Warb.      ;DIHPAL;DIHPAL
+DICSPX;Dicranella sp.;1279;4;(C. Mll.) Schimp.;DICSPX;DICSPX
+DIDFER;Didymodon ferrugineus;34544;4;(Schimp. ex Besch.) M.O.Hill;DIDFER;DIDFER
+DIDINS;Didymodon insulanus;34420;4;(De not.) M.M. Hill;DIDINS;DIDINS
+DIDSIN;Didymodon sinuosus;19617;4;(Mitt.) Delogne;DIDSIN;DIDSIN
+DIDSPA;Didymodon spadiceus;19618;4;(Mitt.) Limpr.;DIDSPA;DIDSPA
+DIDSPX;Didymodon sp.;29981;4;Hedw.;DIDSPX;DIDSPX
+DIDTOP;Didymodon tophaceus;19619;4;(Brid.) Lisa;DIDTOP;DIDTOP
+DIDVIN;Didymodon vinealis;34546;4;(Brid.) R.H.Zander;DIDVIN;DIDVIN
+DIGSAN;Digitaria sanguinalis;32253;9;(L.) Scop.;DIGSAN;DIGSAN
+DIGSPX;Digitaria sp.;32041;9;Haller;DIGSPX;DIGSPX
+DIHFLA;Dichodontium flavescens;1277;4;(Dicks.) Lindb.  ;DIHFLA;DIHFLA
+DIHPAL;Dichodontium palustre ;31543;4;(Dicks.) M.Stech;DIHPAL;DIHPAL
+DIHPEF;Dichodontium pellucidum var. flavescens ;31599;4;(Hedw.) Schimp.;DIHFLA;DIHFLA
+DIHPEL;Dichodontium pellucidum;1278;4;(Hedw.) Schimp.;DIHPEL;DIHPEL
+DIHSPX;Dichodontium sp.;1276;4;Schimp.;DIHSPX;DIHSPX
+DILMUC;Dialytrichia mucronata ;31531;4;(Brid.) Broth.;DILMUC;DILMUC
+DIPFUL;Dipsacus fullonum;1770;9;L.;DIPFUL;DIPFUL
+DIPPIL;Dipsacus pilosus;29980;8;L.;DIPPIL;DIPPIL
+DIPSPX;Dipsacus sp.;1769;9;L.;DIPSPX;DIPSPX
+DIRSCO;Dicranum scottianum;19616;4;Turn.;DIRSCO;DIRSCO
+DIYGEM;Didymosphenia geminata;7393;2;(Lyngbye) M. Schmidt;DIYGEM;DIYGEM
+DIYSPX;Didymosphenia sp.;9381;2;M. Schmidt;DIYSPX;DIYSPX
+DORSPX;Doronicum sp.;29994;9;L.;DORSPX;DORSPX
+DRASPX;Draparnaldia sp.;1118;2;Bory de Saint-Vincent;DRASPX;DRASPX
+DREADU;Drepanocladus aduncus;10211;4;(Hedw.) Warnst.;DREADU;DREADU
+DREEXA;Drepanocladus exannulatus;19620;4;(Schimp.) Warnst.;WAREXA;WAREXA
+DREFLU;Drepanocladus fluitans;25779;4;(Hedw.) Warnst.;WARFLU;DREFLU
+DREKNE;Drepanocladus kneiffii ;31539;4;(B., S. & G.) Warnst.;DREADU;DREADU
+DREPOL;Drepanocladus polycarpos ;31538;4;(Voit) Warnst.;DREADU;DREADU
+DREREV;Drepanocladus revolvens;19621;4;(Sw.ex anon.) Warnst.;SCPREV;SCPREV
+DRESEN;Drepanocladus sendtneri;19622;4;(Schimp. ex H.Mll.) Warnst.;DRESEN;DRESEN
+DRESIM;Drepanocladus simplicissimus ;31537;4;Warnst.;DREADU;DREADU
+DRESPX;Drepanocladus sp.;1234;4;(C. Mll.) G. Roth;DRESPX;DRESPX
+DROANG;Drosera anglica;1530;7;Huds.;DROANG;DROANG
+DROINT;Drosera intermedia;1531;7;Hayne;DROINT;DROINT
+DROROT;Drosera rotundifolia;1532;7;L.;DROROT;DROROT
+DRYCAR;Dryopteris carthusiana;1418;6;(Vill.) H.P.Fuchs;DRYCAR;DRYCAR
+DRYFIL;Dryopteris filix-mas;1420;6;(L.) Schott;DRYFIL;DRYFIL
+DRYSPX;Dryopteris sp.;1417;6;Adans.;DRYSPX;DRYSPX
+DUMHIR;Dumortiera hirsuta;19624;5;(Sw.) Nees;DUMHIR;DUMHIR
+DYSBOT;Dysphania botrys;34429;9;(L.) Mosyakin & Clemants;DYSBOT;DYSBOT
+ECHCRU;Echinochloa crus-galli;1560;9;(L.) P.Beauv.;ECHCRU;ECHCRU
+ECHORY;Echinochloa oryzoides;1561;8;(Ard.) Fritsch;ECHORY;ECHORY
+ECHSPX;Echinochloa sp.;1558;9;P.Beauv.;ECHSPX;ECHSPX
+ECLPRO;Eclipta prostrata;19625;8;(L.) L.;ECLPRO;ECLPRO
+EGEDEN;Egeria densa;19626;10;Planch.;EGEDEN;EGEDEN
+EICCRA;Eichhornia crassipes;19627;10;(Mart.) Solms;EICCRA;EICCRA
+EICSPX;Eichhornia sp.;19628;10;Kunth;EICSPX;EICSPX
+ELAALS;Elatine alsinastrum;1535;7;L.;ELAALS;ELAALS
+ELAAMB;Elatine ambigua;19629;7;Wight;ELAAMB;ELAAMB
+ELABRO;Elatine brochonii;19630;7;Clavaud;ELABRO;ELABRO
+ELAHEX;Elatine hexandra;1536;7;(Lapierre) DC.;ELAHEX;ELAHEX
+ELAHUN;Elatine hungarica;19631;7;Moesz.;ELAHUN;ELAHUN
+ELAHYD;Elatine hydropiper;1537;7;L.;ELAHYD;ELAHYD
+ELAHYM;Elatine hydropiper subsp. macropoda;31582;7;(Guss.) O.Bols & Vigo;ELAHYM;ELAHYD
+ELAMAC;Elatine macropoda;19632;7;Guss.;ELAHYM;ELAHYD
+ELAORT;Elatine orthosperma;19633;7;D;ELAHYD;ELAHYD
+ELASPX;Elatine sp.;1534;7;L.;ELASPX;ELASPX
+ELATRI;Elatine triandra;19634;7;Schkuhr;ELATRI;ELATRI
+ELDPAL;Elodes palustris;19643;7;Spach.;HYPELO;ELDPAL
+ELEACI;Eleocharis acicularis;1504;7;(L) Roem & Schult.;ELEACI;ELEACI
+ELEAUS;Eleocharis austriaca;19635;7;Hayek;ELEMAA;ELEMAA
+ELEBON;Eleocharis bonariensis;37087;7;Nees;ELEBON;ELEBON
+ELEMAA;Eleocharis mamillata subsp. austriaca ;31598;7;(Hayek) Strandh.;ELEMAA;ELEMAA
+ELEMAM;Eleocharis mamillata;19636;7;H. Lindb.;ELEMAM;ELEMAM
+ELEMUL;Eleocharis multicaulis;1505;7;(Sm.) Desv.;ELEMUL;ELEMUL
+ELEOVA;Eleocharis ovata;19637;7;(Roth) Roem. & Schult.;ELEOVA;ELEOVA
+ELEPAL;Eleocharis palustris;1506;7;(L.) Roem. & Schult.;ELEPAL;ELEPAL
+ELEPAP;Eleocharis palustris subsp. palustris;19638;7;(L.) Roem. & Schult.;ELEPAP;ELEPAL
+ELEPAR;Eleocharis parvula;19640;7;(Roem. & Schult.) Link ex Bluff, Nees & Schauer;ELEPAR;ELEPAR
+ELEPAV;Eleocharis palustris subsp. vulgaris;19639;7;Bures & Danihelka;ELEPAW;ELEPAL
+ELEPAW;Eleocharis palustris subsp. waltersii ;31542;7;Bures & Danihelka;ELEPAW;ELEPAL
+ELEQUI;Eleocharis quinqueflora;1507;7;(F. X. Hartman) O.Schwarz  ;ELEQUI;ELEQUI
+ELESPX;Eleocharis sp.;1503;7;R.Br.;ELESPX;ELESPX
+ELEUNI;Eleocharis uniglumis;1508;7;(Link) Schult.    ;ELEUNI;ELEUNI
+ELGFLU;Eleogiton fluitans ;31671;10;(L.) Link;ISLFLU;SCIFLU
+ELLARE;Ellerbeckia arenaria;12627;2;(Moore ex Ralfs) R.M.Crawforf;ELLARE;ELLARE
+ELLSPX;Ellerbeckia sp.;9497;2;R.M.Crawford;ELLSPX;ELLSPX
+ELOCAL;Elodea callitrichoides;19642;10;(Rich.) Casp.;ELOCAL;ELOCAL
+ELOCAN;Elodea canadensis;1586;10;Michx.;ELOCAN;ELOCAN
+ELOERN;Elodea ernstiae;1587;10;H.St.John;ELOCAL;ELOCAL
+ELONUT;Elodea nuttalii;1588;10;(Planch.) H.St.John;ELONUT;ELONUT
+ELOSPX;Elodea sp.;1585;10;Mischx.;ELOSPX;ELOSPX
+ELTREP;Elytrigia repens;20730;9;(L.) Desv. ex Nevski;ELTREP;ELTREP
+ELTRER;Elytrigia repens subsp. repens;31595;9;(L.) Desv. ex Nevski;ELTRER;ELTREP
+ELYCAN;Elymus caninus;32216;9;(L.) L.;ROECAN;ROECAN
+ELYSPX;Elymus sp.;29949;9;L.;ELYSPX;ELYSPX
+ENCSPX;Encyonema sp.;9378;2;Ktzing;ENCSPX;ENCSPX
+ENOMUL;Entosthodon muhlenbergii;34432;4;(Turner) Fife;ENOMUL;ENOMUL
+ENTCOM;Enteromorpha compressa ;25761;2;(L.) Greville;ULVCOM;ULVCOM
+ENTINT;Enteromorpha intestinalis;6009;2;(L.) Nees;ULVINT;ENTINT
+ENTSPX;Enteromorpha sp.;1144;2;(L.) Nees;ENTSPX;ENTINT
+EPICIL;Epilobium ciliatum;1845;9;Raf.;EPICIL;EPICIL
+EPIHIR;Epilobium hirsutum;1846;8;L.;EPIHIR;EPIHIR
+EPILAN;Epilobium lanceolatum;19644;9;Sebast. & Mauri;EPILAN;EPILAN
+EPIMON;Epilobium montanum;1848;8;L.;EPIMON;EPIMON
+EPIOBS;Epilobium obscurum;1849;8;Schreb.;EPIOBS;EPIOBS
+EPIPAL;Epilobium palustre;1850;8;L.;EPIPAL;EPIPAL
+EPIPAR;Epilobium parviflorum;1851;8;Schreb.;EPIPAR;EPIPAR
+EPIROS;Epilobium roseum;1852;8;Schreb.;EPIROS;EPIROS
+EPISPX;Epilobium sp.;1844;9;L.;EPISPX;EPISPX
+EPITET;Epilobium tetragonum;1853;9;L.;EPITET;EPITET
+EQUARV;Equisetum arvense;1384;6;L.;EQUARV;EQUARV
+EQUFLU;Equisetum fluviatile;1385;6;L.;EQUFLU;EQUFLU
+EQUHYE;Equisetum hyemale;29991;6;L.;EQUHYE;EQUHYE
+EQULIM;Equisetum limosum ;31535;6;L.;EQUFLU;EQUFLU
+EQUMAX;Equisetum maximum;1386;6;Lam.;EQUFLU;EQUFLU
+EQUPAL;Equisetum palustre;1387;6;L.;EQUPAL;EQUPAL
+EQUPRA;Equisetum pratense;19645;6;Ehrh.;EQUPRA;EQUPRA
+EQURAM;Equisetum ramosissimum;29992;6;Desf.;EQURAM;EQURAM
+EQUSPX;Equisetum sp.;1383;6;L.;EQUSPX;EQUSPX
+EQUSYL;Equisetum sylvaticum;19646;6;L.;EQUSYL;EQUSYL
+EQUTEL;Equisetum telmateia;29958;6;Ehrh.;EQUTEL;EQUTEL
+EQUXLI;Equisetum x litorale;19647;6;Kuhlew. ex Rupr.;EQUXLI;EQUXLI
+ERARAV;Erianthus ravennae ;31536;8;(L.) P.Beauv.;ERARAV;ERARAV
+ERGPIL;Eragrostis pilosa;32254;9;(L.) P.Beauv.;ERGPIL;ERGPIL
+ERGSPX;Eragrostis sp.;34430;9;Wolf.;ERGSPX;ERGSPX
+ERIAQU;Eriocaulon aquaticum;19648;10;(Hill.) Druce;ERIAQU;ERIAQU
+ERICIN;Eriocaulon cinereum;19649;10;R.Br.;ERICIN;ERICIN
+EROANG;Eriophorum angustifolium;1510;8;Honck.;EROANG;EROANG
+EROPOL;Eriophorum polystachion;19650;8;L.;EROANG;EROANG
+ERYCOR;Eryngium corniculatum;19651;7;Lam.;ERYCOR;ERYCOR
+ERYGAL;Eryngium galioides;19652;7;Lam.;ERYGAL;ERYGAL
+ERYVIV;Eryngium viviparum;19653;7;J.Gay;ERYVIV;ERYVIV
+EUCVER;Eucladium verticillatum;19654;4;(Brid.) B., S. & G.;EUCVER;EUCVER
+EUPCAN;Eupatorium cannabinum;1741;8;L.;EUPCAN;EUPCAN
+EURHIA;Eurhynchium hians;19655;4;(Hedw.) Sande Lac.;OXYHIA;OXYHIA
+EURPRA;Eurhynchium praelongum;19656;4;(Hedw.) Schimp.;KINPRA;KINPRA
+EURPRS;Eurhynchium praelongum var. stokesii;31601;4;(Turner) Dixon;KINPRA;KINPRA
+EURSPE;Eurhynchium speciosum;30100;4;(Brid.) Jur.;OXYSPE;OXYSPE
+EURSPX;Eurhynchium sp.;1262;4;B., S. & G.;EURSPX;EURSPX
+EURSTO;Eurhynchium stokesii;1264;4;(Turner) Schimp.;KINPRA;KINPRA
+EURSWA;Eurhynchium swartzii     ;31548;4;(Turn.) Curn.;OXYHIA;OXYHIA
+FALDUM;Fallopia dumetorum;19657;9;(L.) Holub;FALDUM;FALDUM
+FALJAP;Fallopia japonica;19658;8;(Houtt.) Ronse Decr.;REYJAP;REYJAP
+FEGCON;Fegatella conica ;1178;5;(L.) Corda;CONCON;CONCON
+FESARU;Festuca arundinacea;19659;9;Schreb.;FESARU;FESARU
+FESGIG;Festuca gigantea;29968;8;(L.) Vill.;FESGIG;FESGIG
+FESRUB;Festuca rubra;29965;9;L.;FESRUB;FESRUB
+FESSPX;Festuca sp.;32219;9;L.;FESSPX;FESSPX
+FESSYL;Festuca sylvatica;29988;8;Huds.;BRHSYS;BRHSYL
+FICVER;Ficaria verna;34445;8;Huds.;FICVER;FICVER
+FILULM;Filipendula ulmaria;1919;8;(L.) Maxim.;FILULM;FILULM
+FIMANN;Fimbristylis annua;19660;7;(All.) Roem. & Schult.;FIMANN;FIMANN
+FIMBIS;Fimbristylis bisumbellata;19661;8;(Forssk.) Bubani;FIMBIS;FIMBIS
+FIMSQU;Fimbristylis squarrosa;19662;8;Vahl.;FIMSQU;FIMSQU
+FISADI;Fissidens adianthoides;19663;4;Hedw.;FISADI;FISADI
+FISARN;Fissidens arnoldii;19664;4;R.Ruthe;FISARN;FISARN
+FISBRC;Fissidens bryoides var. caespitans ;31590;4;Schimp.;FISBRC;FISBRY
+FISBRY;Fissidens bryoides;1293;4;Hedw.;FISBRY;FISBRY
+FISCRA;Fissidens crassipes;1294;4;Wilson ex Bruch & Schimp.;FISCRA;FISCRA
+FISCRI;Fissidens crispus;32432;4;Mont.;FISCRI;FISMIN
+FISCUR;Fissidens curnovii;1296;4;Mitt.;FISBRC;FISBRC
+FISDUB;Fissidens dubius;31744;4;P.Beauv.;FISDUB;FISDUB
+FISEXI;Fissidens exilis;32029;4;Hedw.;FISEXI;FISEXI
+FISFON;Fissidens fontanus;31545;4;(Bach. Pyl.) Steud.;FISFON;OCTFON
+FISGRA;Fissidens gracilifolius;19665;4;Brugg. Nann. & Nyh.;FISGRA;FISGRA
+FISGRN;Fissidens grandifrons;19666;4;Brid.;FISGRN;FISGRN
+FISGYM;Fissidens gymnandrus;19667;4;B;FISGYM;FISGYM
+FISIMP;Fissidens impar ;31544;4;Mitt.;FISVIR;FISVIR
+FISMIL;Fissidens mildeanus ;31549;4;Schimp.;FISCRA;FISCRA
+FISMIN;Fissidens minutulus;25780;4;Sull.;FISCRI;FISMIN
+FISMON;Fissidens monguillonii;1297;4;Thr.;FISMON;FISMON
+FISOSM;Fissidens osmundoides;19668;4;Hedw.;FISOSM;FISOSM
+FISPOL;Fissidens polyphyllus;10213;4;Wils. ex B., S. & G.;FISPOL;FISPOL
+FISPUS;Fissidens pusillus;1298;4;(Wils.) Milde;FISPUS;FISPUS
+FISRIV;Fissidens rivularis;19669;4;(Spruce) B., S. & G.;FISRIV;FISRIV
+FISRUF;Fissidens rufulus;19670;4;Bruch. & Schimp.;FISRUF;FISRUF
+FISSER;Fissidens serrulatus;19671;4;Brid.;FISSER;FISSER
+FISSPX;Fissidens sp.;1292;4;Hedw.;FISSPX;FISSPX
+FISTAX;Fissidens taxifolius;1300;4;Hedw.;FISTAX;FISTAX
+FISVIR;Fissidens viridulus;1301;4;(Sw. ex anon.) Wahlenb.;FISVIR;FISVIR
+FONANG;Fontinalis antipyretica var. gracilis;19762;4;(Lindb.) Kindb.;FONANG;FONANT
+FONANI;Fontinalis antipyretica var. antipyretica ;19672;4;NULL;FONANI;FONANT
+FONANT;Fontinalis antipyretica;1310;4;Hedw.;FONANT;FONANT
+FONHYD;Fontinalis hypnoides var. duriaei;10215;4;Schimp.;FONHYD;FONHYD
+FONHYP;Fontinalis hypnoides;10238;4;C.Hartm.;FONHYP;FONHYP
+FONSPX;Fontinalis sp.;1309;4;Hedw.;FONSPX;FONSPX
+FONSQU;Fontinalis squamosa;1312;4;Hedw.;FONSQU;FONSQU
+FRASPX;Fragilaria sp.;9533;2;Lyngbye;FRASPX;FRASPX
+FRGSPX;Fragaria sp.;34431;9;L.;FRGSPX;FRGSPX
+FUIPUB;Fuirena pubescens;19763;7;(Poir.) Kunth;FUIPUB;FUIPUB
+FUNDEN;Funaria dentata;34433;4;Crome;ENOMUL;ENOMUL
+GAETET;Galeopsis tetrahit;29957;9;L.;GAETET;GAETET
+GALAPA;Galium aparine;1927;8;L.;GALAPA;GALAPA
+GALCRU;Galium cruciata;32214;9;(L.) Scop.;CRULAE;CRULAE
+GALMOL;Galium mollugo;1929;9;L.;GALMOL;GALMOL
+GALMON;Galium mollugo subsp. neglectum ;31594;8;(Le Gall ex Gren.) Nyman;GALMON;GALMOL
+GALNEG;Galium neglectum;19764;8;Le Gall ex Gren.;GALMON;GALMOL
+GALPAL;Galium palustre;1930;8;L.;GALPAL;GALPAL
+GALSPX;Galium sp.;1926;9;L.;GALSPX;GALSPX
+GALTRI;Galium trifidum;19765;8;L.;GALTRI;GALTRI
+GALULI;Galium uliginosum;19766;8;L.;GALULI;GALULI
+GEISPL;Geitlerinema splendidum;9694;2;(Greville ex Gomont) Anagnostidis;GEISPL;GEISPL
+GEISPX;Geitlerinema sp.;6451;2;(Anagnostidis et Komrek) Anagnostidis;GEISPX;GEISPX
+GLEHED;Glechoma hederacea;19767;8;L.;GLEHED;GLEHED
+GLYAQU;Glyceria aquatica;19768;7;(L.) Wahlb.;GLYAQU;GLYAQU
+GLYDEC;Glyceria declinata;1563;7;Brb.;GLYDEC;GLYDEC
+GLYFLU;Glyceria fluitans;1564;7;(L.) R.Br.;GLYFLU;GLYFLU
+GLYMAX;Glyceria maxima;1565;7;(Hartm.) Holmb.;GLYMAX;GLYMAX
+GLYNOT;Glyceria notata;1566;7;Chevall.;GLYNOT;GLYNOT
+GLYSPX;Glyceria sp.;1562;7;R.Br.;GLYSPX;GLYSPX
+GLYXPE;Glyceria x pedicellata;19769;7;F. Towns;GLYXPE;GLYXPE
+GNAULI;Gnaphalium uliginosum;19770;8;L.;GNAULI;GNAULI
+GOMMIN;Gomphoneis minuta ;7611;2;(Stone) Kociolek & Stoermer;GOMMIN;GOMMIN
+GOMSPX;Gomphoneis sp.;9382;2;Cleve;GOMSPX;GOMSPX
+GONINC;Gongrosira incrustans;19771;2;(Reinsch) Schmidle;GONINC;GONINC
+GONSPX;Gongrosira sp.;30105;2;Ktzing;GONSPX;GONSPX
+GOPSPX;Gomphonema sp.;8781;2;Ehrenberg;GOPSPX;GOPSPX
+GRALIN;Gratiola linifolia;19772;8;Vahl.;GRALIN;GRALIN
+GRANEG;Gratiola neglecta;19773;8;Torr.;GRANEG;GRANEG
+GRAOFF;Gratiola officinalis;19774;8;L.;GRAOFF;GRAOFF
+GRASPX;Gratiola sp.;29963;9;NULL;GRASPX;GRASPX
+GRODEN;Groenlandia densa;1638;10;(L.) Fourr.;GRODEN;GRODEN
+GYMREC;Gymnostomum recurvirostrum;35496;4;Hedw.;HYMREC;GYMREC
+HAEPLU;Haematococcus pluvialis;6039;2;Flotow;HAEPLU;HAEPLU
+HECMAN;Heracleum mantegazzianum;19776;9;Sommier & Levier;HECMAN;HECMAN
+HEDHEL;Hedera helix;29960;9;L.;HEDHEL;HEDHEL
+HEEREN;Heteranthera reniformis;19778;10;Ruiz & Pav.;HEEREN;HEEREN
+HEISPX;Helianthus sp.;35483;9;L.;HEISPX;HEISPX
+HELINU;Helosciadium inundatum ;30055;10;(L.) W.D.J.Koch;HELINU;APIINU
+HELNOD;Helosciadium nodiflorum ;30053;10;(L.) W.D.J.Koch;HELNOD;APINOD
+HELREP;Helosciadium repens ;30911;7;(Jacq.) W.D.J.Koch;HELREP;HELREP
+HELXMO;Helosciadium x moorei ;30054;10;(Syme) B.Bock;HELXMO;HELXMO
+HEMALT;Hemarthria altissima;19775;8;(Poir.) Stapf & C.E.Hubb.;HEMALT;HEMALT
+HEOSPX;Heteroleibleinia sp.;9684;2;(Geitler) L.Hoffmann;HEOSPX;HEOSPX
+HERFLU;Heribaudiella fluviatilis;19777;2;(Areschoug) Svedelius;HERFLU;HERFLU
+HERSPX;Heribaudiella sp.;6196;2;Gomont;HERSPX;HERSPX
+HETHET;Heterocladium heteropterum;19779;4;(Brid.) Schimp.;HETHET;HETHET
+HIBPAL;Hibiscus palustris;19780;8;L.;HIBPAL;HIBPAL
+HIESPX;Hierochloe sp.;34434;9;R. Br.;HIESPX;HIESPX
+HILRIV;Hildenbrandia rivularis;9789;2;(Liebmann) J.Agardh;HILRIV;HILRIV
+HILSPX;Hildenbrandia sp.;1157;2;Nardo;HILSPX;HILRIV
+HIPSPX;Hippuris sp.;1781;10;L.;HIPSPX;HIPSPX
+HIPTET;Hippuris tetraphylla;19781;10;L.f.;HIPVUL;HIPVUL
+HIPVUL;Hippuris vulgaris;1782;10;L.;HIPVUL;HIPVUL
+HIRSPX;Hieracium sp.;34602;9;L.;HIRSPX;HIRSPX
+HOATRI;Homalia trichomanoides;1347;4;(Hedw.) Schimp.;HOATRI;HOATRI
+HOHSER;Homalothecium sericeum;37794;4;(Hedw.) Schimp.;HOHSER;HOHSER
+HOLLAN;Holcus lanatus;19782;9;L.;HOLLAN;HOLLAN
+HOMSPX;Homoeothrix sp.;6395;2;(Thuret ex Bornet & Flahault) Kirchner;HOMSPX;HOMSPX
+HOOLUC;Hookeria lucens;1330;4;(Hedw.) Sm.;HOOLUC;HOOLUC
+HORMUR;Hordeum murinum;32255;9;L.;HORMUR;HORMUR
+HOTPAL;Hottonia palustris;1882;10;L.;HOTPAL;HOTPAL
+HPNCUP;Hypnum cupressiforme;1335;4;Hedw.;HPNCUP;HPNCUP
+HUMLUP;Humulus lupulus;19783;8;L.;HUMLUP;HUMLUP
+HYAFLU;Hygroamblystegium fluviatile ;1237;4;(Hedw.) Loeske;HYAFLU;HYAFLU
+HYAHUM;Hygroamblystegium humile;31551;4;(P.Beauv.) Vanderp., Goffinet & Heden;HYAHUM;HYAHUM
+HYATEN;Hygroamblystegium tenax;31552;4;(Hedw.) Jenn.;HYATEN;HYATEN
+HYAVAR;Hygroamblystegium varium;31550;4;(Hedw.) Mnk.;HYAVAR;HYAVAR
+HYBLAX;Hygrobiella laxifolia;19786;5;(Hook.) Spruce;HYBLAX;HYBLAX
+HYDMOR;Hydrocharis morsus-ranae;1590;10;L.;HYDMOR;HYDMOR
+HYGDIL;Hygrohypnum dilatatum ;10216;4;(Wils. ex Schimp.) Loeske;HYGDUR;HYGDUR
+HYGDUR;Hygrohypnum duriusculum;9821;4;(De Not.) D.W.Jamieson;HYGDUR;HYGDUR
+HYGEUG;Hygrohypnum eugyrium;19787;4;(Schimp.) Broth.;HYGEUG;HYGEUG
+HYGLUR;Hygrohypnum luridum;1240;4;(Hedw.) Jenn.;HYGLUR;HYGLUR
+HYGMOL;Hygrohypnum molle;19788;4;(Hedw.) Loeske;HYGMOL;HYGMOL
+HYGOCH;Hygrohypnum ochraceum;1241;4;(Turn. ex Wils.) Loeske;HYGOCH;HYGOCH
+HYGPOL;Hygrohypnum polare;19789;4;(Lindb.) Loeske;HYGPOL;HYGPOL
+HYGSMI;Hygrohypnum smithii;19790;4;(Sw.) Broth.;HYGSMI;HYGSMI
+HYGSPX;Hygrohypnum sp.;1239;4;Lindb.;HYGSPX;HYGSPX
+HYIRET;Hydrodictyon reticulatum;5687;2;(L.) Lagerh.;HYIRET;HYIRET
+HYISPX;Hydrodictyon sp.;5686;2;Roth.;HYISPX;HYIRET
+HYLVER;Hydrilla verticillata;19784;10;(L.f.) Royle;HYLVER;HYLVER
+HYMREC;Hymenostylium recurvirostrum;19791;4;(Hedw.) Dix.;HYMREC;HYMREC
+HYOARM;Hyocomium armoricum;19792;4;(Brid.) Wijk & Marg.;HYOARM;HYOARM
+HYPELO;Hypericum elodes;1785;7;L.;HYPELO;ELDPAL
+HYPHIR;Hypericum hircinum;35490;8;L.;HYPHIR;HYPHIR
+HYPMAC;Hypericum maculatum;19793;8;Crantz;HYPMAC;HYPMAC
+HYPTET;Hypericum tetrapterum;1786;8;Fr.;HYPTET;HYPTET
+HYRRAN;Hydrocotyle ranunculoides;19785;10;L.f.;HYRRAN;HYRRAN
+HYRSPX;Hydrocotyle sp.;1982;10;L.;HYRSPX;HYRSPX
+HYRVUL;Hydrocotyle vulgaris;1983;10;L.;HYRVUL;HYRVUL
+HYUFOE;Hydrurus foetidus;6184;2;(Vill.) Trevisan;HYUFOE;HYUFOE
+HYUSPX;Hydrurus sp.;6183;2;C.Agardh;HYUSPX;HYUFOE
+IMEOST;Imperatoria ostruthium;35492;8;L.;IMEOST;IMEOST
+IMPBAL;Impatiens balfouri;30238;8;Hook.f.;IMPBAL;IMPBAL
+IMPCAP;Impatiens capensis;1685;8;Meerb.;IMPCAP;IMPCAP
+IMPGLA;Impatiens glandulifera;1686;8;Royle;IMPGLA;IMPGLA
+IMPNOL;Impatiens noli-tangere;19794;9;L.;IMPNOL;IMPNOL
+IMPSPX;Impatiens sp.;1684;9;L.;IMPSPX;IMPSPX
+INUSAL;Inula salicina;32256;8;L.;INUSAL;INUSAL
+IRIPSE;Iris pseudacorus;1601;7;L.;IRIPSE;IRIPSE
+IRISPU;Iris spuria;19796;8;L.;IRISPU;IRISPU
+IRISPX;Iris sp.;1600;9;L.;IRISPX;IRISPX
+IRIVER;Iris versicolor;19797;8;L.;IRIVER;IRIVER
+ISLCER;Isolepis cernua;19812;8;(Vahl) Roem. & Schult.;ISLCER;ISLCER
+ISLFLU;Isolepis fluitans;31025;10;(L.) R.Br.;ISLFLU;SCIFLU
+ISLSET;Isolepis setacea;19813;8;Kindb.;ISLSET;ISLSET
+ISNPAL;Isnardia palustris;19798;7;L.;LUDPAL;LUDPAL
+ISOAZO;Isoetes azorica;19799;6;Durieu ex Milde;ISOAZO;ISOAZO
+ISOBOR;Isoetes boryana;19800;6;Durieu;ISOBOR;ISOBOR
+ISOBRO;Isoetes brochonii;19801;6;Motelay;ISOLAC;ISOLAC
+ISOECH;Isoetes echinospora;19802;6;Durieu;ISOECH;ISOECH
+ISOLAC;Isoetes lacustris;19803;6;L.;ISOLAC;ISOLAC
+ISOLON;Isoetes longissima;19804;6;Bory;ISOLON;ISOLON
+ISOMAL;Isoetes malinverniana;19805;6;Ces. & De Not.;ISOMAL;ISOMAL
+ISOSPX;Isoetes sp.;19806;6;L.;ISOSPX;ISOSPX
+ISOVEA;Isoetes velata subsp. asturicense;19808;6;(Lanz) Rivas Mart. & Prada;ISOVEA;ISOVEL
+ISOVEE;Isoetes velata subsp. tenuissima;19810;6;(Boreau) O.Bols & Vigo;ISOVEE;ISOVEL
+ISOVEL;Isoetes velata;19807;6;A.Braun;ISOVEL;ISOVEL
+ISOVET;Isoetes velata subsp. tegulensis;19809;6;A.Braun, Batt. & Trab.;ISOVET;ISOVEL
+ISOVEV;Isoetes velata subsp. velata;19811;6;A.Braun;ISOVEV;ISOVEL
+ISTHOL;Isothecium holtii;19814;4;Kindb.;ISTHOL;ISTHOL
+JAASPX;Jaaginema sp.;6442;2;Anagnostidis & Komarek;JAASPX;JAASPX
+JACAQU;Jacobaea aquatica;31029;8;(Hill) P.Gaertn., B.Mey. & Scherb.;JACAQU;JACAQU
+JACPAL;Jacobaea paludosa ;31553;8;(L.) P.Gaertn., B.Mey. & Scherb.;JACPAL;JACPAL
+JACVUL;Jacobaea vulgaris;36393;9;Gaertn.;JACVUL;JACVUL
+JUGATR;Jungermannia atrovirens;19820;5;Dumort.;JUGATR;JUGATR
+JUGEXS;Jungermannia exsertifolia;19821;5;Steph.;JUGEXS;JUGEXS
+JUGGRA;Jungermannia gracillima;10209;5;Sm.;JUGGRA;JUGGRA
+JUGOBO;Jungermannia obovata;19823;5;Nees;JUGOBO;JUGOBO
+JUGPAR;Jungermannia paroica;19824;5;(Schiffn.) Grolle;JUGPAR;JUGPAR
+JUGPUM;Jungermannia pumila;19825;5;With.;JUGPUM;JUGPUM
+JUGSPH;Jungermannia sphaerocarpa;19827;5;Hook.;JUGSPH;JUGSPH
+JUGSPX;Jungermannia sp.;19826;5;L.;JUGSPX;JUGSPX
+JUNACU;Juncus acutiflorus;1607;8;Ehrh. ex Hoffm.;JUNACU;JUNACU
+JUNALP;Juncus alpinoarticulatus;19815;8;Chaix;JUNALP;JUNALP
+JUNAMB;Juncus ambiguus;19816;8;Guss.;JUNRAN;JUNRAN
+JUNART;Juncus articulatus;1609;8;L.;JUNART;JUNART
+JUNBUF;Juncus bufonius;1610;8;L.;JUNBUF;JUNBUF
+JUNBUL;Juncus bulbosus;1611;7;L.;JUNBUL;JUNBUL
+JUNCOM;Juncus compressus;19818;8;Jacq.;JUNCOM;JUNCOM
+JUNCON;Juncus conglomeratus;1612;7;L.;JUNCON;JUNCON
+JUNEFF;Juncus effusus;1613;8;L.;JUNEFF;JUNEFF
+JUNFIL;Juncus filiformis;19819;7;L.;JUNFIL;JUNFIL
+JUNGLA;Juncus glaucus;1614;8;Ehrh. Ex Sibth.;JUNINF;JUNINF
+JUNHET;Juncus heterophyllus;1615;7;Dufour;JUNHET;JUNHET
+JUNINF;Juncus inflexus;1616;8;L.;JUNINF;JUNINF
+JUNMAR;Juncus maritimus;1617;8;Lam.;JUNMAR;JUNMAR
+JUNOBT;Juncus obtusiflorus ;31555;7;Ehrh. ex Hoffm.;JUNSUB;JUNSUB
+JUNPYG;Juncus pygmaeus;34435;8;Rich. ex Thuill.;JUNPYG;JUNPYG
+JUNRAN;Juncus ranarius;1619;8;Songeon & Perrier;JUNRAN;JUNRAN
+JUNSPX;Juncus sp.;1606;8;L.;JUNSPX;JUNSPX
+JUNSUB;Juncus subnodulosus;1622;8;Schrank;JUNSUB;JUNSUB
+JUNTEN;Juncus tenageia;20716;8;Ehrh. ex L.f.;JUNTEN;JUNTEN
+JUNTEU;Juncus tenuis;32212;8;Willd.;JUNTEU;JUNTEU
+KINPRA;Kindbergia praelonga;30014;4;(Hedw.) Ochyra;KINPRA;KINPRA
+KLESPX;Klebsormidium sp.;5281;2;P.C. Silva, Mattox et W.H. Blackwell;KLESPX;KLESPX
+KOMSPX;Komvophoron sp.;6397;2;Anagnostidis & Komarek;KOMSPX;KOMSPX
+LAGMAJ;Lagarosiphon major;1592;10;(Ridley) Moss;LAGMAJ;LAGMAJ
+LAMALB;Lamium album;19828;9;L.;LAMALB;LAMALB
+LAMGAL;Lamium galeobdolon;36395;9;(L.) L.;LAMGAL;LAMGAL
+LAMMAC;Lamium maculatum;19829;9;L.;LAMMAC;LAMMAC
+LEAFLU;Lemanea gr. fluviatilis;6083;2;(Linnaeus) C.Agardh;LEAFLU;LEAFLU
+LEASPX;Lemanea sp.;1159;2;Bory de Saint-Vincent;LEASPX;LEAFLU
+LEEORY;Leersia oryzoides;1569;8;(L.) Schwartz;LEEORY;LEEORY
+LEJLAM;Lejeunea lamacerina;29956;5;(Steph.) Schiffn.;LEJLAM;LEJLAM
+LEJSPX;Lejeunea sp.;19831;5;Lib.;LEJSPX;LEJSPX
+LEMAEQ;Lemna aequinoctialis;19832;10;Welw.;LEMAEQ;LEMAEQ
+LEMGIB;Lemna gibba;1625;10;L.;LEMGIB;LEMGIB
+LEMMIN;Lemna minor;1626;10;L.;LEMMIN;LEMMIN
+LEMMIT;Lemna minuta;29962;10;Kunth;LEMMIT;LEMMIT
+LEMMIU;Lemna minuscula;1627;10;Herter;LEMMIT;LEMMIT
+LEMPOL;Lemna polyrhiza;34436;10;L.;SPRPOL;SPRPOL
+LEMSPX;Lemna sp.;1624;10;L.;LEMSPX;LEMSPX
+LEMTRI;Lemna trisulca;1628;10;L.;LEMTRI;LEMTRI
+LEMTUR;Lemna turionifera;19833;10;Landolt;LEMTUR;LEMTUR
+LEORIP;Leptodictyum riparium ;1244;4;(Hedw.) Warnst.;LEORIP;AMBRIP
+LEPLAC;Leptomitus lacteus;19834;1;(Roth) C.Agardh;LEPLAC;LEPSPX
+LEPSPX;Leptomitus sp.;1097;1;Walcott.;LEPSPX;LEPSPX
+LESPOL;Leskea polycarpa;19835;4;Hedw.;LESPOL;LESPOL
+LETLUR;Leptolyngbya lurida;32257;2;(Gomont) Anagnostidis & Komarek;LETLUR;LETLUR
+LETSPX;Leptolyngbya sp.;6449;2;Anagnostidis & Komarek;LETSPX;LETSPX
+LEUAES;Leucojum aestivum;19836;8;L.;LEUAES;LEUAES
+LIAATT;Lilaeopsis attenuata;19838;8;J.M.Coult. & Rose;LIAATT;LIAATT
+LILSCI;Lilaea scilloides;19837;7;(Poir.) Hauman;LILSCI;LILSCI
+LIMAQU;Limosella aquatica;19839;8;L.;LIMAQU;LIMAQU
+LIMAUS;Limosella australis;19840;8;R.Br.;LIMAUS;LIMAUS
+LINDUB;Lindernia dubia;19841;8;(L.) Pennell;LINDUB;LINDUB
+LINPAL;Lindernia palustris;31554;8;Hartmann;LINPAL;LINPAL
+LINPRO;Lindernia procumbens;19842;8;(Krock.) Philcox;LINPAL;LINPAL
+LITUNI;Littorella uniflora;1861;10;(L.) Ascherson;LITUNI;LITUNI
+LOBDOR;Lobelia dortmanna;1635;10;L.;LOBDOR;LOBDOR
+LOBURE;Lobelia urens;19843;8;L.;LOBURE;LOBURE
+LOHSPX;Lophozia sp.;34439;5;NEANT;LOHSPX;LOHSPX
+LOLPER;Lolium perenne;32258;9;L.;LOLPER;LOLPER
+LONPER;Lonicera periclymenum;34437;9;L.;LONPER;LONPER
+LOPBID;Lophocolea bidentata;34438;5;(L.) Dumort.;LOPBID;LOPBID
+LOTCOR;Lotus corniculatus;1809;9;L.;LOTCOR;LOTCOR
+LOTPED;Lotus pedunculatus;19844;8;Cav.;LOTPED;LOTPED
+LOTSPX;Lotus sp.;1808;9;NEANT;LOTSPX;LOTSPX
+LOTULI;Lotus uliginosus ;1810;8;Schkuhr;LOTPED;LOTPED
+LUDGRA;Ludwigia grandiflora;19845;7;(Michx.) Greuter & Burdet;LUDGRA;LUDGRA
+LUDPAL;Ludwigia palustris;1855;7;(L.) Elliott;LUDPAL;LUDPAL
+LUDPEP;Ludwigia peploides;1856;7;(Kunth) P.H. Raven;LUDPEP;LUDPEP
+LUDSPX;Ludwigia sp.;1854;7;L.;LUDSPX;LUDSPX
+LUNCRU;Lunularia cruciata;1189;5;(L.) Lindb.;LUNCRU;LUNCRU
+LUPNOO;Lupinus nootkatensis;19846;8;Donn ex Sims;LUPNOO;LUPNOO
+LURNAT;Luronium natans;1451;10;(L.) Rafin.;LURNAT;LURNAT
+LUZMAX;Luzula maxima;29922;8;(Reichard) DC.;LUZSYS;LUZSYL
+LUZSYL;Luzula sylvatica;29982;8;(Huds.) Gaudin;LUZSYL;LUZSYL
+LUZSYS;Luzula sylvatica subsp. sylvatica;29921;8;(Huds.) Gaudin;LUZSYS;LUZSYL
+LYCEUR;Lycopus europaeus;1789;7;L.;LYCEUR;LYCEUR
+LYNSPX;Lyngbya sp.;1107;2;C.Agardh ex Gomont;LYNSPX;LYNSPX
+LYOESC;Lycopersicon esculentum;1962;9;Mill.;LYOESC;LYOESC
+LYSARV;Lysimachia arvensis;37794;9;(L.) U.Manns & Anderb.;LYSARV;LYSARV
+LYSNEM;Lysimachia nemorum;1884;8;L.;LYSNEM;LYSNEM
+LYSNUM;Lysimachia nummularia;1885;8;L.;LYSNUM;LYSNUM
+LYSSPX;Lysimachia sp.;1883;9;L.;LYSSPX;LYSSPX
+LYSTEN;Lysimachia tenella;31558;8;L.;LYSTEN;LYSTEN
+LYSTHY;Lysimachia thyrsiflora;1886;7;L.;LYSTHY;LYSTHY
+LYSVUL;Lysimachia vulgaris;1887;8;L.;LYSVUL;LYSVUL
+LYTHYS;Lythrum hyssopifolia;19847;8;L.;LYTHYS;LYTHYS
+LYTPOL;Lythrum portula subsp. longidentata;19848;8;(J.Gay) P.D.Sell;LYTPOR;LYTPOR
+LYTPOP;Lythrum portula subsp. portula;19849;8;(L.) D.A.Webb;LYTPOR;LYTPOR
+LYTPOR;Lythrum portula;1822;8;(L.) D.A.Webb;LYTPOR;LYTPOR
+LYTSAL;Lythrum salicaria;1823;8;L.;LYTSAL;LYTSAL
+LYTSPX;Lythrum sp.;1821;9;L.;LYTSPX;LYTSPX
+MACALP;Marchantia alpestris ;31556;5;(Nees) Burgeff;MACPOL;MACPOL
+MACAQU;Marchantia aquatica ;31561;5;(Nees) Burgeff;MACPOL;MACPOL
+MACPAL;Marchantia paleacea;19850;5;Bertol.;MACPAL;MACPAL
+MACPOL;Marchantia polymorpha;1192;5;L.;MACPOL;MACPOL
+MACPOM;Marchantia polymorpha subsp. montivagans;31592;5;Bischl. & Boisselier-Dubayle;MACPOM;MACPOL
+MACSPX;Marchantia sp.;1191;5;L.;MACSPX;MACSPX
+MARAQU;Marsupella aquatica;9811;5;(Lindenb.) Dumort.;MARAQU;MARAQU
+MAREMA;Marsupella emarginata;1194;5;(Ehrh.) Dumort.;MAREMA;MAREMA
+MARSPH;Marsupella sphacelata;19854;5;(Gieseke ex Lindenb.) Dumort.;MARSPH;MARSPH
+MARSPX;Marsupella sp.;1193;5;Dumort.;MARSPX;MARSPX
+MASAEG;Marsilea aegyptiaca;19851;6;Willd.;MASAEG;MASAEG
+MASAZO;Marsilea azorica;19852;6;Launert & J.Paiva;MASAZO;MASAZO
+MASQUA;Marsilea quadrifolia;1393;6;L.;MASQUA;MASQUA
+MASSTR;Marsilea strigosa;19853;6;Willd.;MASSTR;MASSTR
+MECPER;Mercurialis perennis;29983;8;L.;MECPER;MECPER
+MEDSPX;Medicago sp.;34430;9;L.;MEDSPX;MEDSPX
+MEIUNI;Melica uniflora;35518;9;Retz.;MEIUNI;MEIUNI
+MELSPX;Melosira sp.;8714;2;C.Agardh;MELSPX;MELSPX
+MENAQU;Mentha aquatica;1791;7;L.;MENAQU;MENAQU
+MENARV;Mentha arvensis;19855;8;L.;MENARV;MENARV
+MENLON;Mentha longifolia;19856;7;(L.) Huds.;MENLON;MENLON
+MENPUL;Mentha pulegium;10239;8;L.;MENPUL;MENPUL
+MENSPX;Mentha sp.;1790;9;L.;MENSPX;MENSPX
+MENSUA;Mentha suaveolens;29952;8;Ehrh.;MENSUA;MENSUA
+MENXNI;Mentha x niliaca ;31668;8;Juss. ex Jacq.;MENXNI;MENXNI
+MENXRO;Mentha x rotundifolia;19857;8;(L.) Huds.;MENXNI;MENXNI
+MENXVE;Mentha x verticillata;19858;8;L.;MENXVE;MENXVE
+MERSPX;Merismopedia sp.;4739;2;Meyen;MERSPX;MERSPX
+MEYTRI;Menyanthes trifoliata;1829;7;L.;MEYTRI;MEYTRI
+MICSPX;Microspora sp.;1132;2;Thuret;MICSPX;MICSPX
+MILSPX;Microlejeunea sp. ;31569;5;Steph.;MILSPX;MILSPX
+MIMGUT;Mimulus guttatus;1946;8;DC.;MIMGUT;MIMGUT
+MIMGXL;Mimulus guttatus x luteus;19859;8;NULL;MIMGXL;MIMGXL
+MIMMOS;Mimulus moschatus;19860;8;Douglas ex Lindl.;MIMMOS;MIMMOS
+MIMSPX;Mimulus sp.;1945;9;L.;MIMSPX;MIMSPX
+MIOAER;Microcystis aeruginosa;6380;2;Ktzing;MIOAER;MIOAER
+MIOSPX;Microcystis sp.;4740;2;Ktzing;MIOSPX;MIOSPX
+MIRSPX;Microcoleus sp.;6405;2;Desmazires;MIRSPX;MIRSPX
+MIRSUB;Microcoleus subtorulosus;32259;2;(Brebisson) Gomont;MIRSUB;MIRSUB
+MNIAFF;Mnium affine;1339;4;Bland.;PLIAFF;PLIAFF
+MNIHOR;Mnium hornum;1340;4;Hedw.;MNIHOR;MNIHOR
+MNISPX;Mnium sp.;1338;4;Hedw.;MNISPX;MNISPX
+MOCKOR;Monochoria korsakowii;19863;7;Regel et Maack.;MOCKOR;MOCKOR
+MOETRI;Moehringia trinervia;19861;8;(L.) Clairv.;MOETRI;MOETRI
+MOGSPX;Mougeotiopsis sp.;37038;2;Palla;MOGSPX;MOGSPX
+MOLARU;Molinia arundinacea;19862;8;Schrank;MOLCAA;MOLCAE
+MOLCAA;Molinia caerulea subsp. arundinacea ;31584;8;(Schrank) K.Richt.;MOLCAA;MOLCAE
+MOLCAE;Molinia caerulea;1571;8;(L.) Moench;MOLCAE;MOLCAE
+MOLSPX;Molinia sp.;1570;9;Schrank;MOLSPX;MOLSPX
+MONFOA;Montia fontana subsp. amporitana;19864;7;Sennen;MONFOA;MONFOA
+MONFOC;Montia fontana subsp. chondrosperma;31667;7;(Fenzl) Walters;MONARV;MONFOC
+MONFOF;Montia fontana subsp. fontana;19865;7;L.;MONFOF;MONFON
+MONFOM;Montia fontana subsp. minor;19866;7;(C.C. Gmel.) Schbler & G. Martens;MONFOM;MONFOM
+MONFON;Montia fontana;1879;7;L.;MONFON;MONFON
+MONFOV;Montia fontana subsp. variabilis;19867;7;S.M.Walters;MONHAL;MONFOV
+MONSPX;Montia sp.;1878;9;L.;MONSPX;MONSPX
+MOOSPX;Monostroma sp.;6010;2;Thuret;MOOSPX;MOOSPX
+MOUSPX;Mougeotia sp.;1146;2;C.Agardh;MOUSPX;MOUSPX
+MURBLU;Murdannia blumei;19868;7;(Hassk.) Brenan;MURBLU;MURBLU
+MYIGAL;Myrica gale;1832;8;L.;MYIGAL;MYIGAL
+MYOCES;Myosotis cespitosa;1689;8;Schultz;MYOLAC;MYOLAX
+MYOLAC;Myosotis laxa subsp. cespitosa;31011;8;(Schulz) Hyl. ex Nordh.;MYOLAC;MYOLAX
+MYOLAX;Myosotis laxa;1690;7;Lehm.;MYOLAX;MYOLAX
+MYOPAL;Myosotis palustris;1691;7;Hill.;MYOSCO;MYOPAL
+MYOSCO;Myosotis scorpioides;1692;7;L.;MYOSCO;MYOPAL
+MYOSEC;Myosotis secunda;19869;7;Murray;MYOSEC;MYOSEC
+MYOSPX;Myosotis sp.;1688;9;L.;MYOSPX;MYOSPX
+MYOSTO;Myosotis stolonifera;19870;7;(DC.) J.Gay ex Leresche & Levier;MYOSTO;MYOSTO
+MYRALT;Myriophyllum alterniflorum;1776;10;DC.;MYRALT;MYRALT
+MYRAQU;Myriophyllum aquaticum;19871;10;(Vell.) Verdc.;MYRAQU;MYRAQU
+MYREXA;Myriophyllum exalbescens;19872;10;Fern.;MYREXA;MYREXA
+MYRHET;Myriophyllum heterophyllum;19873;10;Michx.;MYRHET;MYRHET
+MYRSPI;Myriophyllum spicatum;1778;10;L.;MYRSPI;MYRSPI
+MYRSPX;Myriophyllum sp.;1775;10;L.;MYRSPX;MYRSPX
+MYRVER;Myriophyllum verticillatum;1779;10;L.;MYRVER;MYRVER
+MYRVEU;Myriophyllum verrucosum;19874;10;Lindl.;MYRVEU;MYRVEU
+MYSAQU;Myosoton aquaticum;1710;8;(L.) Moench;MYSAQU;MYSAQU
+NAJFLE;Najas flexilis;19875;10;Rostk. & W.L.E.Schmidt;NAJFLE;NAJFLE
+NAJGRA;Najas gracillima;19876;10;(A.Braun ex Engelm.) Magnus;NAJGRA;NAJGRA
+NAJGRM;Najas graminea;19877;10;Delile;NAJGRM;NAJGRM
+NAJMAA;Najas marina subsp. armata;19878;10;(H.Lindb.) Horn;NAJMAA;NAJMAR
+NAJMAI;Najas marina subsp. intermedia;19879;10;(Wolfg. ex Gorski) Casper;NAJMAI;NAJMAR
+NAJMAJ;Najas major ;31571;10;All.;NAJMAM;NAJMAR
+NAJMAM;Najas marina subsp. marina;19880;10;L.;NAJMAM;NAJMAR
+NAJMAR;Najas marina;1835;10;L.;NAJMAR;NAJMAR
+NAJMIN;Najas minor;1836;10;L.;NAJMIN;NAJMIN
+NAJORI;Najas orientalis;19881;10;L.Triest & Uotila;NAJORI;NAJORI
+NAJSPX;Najas sp.;1834;10;L.;NAJSPX;NAJSPX
+NAJTEN;Najas tenuissima;19882;10;(A.Br.) Magnus;NAJTEN;NAJTEN
+NARCOM;Nardia compressa;1180;5;(Hook.) Gray;NARCOM;NARCOM
+NARSCA;Nardia scalaris;19883;5;S.F.Gray;NARSCA;NARSCA
+NARSPX;Nardia sp.;1179;5;Gray;NARSPX;NARSPX
+NASMIC;Nasturtium microphyllum;31567;8;(Boenn.) Rchb.;NASMIC;NASMIC
+NASOFF;Nasturtium officinale;1763;7;R.Br.;NASOFF;NASOFF
+NASOFO;Nasturtium officinale var. officinale;31589;7;R.Br.;NASOFO;NASOFF
+NASXST;Nasturtium x sterile;31597;8;(Airy Shaw) Oefelein;NASXST;NASXST
+NAVSPX;Navicula sp.;9430;2;Strain;NAVSPX;NAVSPX
+NECCRI;Neckera crispa;19884;4;Hedw.;NECCRI;NECCRI
+NECSPX;Neckera sp.;30097;4;NULL;NECSPX;NECSPX
+NELNUC;Nelumbo nucifera;19885;10;Gaertn.;NELNUC;NELNUC
+NIEOBT;Nitellopsis obtusa;5272;2;(Desv.) J.Groves    ;NIEOBT;NIEOBT
+NIESPX;Nitellopsis sp.;5271;2;Hy;NIESPX;NIESPX
+NITCAP;Nitella capillaris;5263;2;(A.J.Krocker) J.Groves & G.R.Bullock-Webster;NITCAP;NITCAP
+NITCON;Nitella confervacea;19406;2;(Brbisson) A. Braun ex Leonhardi;NITCON;NITCON
+NITFLE;Nitella flexilis;5264;2;(L.) Ag.;NITFLE;NITFLE
+NITGRA;Nitella gracilis;5265;2;(J.E.Smith) C. Agardh.;NITGRA;NITGRA
+NITMUC;Nitella mucronata;5266;2;(A.Braun) Miquel;NITMUC;NITMUC
+NITOPA;Nitella opaca;5267;2;Ag.;NITOPA;NITOPA
+NITSPX;Nitella sp.;1122;2;C.Agardh;NITSPX;NITSPX
+NITSYN;Nitella syncarpa;19887;2;(Thuill.) Ktzing;NITSYN;NITSYN
+NITTEN;Nitella tenuissima;5269;2;(Desvaux) Ktzing;NITTEN;NITTEN
+NITTRA;Nitella translucens;5270;2;(Pers.) Ag.;NITTRA;NITTRA
+NIZSPX;Nitzschia sp.;9804;2;Hassal;NIZSPX;NIZSPX
+NOSCOM;Nostoc commune;19888;2;Vauch. Ex Born & Flash;NOSCOM;NOSSPX
+NOSPAR;Nostoc parmelioides;19889;2;Ktzing;NOSPAR;NOSSPX
+NOSSPX;Nostoc sp.;1105;2;Vaucher ex Bornet et Flahault;NOSSPX;NOSSPX
+NOSVER;Nostoc verrucosum;19890;2;Vauch.;NOSVER;NOSSPX
+NUPADV;Nuphar advena;19891;10;(Aiton) W.T.Aiton.;NUPADV;NUPADV
+NUPLUT;Nuphar lutea;1839;10;(L.) Sibth. & Sm.;NUPLUT;NUPLUT
+NUPLXP;Nuphar lutea x pumila;19892;10;NULL;NUPLXP;NUPLXP
+NUPPUM;Nuphar pumila;1840;10;(Timm) DC.;NUPPUM;NUPPUM
+NUPSPX;Nuphar sp.;1838;10;Sm.;NUPSPX;NUPSPX
+NUPXSP;Nuphar x spenneriana;19893;10;Gaudin;NUPXSP;NUPXSP
+NYMALB;Nymphaea alba;1842;10;L.;NYMALB;NYMALB
+NYMAXC;Nymphaea alba x candida;19894;10;NULL;NYMAXC;NYMAXC
+NYMCAN;Nymphaea candida;19895;10;C. Presl.;NYMCAN;NYMCAN
+NYMLOT;Nymphaea lotus;19896;10;L.;NYMLOT;NYMLOT
+NYMRUB;Nymphaea rubra;19897;10;Roxb. ex Salisb.;NYMRUB;NYMRUB
+NYMSPX;Nymphaea sp.;1841;10;L.;NYMSPX;NYMSPX
+NYMTET;Nymphaea tetragona;19898;10;Georgi;NYMTET;NYMTET
+NYPPEL;Nymphoides peltata;1594;10;(S. G. Gmel.) Kuntze  ;NYPPEL;NYPPEL
+OCTFON;Octodiceras fontanum;1303;4;(B.Pyl.) Lindb.;FISFON;OCTFON
+OEDSPX;Oedogonium sp.;1134;2;Link;OEDSPX;OEDSPX
+OENAQU;Oenanthe aquatica;1985;10;(L.) Poir.;OENAQU;OENAQU
+OENCRO;Oenanthe crocata;1986;7;L.;OENCRO;OENCRO
+OENFIS;Oenanthe fistulosa;1987;8;L.;OENFIS;OENFIS
+OENFLU;Oenanthe fluviatilis;1988;10;(Bab.) Coleman;OENFLU;OENFLU
+OENSPX;Oenanthe sp.;1984;9;L.;OENSPX;OENSPX
+ORHSCO;Orthodicranum scottianum;31568;4;(Turner ex R.Scott) G.Roth ex Casares-Gil ;DIRSCO;DIRSCO
+ORTAFF;Orthotrichum affine;19899;4;Schrad. ex Brid.;ORTAFF;ORTAFF
+ORTRIV;Orthotrichum rivulare;1352;4;Turn.;ORTRIV;ORTRIV
+ORTSPX;Orthotrichum sp.;1351;4;Hedw.;ORTSPX;ORTSPX
+ORYSAT;Oryza sativa;19900;7;L.;ORYSAT;ORYSAT
+OSCSPX;Oscillatoria sp.;1108;2;Vaucher ex Gaumont;OSCSPX;OSCSPX
+OSMREG;Osmunda regalis;1403;6;L.;OSMREG;OSMREG
+OTTALI;Ottelia alismoides;19901;10;(L.) Pers.;OTTALI;OTTALI
+OXAACE;Oxalis acetosella;19902;9;L.;OXAACE;OXAACE
+OXBRUB;Oxybasis rubra ;34427;9;(L.) S.Fuentes, Uotila & Borsch;OXBRUB;OXBRUB
+OXYHIA;Oxyrrhynchium hians;31547;4;(Hedw.) Loeske;OXYHIA;OXYHIA
+OXYSPE;Oxyrrhynchium speciosum ;30099;4;(Brid.) Warnst.;OXYSPE;OXYSPE
+OXYSWA;Oxyrrhynchium swartzii ;31573;4;(Turn.) Warnst.;OXYHIA;OXYHIA
+PAASPX;Paralemanea sp.;31566;2;(P.C.Silva) Vis & Sheath;PAASPX;LEASPX
+PALCOM;Palustriella commutata;19903;4;(Hedw.) Ochyra;PALCOM;CRACOM
+PALDEC;Palustriella decipiens;19904;4;(De Not.) Ochyra;PALDEC;PALDEC
+PALFAL;Palustriella falcata;30059;4;(Brid.) Heden;PALFAL;PALFAL
+PANDIC;Panicum dichotomiflorum;34441;9;Michx.;PANDIC;PANDIC
+PANSPX;Panicum sp.;32264;9;L.;PANSPX;PANSPX
+PARINS;Parthenocissus inserta;29971;9;(A.Kern.) Fritsch;PARINS;PARINS
+PARQUI;Parthenocissus quinquefolia;29950;9;(L.) Planch.;PARQUI;PARQUI
+PASDIL;Paspalum dilatatum;10234;8;Poir.;PASDIL;PASDIL
+PASDIS;Paspalum distichum;10237;8;L.;PASDIS;PASDIS
+PASPAS;Paspalum paspalodes;1575;8;(Michx.) Scribn.;PASDIS;PASDIS
+PASURV;Paspalum urvillei;19905;8;Steud.;PASURV;PASURV
+PASVAG;Paspalum vaginatum;19906;8;Sw.;PASVAG;PASVAG
+PELEND;Pellia endiviifolia;1197;5;(Dicks) Dumort.;PELEND;PELEND
+PELEPI;Pellia epiphylla;1198;5;(L.) Corda;PELEPI;PELEPI
+PELNEE;Pellia neesiana;1200;5;(Gottsche) Limpr.;PELNEE;PELNEE
+PELSPX;Pellia sp.;1196;5;Raddi;PELSPX;PELSPX
+PERAMP;Persicaria amphibia;31020;10;(L.) Gray;PERAMP;POLAMP
+PERHYD;Persicaria hydropiper;31021;8;(L.) Spach;PERHYD;POLHYD
+PERLAL;Persicaria lapathifolia subsp. lapathifolia;30525;8;NULL;PERLAL;PERLAL
+PERLAP;Persicaria lapathifolia ;31022;8;(L.) Delarbre;PERLAP;PERLAP
+PERMAC;Persicaria maculosa;30056;8;Gray;PERMAC;PERMAC
+PERMIN;Persicaria minor;31023;8;(Huds.) Opiz;PERMIN;PERMIN
+PERMIT;Persicaria mitis;31024;8;(Schrank) Assenov;PERMIT;PERMIT
+PETALB;Petasites albus;34548;8;(L.) Gaertn.;PETALB;PETALB
+PETHYB;Petasites hybridus;1745;8;(L.) Gaertn., Mey. & Scherb.;PETHYB;PETHYB
+PETJAP;Petasites japonicus;19907;8;(Siebold & Zucc.) Maxim.;PETJAP;PETJAP
+PETSPX;Petasites sp.;1744;9;Mill.;PETSPX;PETSPX
+PEUPAL;Peucedanum palustre;1994;8;(L.) Moench;THYPAL;THYPAL
+PHAARU;Phalaris arundinacea;1577;7;L.;PHAARU;PHAARU
+PHASPX;Phalaris sp.;1576;7;L.;PHASPX;PHASPX
+PHCDIG;Phacelurus digitatus;19908;9;(Sm.) Griseb.;PHCDIG;PHCDIG
+PHICAE;Philonotis caespitosa;1254;4;Jur.;PHICAE;PHIFOG
+PHICAL;Philonotis calcarea;9790;4;(B. & S.) Schimp.;PHICAL;PHICAL
+PHIFOG;Philonotis gr. fontana;19909;4;(Hewd.) Brid.;PHIFOG;PHIFOG
+PHISER;Philonotis seriata;19910;4;Mitt.;PHISER;PHIFOG
+PHISPX;Philonotis sp.;1253;4;Brid.;PHISPX;PHISPX
+PHITOM;Philonotis tomentella;19911;4;Molendo;PHITOM;PHIFOG
+PHLPRA;Phleum pratense;29951;9;L.;PHLPRA;PHLPRA
+PHOSPX;Phormidium sp.;6414;2;Ktzing;PHOSPX;PHOSPX
+PHRAUS;Phragmites australis;1579;7;(Cav.) Steud;PHRAUS;PHRAUS
+PICSPX;Picris sp.;34442;9;L.;PICSPX;PICSPX
+PILGLO;Pilularia globulifera;1395;6;L.;PILGLO;PILGLO
+PILMIN;Pilularia minuta;19912;6;Durieu;PILMIN;PILMIN
+PISSTR;Pistia stratiotes;19913;10;L.;PISSTR;PISSTR
+PLADEN;Plagiothecium denticulatum;19922;4;(Hedw.) B., S. & G.;PLADEN;PLADEN
+PLANEM;Plagiothecium nemorale;1355;4;(Mitt.) Jaeg.;PLANEM;PLANEM
+PLAPLA;Plagiothecium platyphyllum;19923;4;Mnk.;PLAPLA;PLAPLA
+PLASPX;Plagiothecium sp.;1354;4;B., S. & G.;PLASPX;PLASPX
+PLASUC;Plagiothecium succulentum;19924;4;(Wilson) Lindb.;PLASUC;PLASUC
+PLAUND;Plagiothecium undulatum;19925;4;(Hedw.) B., S. & G.;PLAUND;PLAUND
+PLESPX;Plectonema sp.;1113;2;Thuret;PLESPX;PLESPX
+PLGASP;Plagiochila asplenioides;19914;5;(L.) Dumort.;PLGASP;PLGASP
+PLGSPX;Plagiochila sp.;19915;5;Dumort.;PLGSPX;PLGSPX
+PLIAFF;Plagiomnium affine;19916;4;(Bland.) T.Kop.;PLIAFF;PLIAFF
+PLIELA;Plagiomnium elatum;19917;4;(Bruch & Schimp.) T.J.Kop.;PLIELA;PLIELA
+PLIELL;Plagiomnium ellipticum;34550;4;(Brid.) T.J.Kop.;PLIELL;PLIELL
+PLIMED;Plagiomnium medium;19918;4;(Bruch & Schimp.) T.J.Kop.;PLIMED;PLIMED
+PLIROS;Plagiomnium rostratum;19919;4;(Schrad.) T.Kop.;PLIROS;PLIROS
+PLISPX;Plagiomnium sp.;19920;4;T.Kop.;PLISPX;PLISPX
+PLIUND;Plagiomnium undulatum;19921;4;(Hedw.) T.Kop.;PLIUND;PLIUND
+PLNLAN;Plantago lanceolata;32040;9;L.;PLNLAN;PLNLAN
+PLNMAJ;Plantago major;29948;9;L.;PLNMAJ;PLNMAJ
+PLNMAR;Plantago maritima;19926;8;L.;PLNMAR;PLNMAR
+PLTLUS;Platyhypnidium lusitanicum;31562;4;(Schimp.) Ochyra & Bednarek-Ochrya;PLTLUS;PLTLUS
+PLTRIP;Platyhypnidium riparioides;1246;4;(Hedw.) Dix.;PLTRIP;RHYRIP
+PLUSAB;Pleuropogon sabinei;19927;8;R.Br.;PLUSAB;PLUSAB
+POAANN;Poa annua;1581;9;L.;POAANN;POAANN
+POAPAL;Poa palustris;1582;8;L.;POAPAL;POAPAL
+POAPRA;Poa pratensis;19928;9;L.;POAPRA;POAPRA
+POAREM;Poa remota;29919;8;Forselles;POAREM;POAREM
+POASPX;Poa sp.;1580;9;L.;POASPX;POASPX
+POATRI;Poa trivialis;1583;9;L.;POATRI;POATRI
+POEANS;Potentilla anserina;1921;9;L.;POEANS;POEANS
+POEERE;Potentilla erecta;1922;9;(L.) Rusch.;POEERE;POEERE
+POEPAL;Potentilla palustris;1923;7;(L.) Scop.;POEPAL;POEPAL
+POEREP;Potentilla reptans;29945;9;L.;POEREP;POEREP
+POESPX;Potentilla sp.;1920;9;L.;POESPX;POESPX
+POHMEL;Pohlia melanodon;37990;4;(Brid.) A.J.Shaw;POHMEL;POHMEL
+POHPRO;Pohlia proligera;36396;4;(Kindb.) Lindb. ex Broth. ;POHPRO;POHPRO
+POHWAL;Pohlia wahlenbergii;19929;4;(F.Weber & D.Mohr) A. L. Andrews;POHWAL;POHWAL
+POLAMP;Polygonum amphibium;1864;10;L.;PERAMP;POLAMP
+POLAVI;Polygonum aviculare;20570;9;L.;POLAVI;POLAVI
+POLFOL;Polygonum foliosum;19930;8;H. Lindb.;POLFOL;POLFOL
+POLHYD;Polygonum hydropiper;1865;8;L.;PERHYD;POLHYD
+POLLAP;Polygonum lapathifolium;1866;8;L.;PERLAP;PERLAP
+POLMAC;Polygonum maculatum;30057;8;Dulac;PERMAC;PERMAC
+POLMAL;Polygonum maculatum;31559;8;Raf.;PERMAC;PERMAC
+POLMAU;Polygonum maculatum;31565;8;Krock.;PERLAL;PERLAL
+POLMIN;Polygonum minus;1867;8;Huds.;PERMIN;PERMIN
+POLMIT;Polygonum mite;1868;8;Schrank;PERMIT;PERMIT
+POLPER;Polygonum persicaria;1869;8;L.;PERMAC;PERMAC
+POLSPX;Polygonum sp.;1863;9;L.;POLSPX;POLSPX
+PONCOR;Pontederia cordata;19931;10;L.;PONCOR;PONCOR
+PORCOR;Porella cordaeana;19932;5;(Huebener) Moore;PORCOR;PORCOR
+PORPIN;Porella pinnata;9788;5;L.;PORPIN;PORPIN
+PORPLA;Porella platyphylla;1205;5;(L.) Pfeiff.;PORPLA;PORPLA
+PORSPX;Porella sp.;1204;5;L.;PORSPX;PORSPX
+POTACU;Potamogeton acutifolius;1640;10;Link;POTACU;POTACU
+POTALP;Potamogeton alpinus;1641;10;Balb.;POTALP;POTALP
+POTBER;Potamogeton berchtoldii;1642;10;Fieber;POTBER;POTBER
+POTCOL;Potamogeton coloratus;1643;10;Hornem.;POTCOL;POTCOL
+POTCOM;Potamogeton compressus;1644;10;L.;POTCOM;POTCOM
+POTCOS;Potamogeton coloratus subsp. subflavus;31591;10;(Loret & Barrandon) Nyman;POTCOS;POTCOL
+POTCRI;Potamogeton crispus;1645;10;L.;POTCRI;POTCRI
+POTDEN;Potamogeton densus ;31563;10;L.;GRODEN;GRODEN
+POTEPI;Potamogeton epihydrus;19933;10;Raf.;POTEPI;POTEPI
+POTFIL;Potamogeton filiformis;19934;10;Pers.;POTFIL;POTFIL
+POTFLI;Potamogeton fluitans;31669;10;Griseb.;POTNOD;POTNOD
+POTFRI;Potamogeton friesii;1646;10;Rupr.;POTFRI;POTFRI
+POTGRA;Potamogeton gramineus;1647;10;L.;POTGRA;POTGRA
+POTHEL;Potamogeton helveticus;1648;10;(G.Fisch.) E.Baumann;POTHEL;POTHEL
+POTLUC;Potamogeton lucens;1649;10;L.;POTLUC;POTLUC
+POTLXN;Potamogeton lucens x natans;19935;10;NULL;POTLXN;POTLXN
+POTLXP;Potamogeton lucens x perfoliatus;19936;10;NULL;POTLXP;POTLXP
+POTMUC;Potamogeton mucronatus;31670;10;Schrad. ex Sond.;POTFRI;POTFRI
+POTNAP;Potamogeton natans var. prolixus;19937;10;Koch;POTNAT;POTNAT
+POTNAT;Potamogeton natans;1650;10;L.;POTNAT;POTNAT
+POTNOD;Potamogeton nodosus;1652;10;Poir.;POTNOD;POTNOD
+POTNXN;Potamogeton natans x nodosus;19938;10;NULL;POTNXN;POTNXN
+POTOBT;Potamogeton obtusifolius;1653;10;Mert. & W.D.J. Koch;POTOBT;POTOBT
+POTPAN;Potamogeton panormitanus;1654;10;Biv.;POTPUS;POTPAN
+POTPEC;Potamogeton pectinatus;1655;10;L.;POTPEC;POTPEC
+POTPER;Potamogeton perfoliatus;1656;10;L.;POTPER;POTPER
+POTPOL;Potamogeton polygonifolius;1657;10;Pourr.;POTPOL;POTPOL
+POTPRA;Potamogeton praelongus;1658;10;Wulfen;POTPRA;POTPRA
+POTPUS;Potamogeton pusillus;1659;10;L.;POTPUS;POTPAN
+POTRUT;Potamogeton rutilus;19939;10;Wolfg.;POTRUT;POTRUT
+POTSCH;Potamogeton schweinfurthii;19940;10;A.Benn.;POTSCH;POTSCH
+POTSIC;Potamogeton siculus;19941;10;Toneo ex Guss;POTCOS;POTCOL
+POTSPX;Potamogeton sp.;1639;10;L.;POTSPX;POTSPX
+POTTRI;Potamogeton trichoides;1661;10;Cham. & Schltdl.;POTTRI;POTTRI
+POTVAG;Potamogeton vaginatus;19942;10;Turcz.;POTVAG;POTVAG
+POTXAN;Potamogeton x angustifolius;19943;10;Bercht. & J.Presl;POTXZI;POTXZI
+POTXBE;Potamogeton x bennettii;19944;10;Fryer;POTXBE;POTXBE
+POTXBO;Potamogeton x bottnicus;19945;10;Hagstr.;POTXBO;POTXBO
+POTXCO;Potamogeton x cognatus;19946;10;Asch. & Graebn.;POTXCO;POTXCO
+POTXCP;Potamogeton x cooperi;19947;10;(Fryer) Fryer;POTXCP;POTXCP
+POTXFE;Potamogeton x fennicus;19948;10;Hagstr.;POTXFE;POTXFE
+POTXFL;Potamogeton x fluitans;19949;10;Roth.;POTXFL;POTXFL
+POTXGE;Potamogeton x gessnacensis;19950;10;G.Fisch.;POTXGE;POTXGE
+POTXGR;Potamogeton x griffithii;19951;10;A.Benn.;POTXGR;POTXGR
+POTXLA;Potamogeton x lanceolatus;19952;10;Sm.;POTXLA;POTXLA
+POTXLI;Potamogeton x lintonii;19953;10;Fryer;POTXLI;POTXLI
+POTXLN;Potamogeton x lanceolatifolius;37496;10;(Tiselius) C.D.Preston;POTXLN;POTXLN
+POTXNE;Potamogeton x nerviger;19954;10;Wolfg.;POTXNE;POTXNE
+POTXNI;Potamogeton x nitens;20023;10;Weber;POTXNI;POTXNI
+POTXOL;Potamogeton x olivaceus;19955;10;Baage ex G.Fisch.;POTXOL;POTXOL
+POTXSA;Potamogeton x salicifolius;19956;10;Wolfg.;POTXSA;POTXSA
+POTXSC;Potamogeton x schreberi;19957;10;G.Fisch.;POTXSC;POTXSC
+POTXSE;Potamogeton x suecicus;19960;10;K. Richt.;POTXSE;POTXSE
+POTXSP;Potamogeton x sparganifolius;19958;10;Laest. ex Fr.;POTXSP;POTXSP
+POTXSU;Potamogeton x sudermanicus;19959;10;Hagstr.;POTXSU;POTXSU
+POTXUN;Potamogeton x undulatus;19961;10;Wolfg.;POTXUN;POTXUN
+POTXVA;Potamogeton x variifolius;20024;10;Thore;POTXVA;POTXVA
+POTXZI;Potamogeton x zizii;20025;10;W.D.J.Koch ex Roth;POTXZI;POTXZI
+POUOLE;Portulaca oleracea;32260;9;L.;POUOLE;POUOLE
+POYSPX;Polysiphonia sp.;24833;2;Grev.;POYSPX;POYSPX
+PRASPX;Prasiola sp.;32022;2;Meneghini;PRASPX;PRASPX
+PREQUA;Preissia quadrata;19962;5;(Scop.) Nees;PREQUA;PREQUA
+PRUVUL;Prunella vulgaris;29959;9;L.;PRUVUL;PRUVUL
+PSDCAT;Pseudoleskeella catenulata;32261;4;(Brid. Ex Schrad.) Kindb.;PSDCAT;PSDCAT
+PSESPX;Pseudanabaena sp.;6453;2;Lauterborn;PSESPX;PSESPX
+PSOHOR;Pseudocrossidium hornschuchianum;35494;4;(Schultz) R.H.Zander;PSOHOR;PSOHOR
+PSUSPX;Pseudendoclonium sp.;5576;2;Wille;PSUSPX;PSUSPX
+PULDYS;Pulicaria dysenterica;1748;8;(L.) Bernh.;PULDYS;PULDYS
+PULVUL;Pulicaria vulgaris;29943;8;Gaertn.;PULVUL;PULVUL
+PYLPOL;Pylaisia polyantha;34443;4;(Hedw.) Schimp.;PYLPOL;PYLPOL
+RACACI;Racomitrium aciculare;1323;4;(Hedw.) Brid.;RACACI;RACACI
+RACAQU;Racomitrium aquaticum;19963;4;(Brid. ex Schrad.) Brid.;RACAQU;RACAQU
+RACSPX;Racomitrium sp.;1322;4;Brid.;RACSPX;RACSPX
+RADSPX;Radiofilum sp.;6001;2;Scmidle;RADSPX;RADSPX
+RANACO;Ranunculus aconitifolius;1897;8;L.;RANACO;RANACO
+RANAQU;Ranunculus aquatilis;1898;10;L.;RANAQU;RANAQU
+RANBAT;Ranunculus batrachoides;19964;10;Ger.;RANBAT;RANBAT
+RANBAU;Ranunculus baudotii;1899;10;Godron;RANBAU;RANBAU
+RANBUL;Ranunculus bulbosus;34444;8;L.;RANBUL;RANBUL
+RANCIR;Ranunculus circinatus;1901;10;Sibth.;RANCIR;RANCIR
+RANDIV;Ranunculus divaritacus;31672;10;Schrad.;RANCIR;RANCIR
+RANFIC;Ranunculus ficaria;34446;8;L.;FICVER;FICVER
+RANFLA;Ranunculus flammula;1902;7;L.;RANFLA;RANFLA
+RANFLF;Ranunculus flammula subsp. flammula;19965;7;L.;RANFLF;RANFLA
+RANFLM;Ranunculus flammula subsp. minimus;19966;7;L.;RANFLM;RANFLA
+RANFLS;Ranunculus flammula subsp. scoticus;19967;7;(E.S.Marshall) A.R.Clapham;RANFLS;RANFLA
+RANFLU;Ranunculus fluitans;1903;10;Lam.;RANFLU;RANFLU
+RANFXA;Ranunculus fluitans x aquatilis;19968;10;NULL;RANFXA;RANFXA
+RANFXT;Ranunculus fluitans x trichophyllus;19969;10;NULL;RANFXT;RANFXT
+RANHED;Ranunculus hederaceus;1904;10;L.;RANHED;RANHED
+RANHYP;Ranunculus hyperboreus;19970;8;Rottb.;RANHYP;RANHYP
+RANLIN;Ranunculus lingua;19971;7;L.;RANLIN;RANLIN
+RANOLO;Ranunculus ololeucos;1905;10;Lloyd;RANOLO;RANOLO
+RANOMI;Ranunculus omiophyllus;1906;10;Ten.;RANOMI;RANOMI
+RANOPH;Ranunculus ophioglossifolius;1907;7;Vill.;RANOPH;RANOPH
+RANPEC;Ranunculus penicillatus var. calcareus;29941;10;(Butcher) C.D.K.Cook;RANPEC;RANPEC
+RANPEE;Ranunculus penicillatus var. penicillatus;19976;10;(Dumort.) Bab.;RANPEE;RANPEE
+RANPEF;Ranunculus peltatus subsp. fucoides;19972;10;(Freyn) Muoz Garm.;RANPEF;RANPEL
+RANPEL;Ranunculus peltatus;1908;10;Schrank;RANPEL;RANPEL
+RANPEN;Ranunculus penicillatus;1909;10;(Dumort.) Bab.;RANPEN;RANPEN
+RANPEP;Ranunculus peltatus subsp. peltatus;19973;10;Schrank;RANPEP;RANPEL
+RANPES;Ranunculus penicillatus subsp. pseudofluitans;19974;10;(Syme) S.D.Webster;RANPES;RANPES
+RANPEV;Ranunculus penicillatus subsp. vertumnus;19975;10;C.D.K.Cook;RANPEV;RANPEN
+RANPOL;Ranunculus polyphyllus;19977;7;Waldst. & Kit.;RANPOL;RANPOL
+RANREP;Ranunculus repens;1910;9;L.;RANREP;RANREP
+RANRET;Ranunculus reptans;19978;8;L.;RANRET;RANRET
+RANRIO;Ranunculus rionii;1911;10;Lagger;RANRIO;RANRIO
+RANSAR;Ranunculus sardous;1912;9;Crantz;RANSAR;RANSAR
+RANSCE;Ranunculus sceleratus;1913;8;L.;RANSCE;RANSCE
+RANSPH;Ranunculus sphaerosphermus;19979;10;Boiss. & Blanche;RANSPH;RANSPH
+RANSPX;Ranunculus sp.;1896;9;L.;RANSPX;RANSPX
+RANTRE;Ranunculus trichophyllus subsp. eradicatus;19980;10;(Laest.) C.D.K.Cook;RANTRE;RANTRI
+RANTRI;Ranunculus trichophyllus;1914;10;Chaix;RANTRI;RANTRI
+RANTRL;Ranunculus trichophyllus subsp. lutulentus;19981;10;(Songeon & Perrier) P.Fourn.;RANTRL;RANTRI
+RANTRP;Ranunculus tripartitus;1915;10;DC.;RANTRP;RANTRP
+RANTXC;Ranunculus trichophyllus x circinatus;19982;10;NULL;RANTXC;RANTXC
+RANXBA;Ranunculus x bachii;19983;10;Wirtg.;RANXBA;RANXBA
+RANXKE;Ranunculus x kelchoensis;19985;10;S.D.Webster;RANXKE;RANXKE
+RANXLE;Ranunculus x levenensis;19986;10;Druce ex Gornall;RANXLE;RANXLE
+RANXNO;Ranunculus x novae-forestae;19987;10;S.D.Webster;RANXNO;RANXNO
+REYJAP;Reynoutria japonica;19988;9;Houtt.;REYJAP;REYJAP
+RHCTEE;Rhynchostegiella teesdalei;29986;4;(Schimp.) Limpr.;RHCTEN;RHCTEN
+RHCTEN;Rhynchostegiella teneriffae;29987;4;(Mont.) Dirkse & Bouman;RHCTEN;RHCTEN
+RHDVIO;Rhodochorton violaceum;19994;2;(Ktzing) K.M.Drew;RHDVIO;RHDVIO
+RHISPX;Rhizoclonium sp.;1125;2;Ktzing;RHISPX;RHISPX
+RHNALB;Rhynchospora alba;1513;8;(L.) Vahl.;RHNALB;RHNALB
+RHNRUG;Rhynchospora rugosa;19995;7;(Vahl) Gale;RHNRUG;RHNRUG
+RHOROS;Rhodobryum roseum;19993;4;(Hedw.) Limpr.;RHOROS;RHOROS
+RHYALO;Rhynchostegium alopecuroides;19996;4;(Brid.) A.J.E.Sm. ;PLTLUS;PLTLUS
+RHYRIP;Rhynchostegium riparioides;1268;4;(Hedw.) Card.;PLTRIP;RHYRIP
+RHYSPX;Rhynchostegium sp.;1266;4;B., S. & G.;RHYSPX;RHYSPX
+RHZMAG;Rhizomnium magnifolium;19989;4;(Horica) T.Kop.;RHZMAG;RHZMAG
+RHZPSE;Rhizomnium pseudopunctatum;19990;4;(B. & S.) T.Kop.;RHZPSE;RHZPSE
+RHZPUN;Rhizomnium punctatum;19991;4;(Hedw.) T.Kop.;RHZPUN;RHZPUN
+RHZSPX;Rhizomnium sp.;19992;4;T.Kop.;RHZSPX;RHZSPX
+RIBRUB;Ribes rubrum;19997;9;L.;RIBRUB;RIBRUB
+RICCHA;Riccardia chamedryfolia;1173;5;(With.) Grolle;RICCHA;RICCHA
+RICMUL;Riccardia multifida;10205;5;(L.) Gray;RICMUL;RICMUL
+RICPIN;Riccardia pinguis ;25731;5;(L.) Gray;ANEPIN;ANEPIN
+RICSIN;Riccardia sinuata;25936;5;(Hook.) Trevis.;RICCHA;RICCHA
+RICSPX;Riccardia sp.;1172;5;Gray;RICSPX;RICSPX
+RIIFLU;Riccia fluitans;1210;5;L.;RIIFLU;RIIFLU
+RIIHUE;Riccia huebeneriana;19998;5;Lindenb.;RIIHUE;RIIHUE
+RIIRHE;Riccia rhenana;19999;5;Lorb.;RIIRHE;RIIRHE
+RIISPX;Riccia sp.;1209;5;L.;RIISPX;RIISPX
+RIONAT;Ricciocarpos natans;20000;5;(L.) Corda;RIONAT;RIONAT
+RIVSPX;Rivularia sp.;6300;2;Roth.;RIVSPX;RIVSPX
+ROECAC;Roegneria canina subsp. canina;31586;9;(L.) Nevski;ROECAC;ROECAC
+ROECAN;Roegneria canina;32215;9;(L.) Nevski;ROECAN;ROECAN
+RORAMP;Rorippa amphibia;1765;7;(L.) Besser;RORAMP;RORAMP
+RORISL;Rorippa islandica;1766;8;(Oeder ex Gunnerus) Borb;RORISL;RORISL
+RORMIC;Rorippa microphylla;20001;8;Boenn;NASMIC;NASMIC
+RORNAS;Rorippa nasturtium-aquaticum ;31583;7;L. (Hayek);RORNAS;RORNAS
+RORPAL;Rorippa palustris;20002;8;(L.) Besser;RORPAL;RORPAL
+RORPYR;Rorripa pyrenaica;29940;8;(All.) Rchb.;RORPYR;RORPYR
+RORSPX;Rorippa sp.;1764;9;Scop.;RORSPX;RORSPX
+RORSTY;Rorippa stylosa;29939;8;(Pers.) Mansf. & Rothm.;RORPYR;RORPYR
+RORSYL;Rorippa sylvestris;1767;8;(L.) Besser;RORSYL;RORSYL
+RORXAN;Rorippa x anceps;20003;7;(Wahlenb.) Rchb.;RORXAN;RORXAN
+RORXAR;Rorippa x armoracioides;20004;8;(Tausch) Fuss;RORXAR;RORXAR
+RORXER;Rorippa x erythrocaulis;20005;7;Borbas;RORXAN;RORXAN
+RORXST;Rorippa x sterilis;20006;8;Airy Shaw;NASXST;NASXST
+ROTFIL;Rotala filiformis;20007;7;(Bellardi) Hiern.;ROTFIL;ROTFIL
+ROTIND;Rotala indica;20008;7;(Willd.) Koehne;ROTIND;ROTIND
+RUBCAE;Rubus caesius;29984;9;L.;RUBCAE;RUBCAE
+RUBFRU;Rubus fruticosus;29938;9;L.;RUBCAE;RUBCAE
+RUBPRU;Rubus pruinosus;34601;9;Arrh.;RUBPRU;RUBPRU
+RUBSPX;Rubus sp.;29937;9;L.;RUBSPX;RUBSPX
+RUMALP;Rumex alpinus;29936;8;L.;RUMALP;RUMALP
+RUMAQU;Rumex aquaticus;20009;8;L.;RUMAQU;RUMAQU
+RUMCON;Rumex conglomeratus;1871;8;Murray;RUMCON;RUMCON
+RUMCRI;Rumex crispus;1872;9;L.;RUMCRI;RUMCRI
+RUMHYD;Rumex hydrolapathum;1873;7;Huds.;RUMHYD;RUMHYD
+RUMMAR;Rumex maritimus;1874;8;L.;RUMMAR;RUMMAR
+RUMOBT;Rumex obtusifolius;1875;9;L.;RUMOBT;RUMOBT
+RUMPAL;Rumex palustris;20010;7;Sm.;RUMPAL;RUMPAL
+RUMSAN;Rumex sanguineus;1876;8;L.;RUMSAN;RUMSAN
+RUMSPX;Rumex sp.;1870;9;L.;RUMSPX;RUMSPX
+RUPCIR;Ruppia cirrhosa;20011;10;(Petagna) Grande;RUPCIR;RUPCIR
+RUPDRE;Ruppia drepanensis;20012;10;Tineo;RUPDRE;RUPDRE
+RUPMAR;Ruppia maritima;1666;10;L.;RUPMAR;RUPMAR
+SACRAV;Saccharum ravennae;20013;8;L.;ERARAV;ERARAV
+SACSPO;Saccharum spontaneum;20014;8;L.;SACSPO;SACSPO
+SAGLAT;Sagittaria latifolia;20017;10;Willd.;SAGLAT;SAGLAT
+SAGNAT;Sagittaria natans;20018;10;Pall.;SAGNAT;SAGNAT
+SAGRIG;Sagittaria rigida;20019;10;Pursh;SAGRIG;SAGRIG
+SAGSAG;Sagittaria sagittifolia;1453;10;L.;SAGSAG;SAGSAG
+SAGSPX;Sagittaria sp.;1452;10;L.;SAGSPX;SAGSPX
+SAGSUB;Sagittaria subulata;20020;10;(L.) Buch.;SAGSUB;SAGSUB
+SAINOD;Sagina nodosa;20016;8;(L.) Fenzl;SAINOD;SAINOD
+SAIPRO;Sagina procumbens;1712;9;L.;SAIPRO;SAIPRO
+SALNAT;Salvinia natans;1441;6;(L.) All.;SALNAT;SALNAT
+SAMVAL;Samolus valerandi;1889;8;L.;SAMVAL;SAMVAL
+SAOVIT;Saccogyna viticulosa;20015;5;(L.) Dumort.;SAOVIT;SAOVIT
+SAPOFF;Saponaria officinalis;29934;8;L.;SAPOFF;SAPOFF
+SAPSPX;Saponaria sp.;34447;9;L.;SAPSPX;SAPSPX
+SCANEM;Scapania nemorea;19673;5;(L.) Grolle;SCANEM;SCANEM
+SCAPAI;Scapania paludicola;19674;5;Loeske & Mll. Frib.;SCAPAI;SCAPAI
+SCAPAL;Scapania paludosa;10208;5;(Mll. Frib.) Mll. Frib.;SCAPAL;SCAPAL
+SCASPX;Scapania sp.;1212;5;(Dumort.) Dumort.;SCASPX;SCASPX
+SCASUB;Scapania subalpina;19675;5;(Nees ex Lindenb.) Dumort.;SCASUB;SCASUB
+SCAULI;Scapania uliginosa;19676;5;(Sw. ex Lindenb.) Dumort.;SCAULI;SCAULI
+SCAUND;Scapania undulata;1213;5;(L.) Dumort.;SCAUND;SCAUND
+SCEPAL;Scheuchzeria palustris;19677;7;L.;SCEPAL;SCEPAL
+SCHSPX;Schizomeris sp.;5578;2;Ktzing;SCHSPX;SCHSPX
+SCICER;Scirpus cernuus;31564;8;M. Vahl;ISLCER;ISLCER
+SCIFLU;Scirpus fluitans;1518;10;L.;ISLFLU;SCIFLU
+SCIHOL;Scirpus holoschoenus;1519;7;L.;SCPHOL;SCPHOL
+SCILAC;Scirpus lacustris;1520;7;L.;SCNLAC;SCILAC
+SCIMAR;Scirpus maritimus;1522;7;L.;BOLMAR;BOLMAR
+SCISET;Scirpus setaceus ;1524;8;L.;ISLSET;ISLSET
+SCISPX;Scirpus sp.;1515;7;L.;SCISPX;SCISPX
+SCISTR;Scirpus striatulus;37089;7;(Desv.) H.J.Coste;ELEBON;ELEBON
+SCISYL;Scirpus sylvaticus;1525;7;L.;SCISYL;SCISYL
+SCITAB;Scirpus tabernaemontani;1526;7;(C.C.Gmel.) Palla;SCNTAB;SCNTAB
+SCITRI;Scirpus triqueter;1527;7;L.;SCNTRI;SCNTRI
+SCMPLU;Sciuro-hypnum plumosum ;31572;4;(Hedw.) Ignatov & Huttunen;SCMPLU;BRAPLU
+SCNLAC;Schoenoplectus lacustris;31026;7;(L.) Palla;SCNLAC;SCILAC
+SCNPUN;Schoenoplectus pungens;19680;7;(Vahl.) Palla;SCNPUN;SCNPUN
+SCNSPX;Schoenoplectus sp.;19681;7;(Reichenb.) Palla;SCNSPX;SCNSPX
+SCNSUP;Schoenoplectus supinus;19682;7;(L.) Palla;SCNSUP;SCNSUP
+SCNTAB;Schoenoplectus tabernaemontani;29933;7;(C.C.Gmel.) Palla;SCNTAB;SCNTAB
+SCNTRI;Schoenoplectus triqueter;31560;7;(L.) Palla;SCNTRI;SCNTRI
+SCNXCA;Schoenoplectus x carinatus;19683;7;(Sm.) Palla;SCNXCA;SCNXCA
+SCOFES;Scolochloa festucacea;19686;7;Willd.;SCOFES;SCOFES
+SCPHOL;Scirpoides holoschoenus;19685;8;(L.) Sojak;SCPHOL;SCPHOL
+SCPREV;Scorpidium revolvens;30058;4;(Sw. ex. anon.) Rubers;SCPREV;SCPREV
+SCRAUR;Scrophularia auriculata;1950;8;L.;SCRAUR;SCRAUR
+SCRNOD;Scrophularia nodosa;1952;8;L.;SCRNOD;SCRNOD
+SCROBL;Scrophularia oblongifolia;31028;8;Loisel.;SCROBL;SCROBL
+SCRSPX;Scrophularia sp.;1949;9;L.;SCRSPX;SCRSPX
+SCRUMB;Scrophularia umbrosa;1953;8;Dumort.;SCROBL;SCROBL
+SCSAGA;Schistidium agassizii;1325;4;Sull. & Lesq.;SCSAGA;SCSAGA
+SCSALP;Schistidium alpicola;1326;4;Hedw.;SCSPLA;SCSPLA
+SCSAPO;Schistidium apocarpum;19678;4;(Hedw.) Bruch & Schimp.;SCSAPO;SCSAPO
+SCSPLA;Schistidium platyphyllum ;31570;4;(Mitt.) H.Perss.;SCSPLA;SCSPLA
+SCSRIV;Schistidium rivulare;1327;4;(Brid.) Podp.;SCSRIV;SCSRIV
+SCSSPX;Schistidium sp.;1324;4;Brid.;SCSSPX;SCSSPX
+SCUGAL;Scutellaria galericulata;1796;8;L.;SCUGAL;SCUGAL
+SCYSPX;Scytonema sp.;1114;2;C.Agardh;SCYSPX;SCYSPX
+SCZSPX;Schizothrix sp.;6436;2;Ktzing;SCZSPX;SCZSPX
+SENAQU;Senecio aquaticus;1750;8;Hill.;JACAQU;JACAQU
+SENCON;Senecio congestus;19687;8;(R.Br.) DC.;TEPPAL;TEPPAL
+SENINT;Senecio integrifolius;34449;9;(L.) Clairv.;TEHINT;TEHINT
+SENJAC;Senecio jacobaea;36394;9;L.;JACVUL;JACVUL
+SENPAL;Senecio paludosus;19688;8;L.;JACPAL;JACPAL
+SENSAR;Senecio sarracenicus;19689;8;L.;SENSAR;SENSAR
+SENSPX;Senecio sp.;1749;9;L.;SENSPX;SENSPX
+SENVUL;Senecio vulgaris;29931;9;L.;SENVUL;SENVUL
+SHIRIV;Shinnersia rivularis;19690;10;(A.Gray) R.M. King & H. Rob.;SHIRIV;SHIRIV
+SHONIG;Schoenus nigricans;19684;8;L.;SHONIG;SHONIG
+SIBEUR;Sibthorpia europaea;19691;8;L.;SIBEUR;SIBEUR
+SICANG;Sicyos angulata ;32035;9;L.;SICANG;SIGANG
+SIEERE;Siella erecta ;31574;7;(Huds.) M. Pimen.;BERERE;BERERE
+SINARV;Sinapis arvensis;30106;9;L.;SINARV;SINARV
+SIRSPX;Sirogonium sp.;5292;2;Ktzing;SIRSPX;SIRSPX
+SIUERE;Sium erectum;31575;7;Huds.;BERERE;BERERE
+SIUINU;Sium inundatum;31577;10;(L.) Lam.;HELINU;APIINU
+SIULAT;Sium latifolium;1997;8;L.;SIULAT;SIULAT
+SIUSPX;Sium sp.;1995;9;L.;SIUSPX;SIUSPX
+SOADUL;Solanum dulcamara;1964;8;L.;SOADUL;SOADUL
+SOASPX;Solanum sp.;1963;9;L.;SOASPX;SOASPX
+SOESOL;Soleirolia soleirolii;29930;8;(Req.) Dandy;SOESOL;SOESOL
+SOLSPX;Solidago sp.;29929;9;L.;SOLSPX;SOLSPX
+SONCRE;Solenostoma crenulatum;25734;5;(Sm.) Mitt.;JUGGRA;JUGGRA
+SONPUM;Solenostoma pumilum;31580;5;(With.) K. M;JUGPUM;JUGPUM
+SPAANG;Sparganium angustifolium;1669;10;Michx.;SPAANG;SPAANG
+SPAAXE;Sparganium angustifolium x emersum;19692;10;NULL;SPAAXE;SPAAXE
+SPAEMB;Sparganium emersum fo. brevifolium;19694;10;Rehmann;SPAEMB;SPAEMB
+SPAEME;Sparganium emersum;1670;10;Rehmann;SPAEME;SPAEME
+SPAEML;Sparganium emersum fo. longissimum;19695;10;Rehmann;SPAEML;SPAEML
+SPAERE;Sparganium erectum;1671;7;L.;SPAERE;SPAERE
+SPAERM;Sparganium erectum subsp. microcarpum;19697;7;(Neuman) Domin;SPAERM;SPAERE
+SPAERN;Sparganium erectum subsp. neglectum;19698;7;(Beeby) K. Richt.;SPAERN;SPAERE
+SPAERO;Sparganium erectum subsp. oocarpum;19699;7;(Celak.) Domin;SPAERO;SPAERE
+SPAERR;Sparganium erectum subsp. erectum;19696;7;L.;SPAERR;SPAERE
+SPAGLO;Sparganium glomeratum;19700;10;(Beurl. ex Laest.) Neuman;SPAGLO;SPAGLO
+SPAGRA;Sparganium gramineum;19701;10;Georgi;SPAGRA;SPAGRA
+SPAHYP;Sparganium hyperboreum;19702;10;Laestad.;SPAHYP;SPAHYP
+SPAMIN;Sparganium minimum;1672;10;Wallr.;SPAMIN;SPAMIN
+SPANAT;Sparganium natans;19703;10;L.;SPANAT;SPANAT
+SPASPX;Sparganium sp.;1668;10;L.;SPASPX;SPASPX
+SPESPX;Sphaerocystis sp.;5878;2;Chodat;SPESPX;SPESPX
+SPHANG;Sphagnum angustifolium;19705;4;(C.EO.Jensen ex Russow) C.EO.Jensen;SPHANG;SPHANG
+SPHAUR;Sphagnum auriculatum;1375;4;Schimp.;SPHAUR;SPHDEN
+SPHCAP;Sphagnum capillifolium;19706;4;(Ehrh.) Hedw.;SPHCAP;SPHCAP
+SPHDEN;Sphagnum denticulatum;10207;4;Brid.;SPHAUR;SPHDEN
+SPHFAL;Sphagnum fallax;19707;4;(Klinggr.) Klinggr.;SPHFAL;SPHFAL
+SPHFIM;Sphagnum fimbriatum;19708;4;Wils.;SPHFIM;SPHFIM
+SPHFLE;Sphagnum flexuosum;19709;4;Dozy & Molk.;SPHFLE;SPHFLE
+SPHPAA;Sphagnum papillosum var. laeve;19710;4;Warnst.;SPHPAA;SPHPAP
+SPHPAI;Sphagnum papillosum ;31576;4;Lindb.;SPHPAI;SPHPAI
+SPHPAL;Sphagnum palustre;1377;4;L.;SPHPAL;SPHPAL
+SPHSPX;Sphagnum sp.;1374;4;L.;SPHSPX;SPHSPX
+SPHSQU;Sphagnum squarrosum;20301;4;Crome;SPHSQU;SPHSQU
+SPHSUB;Sphagnum subsecundum;19711;4;Nees;SPHSUB;SPHSUB
+SPISPX;Spirogyra sp.;1147;2;Link;SPISPX;SPISPX
+SPNAES;Spiranthes aestivalis;35486;8;(Poir.) Rich.;SPNAES;SPNAES
+SPRPOL;Spirodela polyrhiza;1630;10;(L.) Schleiden;SPRPOL;SPRPOL
+SPTNAT;Sphaerotilus natans;19704;1;Ktzing;SPTNAT;SPTSPX
+SPTSPX;Sphaerotilus sp.;1093;1;Ktzing;SPTSPX;SPTSPX
+SPUSPX;Spirulina sp.;1109;2;(Turpin) Gomont;SPUSPX;SPUSPX
+STAPAL;Stachys palustris;1799;8;L.;STAPAL;STAPAL
+STAREC;Stachys recta;29985;9;L.;STAREC;STAREC
+STASPX;Stachys sp.;1798;9;L.;STASPX;STASPX
+STASYL;Stachys sylvatica;19712;9;L.;STASYL;STASYL
+STEALS;Stellaria alsine;1714;8;Grimm.;STEALS;STEALS
+STEGRA;Stellaria graminea;29993;8;L.;STEGRA;STEGRA
+STEMED;Stellaria media;32262;9;(L.) Vill.;STEMED;STEMED
+STENEM;Stellaria nemorum;19713;8;L.;STENEM;STENEM
+STEPAL;Stellaria palustris;19714;8;Retz.;STEPAL;STEPAL
+STEULI;Stellaria uliginosa;29927;8;Murray;STEALS;STEALS
+STGSPX;Stigonema sp.;19715;2;C.Agardh ex Bornet & Flahault;STGSPX;STGSPX
+STISPX;Stigeoclonium sp.;1119;2;Ktzing;STISPX;STISPX
+STITEN;Stigeoclonium tenue;5583;2;(C.Agardh) Ktzing;STITEN;STITEN
+STMSTR;Straminergon stramineum ;31579;4;(Dicks. ex Brid.) Heden;STMSTR;STMSTR
+STRALO;Stratiotes aloides;1596;10;L.;STRALO;STRALO
+SUBAQU;Subularia aquatica;19716;10;L.;SUBAQU;SUBAQU
+SYMOFF;Symphytum officinale;1694;8;L.;SYMOFF;SYMOFF
+SYMSPX;Symphytum sp.;1693;9;L.;SYMSPX;SYMSPX
+SYNINT;Syntrichia intermedia;35478;4;Brid.;SYNMON;SYNINT
+SYNLAT;Syntrichia latifolia ;31581;4;(Bruch ex Hartm.) Huebener;SYNLAT;SYNLAT
+SYNMON;Syntrichia montana;35477;4;Nees;SYNMON;SYNMON
+TANVUL;Tanacetum vulgare;20345;9;L.;TANVUL;TANVUL
+TAXBAC;Taxus baccata;37805;9;L.;TAXBAC;TAXBAC
+TEHINT;Tephroseris integrifolia;34448;9;(L.) Holub;TEHINT;TEHINT
+TEPPAL;Tephroseris palustris ;31578;8;(L.) Fourr.;TEPPAL;TEPPAL
+TETSPX;Tetraspora sp.;1138;2;Link;TETSPX;TETSPX
+TEUSCO;Teucrium scordium;1801;8;L.;TEUSCO;TEUSCO
+THAALO;Thamnobryum alopecurum;1344;4;(Hedw.) Gang.;THAALO;THMALO
+THEPAL;Thelypteris palustris;1435;6;Schott.;THEPAL;THEPAL
+THLFLA;Thalictrum flavum;19717;8;L.;THLFLA;THLFLA
+THMALO;Thamnium alopecurum;1349;4;(Hedw.) Gang.;THAALO;THMALO
+THOHIS;Thorea hispida;6086;2;(Thore) Desv.;THOHIS;THORAM
+THORAM;Thorea ramossissima;25697;2;Bory de St Vincent;THOHIS;THORAM
+THOSPX;Thorea sp.;6085;2;(Thore) Desv.;THOSPX;THORAM
+THRVER;Thorella verticillatinundata;19718;7;(Thore) Briq.;CRPVER;CRPVER
+THUSPX;Thuidium sp.;1379;4;NULL;THUSPX;THUSPX
+THYPAL;Thysselinum palustre;31019;8;(L.) Hoffm.;THYPAL;THYPAL
+TOLGLO;Tolypella glomerata;5275;2;Leonhardi;TOLGLO;TOLGLO
+TOLINT;Tolypella intricata;5276;2;(Trentep.) Leonh.;TOLINT;TOLINT
+TOLPRO;Tolypella prolifera;5277;2;V. Leonh.;TOLPRO;TOLPRO
+TOLSPX;Tolypella sp.;5274;2;(A.Braun) A.Braun;TOLSPX;TOLSPX
+TORLAT;Tortula latifolia;1369;4;Bruch ex Hartm.;SYNLAT;SYNLAT
+TORSUB;Tortula subulata;19719;4;Hedw.;TORSUB;TORSUB
+TOYSPX;Tolypothrix sp.;6304;2;Ktzing;TOYSPX;TOYSPX
+TRANAT;Trapa natans;1968;10;L.;TRANAT;TRANAT
+TRCTOM;Trichocolea tomentella;1216;5;(Ehrh.) Dumort.;TRCTOM;TRCTOM
+TRFFRA;Trifolium fragiferum;19721;9;L.;TRFFRA;TRFFRA
+TRFREP;Trifolium repens;1816;9;L.;TRFREP;TRFREP
+TRFSPX;Trifolium sp.;1813;9;L.;TRFSPX;TRFSPX
+TRGPAL;Triglochin palustre;1604;8;L.;TRGPAL;TRGPAL
+TRHCES;Trichophorum cespitosum;19720;8;(L.) Hartm.;TRHCES;TRHCES
+TRISPX;Tribonema sp.;1167;2;Derbs & Solier;TRISPX;TRISPX
+TRNSPX;Transeauina sp.;37029;2;Guiry;TRNSPX;DEBSPX
+TROEUR;Trollius europaeus;19722;8;L.;TROEUR;TROEUR
+TUSFAR;Tussilago farfara;1755;8;L.;TUSFAR;TUSFAR
+TYPANG;Typha angustifolia;1675;7;L.;TYPANG;TYPANG
+TYPDOM;Typha domingensis;19723;7;(Pers.) Steud.;TYPDOM;TYPDOM
+TYPLAT;Typha latifolia;1676;7;L.;TYPLAT;TYPLAT
+TYPLAX;Typha laxmannii;1677;7;Lepech.;TYPLAX;TYPLAX
+TYPMIN;Typha minima;1678;7;Funk;TYPMIN;TYPMIN
+TYPSHU;Typha shuttleworthii;19724;7;W.D.J.Koch & Sond.;TYPSHU;TYPSHU
+TYPSPX;Typha sp.;1674;7;L.;TYPSPX;TYPSPX
+ULOSPX;Ulothrix sp.;1142;2;Ktzing;ULOSPX;ULOSPX
+ULTCRI;Ulota crispa;29926;4;(Hedw.) Brid.;ULTCRI;ULTCRI
+ULVCOM;Ulva compressa;23704;2;L.;ULVCOM;ULVCOM
+ULVINT;Ulva intestinalis;23601;2;L.;ULVINT;ENTINT
+ULVSPX;Ulva sp.;19725;2;L.;ULVSPX;ULVSPX
+URTDIO;Urtica dioica;2000;9;L.;URTDIO;URTDIO
+UTRAUS;Utricularia australis;19726;10;R.Br.;UTRAUS;UTRAUS
+UTRBRE;Utricularia bremii;19727;10;Herr ex Klliker;UTRBRE;UTRBRE
+UTRGIB;Utricularia gibba;19728;10;L.;UTRGIB;UTRGIB
+UTRINT;Utricularia intermedia;19729;10;Hayne;UTRINT;UTRINT
+UTRMIN;Utricularia minor;19730;10;L.;UTRMIN;UTRMIN
+UTROCH;Utricularia ochroleuca;19731;10;R.Hartman;UTROCH;UTROCH
+UTRSPX;Utricularia sp.;1818;10;L.;UTRSPX;UTRSPX
+UTRSTY;Utricularia stygia;19732;10;G.Thor;UTRSTY;UTRSTY
+UTRVUL;Utricularia vulgaris;1819;10;L.;UTRVUL;UTRVUL
+VAEOFF;Valeriana officinalis;2003;8;L.;VAEOFF;VAEOFF
+VAEOFR;Valeriana officinalis subsp. repens;19733;8;(Host) O.Bols & Vigo;VAEOFR;VAEOFF
+VALSPI;Vallisneria spiralis;1598;10;L.;VALSPI;VALSPI
+VAUSPX;Vaucheria sp.;1169;2;DC.;VAUSPX;VAUSPX
+VEAALB;Veratrum album;29925;9;L.;VEAALB;VEAALB
+VEBOFF;Verbena officinalis;29924;9;L.;VEBOFF;VEBOFF
+VERANA;Veronica anagallis-aquatica;1955;7;L.;VERANA;VERANA
+VERANL;Veronica anagallis-aquatica subsp. lackzchewickii;31600;7;(J. Keller) B.Bock;VERANL;VERXLA
+VERANN;Veronica anagallis-aquatica subsp. anagalloides ;31030;7;(Guss.) Batt.;VERANO;VERANO
+VERANO;Veronica anagalloides;1956;7;Guss.;VERANO;VERANO
+VERANQ;Veronica anagallis-aquatica subsp. aquatica;31031;7;Nyman;VERCAT;VERCAT
+VERBEC;Veronica beccabunga;1957;7;L.;VERBEC;VERBEC
+VERCAT;Veronica catenata;1958;7;Pennel;VERCAT;VERCAT
+VERFIL;Veronica filiformis;19734;8;Sm.;VERFIL;VERFIL
+VERLON;Veronica longifolia;19735;8;L.;VERLON;VERLON
+VERMON;Veronica montana;29923;8;L.;VERMON;VERMON
+VERSCU;Veronica scutellata;1959;8;L.;VERSCU;VERSCU
+VERSPX;Veronica sp.;1954;9;L.;VERSPX;VERSPX
+VERXLA;Veronica x lackschewitzii;19736;7;J. Keller;VERANL;VERXLA
+VEUPRA;Verrucaria praetermissa;19737;11;Anzi;VEUPRA;VEUPRA
+VEUSPX;Verrucaria sp.;19738;11;H.A.Schrader;VEUSPX;VEUSPX
+VIBOPU;Viburnum opulus;19739;9;L.;VIBOPU;VIBOPU
+VIOPAL;Viola palustris;2007;8;L.;VIOPAL;VIOPAL
+VIOSPX;Viola sp.;2006;9;L.;VIOSPX;VIOSPX
+WAHHED;Wahlenbergia hederacea;1707;8;(L.) Rchb.;WAHHED;WAHHED
+WAREXA;Warnstorfia exannulata;31585;4;(B., S. & G.) Loeske;WAREXA;WAREXA
+WARFLU;Warnstorfia fluitans ;10212;4;(Hedw.) Loeske;WARFLU;DREFLU
+WARSAR;Warnstorfia sarmentosa ;31588;4;(Wahlenb.) Heden;WARSAR;WARSAR
+WOLARH;Wolffia arrhiza;1632;10;(L.) Horkel ex Wimm.;WOLARH;WOLARH
+XANSTR;Xanthium strumarium;32263;9;L.;XANSTR;XANSTR
+ZANCON;Zannichellia contorta;19740;10;Cham.;ZANCON;ZANCON
+ZANMAJ;Zannichellia major;19741;10;(Hartm.) Boenn. ex Rchb.;ZANPAM;ZANPAL
+ZANOBT;Zannichellia obtusifolia;19742;10;Talavera & al.;ZANOBT;ZANOBT
+ZANPAL;Zannichellia palustris;1681;10;L.;ZANPAL;ZANPAL
+ZANPAM;Zannichellia palustris subsp. major ;31587;10;(Hartm.) Ooststr. & Reichg.;ZANPAM;ZANPAL
+ZANPAP;Zannichellia palustris subsp. pedicellata;19743;10;(Wahlenb. & Rosen);ZANPAP;ZANPAL
+ZANPED;Zannichellia pedunculata;19744;10;Reich.;ZANPAP;ZANPAP
+ZANPEL;Zannichellia peltata;19745;10;Bertol.;ZANPEL;ZANPEL
+ZANSPX;Zannichellia sp.;1680;10;L.;ZANSPX;ZANSPX
+ZATAET;Zantedeschia aethiopica;34450;8;(L.) Spreng.;ZATAET;ZATAET
+ZIZAQU;Zizania aquatica;19746;7;L.;ZIZAQU;ZIZAQU
+ZIZLAT;Zizania latifolia;19747;7;Turcz.;ZIZLAT;ZIZLAT
+ZYGSPX;Zygnema sp.;1148;2;C.Agardh;ZYGSPX;ZYGSPX

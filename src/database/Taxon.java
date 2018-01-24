@@ -1,28 +1,32 @@
 package database;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
+
+import com.opencsv.CSVReader;
+
+import utils.Langue;
 
 public class Taxon extends DbObject {
 
 	public Taxon() {
 		init("taxons_mp", "cd_taxon", true);
-		setNumericList(new String[] { "cote_spe", "coef_steno", "cd_sandre",
-				"aquaticite", "id_groupe" });
-		setStringList(new String[] { "nom_taxon", "date_creation", "auteur",
-				"cd_valide", "cd_contrib" });
+		setNumericList(new String[] { "cote_spe", "coef_steno", "cd_sandre", "aquaticite", "id_groupe" });
+		setStringList(new String[] { "nom_taxon", "date_creation", "auteur", "cd_valide", "cd_contrib" });
 
 	}
 
 	/**
 	 * REtourne la liste des taxons en fonction des criteres fournis
+	 * 
 	 * @param param
 	 * @return List<Hashtable<String, String>>
 	 */
-	public List<Hashtable<String, String>> getListByParam(
-			Hashtable<String, String> param) {
-		String sql = "select * from taxons_mp"
-				+ " left outer join Groupes using (id_groupe)";
+	public List<Hashtable<String, String>> getListByParam(Hashtable<String, String> param) {
+		String sql = "select * from taxons_mp" + " left outer join groupes using (id_groupe)";
 		String where = " where ";
 		boolean isWhere = false;
 		try {
@@ -41,23 +45,24 @@ public class Taxon extends DbObject {
 					where += " and ";
 				} else
 					isWhere = true;
-				where += " (upper(cd_taxon) like upper('%"+param.get("taxon")+"%') "
+				where += " (upper(cd_taxon) like upper('%" + param.get("taxon") + "%') "
 						+ "or upper(nom_taxon) like upper('%" + param.get("taxon") + "%'))";
 			}
-		} catch (NullPointerException e) {}
+		} catch (NullPointerException e) {
+		}
 		if (isWhere)
 			sql += where;
 		sql += " order by nom_taxon";
 		return executeList(sql);
 	}
-	
+
 	public String[][] getListByParamToTable(Hashtable<String, String> param) {
-		List<Hashtable<String,String>> result = getListByParam(param);
-//		private String[] columnName = { Langue.getString("cd"),
-//				Langue.getString("nom"), Langue.getString("auteur"),
-//				Langue.getString("groupe"), Langue.getString("cs"),
-//				Langue.getString("e"), Langue.getString("cdSandreTab"),
-//				Langue.getString("cdValTab"), Langue.getString("cdContrib") };;
+		List<Hashtable<String, String>> result = getListByParam(param);
+		// private String[] columnName = { Langue.getString("cd"),
+		// Langue.getString("nom"), Langue.getString("auteur"),
+		// Langue.getString("groupe"), Langue.getString("cs"),
+		// Langue.getString("e"), Langue.getString("cdSandreTab"),
+		// Langue.getString("cdValTab"), Langue.getString("cdContrib") };;
 
 		String[][] returned = new String[result.size()][9];
 		for (int i = 0; i < result.size(); i++) {
@@ -69,8 +74,52 @@ public class Taxon extends DbObject {
 			returned[i][5] = result.get(i).get("coef_steno");
 			returned[i][6] = result.get(i).get("cd_sandre");
 			returned[i][7] = result.get(i).get("cd_valide");
-			returned[i][8] = result.get(i).get("cd_contrib");			
+			returned[i][8] = result.get(i).get("cd_contrib");
 		}
 		return returned;
+	}
+
+	public boolean importFromCsv(String filename, char separator) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		data = new Hashtable<String, String>();
+		try {
+			@SuppressWarnings("deprecation")
+			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			String[] ligne;
+			result = true;
+			/*
+			 * Suppression de la premiere ligne
+			 */
+			reader.readNext();
+			while ((ligne = reader.readNext()) != null) {
+				data.clear();
+				if (ligne.length > 4) {
+					data.put("cd_taxon", ligne[0]);
+					data.put("nom_taxon", ligne[1]);
+					data.put("cd_sandre", ligne[2]);
+					data.put("id_groupe", ligne[3]);
+					data.put("auteur", ligne[4]);
+					data.put("cd_valide", ligne[5]);
+					data.put("cd_contrib", ligne[6]);
+					write(data, ligne[0]);
+				}
+			}
+
+			reader.close();
+		} catch (FileNotFoundException e) {
+			message = Langue.getString("filenotfound");
+			result = false;
+		} catch (IOException e) {
+			message = Langue.getString("filenotreadable");
+			result = false;
+		}
+
+		return result;
+	}
+
+	public boolean importParamFromCsv(String filename, char c) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

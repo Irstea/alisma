@@ -16,6 +16,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,6 +30,7 @@ import org.apache.log4j.Logger;
 
 import database.Taxon;
 import utils.ComposantAlisma;
+import utils.FileChooser;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
@@ -120,7 +122,9 @@ public class TaxonList extends Observable implements Observer,
 			addTextField("taxon", 2, 0, 2);
 			addLabel("seulContrib", 0,1,2,dimLabel);
 			addCheckBox("is_contrib", "0", 2, 1, 1);
-			addButton("boutonChercher", 'R', "rechercher", 2, 2, 1);
+			addButton("boutonChercher", 'R', "rechercher", 1, 2, 1);
+			addButton("importTaxon", 'I', "importTaxon", 2, 2, 1);
+			addButton("importParam", 'P', "importParam", 3, 2, 1);
 			//addButton("boutonModif", 'M', "modifier", 1, 2, 1);
 			//addButton("boutonNouveau", 'N', "nouveau", 2, 2, 1);
 		}
@@ -145,11 +149,49 @@ public class TaxonList extends Observable implements Observer,
 		case "rechercher":
 			initTable();
 			break;
+		case "importTaxon":
+			importTaxon();
+			break;
+		case "importParam":
+			importParam();
+			break;
 		}
 	}
 
 	public void dataRefresh() {
 		initTable();
+	}
+	
+	public void importTaxon() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(fenetre);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = taxonDb.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(fenetre, Langue.getString("importOk"));
+				dataRefresh();
+			} else {
+				JOptionPane.showMessageDialog(fenetre,
+						Langue.getString("importKo") + System.getProperty("line.separator") + taxonDb.getMessage());
+			}
+		}
+	}
+	
+	public void importParam() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(fenetre);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = taxonDb.importParamFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(fenetre, Langue.getString("importOk"));
+				dataRefresh();
+			} else {
+				JOptionPane.showMessageDialog(fenetre,
+						Langue.getString("importKo") + System.getProperty("line.separator") + taxonDb.getMessage());
+			}
+		}
 	}
 
 	/**
