@@ -58,11 +58,6 @@ public class Taxon extends DbObject {
 
 	public String[][] getListByParamToTable(Hashtable<String, String> param) {
 		List<Hashtable<String, String>> result = getListByParam(param);
-		// private String[] columnName = { Langue.getString("cd"),
-		// Langue.getString("nom"), Langue.getString("auteur"),
-		// Langue.getString("groupe"), Langue.getString("cs"),
-		// Langue.getString("e"), Langue.getString("cdSandreTab"),
-		// Langue.getString("cdValTab"), Langue.getString("cdContrib") };;
 
 		String[][] returned = new String[result.size()][9];
 		for (int i = 0; i < result.size(); i++) {

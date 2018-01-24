@@ -46,7 +46,7 @@ public class CalculIBMR {
 
 	public void setListTaxon(List<Hashtable<String, String>> taxons) {
 		if (!data.isEmpty())
-		data.clear();
+			data.clear();
 		data = taxons;
 	}
 
@@ -68,6 +68,7 @@ public class CalculIBMR {
 		sumEK = 0;
 		sumEKCS = 0;
 		maxEK = 0;
+
 		/*
 		 * Parcours de la liste
 		 */
@@ -81,8 +82,8 @@ public class CalculIBMR {
 			 */
 			if (taxon.get("cote_spe").isEmpty()) {
 				/*
-				 * Recherche s'il existe un taxon valide (dans le cas d'un
-				 * synonyme) qui aurait une cote spe
+				 * Recherche s'il existe un taxon valide (dans le cas d'un synonyme) qui aurait
+				 * une cote spe
 				 */
 				if (!taxon.get("cd_contrib").isEmpty()) {
 					/*
@@ -91,10 +92,10 @@ public class CalculIBMR {
 					if (!taxon.get("cd_contrib").equals(taxon.get("id_taxon"))) {
 						try {
 							/*
-							 * Recuperation de cote_spe et coef_steno a partir
-							 * du cd_valide
+							 * Recuperation de cote_spe et coef_steno a partir du cd_valide
 							 */
-							logger.debug("recherche cd_contrib pour "+ taxon.get("id_taxon")+ " : "+ taxon.get("cd_contrib"));
+							logger.debug("recherche cd_contrib pour " + taxon.get("id_taxon") + " : "
+									+ taxon.get("cd_contrib"));
 							query = ConnexionDatabase.getConnexion().createStatement();
 							res = query.executeQuery("select cote_spe, coef_steno from Taxons_MP "
 									+ "where cd_taxon = '" + taxon.get("cd_contrib") + "'");
@@ -194,8 +195,8 @@ public class CalculIBMR {
 				String cle = entry.getKey();
 				Hashtable<String, Double> valeur = entry.getValue();
 				/*
-				 * Calcul du nombre de taxons ayant le meme EK que le taxon
-				 * supprime lors du calcul de resistance
+				 * Calcul du nombre de taxons ayant le meme EK que le taxon supprime lors du
+				 * calcul de resistance
 				 */
 				if (valeur.get("EK") == maxEK)
 					nbEK++;
@@ -232,7 +233,7 @@ public class CalculIBMR {
 		/*
 		 * Calcul de EQR et de la classe d'etat
 		 */
-		if (existContrib) {
+		if (existContrib && ibmrRef > 0) {
 			Double eqr;
 			int classeId = 0;
 			String classeLibelle = "";
@@ -290,6 +291,7 @@ public class CalculIBMR {
 		ur = new Unite_releves();
 		ibmrClass = new Ibmr();
 		classeEtat = new ClasseEtat();
+
 		List<Hashtable<String, String>> unites;
 		for (Hashtable<String, String> operation : operations) {
 			ibmrData.clear();
@@ -307,13 +309,14 @@ public class CalculIBMR {
 				sumEKCS = 0;
 				maxEK = 0;
 				dataCalcule.clear();
+				logger.debug("ibmr_ref:" + operation.get("ibmr_ref"));
 				try {
 					ibmrRef = Double.parseDouble(operation.get("ibmr_ref"));
 				} catch (NullPointerException e) {
-
 				} catch (Exception e) {
 					logger.debug(e.getMessage());
 				}
+
 				/*
 				 * Recuperation des taxons correspondants
 				 */

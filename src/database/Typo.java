@@ -14,7 +14,7 @@ public class Typo  extends DbObjectCombo{
 	public String getIbmrRef(String typoName) {
 		String sql = "select ibmr_ref from typo where typo_name = '"+typoName+"'";
 		List<Hashtable<String, String>> resultat = executeList(sql);
-		String retour = "1";
+		String retour = "-1";
 		try {
 			retour = resultat.get(0).get("ibmr_ref");
 		} catch (Exception e) {
