@@ -36,7 +36,7 @@ public class DbObject {
 	protected ResultSet rs = null;
 	boolean autoGenerateKey = false;
 	boolean isKeyText = false;
-	char identProtect = '`';
+	String identProtect = "" ;
 	static Logger logger = Logger.getLogger(DbObject.class);
 	static boolean encode_iso8859 = false;
 	String message = "";
@@ -56,6 +56,7 @@ public class DbObject {
 		tableName = p_tableName;
 		keyName = p_keyName;
 		autoGenerateKey = p_autoGenerateKey;
+		identProtect = Parametre.getValue("database", "dbColumnSeparator");
 		try {
 			connection = ConnexionDatabase.getConnexion();
 		} catch (Exception e) {
@@ -503,6 +504,9 @@ public class DbObject {
 	 */
 	public boolean isExist(Object key) {
 		boolean retour = false;
+	
+		if (! key.toString().equals("0")) {
+		
 		String sql = "select count(*) as nb from " + tableName + " where " + identProtect + keyName + identProtect
 				+ " = ";
 		if (key.getClass().getSimpleName().equals("String")) {
@@ -519,6 +523,7 @@ public class DbObject {
 			}
 		} catch (Exception e) {
 			logger.error(e);
+		}
 		}
 		return retour;
 	}

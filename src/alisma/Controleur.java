@@ -36,6 +36,7 @@ import utils.Exportable;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
+import utils.Parametre;
 
 /**
  * @author quinton
@@ -520,6 +521,12 @@ public class Controleur implements Observer {
 			/*
 			 * Fermeture de l'application
 			 */
+			/*
+			 * Arret de la connexion en cas de hsqldb
+			 */
+			if (Parametre.getValue("database", "dbtype").equals("hsqldb")) {
+				ConnexionDatabase.shutdown();
+			}
 			System.exit(0);
 		}
 
