@@ -854,6 +854,8 @@ public class Releve_tab1 extends ComposantAlisma {
 	public Hashtable<String, String> getDataGlobal() {
 		Hashtable<String, String> data;
 		data = hashtableFusionner(general.getData(), pointPrelevement.getDataGlobal());
+		data = hashtableFusionner(data, ibmr.getData());
+		data = hashtableFusionner (data, ibmrRobuste.getData());
 		return data;
 	}
 
