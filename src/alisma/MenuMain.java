@@ -54,7 +54,7 @@ public class MenuMain extends Observable {
 		 */
 		htItem.put("quitter", new JMenuItem());
 		htItem.put("taxonReference", new JMenuItem());
-		htItem.put("taxonPerso", new JMenuItem());
+//		htItem.put("taxonPerso", new JMenuItem());
 		htItem.put("cours_eau", new JMenuItem());
 		htItem.put("station", new JMenuItem());
 		htItem.put("opConsult", new JMenuItem());
@@ -99,7 +99,7 @@ public class MenuMain extends Observable {
 		menuCourant.add(htItem.get("quitter"));
 		menuCourant = htMenu.get("param");
 		menuCourant.add(htItem.get("taxonReference"));
-		menuCourant.add(htItem.get("taxonPerso"));
+//		menuCourant.add(htItem.get("taxonPerso"));
 		menuCourant.add(htItem.get("cours_eau"));
 		menuCourant.add(htItem.get("station"));
 		menuCourant = htMenu.get("opControle");
@@ -129,7 +129,7 @@ public class MenuMain extends Observable {
 	}
 	
 	/**
-	 * D�clenchement de l'action sur choix dans le menu
+	 * Declenchement de l'action sur choix dans le menu
 	 * @param action
 	 */
 	public void setAction(String action) {

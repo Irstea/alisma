@@ -13,9 +13,9 @@ import utils.Langue;
 public class Taxon extends DbObject {
 
 	public Taxon() {
-		init("taxons_mp", "cd_taxon", true);
+		init("taxons_mp", "cd_taxon", false);
 		setNumericList(new String[] { "cote_spe", "coef_steno", "cd_sandre", "aquaticite", "id_groupe" });
-		setStringList(new String[] { "nom_taxon", "date_creation", "auteur", "cd_valide", "cd_contrib" });
+		setStringList(new String[] { "cd_taxon", "nom_taxon", "date_creation", "auteur", "cd_valide", "cd_contrib" });
 		isKeyText = true;
 	}
 

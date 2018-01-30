@@ -587,12 +587,14 @@ public class DbObject {
 		setData(data);
 		String retour;
 		if (isExist(key)) {
-			if (update(key) == 1)
+			if (update(key) == 1) {
 				retour = key;
-			else
+			} else {
 				retour = "-1";
-		} else
+			}
+		} else {
 			retour = insertWithKeyString();
+		}
 		try {
 			connection.commit();
 		} catch (SQLException e) {
