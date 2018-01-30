@@ -36,10 +36,11 @@ public class DbObject {
 	protected ResultSet rs = null;
 	boolean autoGenerateKey = false;
 	boolean isKeyText = false;
-	String identProtect = "" ;
+	String identProtect = "";
 	static Logger logger = Logger.getLogger(DbObject.class);
 	static boolean encode_iso8859 = false;
 	String message = "";
+	String dbtype = Parametre.getValue("database", "dbtype");
 
 	/**
 	 * Initialise la classe avec les valeurs de base
@@ -223,20 +224,38 @@ public class DbObject {
 			logger.debug(sql + colonne + value);
 			try {
 				query = connection.createStatement();
-
-				query.executeUpdate(sql + colonne + value,
-						(autoGenerateKey ? Statement.RETURN_GENERATED_KEYS : Statement.NO_GENERATED_KEYS));
-				if (autoGenerateKey) {
-					/*
-					 * Recuperation de la cle
-					 */
-					rs = query.getGeneratedKeys();
-					if (rs.first())
-						key = rs.getInt(1);
+				if (dbtype.equals("mysql")) {
+					query.executeUpdate(sql + colonne + value,
+							(autoGenerateKey ? Statement.RETURN_GENERATED_KEYS : Statement.NO_GENERATED_KEYS));
+					if (autoGenerateKey) {
+						/*
+						 * Recuperation de la cle
+						 */
+						rs = query.getGeneratedKeys();
+						if (rs.first()) {
+							key = rs.getInt(1);
+						}
+					}
+					query.close();
+				} else if (dbtype.equals("hsqldb")) {
+					query.executeUpdate(sql + colonne + value);
+					query.close();
+					if (autoGenerateKey) {
+						List<Hashtable<String, String>> lkey = executeList(
+								"select max(" + keyName + ") as " + keyName + " from " + tableName);
+						if (!lkey.isEmpty()) {
+							try {
+								key = Integer.parseInt(lkey.get(0).get(keyName));
+							} catch (NumberFormatException e) {
+								logger.debug("key null");
+							}
+						}
+					}
 				}
 			} catch (Exception e) {
 				logger.error(e);
 			}
+			logger.debug("insert - generated key :" + key);
 		}
 		return key;
 	}
@@ -304,7 +323,7 @@ public class DbObject {
 			if (rs.next()) {
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					value = rs.getString(i) == null ? "" : rs.getString(i);
-					columnName = rsmd.getColumnName(i);
+					columnName = rsmd.getColumnName(i).toLowerCase();
 					// if (Arrays.asList(stringList).contains(columnName) &&
 					// Alisma.isWindowsOs == true)
 					// value = encodeIso8859(value);
@@ -396,7 +415,7 @@ public class DbObject {
 				ligne = new Hashtable<String, String>();
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					value = rs.getString(i) == null ? "" : rs.getString(i);
-					columnName = rsmd.getColumnLabel(i);
+					columnName = rsmd.getColumnLabel(i).toLowerCase();
 					if (encode)
 						if (Arrays.asList(stringList).contains(columnName) && Alisma.isWindowsOs == true && encode)
 							value = encodeIso8859(value);
@@ -504,26 +523,26 @@ public class DbObject {
 	 */
 	public boolean isExist(Object key) {
 		boolean retour = false;
-	
-		if (! key.toString().equals("0")) {
-		
-		String sql = "select count(*) as nb from " + tableName + " where " + identProtect + keyName + identProtect
-				+ " = ";
-		if (key.getClass().getSimpleName().equals("String")) {
-			sql += "'" + key + "'";
-		} else
-			sql += key;
-		logger.debug(sql);
-		try {
-			query = connection.createStatement();
-			rs = query.executeQuery(sql);
-			if (rs.next()) {
-				if (rs.getInt(1) > 0)
-					retour = true;
+
+		if (!key.toString().equals("0")) {
+
+			String sql = "select count(*) as nb from " + tableName + " where " + identProtect + keyName + identProtect
+					+ " = ";
+			if (key.getClass().getSimpleName().equals("String")) {
+				sql += "'" + key + "'";
+			} else
+				sql += key;
+			logger.debug(sql);
+			try {
+				query = connection.createStatement();
+				rs = query.executeQuery(sql);
+				if (rs.next()) {
+					if (rs.getInt(1) > 0)
+						retour = true;
+				}
+			} catch (Exception e) {
+				logger.error(e);
 			}
-		} catch (Exception e) {
-			logger.error(e);
-		}
 		}
 		return retour;
 	}
@@ -539,17 +558,20 @@ public class DbObject {
 		setData(data);
 		int retour;
 		if (isExist(key)) {
-			if (update(key) == 1)
+			if (update(key) == 1) {
 				retour = key;
-			else
+			} else {
 				retour = -1;
-		} else
+			}
+		} else {
 			retour = insert();
+		}
 		try {
 			connection.commit();
 		} catch (SQLException e) {
-			if (e.getErrorCode() != 0)
+			if (e.getErrorCode() != 0) {
 				logger.error(e.getErrorCode() + " " + e.getSQLState());
+			}
 		}
 		return retour;
 	}
@@ -647,22 +669,22 @@ public class DbObject {
 		return data.get(keyName);
 
 	}
-	
+
 	public String getMessage() {
 		return message;
 	}
-	
+
 	public void resetMessage() {
 		message = "";
 	}
-	
+
 	public String getIdFromField(String field, Object value) {
 		String quote = "", id = "";
 		if (value instanceof String) {
 			quote = "'";
 		}
-		String sql = "select "+ keyName + " from " + tableName 
-				+ " where "+identProtect + field + identProtect + " = " + quote + value + quote;
+		String sql = "select " + keyName + " from " + tableName + " where " + identProtect + field + identProtect
+				+ " = " + quote + value + quote;
 		List<Hashtable<String, String>> result = executeList(sql);
 		if (!result.isEmpty()) {
 			id = result.get(0).get(keyName);
