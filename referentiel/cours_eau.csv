@@ -8312,6 +8312,7 @@ I8088000;ruisseau du pont davy
 I8--0250;ruisseau le bieu
 I8--0200;fleuve la sée
 ;
+;
 I8108000;ruisseau du moulin du bois
 ;
 ;
@@ -13652,6 +13653,7 @@ J7964100;le Mézillac
 J79-0310;le Canut
 J79-0310;le Canut
 ;
+J7944000;la Cône
 ----100G;
 ;
 ;
@@ -14236,6 +14238,8 @@ K2856300;
 K2834000;la Dolore
 K2--0190;la Dore
 K2834000;la Dolore
+K2834000;la Dolore
+K2838500;les Bargues
 K2--0190;la Dore
 K2984100;le Dorson
 K2998000;le Vauziron
@@ -14922,6 +14926,7 @@ M06-0310;la Vaige
 M0616100;
 M06-0300;l'Erve
 M06-0300;l'Erve
+M06-0310;la Vaige
 M0704600;le Baraize
 M0725300;le Plessis
 M0724300;le Margas
@@ -15177,6 +15182,8 @@ M60-0300;rivière l'èvre
 M6024000;le Pont Laurent
 M6024000;le Pont Laurent
 M60-0300;rivière l'èvre
+M6008100;le Rez Profond
+M6006800;la Boisardière
 M6114000;le Grée ou Pouillé
 M6117000;
 M6106000;le Gué
@@ -27867,78 +27874,163 @@ N---0120;la Vendée
 112-0020;
 10430060;
 104-0020;
+;
+70523700;
+90320680;petit (crique)
+91040640;sainte-anne (crique)
+91040650;tigany (crique)
 80420540;cipanama (crique)
-80010920;
-80--0200;approuague, l' (fleuve)
-80410920;kapiri (crique)
-91220530;
+80334140;
 50600550;bastien (crique)
-54--0210;malani (rivière)
-52--0200;grand inini (rivière)
-52200521;lawa, la (rivière)
+91041110;
+91040610;
+;
+90230200;sinnamary, le (fleuve)
+91330570;
+91040620;cacao (crique)
+80420540;cipanama (crique)
+80331530;chauve-souris (crique)
+50650620;charvein (crique)
+90241060;saulnier (crique)
+90241100;toussaint (crique)
+91330590;passoura (crique)
+91330510;singes rouges (crique)
+91210500;tonnégrande, de (rivière)
+91110680;boulanger (crique)
+91110680;boulanger (crique)
+91041680;saint-regis (crique)
+91101080;tibourou (crique)
+80401200;
+80420580;
+60420820;
+50630500;balaté (crique)
+70520520;sainte-anne (crique)
+70510500;portal (crique)
+91220530;
+911-0400;orapu (rivière)
+911-0400;orapu (rivière)
+91100400;orapu (riviere)
+91110400;orapu (riviere)
+914-0400;kaw, de (rivière)
+60410500;gabaret (crique)
+505-0400;sparouine (crique)
+50500400;sparouine (crique)
+70520510;acarouany, l' (rivière)
+904-0400;iracoubo, l' (fleuve)
+91310530;
+913-0400;kourou, le (fleuve)
+80330500;mataroni (rivière)
+80420400;kourouae (riviere)
+90--0200;sinnamary, le (fleuve)
+90241080;mogestern (crique)
+90240200;sinnamary, le (fleuve)
+91--0200;comté, la (rivière)
+91--0200;oyak (rivière)
+80--0200;approuague, l' (fleuve)
 5---0000;maroni, le (fleuve)
 50610531;maroni, le (fleuve)
-50630500;balaté (crique)
-521-0400;petit inini (rivière)
-50240500;salva (crique)
-52003900;
-60410500;gabaret (crique)
-60210500;noussiri (crique)
-6---0000;oyapock, l' (fleuve)
-80420540;cipanama (crique)
-50650620;charvein (crique)
-91210500;tonnégrande, de (rivière)
-90241060;saulnier (crique)
-904-0400;iracoubo, l' (fleuve)
-52211060;
-904-0400;iracoubo, l' (fleuve)
-90320680;petit (crique)
-914-0400;kaw, de (rivière)
-91310530;
-91330590;passoura (crique)
-913-0400;kourou, le (fleuve)
-91330570;
+70--0200;mana, la (fleuve)
+70--0200;mana, la (fleuve)
+60200721;oyapock, l' (fleuve)
+91104540;
+91105260;
+91102110;
+52000950;
+90221170;richard (crique)
 91310960;
-91330510;singes rouges (crique)
-91--0200;comté, la (rivière)
+91023370;
+91040550;grifollet (crique)
+91102520;
+91021890;bois bande (crique)
+91101040;
+91101480;
+91101030;
+91100850;petit approuague (crique)
+91020670;
+91024560;
+80413370;
+52003900;
+52211090;amadu (kiiki)
+52210990;banba (crique)
+52210940;bellevue (crique)
+70000720;est, à l' (crique)
+70500890;
+91023320;
+91101370;
+91100650;
+91102130;
+91100720;taouin (crique)
+80010920;
+80410920;kapiri (crique)
+80412340;
+80412350;
+80412350;
+61200700;alicorne (crique)
+61200850;
+61200620;
+61220590;
+52000200;limonade (crique)
+54240520;
+70444510;
+90030970;saül (crique)
+91101440;grillon (crique)
+80331320;manare (crique)
+61220790;alikene (crique)
+61220590;
+61121150;pian bois (crique)
+61210610;tampak (crique)
+50240500;salva (crique)
+70520780;chicot (crique)
+904-0400;iracoubo, l' (fleuve)
+90220500;tigre (crique)
+80230500;balenfois (crique)
+61210500;jalbot (crique)
+61120500;inipi (crique)
+5---0000;alitanie, l' (rivière)
+521-0400;petit inini (rivière)
+50510400;sparouine (crique)
+90--0200;sinnamary, le (fleuve)
+90120500;leblond (crique)
+90200200;sinnamary, le (fleuve)
 91--0200;comté, la (rivière)
 91030500;bagot (crique)
 91011110;
-91--0200;oyak (rivière)
-911-0400;orapu (rivière)
-911-0400;orapu (rivière)
-70520510;acarouany, l' (rivière)
-70--0200;mana, la (fleuve)
-70520520;sainte-anne (crique)
-70000720;est, à l' (crique)
-70--0200;mana, la (fleuve)
-70--0200;mana, la (fleuve)
-70--0200;mana, la (fleuve)
-70444510;
-70500890;
-5---0000;maroni, le (fleuve)
-91041110;
-91101440;grillon (crique)
-91023370;
-91--0200;comté, la (rivière)
-505-0400;sparouine (crique)
-5---0000;alitanie, l' (rivière)
-60200601;oyapock, l' (fleuve)
-602-0400;armontabo (crique)
-60200721;oyapock, l' (fleuve)
-61--0200;camopi (rivière)
-90--0200;sinnamary, le (fleuve)
-90--0200;sinnamary, le (fleuve)
-90221170;richard (crique)
-90120500;leblond (crique)
-90030970;saül (crique)
-90241100;toussaint (crique)
 802-0400;arataï (crique)
+80230400;aratai (crique)
+60210500;noussiri (crique)
+602-0400;armontabo (crique)
+61120500;inipi (crique)
+54--0210;malani (rivière)
+52--0200;grand inini (rivière)
+55220200;tampok (riviere)
+55220200;tampok (riviere)
+70--0200;mana, la (fleuve)
+90230200;sinnamary, le (fleuve)
+90210210;koursibo (riviere)
+90210210;koursibo (riviere)
+90230200;sinnamary, le (fleuve)
+91--0200;comté, la (rivière)
+91040200;comte, la (riviere)
 80130961;approuague, l' (fleuve)
 80--0200;approuague, l' (fleuve)
-80230500;balenfois (crique)
-80330500;mataroni (rivière)
 80--0200;approuague, l' (fleuve)
+61--0200;camopi (rivière)
+61200200;camopi (riviere)
+61220200;camopi (riviere)
+61200200;camopi (riviere)
+61220200;camopi (riviere)
+61220200;camopi (riviere)
+61200200;camopi (riviere)
+52200521;lawa, la (rivière)
+52211060;
+5---0000;maroni, le (fleuve)
+52410000;lawa, la (riviere)
+52210000;lawa, la (riviere)
+52200000;lawa, la (riviere)
+70--0200;mana, la (fleuve)
+70500200;mana, la (fleuve)
+6---0000;oyapock, l' (fleuve)
+60200601;oyapock, l' (fleuve)
 30530200;Mro wa Ourovéni
 30618400;
 30530200;Mro wa Ourovéni

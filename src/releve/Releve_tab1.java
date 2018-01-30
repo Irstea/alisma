@@ -286,8 +286,9 @@ public class Releve_tab1 extends ComposantAlisma {
 
 			super.setData(data);
 
-			if (!data.get("typo_id").equals(""))
+			if (!data.get("typo_id").isEmpty()) {
 				this.setValue("typo_id", typo.getValueFromKey(Integer.valueOf(data.get("typo_id"))));
+			}
 			/*
 			 * Mise a jour de releve_dce
 			 */

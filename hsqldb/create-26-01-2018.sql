@@ -138,7 +138,6 @@ CREATE TABLE PUBLIC.niveau_trophique
 CREATE TABLE PUBLIC.op_controle 
 (
   id_op_controle       IDENTITY NOT NULL PRIMARY KEY,
-  id_pt_prel           INTEGER NOT NULL,
   id_statut            INTEGER,
   protocole_id         INTEGER,
   rive_id              INTEGER,

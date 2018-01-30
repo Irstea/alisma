@@ -3525,7 +3525,7 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 03041247;LE RUISSEAU DE TRÉMAGNE A LA LOGE-POMBLIN 1;775943.999;6773379.99;ruisseau de trémagne;
 03041258;L'ARMANCE A AVREUIL 1;774916.999;6773011.0;rivière l'armance;
 03041285;LE RUISSEAU DE MONTIGNY A MONTIGNY 1;771265.423;6775895.26;ruisseau de montigny;
-03041303;Lieu de suivi - Physico chimie;784381.0;6762030.99;;
+03041303;LE RU DE LA COMMUNE D'ETOURVY A ETOURVY 1;784381.0;6762030.99;;
 03041308;LE LANDION A ETOURVY 1;784134.448;6762518.93;ruisseau le landion;
 03041310;LE LANDION A CHESLEY 1;782864.999;6765256.99;ruisseau le landion;
 03041320;LE RU DE VOLINGY A CUSSANGY 1;782147.0;6767541.99;;
@@ -8311,6 +8311,7 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 03270715;LE RUISSEAU DU PONT DAVY A NOTRE-DAME-DE-LIVOYE 1;391610.0;6857552.99;ruisseau du pont davy;
 03270740;LE BIEU A BRECEY 1;390204.999;6855251.99;ruisseau le bieu;
 03270800;LA SÉE A TIREPIED 2;386410.0;6853799.0;fleuve la sée;
+03270830;LA SÉE A VERNIX 1;388139.999;6854057.99;;
 03270833;LA SÉE A TIREPIED 1;386837.0;6853964.99;;
 03270840;LE RUISSEAU DU MOULIN DU BOIS A TIREPIED 1;387584.593;6856078.27;ruisseau du moulin du bois;
 03270880;LE RUISSEAU DE SAULTBESNON A PLOMB 1;384404.161;6857963.23;;
@@ -13652,6 +13653,7 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 04379002;RAU DU CANUT SUD A SIXT-SUR-AFF;325474.999;6749501.99;le Canut;
 04379003;RAU DU CANUT SUD A SAINT-JUST;325005.999;6751444.99;le Canut;
 04379004;CANUT SUD A RENAC;326593.735;6746607.69;;
+04379005;LE CÔNE A LUSANGER;357419.499;6737595.99;la Cône;
 04380000;CANAL DE NANTES À BREST À GUELTAS;269373.899;6793995.99;;
 04380001;LARHON A LOUDEAC;275093.999;6799411.99;;
 04380002;OUST A SAINT-THELO;265259.099;6808282.99;;
@@ -14236,6 +14238,8 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 04428015;DOLORE A ARLANC;757040.8;6483153.99;la Dolore;
 04428016;DORE A AMBERT;757902.7;6496097.99;la Dore;
 04428017;DOLORE A FOURNOLS;746791.1;6491129.99;la Dolore;
+04428018;DOLORE A FOURNOLS;746634.8;6491776.99;la Dolore;
+04428019;RUISSEAU DES BARGUES A MARSAC-EN-LIVRADOIS;754962.4;6483342.99;les Bargues;
 04428020;DORE A SAINT-ALYRE-D'ARLANC;750859.8;6477155.99;la Dore;
 04429000;DORSON A THIERS;740229.0;6530606.99;le Dorson;
 04429001;RAU VAUZIRON À CHATELDON;740907.2;6542690.99;le Vauziron;
@@ -14922,6 +14926,7 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 04606011;PONT D'ORVAL (LE RUISSEAU DU) A SAINTE-SUZANNE-ET-CHAMMES;447740.399;6780469.99;;
 04606012;ERVE A BLANDOUET-SAINT-JEAN;447439.499;6775696.99;l'Erve;
 04606013;ERVE A VOUTRE;453150.499;6787431.99;l'Erve;
+04606014;VAIGE (LA) A BEAUMONT-PIED-DE-BOEUF;444595.999;6762137.99;la Vaige;
 04607001;RAU DE BARAIZE À SAINT-DENIS-D'ANJOU;441554.999;6746733.99;le Baraize;
 04607003;RAU DU PLESSIS À ETRICHE;441300.999;6735149.99;le Plessis;
 04607004;RAU DU MARGAS À CHATEAUNEUF-SUR-SARTHE;439138.299;6737163.99;le Margas;
@@ -15177,6 +15182,8 @@ CdStationMesureEauxSurface;LbStationMesureEauxSurface;CoordXStationMesureEauxSur
 04660002;PONT LAURENT A LA SALLE ET CHAPELLE AUBRY;400639.799;6690217.99;le Pont Laurent;
 04660003;PONT LAURENT A LA SALLE ET CHAPELLE AUBRY;401350.699;6691137.99;le Pont Laurent;
 04660004;L'EVRE A BEAUPREAU;399648.999;6684468.99;rivière l'èvre;
+04660005;REZ PROFOND A BEAUPREAU EN MAUGES;403605.799;6685382.99;le Rez Profond;
+04660006;MONTATAIS A BEAUPREAU EN MAUGES;405630.199;6684341.99;la Boisardière;
 04661000;LA LOIRE À ANCENIS;385236.999;6704678.99;le Grée ou Pouillé;
 04661001;L'AUBINIERE A ANCENIS;384831.999;6707478.99;;
 04661002;LE GUE A ANETZ;393279.999;6707413.99;le Gué;
@@ -27867,78 +27874,163 @@ Y1355023;inconnu;637484.0;6257259.99;;0
 07033003;Petite Rivière à Goyave aval pont D33;652924.999;1783784.99;;
 07040009;Rivière la Ramée Aval à La Ramée;637594.999;1806529.0;;
 07045080;Rivière Moustique Sainte-Rose à Saint-Val;638728.999;1802926.99;;
-09131508;Affluent Paira;387826.197;467703.972;cipanama (crique);
-09231509;Calebasse;264265.204;399023.978;;
-09271510;Colonis;347228.197;462870.977;approuague, l' (fleuve);
-09231511;Kapiri;371281.2;458309.975;kapiri (crique);
-09151101;Cayenne;346449.197;537839.972;;
-09120115;Bastien;143090.217;582472.966;bastien (crique);
-09270104;Marouini;157121.209;357752.983;malani (rivière);
-09270105;Saut Sonnelle;171023.207;405981.982;grand inini (rivière);
-09280106;Twenké;160843.209;372346.981;lawa, la (rivière);
-09280108;Langatabiki;118062.217;551802.971;maroni, le (fleuve);
-09180109;Aval Saint Laurent;166161.214;613564.964;maroni, le (fleuve);
-09150110;Balaté;162817.211;605874.96;balaté (crique);
-09260112;Petit Inini;186185.211;404825.977;petit inini (rivière);
-09250113;Salva;122934.215;522974.971;salva (crique);
-09230114;Nouvelle France;258263.203;401711.98;;
-09151701;Gabaret;406708.197;432687.972;gabaret (crique);
-09261702;Noussiri;383194.192;396968.975;noussiri (crique);
-09281703;Païra Itou;350967.2;341943.979;oyapock, l' (fleuve);
-09111507;Cipanama;387826.906;467704.682;cipanama (crique);
-09140111;Charvein;178012.726;617588.475;charvein (crique);
-09141102;Tonnégrande;339999.199;533871.97;tonnégrande, de (rivière);
-09140706;Saulnier;281636.742;583124.381;saulnier (crique);
-09160501;Patagai;248363.204;598456.96;iracoubo, l' (fleuve);
-09280107;Papaïchton;150813.213;421271.979;;
-09250502;Plaque Roche;230929.207;595739.963;iracoubo, l' (fleuve);
-09110503;Petit;267055.204;590088.963;petit (crique);
-09151401;Kaw amont;383285.194;491553.966;kaw, de (rivière);
-09160901;Léodate;301147.199;534750.971;;
-09140902;Passoura;311561.205;569559.963;passoura (crique);
-09160903;Singe Rouge;314834.203;552679.97;kourou, le (fleuve);
-09131004;Macouria ''matiti'';324383.204;553967.968;;
-09220905;Crique Kampi;297951.201;533735.968;;
-09140906;Singes Rouges PME;315432.2;552330.961;singes rouges (crique);
-09171201;Cacao AV;337851.197;507695.97;comté, la (rivière);
-09261202;Roche Fendé;324335.204;486283.97;comté, la (rivière);
-09261203;Bagot;330929.199;500961.971;bagot (crique);
-09261204;Galibi;321437.202;486259.975;;
-09171205;Mahury;351665.196;523887.973;oyak (rivière);
-09151206;Orapu;353814.194;511463.972;orapu (rivière);
-09151207;Orpailleur;350501.196;499964.974;orapu (rivière);
-09160201;Acarouany;188007.208;622136.959;acarouany, l' (rivière);
-09270204;Saut Fracas;205153.21;529330.966;mana, la (fleuve);
-09150205;Saint-Anne;188367.213;614204.964;sainte-anne (crique);
-09230206;Crique a l'Est;253186.204;405144.982;est, à l' (crique);
-09180209;Angoulème;204699.211;597758.962;mana, la (fleuve);
-09280202;Saut Dalles / saut Lézard;191364.213;550436.968;mana, la (fleuve);
-09180203;Mana Aval;198167.209;621874.962;mana, la (fleuve);
-09240207;Korossibo;207824.212;570274.969;;
-09230208;Crique Petit-Laussat aval;213948.211;598469.967;;
-09180101;Amont Sparouine / aval Apatou;130706.213;573902.971;maroni, le (fleuve);
-09121208;Crique Cacao;337962.203;504389.973;;
-09241209;Crique Grillon;339667.196;473076.969;grillon (crique);
-09221210;Affluent bois bandé;326185.2;469506.976;;
-09271211;Lisis;331932.199;499175.975;comté, la (rivière);
-09160102;Sparouine;139182.214;581636.966;sparouine (crique);
-09260103;Apsik Icholi;147190.211;325364.987;alitanie, l' (rivière);
-09281704;Fourmi;395783.196;411735.978;oyapock, l' (fleuve);
-09261705;Armontabo;391065.197;409836.975;armontabo (crique);
-09181706;Maripa Aval;403242.197;421083.975;oyapock, l' (fleuve);
-09271707;Saut Alexis;339009.201;354540.984;camopi (rivière);
-09170701;Vénus;280709.208;573396.962;sinnamary, le (fleuve);
-09260702;Saut Dalles;289385.204;503503.974;sinnamary, le (fleuve);
-09220703;Tigre;256247.203;545022.97;richard (crique);
-09260704;Leblond;263092.202;528159.973;leblond (crique);
-09240705;Crique Saül;284197.199;500840.966;saül (crique);
-09140707;Crique Toussaint;277884.207;592617.968;toussaint (crique);
-09261501;Aratai;311329.199;445979.976;arataï (crique);
-09271502;Machicou;324411.197;431669.97;approuague, l' (fleuve);
-09271503;Athanase;354028.198;464045.967;approuague, l' (fleuve);
-09251504;Balenfroi;310543.197;446342.972;balenfois (crique);
-09161505;Mataroni;368826.198;467694.974;mataroni (rivière);
-09171506;Régina;375963.198;478911.97;approuague, l' (fleuve);
+09110211;Crique Populo 1;187553.212;621032.963;;P20
+09110212;Crique Populo 2;186458.212;620093.963;;P20
+09110503;Crique Petit;267055.205;590088.964;petit (crique);P20
+09111214;Crique Ste Anne Cacao;338404.199;506618.969;sainte-anne (crique);P20
+09111216;Crique Tigany;339705.199;506619.969;tigany (crique);P20
+09111507;Crique Cipanama;387827.195;467704.972;cipanama (crique);P20
+09111513;Crique affluent Chauve souris;371930.197;467386.972;;P20
+09120115;Crique Bastien;143090.214;582472.966;bastien (crique);P20
+09121208;Crique Cacao;337962.199;504389.97;;P20
+09121215;Crique Ste Marie;335814.199;505030.969;;P20
+09130210;Crique Bardot;188741.212;618147.963;;P20
+09130715;Crique Maman Lezard;278670.204;560583.966;sinnamary, le (fleuve);P20
+09131004;Crique Matiti;323080.201;551462.966;;P20
+09131212;Aval Crique Cacao;336898.199;505941.969;cacao (crique);P20
+09131508;Affluent Paira;387826.195;467703.972;cipanama (crique);P20
+09131514;Crique Chauve souris;372862.197;466832.972;chauve-souris (crique);P20
+09140111;Charvein;178013.212;617588.963;charvein (crique);P20
+09140706;Saulnier;281637.204;583123.964;saulnier (crique);P20
+09140707;Crique Toussaint;277884.204;592617.964;toussaint (crique);P20
+09140902;Passoura;311561.202;569559.965;passoura (crique);P20
+09140906;Singes Rouges PME;315432.201;552330.966;singes rouges (crique);P20
+09141102;Tonnegrande;339999.199;533871.967;tonnégrande, de (rivière);P20
+09141222;Crique Boulanger amont;344920.199;505213.969;boulanger (crique);P20
+09141223;Crique Boulanger aval;349468.198;509190.969;boulanger (crique);P20
+09141224;Crique Saint-Regis;346312.199;518361.968;saint-regis (crique);P20
+09141225;Crique Tibourou Aval;349455.198;497776.97;tibourou (crique);P20
+09141515;Affluent Crique Ineri;369697.197;477135.971;;P20
+09141516;Crique Ratamina;392932.195;468695.972;;P20
+09141601;Crique Elionore;409407.194;450712.973;;P20
+09150110;Balaté;162817.213;605874.964;balaté (crique);P20
+09150205;Saint-Anne;188367.212;614204.963;sainte-anne (crique);P20
+09150213;Crique Portal;202090.21;603376.964;portal (crique);P20
+09151101;Cayenne;346449.199;537839.967;;P20
+09151206;Orapu;353814.198;511463.969;orapu (rivière);P20
+09151207;Orpailleur;350501.198;499964.97;orapu (rivière);P20
+09151213;Degrad Mouflet;347059.199;495541.97;orapu (riviere);P20
+09151217;Degrad Corrèze;353425.198;499728.97;orapu (riviere);P20
+09151401;Kaw amont;383285.196;491553.97;kaw, de (rivière);P20
+09151701;Gabaret;406708.194;432687.974;gabaret (crique);P20
+09160102;Sparouine (Pont);139182.215;581636.966;sparouine (crique);P20
+09160116;Takouba;144761.214;563987.968;sparouine (crique);P20
+09160201;Acarouany;188007.212;622136.962;acarouany, l' (rivière);P20
+09160501;Patagai;248363.207;598456.963;iracoubo, l' (fleuve);P20
+09160901;Léodate;301274.202;534478.968;;P20
+09160903;Singe Rouge;314834.201;552679.966;kourou, le (fleuve);P20
+09161505;Mataroni;368826.197;467694.972;mataroni (rivière);P20
+09161512;Riviere Kourouai;384368.196;468007.972;kourouae (riviere);P20
+09170701;Vénus;280709.204;573396.965;sinnamary, le (fleuve);P20
+09170714;Pointe Combi EDF;283476.204;587094.964;mogestern (crique);P20
+09170716;Degrad aval barrage;271685.205;560649.966;sinnamary, le (fleuve);P20
+09171201;Cacao Aval;337851.199;507695.969;comté, la (rivière);P20
+09171205;Mahury;351665.198;523887.968;oyak (rivière);P20
+09171506;Régina;375963.196;478911.971;approuague, l' (fleuve);P20
+09180101;Aval Apatou;130706.215;573902.967;maroni, le (fleuve);P20
+09180109;Aval Saint Laurent;166161.213;613564.963;maroni, le (fleuve);P20
+09180203;Mana Aval;198167.211;621874.962;mana, la (fleuve);P20
+09180209;Angoulème;203631.21;596266.964;mana, la (fleuve);P20
+09181706;Maripa Aval;403242.194;421083.975;oyapock, l' (fleuve);P20
+09211232;Crique Guadeloupe Est;343595.199;495156.97;;P20
+09211234;Crique Guadeloupe Ouest2;341434.199;494631.97;;P20
+09211238;Crique Petit Approuague Sud;351988.198;480850.971;;P20
+09220121;Crique Crique Cochon;254804.204;395686.978;;P20
+09220703;Tigre;256247.206;545022.967;richard (crique);P20
+09220905;Crique Kampi;297951.202;533735.968;;P20
+09221210;Crique Affluent Bois Bandé;326185.2;469506.972;;P20
+09221220;Crique Griffolet;334145.199;502510.97;grifollet (crique);P20
+09221228;Crique Aomae;340482.199;495002.97;;P20
+09221229;Crique Bois Bande;330474.199;470249.972;bois bande (crique);P20
+09221230;Crique Formelia;345211.199;497039.97;;P20
+09221231;Crique Grillon Est;343756.199;473613.972;;P20
+09221233;Crique Guadeloupe Ouest;342159.199;494976.97;;P20
+09221237;Crique Petit Approuague Ouest;351029.198;480458.971;petit approuague (crique);P20
+09221239;Crique Prosper James;323229.2;469581.972;;P20
+09221240;Crique Rosette;325169.2;470453.972;;P20
+09221518;Crique Affluent Kapiri 2;372632.196;459733.972;;P20
+09230114;Crique Nouvelle France;258263.204;401711.977;;P20
+09230124;Crique Amadou;148955.211;421537.978;amadu (kiiki);P20
+09230125;Crique Bamba;154448.211;419960.978;banba (crique);P20
+09230126;Crique Bellevue;155869.211;416865.978;bellevue (crique);P20
+09230206;Crique a l'Est;253186.204;405144.977;est, à l' (crique);P20
+09230208;Crique Petit-Laussat aval;213948.209;598469.964;;P20
+09231226;Crique Affluent Bois Bande2;328468.2;470743.972;;P20
+09231227;Crique Affluent Orapu;334840.199;473744.972;;P20
+09231235;Crique Orapu amont;334237.199;473700.972;;P20
+09231236;Crique Petit Approuague Nord;352562.198;481976.971;;P20
+09231241;Crique Tawen;345078.198;476418.971;taouin (crique);P20
+09231509;Crique Calebasse;264265.203;399023.977;;P20
+09231511;Crique Kapiri;371281.197;458309.973;kapiri (crique);P20
+09231517;Crique Affluent Kapiri 3;374771.196;457889.973;;P20
+09231519;Crique Affluent Kapiri;379395.196;453671.973;;P20
+09231521;Crique Escalier;376223.196;449846.973;;P20
+09231708;Crique Alicorne;312410.2;344485.981;alicorne (crique);P20
+09231712;Crique Citron (St Pierre);318670.199;349179.98;;P20
+09231713;Crique Deux Amis;310164.2;342235.981;;P20
+09231714;Crique Diable;337872.198;355547.98;;P20
+09240122;Crique Limonade;254657.204;395651.978;limonade (crique);P20
+09240123;Crique Lipo-lipo;160639.21;366892.981;;P20
+09240207;Korossibo;207824.209;570274.966;;P20
+09240705;Crique Saül;284197.203;500840.97;saül (crique);P20
+09241209;Crique Grillon;339667.199;473076.972;grillon (crique);P20
+09241520;Crique Manare;371172.197;450346.973;manare (crique);P20
+09241722;Crique Alikene;341586.198;356077.98;alikene (crique);P20
+09241723;Crique Chien;334797.198;351456.98;;P20
+09241724;Crique Pian bois;295620.201;351692.98;pian bois (crique);P20
+09241725;Crique Tampack;330246.199;352681.98;tampak (crique);P20
+09250113;Salva;122934.215;522974.971;salva (crique);P20
+09250214;Crique Pont piste Saint Anne;186250.212;615324.963;chicot (crique);P20
+09250502;Plaque Roche;230929.208;595739.964;iracoubo, l' (fleuve);P20
+09250712;Tigre EDF;272110.204;549648.967;tigre (crique);GM20
+09251504;Balenfroi;310543.201;446342.974;balenfois (crique);P20
+09251715;Crique Jalbot;326698.199;348485.98;jalbot (crique);P20
+09251721;Koumaka;295212.201;351828.98;inipi (crique);P20
+09260103;Apsik Icholi;147190.21;325364.984;alitanie, l' (rivière);P20
+09260112;Petit Inini;186185.208;404825.978;petit inini (rivière);P20
+09260130;Amont Voltaire;148000.214;570216.967;sparouine (crique);P20
+09260702;Saut Dalles;289385.203;503503.97;sinnamary, le (fleuve);P20
+09260704;Leblond;263092.205;528159.969;leblond (crique);P20
+09260713;Vata;282366.204;538362.968;sinnamary, le (fleuve);GM20
+09261202;Roche Fendé;324335.2;486283.971;comté, la (rivière);P20
+09261203;Bagot;330929.2;500961.97;bagot (crique);P20
+09261204;Galibi;321437.2;486259.971;;P20
+09261501;Aratai;311329.201;445979.974;arataï (crique);P20
+09261522;Parare;315241.2;446432.974;aratai (crique);P20
+09261702;Noussiri;383194.195;396968.977;noussiri (crique);P20
+09261705;Armontabo;391065.195;409836.976;armontabo (crique);P20
+09261720;Inipi;305236.2;341815.981;inipi (crique);P20
+09270104;Marouini;157121.21;357752.982;malani (rivière);P20
+09270105;Saut Sonnelle;171023.21;405981.978;grand inini (rivière);P20
+09270117;Cimetiere;167804.209;381867.98;tampok (riviere);P20
+09270118;Tampok;174755.209;375280.98;tampok (riviere);P20
+09270204;Saut Fracas;205153.209;529330.969;mana, la (fleuve);P20
+09270708;Genipa;273323.204;546427.967;sinnamary, le (fleuve);GM20
+09270709;Kawenn;272260.204;539579.968;koursibo (riviere);GM20
+09270710;Lucifer;265574.205;528571.968;koursibo (riviere);GM20
+09270711;Petit Saut;272654.204;559545.966;sinnamary, le (fleuve);GM20
+09271211;Lisis;331932.2;499175.97;comté, la (rivière);P20
+09271221;Saut Bief;332518.2;501746.97;comte, la (riviere);P20
+09271502;Machicou;324411.2;431669.975;approuague, l' (fleuve);P20
+09271503;Athanase;356711.198;465113.972;approuague, l' (fleuve);P20
+09271510;Colonis;347228.198;462870.972;approuague, l' (fleuve);P20
+09271707;Saut Alexis;339009.198;354540.98;camopi (rivière);P20
+09271709;Aval St Hocco;324937.199;348880.98;camopi (riviere);P20
+09271710;Aval St Mauvais;349380.197;350717.98;camopi (riviere);P20
+09271716;Degrad St-Pierre;316376.199;344894.98;camopi (riviere);P20
+09271717;Ilet Saut Chien;335382.198;350575.98;camopi (riviere);P20
+09271718;Polydor;344832.198;353598.98;camopi (riviere);P20
+09271719;Saut Deux Amis;309860.2;341632.981;camopi (riviere);P20
+09280106;Twenké;160843.21;372346.981;lawa, la (rivière);P20
+09280107;Papaïchton;150813.211;421271.978;;P20
+09280108;Langatabiki;118895.216;553600.969;maroni, le (fleuve);P20
+09280127;Grand Santi;124402.214;472955.975;lawa, la (riviere);P20
+09280128;Maripasoula;163600.21;403116.979;lawa, la (riviere);P20
+09280129;Taluen;160809.21;374598.981;lawa, la (riviere);P20
+09280202;Saut Lezard;191364.21;550436.968;mana, la (fleuve);P20
+09280215;Mama Valentin;205143.21;590049.965;mana, la (fleuve);P20
+09281703;Paira Itou;350967.197;341943.98;oyapock, l' (fleuve);P20
+09281704;Fourmi;395783.195;411735.976;oyapock, l' (fleuve);P20
 11000013;Ourovéni aval;513869.996;8584096.0;Mro wa Ourovéni;
 11000012;Mtsangachéhi aval;514216.998;8575641.0;;
 11000014;Ourovéni aval;512513.002;8584713.99;Mro wa Ourovéni;
