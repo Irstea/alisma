@@ -420,7 +420,7 @@ public class DbObject {
 					 */
 					if (dbtype.equals("hsqldb") && value.length() > 2) {
 						if (value.substring(value.length() - 2).equals("E0")) {
-							value = value.substring(0, value.length()-2);
+							value = value.substring(0, value.length() - 2);
 						}
 					}
 					columnName = rsmd.getColumnLabel(i).toLowerCase();
@@ -531,25 +531,27 @@ public class DbObject {
 	 */
 	public boolean isExist(Object key) {
 		boolean retour = false;
+		if (!key.toString().isEmpty()) {
 
-		if (!key.toString().equals("0")) {
+			if (!key.toString().equals("0")) {
 
-			String sql = "select count(*) as nb from " + tableName + " where " + identProtect + keyName + identProtect
-					+ " = ";
-			if (key.getClass().getSimpleName().equals("String")) {
-				sql += "'" + key + "'";
-			} else
-				sql += key;
-			logger.debug(sql);
-			try {
-				query = connection.createStatement();
-				rs = query.executeQuery(sql);
-				if (rs.next()) {
-					if (rs.getInt(1) > 0)
-						retour = true;
+				String sql = "select count(*) as nb from " + tableName + " where " + identProtect + keyName
+						+ identProtect + " = ";
+				if (key.getClass().getSimpleName().equals("String")) {
+					sql += "'" + key + "'";
+				} else
+					sql += key;
+				logger.debug(sql);
+				try {
+					query = connection.createStatement();
+					rs = query.executeQuery(sql);
+					if (rs.next()) {
+						if (rs.getInt(1) > 0)
+							retour = true;
+					}
+				} catch (Exception e) {
+					logger.error(e);
 				}
-			} catch (Exception e) {
-				logger.error(e);
 			}
 		}
 		return retour;
@@ -688,7 +690,7 @@ public class DbObject {
 		message = "";
 	}
 
-	public String getIdFromField(String field, Object value) {
+	public Object getIdFromField(String field, Object value) {
 		String quote = "", id = "";
 		if (value instanceof String) {
 			quote = "'";

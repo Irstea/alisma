@@ -35,8 +35,7 @@ public class ProfileReader {
 			return;
 		}
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				aStream));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(aStream));
 		String line = null;
 		String sectionName = null;
 		Hashtable<String, String> section = null;
@@ -45,8 +44,7 @@ public class ProfileReader {
 			// All the data should be in a section
 			if (null == sectionName) {
 				if ((!line.startsWith("[")) || (!line.endsWith("]"))) {
-					throw new Exception(
-							"Invalid format: data found outside section");
+					throw new Exception("Invalid format: data found outside section");
 				}
 
 				sectionName = line.substring(1, line.length() - 1).trim();
@@ -55,8 +53,7 @@ public class ProfileReader {
 			} else {
 				if (line.startsWith("[")) {
 					if (!line.endsWith("]")) {
-						throw new Exception(
-								"Invalid format: no ending ] for section name");
+						throw new Exception("Invalid format: no ending ] for section name");
 					}
 					sectionName = line.substring(1, line.length() - 1).trim();
 					addSection(sectionName);
@@ -86,8 +83,7 @@ public class ProfileReader {
 		return (String) section.get(aKey);
 	}
 
-	private void addLineToSection(String aLine,
-			Hashtable<String, String> aSection) throws Exception {
+	private void addLineToSection(String aLine, Hashtable<String, String> aSection) throws Exception {
 		if (null == aLine) {
 			return;
 		}
@@ -122,7 +118,7 @@ public class ProfileReader {
 		} else {
 			// the value is defining
 			if (st.countTokens() != 2) {
-				throw new Exception("Invalid format of data: " + aLine);
+				// throw new Exception("Invalid format of data: " + aLine);
 			}
 
 			key = st.nextToken().trim();
@@ -133,7 +129,8 @@ public class ProfileReader {
 				}
 			}
 
-			value = st.nextToken().trim();
+			//value = st.nextToken().trim();
+			value = aLine.substring(key.length() + 1);
 		}
 		aSection.put(key, value);
 	}

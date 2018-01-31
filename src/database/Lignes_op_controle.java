@@ -19,6 +19,7 @@ public class Lignes_op_controle extends DbObject {
 		init("lignes_op_controle", "id_ligne_op_controle", true);
 		setStringList(new String[] {"id_taxon"});
 		setNumericList(new String [] {"pc_ur1", "pc_ur2", "cf", "id_op_controle"});
+		autoGenerateKey = true;
 	}
 
 	/**

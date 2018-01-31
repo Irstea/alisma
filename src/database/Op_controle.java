@@ -37,7 +37,7 @@ public class Op_controle extends DbObject {
 				"producteur_code", "producteur_name", "preleveur_code", "preleveur_name", "determinateur_code",
 				"determinateur_name" });
 		setNumericList(
-				new String[] { "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id", "turbidite_id",
+				new String[] {"id_op_controle", "id_statut", "protocole_id", "rive_id", "hydrologie_id", "meteo_id", "turbidite_id",
 						"releve_dce", "typo_id", "coord_x", "coord_y", "altitude", "longueur", "largeur", "id_station",
 						"wgs84_x", "wgs84_y", "lambert_x_aval", "lambert_y_aval", "wgs84_x_aval", "wgs84_y_aval" });
 		/*
@@ -335,7 +335,7 @@ public class Op_controle extends DbObject {
 				Hashtable<String, String> op_releve = new Hashtable<String, String>();
 				List<Hashtable<String, String>> op_unite = new ArrayList<Hashtable<String, String>>();
 				List<Hashtable<String, String>> op_taxon = new ArrayList<Hashtable<String, String>>();
-				String op_id;
+				Integer op_id;
 				Stations station = new Stations();
 				Lignes_op_controle lop = new Lignes_op_controle();
 				Unite_releves ur = new Unite_releves();
@@ -349,7 +349,7 @@ public class Op_controle extends DbObject {
 					op_releve.clear();
 					op_taxon.clear();
 					op_unite.clear();
-					op_id = "0";
+					op_id = 0;
 
 					NodeList nl = node.getChildNodes();
 					logger.debug(nl.getLength() + " noeuds dans nl (" + node.getNodeName() + ")");
@@ -407,9 +407,13 @@ public class Op_controle extends DbObject {
 					logger.debug("Nombre de valeurs dans op_releve :" + op_releve.size());
 
 					if (!op_releve.get("uuid").isEmpty()) {
-						op_id = getIdFromUUID(op_releve.get("uuid"));
+						int result = getIdFromUUID(op_releve.get("uuid"));
+						if (result > 0) {
+							op_id = result;
+							op_releve.put("id_op_controle", String.valueOf(op_id));
+						}
 					}
-					op_releve.put("id_op_controle", op_id);
+					
 					/*
 					 * Recherche de la station
 					 */
@@ -431,28 +435,30 @@ public class Op_controle extends DbObject {
 					 * Ecriture des informations en base
 					 */
 					op_id = write(op_releve, op_id);
+					logger.debug("id_op_controle:" + op_id);
+					op_releve.put("id_op_controle", String.valueOf(op_id));
 					ibmr.write(op_releve, op_id);
 
 					/*
 					 * Traitement des taxons Suppression des lignes precedentes
 					 */
-					lop.delete("id_op_controle", op_id, true);
+					lop.delete("id_op_controle", String.valueOf(op_id), true);
 					logger.debug("Nombre de taxons:" + op_taxon.size());
 					for (int it = 0; it < op_taxon.size(); it++) {
 						Hashtable<String, String> dtaxon = op_taxon.get(it);
 						if (!dtaxon.isEmpty()) {
-							dtaxon.put("id_op_controle", op_id);
+							dtaxon.put("id_op_controle", String.valueOf(op_id));
 							lop.write(dtaxon, 0);
 						}
 					}
 					/*
 					 * Traitement des unites de releve
 					 */
-					ur.delete("id_op_controle", op_id, true);
+					ur.delete("id_op_controle", String.valueOf(op_id), true);
 					for (int iur = 0; iur < op_unite.size(); iur++) {
 						Hashtable<String, String> dur = op_unite.get(iur);
-						dur.put("id_op_controle", op_id);
-						ur.write(dur, 0);
+						dur.put("id_op_controle", String.valueOf(op_id));
+						ur.ecrire(dur, 0);
 					}
 				}
 			}
@@ -490,8 +496,12 @@ public class Op_controle extends DbObject {
 	 * @param uuid
 	 * @return
 	 */
-	public String getIdFromUUID(String uuid) {
-		return getIdFromField("uuid", uuid);
+	public int getIdFromUUID(String uuid) {
+		try {
+			return (int) getIdFromField("uuid", uuid);
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 }
