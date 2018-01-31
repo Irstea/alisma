@@ -23,7 +23,7 @@ public class Unite_releves extends DbObject {
 		init("unite_releves", "id_ur", true);
 		setStringList(new String[] {});
 		setNumericList(new String[] { "pc_ur", "longueur_ur", "largeur_ur", "pc_vegetalisation", "ch_lentique",
-				"pl_lentique", "mouille", "fosse_dissipation", "ch_lotique", "radier", "cascade", "pl_courant",
+				"pl_lentique", "mouille", "fosse_dissipation", "ch_lotique", "radier", "waterfall", "pl_courant",
 				"rapide", "p1", "p2", "p3", "p4", "p5", "v1", "v2", "v3", "v4", "v5", "tres_ombrage", "ombrage",
 				"peu_ombrage", "eclaire", "tres_eclaire", "vase_limons", "terre_marne_tourbe", "cailloux_pierres",
 				"blocs_dalles", "sable_graviers", "racines", "debris_org", "artificiel", "pc_heterot", "pc_algues",

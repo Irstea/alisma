@@ -415,6 +415,14 @@ public class DbObject {
 				ligne = new Hashtable<String, String>();
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					value = rs.getString(i) == null ? "" : rs.getString(i);
+					/*
+					 * Recherche des rajouts de precision en hsqldb
+					 */
+					if (dbtype.equals("hsqldb") && value.length() > 2) {
+						if (value.substring(value.length() - 2).equals("E0")) {
+							value = value.substring(0, value.length()-2);
+						}
+					}
 					columnName = rsmd.getColumnLabel(i).toLowerCase();
 					if (encode)
 						if (Arrays.asList(stringList).contains(columnName) && Alisma.isWindowsOs == true && encode)

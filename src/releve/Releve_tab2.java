@@ -207,7 +207,7 @@ public class Releve_tab2 extends ComposantAlisma {
 				level2 = 3;
 			} else {
 				if (level1 == 0) {
-					int total = Integer.parseInt(part1) + Integer.parseInt(part2);
+					Double total = Double.parseDouble(part1) + Double.parseDouble(part2);
 					if (total != 100) {
 						level1 = 3;
 						level2 = 3;
@@ -325,7 +325,7 @@ public class Releve_tab2 extends ComposantAlisma {
 			setDimensionDefault(dimDefault);
 
 			addComboMesoList(new String[] { "ch_lentique", "pl_lentique","mouille","fosse_dissipation",
-					"ch_lotique","radier","cascade","pl_courant","rapide"
+					"ch_lotique","radier","waterfall","pl_courant","rapide"
 					/*,"autreType"*/
 					});
 			/*

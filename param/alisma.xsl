@@ -356,7 +356,7 @@
   			<fo:block>Cascade :</fo:block>
   		</fo:table-cell>
   		<fo:table-cell>
-  			<fo:block><xsl:value-of select="cascade"/></fo:block>
+  			<fo:block><xsl:value-of select="waterfall"/></fo:block>
   		</fo:table-cell>
   		<fo:table-cell> 
   			<fo:block>Plat courant :</fo:block>

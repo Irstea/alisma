@@ -5248,7 +5248,7 @@ C’est une clé étrangère.</remarks>
     <column id="COL1632" populated="true" UUID="63198601-cce4-482f-9422-834395b9889f" autoIncrement="false" defaultValue="" name="radier" nullable="1" physicalName="radier" precision="0" referenceCount="1" scale="0" source-column-ref="COL1345" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL1633" populated="true" UUID="b2e36d2e-2131-4135-93fe-ab57a22cd88e" autoIncrement="false" defaultValue="" name="cascade" nullable="1" physicalName="cascade_1" precision="0" referenceCount="1" scale="0" source-column-ref="COL1346" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL1633" populated="true" UUID="b2e36d2e-2131-4135-93fe-ab57a22cd88e" autoIncrement="false" defaultValue="" name="waterfall" nullable="1" physicalName="waterfall" precision="0" referenceCount="1" scale="0" source-column-ref="COL1346" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL1634" populated="true" UUID="1c8a21c6-b7e9-4946-a738-cbb0f4029fe2" autoIncrement="false" defaultValue="" name="pl_courant" nullable="1" physicalName="pl_courant" precision="0" referenceCount="1" scale="0" source-column-ref="COL1347" sourceDataTypeName="INT" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -5878,7 +5878,7 @@ C’est une clé étrangère.</remarks>
   <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  </compare-dm-settings>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="111" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.7445070511035952" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1517" x="397" y="1382" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1522" x="20" y="330" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB1527" x="397" y="28" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>

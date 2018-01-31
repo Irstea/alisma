@@ -57,6 +57,7 @@ change longueur_UR longueur_ur double,
 change largeur_UR largeur_ur double
 ;
 alter table unite_releves change autreTypeClass autretypeclass integer;
+alter table unite_releves change `cascade` waterfall integer;
 alter table op_controle add column uuid varchar(36);
 update op_controle set uuid = uuid();
 
