@@ -410,6 +410,7 @@ public class Op_controle extends DbObject {
 						int result = getIdFromUUID(op_releve.get("uuid"));
 						if (result > 0) {
 							op_id = result;
+							logger.debug("id from uuid:"+op_id);
 							op_releve.put("id_op_controle", String.valueOf(op_id));
 						}
 					}
@@ -434,6 +435,7 @@ public class Op_controle extends DbObject {
 					/*
 					 * Ecriture des informations en base
 					 */
+					logger.debug("op_id:"+op_id);
 					op_id = write(op_releve, op_id);
 					logger.debug("id_op_controle:" + op_id);
 					op_releve.put("id_op_controle", String.valueOf(op_id));
@@ -498,7 +500,7 @@ public class Op_controle extends DbObject {
 	 */
 	public int getIdFromUUID(String uuid) {
 		try {
-			return (int) getIdFromField("uuid", uuid);
+			return Integer.parseInt( getIdFromField("uuid", uuid));
 		} catch (Exception e) {
 			return 0;
 		}

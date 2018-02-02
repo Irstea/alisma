@@ -539,15 +539,19 @@ public class DbObject {
 						+ identProtect + " = ";
 				if (key.getClass().getSimpleName().equals("String")) {
 					sql += "'" + key + "'";
-				} else
+				} else {
 					sql += key;
+				}
 				logger.debug(sql);
 				try {
 					query = connection.createStatement();
+					logger.debug(sql);
 					rs = query.executeQuery(sql);
 					if (rs.next()) {
-						if (rs.getInt(1) > 0)
+						logger.debug("nb:"+rs.getObject(0));
+						if (rs.getInt("nb") > 0) {
 							retour = true;
+						}
 					}
 				} catch (Exception e) {
 					logger.error(e);
@@ -690,7 +694,7 @@ public class DbObject {
 		message = "";
 	}
 
-	public Object getIdFromField(String field, Object value) {
+	public String getIdFromField(String field, Object value) {
 		String quote = "", id = "";
 		if (value instanceof String) {
 			quote = "'";
@@ -700,6 +704,7 @@ public class DbObject {
 		List<Hashtable<String, String>> result = executeList(sql);
 		if (!result.isEmpty()) {
 			id = result.get(0).get(keyName);
+			logger.debug("id:"+id);
 		}
 		return id;
 	}
