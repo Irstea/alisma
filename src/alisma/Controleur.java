@@ -18,10 +18,15 @@ import java.util.Set;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 
 import database.CalculIBMR;
+import database.Cours_Eau;
+import database.Op_controle;
+import database.Stations;
+import database.Taxon;
 import reference.CoursEauChange;
 import reference.CoursEauList;
 import reference.StationChange;
@@ -33,6 +38,7 @@ import releve.ReleveListe;
 import releve.Releve_frame;
 import utils.ConnexionDatabase;
 import utils.Exportable;
+import utils.FileChooser;
 import utils.JFrameAlisma;
 import utils.Langue;
 import utils.ObservableExtended;
@@ -56,6 +62,10 @@ public class Controleur implements Observer {
 	StationList stationList;
 	TaxonList taxonList;
 	TaxonPersoList taxonPersoList;
+	Op_controle opControle ;
+	Stations station ;
+	Taxon taxon ;
+	Cours_Eau coursEau ;
 	static Logger logger = Logger.getLogger(Controleur.class);
 	ObservableExtended obs;
 	
@@ -75,6 +85,13 @@ public class Controleur implements Observer {
 					Langue.getString("aPropos"), JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
+		/*
+		 * Initialisation des classes pour les imports depuis le menu
+		 */
+		opControle = new Op_controle();
+		station = new Stations();
+		taxon = new Taxon();
+		coursEau = new Cours_Eau();
 	}
 
 	/**
@@ -381,6 +398,26 @@ public class Controleur implements Observer {
 			langue.setLanguage("fr_FR");
 			resetLibelle();
 			break;
+			
+		case "importXml":
+			importXml();
+			break;
+			
+		case "importTaxon":
+			importTaxon();
+			break;
+			
+		case "importParam":
+			importParam();
+			break;
+			
+		case "importCourseau":
+			importCourseau();
+			break;
+			
+		case "importStation":
+			importStation();
+			break;
 
 		}
 	}
@@ -395,6 +432,67 @@ public class Controleur implements Observer {
 		}
 	}
 	
+	private void importTaxon() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(null);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = taxon.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
+			} else {
+				JOptionPane.showMessageDialog(null,
+						Langue.getString("importKo") + System.getProperty("line.separator") + taxon.getMessage());
+			}
+		}
+	}
+
+	private void importParam() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(null);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = taxon.importParamFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
+			} else {
+				JOptionPane.showMessageDialog(null,
+						Langue.getString("importKo") + System.getProperty("line.separator") + taxon.getMessage());
+			}
+		}
+	}
+
+	private void importCourseau() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(null);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = coursEau.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
+			} else {
+				JOptionPane.showMessageDialog(null,
+						Langue.getString("importKo") + System.getProperty("line.separator") + coursEau.getMessage());
+			}
+		}
+	}
+	
+	private void importStation() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile(null);
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = station.importFromCsv(filename, ';');
+			if (result) {
+				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
+			} else {
+				JOptionPane.showMessageDialog(null,
+						Langue.getString("importKo") + System.getProperty("line.separator") + station.getMessage());
+			}
+		}
+	}
+
+
 	private void calculSEEEsw(Hashtable<String, String> param) {
 		if (exportOp == null) 
 			exportOp = new ExportOp();	
@@ -448,6 +546,22 @@ public class Controleur implements Observer {
 			exportOp = new ExportOp();
 		exportOp.setSearchParam(pParam);
 		exportOp.exportXML();
+	}
+	
+	private void importXml() {
+		FileChooser fc = new FileChooser();
+		String filename = fc.getFile (null, new FileNameExtensionFilter("Fichiers XML", "xml"));
+		if (!filename.isEmpty()) {
+			logger.debug(filename);
+			boolean result = opControle.importFromXml(filename);
+			if (result) {
+				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
+			} else {
+				JOptionPane.showMessageDialog(null,
+						Langue.getString("importKo"));
+			}
+		}
+		
 	}
 
 	public void close() {

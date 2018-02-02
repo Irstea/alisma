@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import utils.Langue;
+import utils.Parametre;
 
 
 /**
@@ -59,12 +60,15 @@ public class MenuMain extends Observable {
 		htItem.put("station", new JMenuItem());
 		htItem.put("opConsult", new JMenuItem());
 		htItem.put("opNouveau", new JMenuItem());
-		htItem.put("dbSave", new JMenuItem());
-//		htItem.put("dbImport", new JMenuItem());
-//		htItem.put("opExport", new JMenuItem());
-//		htItem.put("expLibre", new JMenuItem());
-//		htItem.put("expPdf", new JMenuItem());
+		
+			htItem.put("dbSave", new JMenuItem());
+		
 		htItem.put("aPropos", new JMenuItem());
+		htItem.put("importTaxon", new JMenuItem());
+		htItem.put("importParam", new JMenuItem());
+		htItem.put("importCourseau", new JMenuItem());
+		htItem.put("importStation", new JMenuItem());
+		htItem.put("importXml", new JMenuItem());
 		
 		/*
 		 * Instanciation des sous-menus
@@ -106,11 +110,15 @@ public class MenuMain extends Observable {
 		menuCourant.add(htItem.get("opConsult"));
 		menuCourant.add(htItem.get("opNouveau"));
 		menuCourant = htMenu.get("impExp");
-		menuCourant.add(htItem.get("dbSave"));
-//		menuCourant.add(htItem.get("dbImport"));
-//		menuCourant.add(htItem.get("opExport"));
-//		menuCourant.add(htItem.get("expLibre"));
-//		menuCourant.add(htItem.get("expPdf"));
+		if (!Parametre.getValue("database", "dbtype").equals("hsqldb")) {
+			menuCourant.add(htItem.get("dbSave"));
+		}
+		menuCourant.add(htItem.get("importTaxon"));
+		menuCourant.add(htItem.get("importParam"));
+		menuCourant.add(htItem.get("importCourseau"));
+		menuCourant.add(htItem.get("importStation"));
+		menuCourant.add(htItem.get("importXml"));
+
 		menuCourant = htMenu.get("help");
 		menuCourant.add(htItem.get("aPropos"));
 		
