@@ -381,17 +381,23 @@ public class Op_controle extends DbObject {
 							 * Extraction des donnees de l'unite consideree
 							 */
 							NodeList lUnite = nl.item(nli).getChildNodes();
-							logger.debug(nl.getLength() + " noeuds dans lUnite (" + node.getNodeName() + ")");
+							logger.debug(lUnite.getLength() + " noeuds dans lUnite (" + nodeName + ")");
 							Hashtable<String, String> cUnite = new Hashtable<String, String>();
 							for (int ui = 0; ui < lUnite.getLength(); ui++) {
 								if (lUnite.item(ui) instanceof Element == false) {
 									continue;
 								}
-								logger.debug(lUnite.item(ui).getNodeName());
-								if (lUnite.item(ui).getTextContent() != null) {
+								logger.debug(lUnite.item(ui).getNodeName()+":"+lUnite.item(ui).getTextContent());
+								if (lUnite.item(ui).getTextContent().length() > 0) {
 									cUnite.put(lUnite.item(ui).getNodeName(), lUnite.item(ui).getTextContent());
 								}
 							}
+							logger.debug("Nbre elements dans cUnite:"+cUnite.size());
+							/*
+							 * Nettoyage des identifiants
+							 */
+							cUnite.remove("id_ur");
+							cUnite.remove("id_op_controle");
 							op_unite.add(cUnite);
 						} else {
 							if (nl.item(nli).getTextContent() != null) {
@@ -457,10 +463,12 @@ public class Op_controle extends DbObject {
 					 * Traitement des unites de releve
 					 */
 					ur.delete("id_op_controle", String.valueOf(op_id), true);
+					logger.debug("Nombre d'unites presentes dans "+op_id+":"+op_unite.size());
 					for (int iur = 0; iur < op_unite.size(); iur++) {
 						Hashtable<String, String> dur = op_unite.get(iur);
+						logger.debug("Nbre valeurs dans l'unite "+iur+":"+dur.size());
 						dur.put("id_op_controle", String.valueOf(op_id));
-						ur.ecrire(dur, 0);
+						ur.write(dur, 0);
 					}
 				}
 			}

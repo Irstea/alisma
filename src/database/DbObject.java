@@ -327,6 +327,14 @@ public class DbObject {
 					// if (Arrays.asList(stringList).contains(columnName) &&
 					// Alisma.isWindowsOs == true)
 					// value = encodeIso8859(value);
+					/*
+					 * Recherche des rajouts de precision en hsqldb
+					 */
+					if (dbtype.equals("hsqldb") && value.length() > 2) {
+						if (value.substring(value.length() - 2).equals("E0")) {
+							value = value.substring(0, value.length() - 2);
+						}
+					}
 					data.put(columnName, value);
 				}
 			}
@@ -548,7 +556,7 @@ public class DbObject {
 					logger.debug(sql);
 					rs = query.executeQuery(sql);
 					if (rs.next()) {
-						logger.debug("nb:"+rs.getObject(0));
+						logger.debug("nb:"+rs.getObject(1));
 						if (rs.getInt("nb") > 0) {
 							retour = true;
 						}
