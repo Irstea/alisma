@@ -119,6 +119,9 @@ public class Parametre {
 		} catch (Exception e) {
 			logger.debug("Section " + section + ", attribut " + attribut + " non trouvé dans le fichier de paramètres");
 		}
+		if (val == null) {
+			val = "";
+		}
 		return val;
 	}
 

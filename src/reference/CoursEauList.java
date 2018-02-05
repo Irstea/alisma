@@ -173,7 +173,7 @@ public class CoursEauList extends Observable implements Observer, ObservableExte
 
 	public void importer() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(fenetre);
+		String filename = fc.getFile(fenetre, Langue.getString("importCourseau"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = coursEauDb.importFromCsv(filename, ';');

@@ -24,18 +24,22 @@ public class FileChooser {
 	 * @param filtre
 	 * @return
 	 */
-	public String getFile(Component parent, FileNameExtensionFilter filtre) {
+	public String getFile(Component parent, FileNameExtensionFilter filtre, String title) {
 	 String filepath = "";
+	 if (title.isEmpty()) {
+		 title = Langue.getString("boutonImporter");
+	 }
 	 chooser.setFileFilter(filtre);
-	 int returnVal = chooser.showOpenDialog(parent);
+	 chooser.setDialogTitle(title);
+	 int returnVal = chooser.showOpenDialog (parent);
 	    if(returnVal == JFileChooser.APPROVE_OPTION) {
 	    	filepath = chooser.getSelectedFile().getPath();
 	    }
 	 return filepath;
 	}
 	
-	public String getFile(Component parent) {
-		return getFile(parent, filter);
+	public String getFile(Component parent, String title) {
+		return getFile(parent, filter, title);
 	}
 	
    

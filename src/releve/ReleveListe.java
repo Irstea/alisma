@@ -257,7 +257,7 @@ public class ReleveListe extends Observable implements Observer, Exportable, Obs
 
 	private void importXml() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile (fenetre, new FileNameExtensionFilter("Fichiers XML", "xml"));
+		String filename = fc.getFile (fenetre, new FileNameExtensionFilter("Fichiers XML", "xml"), Langue.getString("importXml"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = operation.importFromXml(filename);

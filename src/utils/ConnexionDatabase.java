@@ -73,10 +73,11 @@ public class ConnexionDatabase {
 			/*
 			 * Pre-positionnement dans le schema
 			 */
-			if (! Parametre.getValue("database", "dbSchema").isEmpty()) {
+			String schema = Parametre.getValue("database", "dbSchema");
+			if (! schema.isEmpty()) {
 				Statement st = connection.createStatement();
-				st.executeQuery("set schema "+Parametre.getValue("database", "dbSchema"));
-				logger.debug("Schema :"+Parametre.getValue("database", "dbSchema"));
+				st.executeQuery("set schema "+schema);
+				logger.debug("Schema :"+schema);
 			}
 
 		} catch (SQLException e) {

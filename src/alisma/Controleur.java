@@ -423,7 +423,7 @@ public class Controleur implements Observer {
 
 	private void importTaxon() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(null);
+		String filename = fc.getFile(null, Langue.getString("importTaxon"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			if (taxon == null) {
@@ -441,7 +441,7 @@ public class Controleur implements Observer {
 
 	private void importParam() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(null);
+		String filename = fc.getFile(null, Langue.getString("importParam"));
 		if (!filename.isEmpty()) {
 			if (taxon == null) {
 				taxon = new Taxon();
@@ -459,7 +459,7 @@ public class Controleur implements Observer {
 
 	private void importCourseau() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(null);
+		String filename = fc.getFile(null, Langue.getString("importCourseau"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			if (coursEau == null) {
@@ -477,7 +477,7 @@ public class Controleur implements Observer {
 
 	private void importStation() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(null);
+		String filename = fc.getFile(null, Langue.getString("importStation"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			if (station == null) {
@@ -561,7 +561,7 @@ public class Controleur implements Observer {
 	 */
 	private void importXml() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(null, new FileNameExtensionFilter("Fichiers XML", "xml"));
+		String filename = fc.getFile(null, new FileNameExtensionFilter("Fichiers XML", "xml"), Langue.getString("importXml"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			if (opControle == null) {

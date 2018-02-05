@@ -166,7 +166,7 @@ public class TaxonList extends Observable implements Observer,
 	
 	public void importTaxon() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(fenetre);
+		String filename = fc.getFile(fenetre, Langue.getString("importTaxon"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = taxonDb.importFromCsv(filename, ';');
@@ -182,7 +182,7 @@ public class TaxonList extends Observable implements Observer,
 	
 	public void importParam() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(fenetre);
+		String filename = fc.getFile(fenetre, Langue.getString("importParam"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = taxonDb.importParamFromCsv(filename, ';');

@@ -192,7 +192,7 @@ public class StationList extends Observable implements Observer,
 	
 	public void importer() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile(fenetre);
+		String filename = fc.getFile(fenetre, Langue.getString("importStation"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = stationDb.importFromCsv(filename, ';');
