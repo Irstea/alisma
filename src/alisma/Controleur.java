@@ -56,19 +56,18 @@ public class Controleur implements Observer {
 	Langue langue;
 	Releve_frame srf;
 	ReleveListe releveListe;
-	ExportOp exportOp ;
+	ExportOp exportOp;
 	CalculIBMR calculIbmr;
 	CoursEauList coursEauList;
 	StationList stationList;
 	TaxonList taxonList;
 	TaxonPersoList taxonPersoList;
-	Op_controle opControle ;
-	Stations station ;
-	Taxon taxon ;
-	Cours_Eau coursEau ;
+	Op_controle opControle;
+	Stations station;
+	Taxon taxon;
+	Cours_Eau coursEau;
 	static Logger logger = Logger.getLogger(Controleur.class);
 	ObservableExtended obs;
-	
 
 	public Controleur() {
 		/*
@@ -81,17 +80,10 @@ public class Controleur implements Observer {
 		 */
 		new ConnexionDatabase();
 		if (ConnexionDatabase.stateConnect == false) {
-			JOptionPane.showMessageDialog(null, ConnexionDatabase.messageConnect,
-					Langue.getString("aPropos"), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, ConnexionDatabase.messageConnect, Langue.getString("aPropos"),
+					JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
-		/*
-		 * Initialisation des classes pour les imports depuis le menu
-		 */
-		opControle = new Op_controle();
-		station = new Stations();
-		taxon = new Taxon();
-		coursEau = new Cours_Eau();
 	}
 
 	/**
@@ -116,66 +108,66 @@ public class Controleur implements Observer {
 			 * Affichage des taxons de reference
 			 */
 			if (taxonList != null) {
-				if (taxonList.fenetre.isVisible() == false)
+				if (taxonList.fenetre.isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				/*
-				 * fenetres.put("Gestion_Cours_Eau_Frame", new
-				 * Gestion_Cours_Eau_Frame());
-				 */
+			if (openFenetre) {
 				taxonList = new TaxonList();
-				fenetres.put("taxonList",  taxonList.fenetre);
-				taxonList.fenetre.setPosition("TR");
-				taxonList.addObserver(this);
+			}
+			fenetres.put("taxonList", taxonList.fenetre);
+			taxonList.fenetre.setPosition("TR");
+			taxonList.addObserver(this);
 			break;
 		case "taxonPerso":
 			/*
 			 * Affichage des taxons personnels
 			 */
 			if (taxonPersoList != null) {
-				if (taxonPersoList.fenetre.isVisible() == false)
+				if (taxonPersoList.fenetre.isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
+			if (openFenetre) {
 				taxonPersoList = new TaxonPersoList();
-				fenetres.put("taxonPersoList",  taxonPersoList.fenetre);
-				taxonPersoList.fenetre.setPosition("TR");
-				taxonPersoList.addObserver(this);
+			}
+			fenetres.put("taxonPersoList", taxonPersoList.fenetre);
+			taxonPersoList.fenetre.setPosition("TR");
+			taxonPersoList.addObserver(this);
 			break;
-			
+
 		case "taxonPersoChange":
 			/*
 			 * Ouverture de la fenetre de modification d'un taxon personnel
 			 */
 			if (fenetres.get("taxonPersoChange") != null) {
-				if (((JFrameAlisma) fenetres
-						.get("taxonPersoChange")).isVisible() == false)
+				if (((JFrameAlisma) fenetres.get("taxonPersoChange")).isVisible() == false)
 					openFenetre = true;
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				fenetres.put("taxonPersoChange",  new TaxonPersoChange());
+			if (openFenetre) {
+				fenetres.put("taxonPersoChange", new TaxonPersoChange());
+			}
 			logger.debug("taxonPersoChange - openFenetre : " + openFenetre);
 			fenetres.get("taxonPersoChange").setPosition("C");
 			obs = (ObservableExtended) observable;
 			logger.debug(obs.getClass().getName());
 			logger.debug("getValue(cd_taxon_perso)" + obs.getValue("cd_taxon_perso"));
-			fenetres.get("taxonPersoChange").setKey (obs.getValue("cd_taxon_perso"));
+			fenetres.get("taxonPersoChange").setKey(obs.getValue("cd_taxon_perso"));
 			fenetres.get("taxonPersoChange").addObserver(this);
 			break;
 		case "taxonPersoHasChanged":
 			/*
-			 * Declenchement des actions pour informer qu'un taxon a
-			 * ete ecrit
+			 * Declenchement des actions pour informer qu'un taxon a ete ecrit
 			 */
-			if (taxonPersoList != null)
+			if (taxonPersoList != null) {
 				taxonPersoList.dataRefresh();
+			}
 			break;
 
 		case "cours_eau":
@@ -183,52 +175,51 @@ public class Controleur implements Observer {
 			 * Affichage des cours d'eau
 			 */
 			if (coursEauList != null) {
-				if (coursEauList.fenetre.isVisible() == false)
+				if (coursEauList.fenetre.isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				/*
-				 * fenetres.put("Gestion_Cours_Eau_Frame", new
-				 * Gestion_Cours_Eau_Frame());
-				 */
+			if (openFenetre) {
 				coursEauList = new CoursEauList();
-				fenetres.put("CoursEauList",  coursEauList.fenetre);
-				coursEauList.fenetre.setPosition("TR");
-				coursEauList.addObserver(this);
+			}
+			fenetres.put("CoursEauList", coursEauList.fenetre);
+			coursEauList.fenetre.setPosition("TR");
+			coursEauList.addObserver(this);
 			break;
-			
+
 		case "coursEauHasChanged":
 			/*
-			 * Declenchement des actions pour informer qu'un cours d'eau a
-			 * ete ecrit
+			 * Declenchement des actions pour informer qu'un cours d'eau a ete ecrit
 			 */
-			if (coursEauList != null)
+			if (coursEauList != null) {
 				coursEauList.dataRefresh();
+			}
 			break;
-			
+
 		case "coursEauChange":
 			/*
 			 * Ouverture de la fenetre de modification d'un cours d'eau
 			 */
 			if (fenetres.get("CoursEauChange") != null) {
-				if (((JFrameAlisma) fenetres
-						.get("CoursEauChange")).isVisible() == false)
+				if (((JFrameAlisma) fenetres.get("CoursEauChange")).isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				fenetres.put("CoursEauChange",  new CoursEauChange());
+			if (openFenetre) {
+				fenetres.put("CoursEauChange", new CoursEauChange());
+			}
 			fenetres.get("CoursEauChange").setPosition("C");
 			obs = (ObservableExtended) observable;
 			logger.debug(obs.getClass().getName());
 			logger.debug("getValue(id_cours_eau)" + obs.getValue("id_cours_eau"));
-			fenetres.get("CoursEauChange").setKey (obs.getValue("id_cours_eau"));
+			fenetres.get("CoursEauChange").setKey(obs.getValue("id_cours_eau"));
 			fenetres.get("CoursEauChange").addObserver(this);
 			break;
-			
+
 		case "station":
 			/*
 			 * Affichage des stations
@@ -237,52 +228,50 @@ public class Controleur implements Observer {
 			 * Affichage des cours d'eau
 			 */
 			if (stationList != null) {
-				if (stationList.fenetre.isVisible() == false)
+				if (stationList.fenetre.isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				/*
-				 * fenetres.put("Gestion_Cours_Eau_Frame", new
-				 * Gestion_Cours_Eau_Frame());
-				 */
+			if (openFenetre) {
 				stationList = new StationList();
-				fenetres.put("stationList",  stationList.fenetre);
-				stationList.fenetre.setPosition("TR");
-				stationList.addObserver(this);
+			}
+			fenetres.put("stationList", stationList.fenetre);
+			stationList.fenetre.setPosition("TR");
+			stationList.addObserver(this);
 			break;
-			
+
 		case "stationChange":
 			/*
 			 * Ouverture de la fenetre de modification d'une station
 			 */
 			if (fenetres.get("StationChange") != null) {
-				if (((JFrameAlisma) fenetres
-						.get("StationChange")).isVisible() == false)
+				if (((JFrameAlisma) fenetres.get("StationChange")).isVisible() == false) {
 					openFenetre = true;
+				}
 			} else {
 				openFenetre = true;
 			}
-			if (openFenetre)
-				fenetres.put("StationChange",  new StationChange());
+			if (openFenetre) {
+				fenetres.put("StationChange", new StationChange());
+			}
 			fenetres.get("StationChange").setPosition("C");
 			obs = (ObservableExtended) observable;
 			logger.debug(obs.getClass().getName());
 			logger.debug("getValue(id_station)" + obs.getValue("id_station"));
-			fenetres.get("StationChange").setKey (obs.getValue("id_station"));
+			fenetres.get("StationChange").setKey(obs.getValue("id_station"));
 			fenetres.get("StationChange").addObserver(this);
 			break;
-			
+
 		case "stationHasChanged":
 			/*
-			 * Declenchement des actions pour informer qu'une station a
-			 * ete ecrite
+			 * Declenchement des actions pour informer qu'une station a ete ecrite
 			 */
-			if (stationList != null)
+			if (stationList != null) {
 				stationList.dataRefresh();
+			}
 			break;
-
 
 		case "opConsult":
 			/*
@@ -298,7 +287,7 @@ public class Controleur implements Observer {
 				releveListe.fenetre.setPosition("TL");
 			}
 			break;
-			
+
 		case "opNouveau":
 			/*
 			 * Creation d'un nouveau releve
@@ -338,30 +327,30 @@ public class Controleur implements Observer {
 			 */
 			new Backup().sauveBase();
 			break;
-			
+
 		case "exportXml":
 			e = (Exportable) observable;
 			param = e.getParam();
 			exportXml(param);
 			break;
-			
+
 		case "exportPDF":
 			e = (Exportable) observable;
 			param = e.getParam();
 			exportPDF(param);
 			break;
-			
+
 		case "exportSEEE":
 			e = (Exportable) observable;
 			param = e.getParam();
 			exportSEEE(param);
 			break;
-			
+
 		case "importSEEE":
 			ObservableExtended oe = (ObservableExtended) observable;
 			importSEEE(oe.getValue("filename"));
 			break;
-			
+
 		case "calculSEEEsw":
 			e = (Exportable) observable;
 			param = e.getParam();
@@ -398,23 +387,23 @@ public class Controleur implements Observer {
 			langue.setLanguage("fr_FR");
 			resetLibelle();
 			break;
-			
+
 		case "importXml":
 			importXml();
 			break;
-			
+
 		case "importTaxon":
 			importTaxon();
 			break;
-			
+
 		case "importParam":
 			importParam();
 			break;
-			
+
 		case "importCourseau":
 			importCourseau();
 			break;
-			
+
 		case "importStation":
 			importStation();
 			break;
@@ -424,19 +413,22 @@ public class Controleur implements Observer {
 
 	private void importSEEE(Object object) {
 		try {
-		ImportCSV csv = new ImportCSV();
-		csv.importSeeeFromFilename(object.toString());
+			ImportCSV csv = new ImportCSV();
+			csv.importSeeeFromFilename(object.toString());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("exportKO"),
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+
 	private void importTaxon() {
 		FileChooser fc = new FileChooser();
 		String filename = fc.getFile(null);
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
+			if (taxon == null) {
+				taxon = new Taxon();
+			}
 			boolean result = taxon.importFromCsv(filename, ';');
 			if (result) {
 				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
@@ -451,6 +443,9 @@ public class Controleur implements Observer {
 		FileChooser fc = new FileChooser();
 		String filename = fc.getFile(null);
 		if (!filename.isEmpty()) {
+			if (taxon == null) {
+				taxon = new Taxon();
+			}
 			logger.debug(filename);
 			boolean result = taxon.importParamFromCsv(filename, ';');
 			if (result) {
@@ -467,6 +462,9 @@ public class Controleur implements Observer {
 		String filename = fc.getFile(null);
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
+			if (coursEau == null) {
+				coursEau = new Cours_Eau();
+			}
 			boolean result = coursEau.importFromCsv(filename, ';');
 			if (result) {
 				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
@@ -476,12 +474,15 @@ public class Controleur implements Observer {
 			}
 		}
 	}
-	
+
 	private void importStation() {
 		FileChooser fc = new FileChooser();
 		String filename = fc.getFile(null);
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
+			if (station == null) {
+				station = new Stations();
+			}
 			boolean result = station.importFromCsv(filename, ';');
 			if (result) {
 				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
@@ -492,14 +493,13 @@ public class Controleur implements Observer {
 		}
 	}
 
-
 	private void calculSEEEsw(Hashtable<String, String> param) {
-		if (exportOp == null) 
-			exportOp = new ExportOp();	
+		if (exportOp == null)
+			exportOp = new ExportOp();
 		ImportCSV csv = new ImportCSV();
 		exportOp.setSearchParam(param);
 		try {
-		csv.importSeeeFromFileContent( exportOp.getSeeeCalcul());
+			csv.importSeeeFromFileContent(exportOp.getSeeeCalcul());
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("calculSEEE"),
 					JOptionPane.INFORMATION_MESSAGE);
@@ -508,60 +508,70 @@ public class Controleur implements Observer {
 	}
 
 	private void exportSEEE(Hashtable<String, String> param) {
-		if (exportOp == null) 
-			exportOp = new ExportOp();		
+		if (exportOp == null) {
+			exportOp = new ExportOp();
+		}
 		exportOp.setSearchParam(param);
 		try {
-		exportOp.exportSEEE();
+			exportOp.exportSEEE();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), Langue.getString("exportKO"),
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
+	/**
+	 * Recalcul de l'ibmr
+	 * @param param
+	 */
 	private void recalculer(Hashtable<String, String> param) {
-		if (calculIbmr == null)
+		if (calculIbmr == null) {
 			calculIbmr = new CalculIBMR();
+		}
 		calculIbmr.recalculListeFromParam(param);
-		
+
 	}
 
 	/**
 	 * declenche l'export au format PDF
+	 * 
 	 * @param param
 	 */
 	private void exportPDF(Hashtable<String, String> pParam) {
-		if (exportOp == null) 
-			exportOp = new ExportOp();		
+		if (exportOp == null)
+			exportOp = new ExportOp();
 		exportOp.setSearchParam(pParam);
-		exportOp.exportPdf();		
+		exportOp.exportPdf();
 	}
 
 	/**
 	 * Generation de l'export XML
-	 * @param param 
+	 * 
+	 * @param param
 	 */
 	private void exportXml(Hashtable<String, String> pParam) {
-		if (exportOp == null) 
+		if (exportOp == null)
 			exportOp = new ExportOp();
 		exportOp.setSearchParam(pParam);
 		exportOp.exportXML();
 	}
-	
+
+	/**
+	 * Declenchement de l'import de dossiers externes
+	 */
 	private void importXml() {
 		FileChooser fc = new FileChooser();
-		String filename = fc.getFile (null, new FileNameExtensionFilter("Fichiers XML", "xml"));
+		String filename = fc.getFile(null, new FileNameExtensionFilter("Fichiers XML", "xml"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
 			boolean result = opControle.importFromXml(filename);
 			if (result) {
 				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));
 			} else {
-				JOptionPane.showMessageDialog(null,
-						Langue.getString("importKo"));
+				JOptionPane.showMessageDialog(null, Langue.getString("importKo"));
 			}
 		}
-		
+
 	}
 
 	public void close() {
@@ -577,8 +587,9 @@ public class Controleur implements Observer {
 		Iterator<String> iter = sfenetres.iterator();
 		while (iter.hasNext()) {
 			jfaFille = fenetres.get(iter.next());
-			if (jfaFille.isShowing())
+			if (jfaFille.isShowing()) {
 				bFenetreOuverte = true;
+			}
 		}
 		/*
 		 * Traitement des fenetres de saisie des releves
@@ -586,24 +597,24 @@ public class Controleur implements Observer {
 		Iterator<Releve_frame> iterReleve = releves.iterator();
 		while (iterReleve.hasNext()) {
 			srf = iterReleve.next();
-			if (srf.fenetre.isShowing())
+			if (srf.fenetre.isShowing()) {
 				bFenetreOuverte = true;
+			}
 		}
 
 		/*
 		 * Fenetre de selection des releves
 		 */
 		if (releveListe != null) {
-			if (releveListe.fenetre.isShowing())
+			if (releveListe.fenetre.isShowing()) {
 				bFenetreOuverte = true;
+			}
 		}
 
 		if (bFenetreOuverte) {
 			int rep;
-			rep = JOptionPane.showOptionDialog(null,
-					Langue.getString("confirmQuitApplication"), null,
-					JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION,
-					null, null, JOptionPane.CANCEL_OPTION);
+			rep = JOptionPane.showOptionDialog(null, Langue.getString("confirmQuitApplication"), null,
+					JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION, null, null, JOptionPane.CANCEL_OPTION);
 			if (rep != JOptionPane.YES_OPTION)
 				quitter = false;
 		}
@@ -622,14 +633,16 @@ public class Controleur implements Observer {
 			iter = sfenetres.iterator();
 			while (iter.hasNext()) {
 				jfaFille = fenetres.get(iter.next());
-				if (jfaFille.isShowing())
+				if (jfaFille.isShowing()) {
 					jfaFille.close();
+				}
 			}
 			iterReleve = releves.iterator();
 			while (iterReleve.hasNext()) {
 				srf = iterReleve.next();
-				if (srf.fenetre.isShowing())
+				if (srf.fenetre.isShowing()) {
 					srf.fenetre.close();
+				}
 			}
 
 			/*
@@ -651,15 +664,11 @@ public class Controleur implements Observer {
 	 */
 	public void apropos() {
 		String nl = System.getProperty("line.separator");
-		String message = Langue.getString("aProposL1") + nl
-				+ Langue.getString("aProposL2") + nl
-				+ Langue.getString("aProposL3") + nl
-				+ Langue.getString("aProposL4") + nl
+		String message = Langue.getString("aProposL1") + nl + Langue.getString("aProposL2") + nl
+				+ Langue.getString("aProposL3") + nl + Langue.getString("aProposL4") + nl
 				+ Langue.getString("aProposL5");
-		ImageIcon icone = new ImageIcon(getClass().getClassLoader()
-				.getResource("ressources/logo.png"));
-		JOptionPane.showMessageDialog(null, message,
-				Langue.getString("aPropos"), JOptionPane.PLAIN_MESSAGE, icone);
+		ImageIcon icone = new ImageIcon(getClass().getClassLoader().getResource("ressources/logo.png"));
+		JOptionPane.showMessageDialog(null, message, Langue.getString("aPropos"), JOptionPane.PLAIN_MESSAGE, icone);
 
 	}
 
