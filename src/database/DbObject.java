@@ -324,9 +324,9 @@ public class DbObject {
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					value = rs.getString(i) == null ? "" : rs.getString(i);
 					columnName = rsmd.getColumnName(i).toLowerCase();
-					// if (Arrays.asList(stringList).contains(columnName) &&
-					// Alisma.isWindowsOs == true)
-					// value = encodeIso8859(value);
+					if ( Alisma.isWindowsOs == true && Arrays.asList(stringList).contains(columnName) && encode_iso8859) {
+						value = encodeIso8859(value);
+					}
 					/*
 					 * Recherche des rajouts de precision en hsqldb
 					 */
@@ -432,9 +432,12 @@ public class DbObject {
 						}
 					}
 					columnName = rsmd.getColumnLabel(i).toLowerCase();
-					if (encode)
-						if (Arrays.asList(stringList).contains(columnName) && Alisma.isWindowsOs == true && encode)
+					if (encode) {
+						if (Arrays.asList(stringList).contains(columnName) /*&& Alisma.isWindowsOs == true && encode*/) {
+							//logger.debug("Encodage iso 8859 de "+columnName);
 							value = encodeIso8859(value);
+						}
+					}
 					ligne.put(columnName, value);
 				}
 				data.add(ligne);
@@ -464,6 +467,7 @@ public class DbObject {
 				valueEncode = new String(value.getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				valueEncode = value;
+				logger.debug("encodage iso8859 impossible:"+e.getMessage());
 			}
 			return valueEncode;
 		} else

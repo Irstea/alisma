@@ -1,8 +1,10 @@
 package database;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Gestion des requetes vers la table Cours_Eau
@@ -76,7 +78,7 @@ public class Cours_Eau extends DbObject {
 		data = new Hashtable<String, String>();
 		try {
 			@SuppressWarnings({ "deprecation", "resource" })
-			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			CSVReader reader = new CSVReader (new InputStreamReader ( new FileInputStream(filename), "UTF8"), separator);
 			String[] ligne;
 			result = true;
 			/*

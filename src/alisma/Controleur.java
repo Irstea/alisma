@@ -564,6 +564,9 @@ public class Controleur implements Observer {
 		String filename = fc.getFile(null, new FileNameExtensionFilter("Fichiers XML", "xml"));
 		if (!filename.isEmpty()) {
 			logger.debug(filename);
+			if (opControle == null) {
+				opControle = new Op_controle();
+			}
 			boolean result = opControle.importFromXml(filename);
 			if (result) {
 				JOptionPane.showMessageDialog(null, Langue.getString("importOk"));

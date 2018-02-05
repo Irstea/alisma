@@ -1,0 +1,5 @@
+urlid alisma
+url jdbc:hsqldb:file:../data/alisma;shutdown=true
+username SA
+password
+

@@ -1,8 +1,10 @@
 package database;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -85,7 +87,7 @@ public class Taxon extends DbObject {
 		data = new Hashtable<String, String>();
 		try {
 			@SuppressWarnings("deprecation")
-			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			CSVReader reader = new CSVReader (new InputStreamReader ( new FileInputStream(filename), "UTF8"), separator);
 			String[] ligne;
 			result = true;
 			/*
@@ -133,7 +135,7 @@ public class Taxon extends DbObject {
 		data = new Hashtable<String, String>();
 		try {
 			@SuppressWarnings("deprecation")
-			CSVReader reader = new CSVReader(new FileReader(filename), separator);
+			CSVReader reader = new CSVReader (new InputStreamReader ( new FileInputStream(filename), "UTF8"), separator);
 			String[] ligne;
 			result = true;
 			/*
