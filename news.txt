@@ -1,5 +1,34 @@
 ALISMA - nouveautés
 ===================
+Version 1.2 du 5 février 2018
+------------------------------
+Correction de bogues :
+- la date de calcul de l'IBMR (calcul SEEE) n'était pas renseignée
+- modification d'un libellé dans les données mésologiques
+- le calcul des coordonnées Lambert à partir des données WGS84 était erroné
+
+Évolutions :
+- le champ "longueur" est maintenant obligatoire pour valider le dossier
+- rajout d'un code UUID pour faciliter les échanges inter-bases
+- les coordonnées XY sont maintenant précisées en "amont"
+- la saisie des coordonnées du point aval est maintenant possible
+- le calcul des coordonnées WGS84 à partir des coordonnées Lambert est maintenant possible
+- la largeur peut être saisie avec une décimale
+- il est possible de rajouter un nouveau taxon dans la saisie du dossier en validant par la touche Entrée
+- ajout d'une catégorie "autre" dans "autre type" de faciès
+- modification de l'ordre de saisie des données mésologiques
+- lors de la saisie du nom du taxon, le code est également affiché
+- pour la turbidité, la catégorie "nulle ou faible" a été séparée en "nulle" et "faible". Les anciennes valeurs sont affectées à "faible"
+- il est maintenant possible d'indiquer le code et le nom du producteur, du préleveur, du déterminateur. Les valeurs par défaut peuvent être indiquées dans le fichier param.ini
+- un programme complémentaire permet de générer des fichiers csv reprenant certaines informations présentes dans le fichier XML d'export
+- la recherche d'une station s'effectue maintenant en plein texte
+- ajout d'une fonction d'import des cours d'eau et des taxons, à partir d'une extraction du Sandre
+- l'export des dossiers au format XML peut être réalisé quel que soit l'état d'avancement du dossier
+- l'affichage des indicateurs a été remodelé pour qu'il soit plus lisible
+- ajout d'une fonction d'import de la liste des taxons et des codes de calcul, à partir des fichiers disponibles dans le site du SEEE
+- ajout du support de la base de données HSQLDB, pour permettre un fonctionnement en mode autonome sans devoir installer MySQL
+- compléments dans la documentation
+
 Version 1.1.2 du 22 mars 2017
 ------------------------------
 Correction de bogues :
