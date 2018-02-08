@@ -375,12 +375,12 @@
   		<fo:table-cell> 
   			<fo:block>Autre type : </fo:block>
   		</fo:table-cell>
-  		<fo:table-cell><fo:block></fo:block></fo:table-cell>
+  		<fo:table-cell><fo:block><xsl:value-of select="autretypeclass"/></fo:block></fo:table-cell>
   		<fo:table-cell>
   		<fo:block><xsl:value-of select="facies_autre_type_libelle"/></fo:block>
   		</fo:table-cell>
   		<fo:table-cell>
-  			<fo:block><xsl:value-of select="autreTypeClass"/></fo:block>
+  			<fo:block></fo:block>
   		</fo:table-cell>  		
   	</fo:table-row>
  </fo:table-body>
