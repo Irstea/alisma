@@ -4,8 +4,12 @@
 Le logiciel ALISMA est conçu pour permettre la saisie des relevés des macrophytes réalisés en cours d'eau, dans le cadre de la DCE \og Cours d'eau \fg{}. 
 
 Il permet le calcul de l'indicateur.
+
+Pour toutes informations concernant le protocole, consultez le site \href{https://hydrobio-dce.irstea.fr/cours-deau/macrophytes/}{hydrobio-dce.irstea.fr/cours-deau/macrophytes/}
+
 \subsection{Technologie employée}
-Le logiciel a été écrit en Java. Il fonctionne avec une base de données MySql, qui peut être hébergée localement ou en réseau (les paramètres sont facilement modifiables).
+Le logiciel a été écrit en Java. Il fonctionne soit en mode \textit{monoposte} avec une base de données embarquée HSQLDB (fonctionnement transparent pour l'utilisateur), soit en mode réseau, avec une base de données MySQL, pour un partage des informations entre plusieurs utilisateurs.
+
 \subsection{Clauses de propriété}
 Le logiciel est distribué sous la licence GNU GPL v3 (\url{http://www.gnu.org/licenses/gpl.txt}).
 
@@ -19,55 +23,15 @@ Le logiciel est fourni \textit{en l'état}, il ne peut être fait grief à Irste
 
 Il appartient à l'organisme utilisateur d'assurer la sécurité de ses données tant en confidentialité qu'en intégrité ou en disponibilité, selon les besoins de sécurité qu'il aura déterminé. 
 
+Selon le mode de fonctionnement, il devra soit réaliser une copie du dossier contenant la base de données (mode autonome -- HSQLDB) soit s'assurer que les sauvegardes sont correctement réalisées et recopier les fichiers générés sur un support tiers (mode réseau -- MySQL).
+
 En particulier, même si l'application propose une fonction de sauvegarde de la base de données qui est activée régulièrement, il appartient à l'utilisateur de vérifier qu'elle s'exécute correctement. Il devra également la copier vers un support protégé pour éviter tout risque de perte accidentelle.
 
-\subsection{Dysfonctionnement applicatif}
+\subsection{Dysfonctionnement du logiciel}
 
 En cas de dysfonctionnement de l'application, il est possible d'ouvrir un ticket dans \textit{github}, à l'adresse \url{https://github.com/Irstea/alisma/issues/new}.
 
 Irstea ne prend pas d'engagement concernant leur traitement ou leur prise en compte.
 
 \section{Description des versions}
-\subsection{Version 1.0 du 9 mai 2016}
-Version initiale, déposée auprès de l'Agence de protection des programmes.
-
-\subsection{Version 1.0.3 du 6 janvier 2017}
-\subsubsection{Correction de bogues}
-\begin{itemize}
-\item si une nouvelle opération de contrôle était enregistrée deux fois de suite sans fermer la fenêtre correspondante, les unités de relevé correspondantes étaient doublées, ainsi que le point de prélèvement
-\item certaines requêtes SQL pouvaient échouer, si elles comprenaient une clause "order by"
-\item l'absence de paramètres dans le fichier de configuration param.ini pouvait, dans certains cas de figure, faire planter l'application
-\item il n'était pas possible de supprimer une opération (contrainte d'intégrité référentielle non respectée)
-\item la version du runtime Java est maintenant testée, pour éviter une utilisation avec des versions obsolètes du JRE
-\end{itemize}
-
-\subsubsection{Améliorations}
-\begin{itemize}
-\item le fichier XML d'export, et le fichier PDF généré, contiennent maintenant le numéro de la version du logiciel qui les a créé
-\item mise à jour de la documentation, avec en particulier la procédure à suivre pour installer une nouvelle version.
-\end{itemize}
-
-\subsection{Version 1.1 du 9 février 2017}
-\subsubsection{Mise à jour de la base de données}
-La version nécessite une mise à jour de la base de données. Pour cela, référez-vous au chapitre \ref{maj}, \textit{\nameref{maj}}, page \pageref{maj}.
-
-\subsubsection{Correction de bogues}
-\begin{itemize}
-\item dans certains cas, la recherche d'opérations échouait à cause d'une erreur SQL
-\item le calcul de l'IBMR, pour un ensemble de dossiers, était possiblement erroné
-
-\end{itemize}
-
-\subsubsection{Améliorations}
-\begin{itemize}
-\item il est maintenant possible d'exporter les données des relevés pour réaliser le calcul de l'IBMR auprès de SEEE \url{http://www.seee.eaufrance.fr} (calcul officiel), puis d'importer les résultats. Le statut des dossiers calculés évolue en conséquence.
-\item rajout de plusieurs indicateurs : 
-\begin{itemize}
-\item lors du calcul de la robustesse, le nombre de taxons ayant la même valeur EK maximale est indiqué
-\item si la classe officielle du cours d'eau est indiqué, le programme calcule la classe de qualité correspondante, tant pour le calcul de l'IBMR que de la robustesse
-\item en consultation d'un dossier, la qualité de la station est mise en relief par une bordure colorée selon les règles officielles
-\end{itemize}
-\item si les chemins d'export ne sont pas reconnus, le programme affiche maintenant un message d'information
-\item il est maintenant possible de rechercher des dossiers par année (les dates de recherche sont alors inopérantes)
-\item à partir de la liste des dossiers, l'ouverture d'un relevé s'effectue maintenant par double-clic, ou bien par sélection puis appui sur le bouton \textit{ouvrir}.
-\end{itemize}
+Le détail des versions est décrit dans le fichier \textit{news.txt}, présent à la racine de l'application.

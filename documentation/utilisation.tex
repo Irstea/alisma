@@ -1,1 +1,28 @@
 \chapter{Utiliser le logiciel}
+
+\section{Exporter des dossiers}
+
+Les dossiers peuvent être exportés au format XML\footnote{format informatique permettant de stocker des informations complexes et largement utilisé pour les échanges d'informations. Les données sont identifiées par des balises, qui peuvent s'imbriquer les unes dans les autres} selon deux modalités, soit lors de la saisie d'un dossier, quand le fichier PDF est généré, 
+soit depuis la liste des relevés. Dans ce cas, l'ensemble des dossiers sélectionnés est exporté par clic sur le bouton \textit{Exporter}.
+
+Les fichiers d'export sont stockés dans le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}export}.
+
+\section{Importer des dossiers}
+
+Il est possible d'importer des dossiers contenus dans un fichier XML généré par une autre instance Alisma (\textit{cf.} ci-dessus). Si le dossier existe déjà, il sera remplacé par la nouvelle version.
+
+Un mécanisme interne garantit l'unicité des dossiers\footnote{un champ de type UUID -- Unique identifier -- est généré pour chaque dossier. Son mode de génération fait qu'il est impossible que deux dossiers différents disposent du même identifiant. La procédure d'importation s'appuie sur ce numéro pour éviter les conflits}. L'import peut être réalisé soit depuis le menu principal de l'application (\textit{Import/Export, Import des dossiers}), soit depuis la liste des relevés (bouton \textit{Import des dossiers}).
+
+\section{Calcul officiel de l'indicateur}
+
+L'indicateur IBMR peut être calculé directement dans le logiciel. Mais il est également possible de déclencher son calcul officiel en interrogeant le site du SEEE. Deux modes sont possibles :
+\begin{itemize}
+\item un mode semi-automatique : les fichiers sont préparés dans le logiciel, puis sont téléchargés dans le site web du SEEE. Le fichier de résultat est ensuite importé dans l'application ;
+\item un mode totalement automatique, où l'ensemble de la procédure se déroule sans que l'utilisateur n'ait de données à manipuler.
+\end{itemize}
+
+Le calcul peut être déclenché dossier par dossier, depuis l'écran de saisie du relevé, ou pour un ensemble de dossiers, depuis la liste des relevés.
+
+Sauf en cas d'indisponibilité du service (pas de connexion réseau, panne, etc.), il est fortement conseillé de lancer le calcul dossier par dossier, quand la saisie est terminée, avant de passer au relevé suivant.
+
+Les résultats doivent être identiques entre les deux valeurs (calcul dans le logiciel et calcul SEEE). Si ce n'est pas le cas, il est possible que ce soit dû à une évolution des paramètres pris en compte pour le calcul. Renseignez-vous alors soit auprès de votre Agence de l'Eau, soit auprès de l'Agence française de la bio-diversité pour savoir s'il y a eu des évolutions, et récupérer les nouvelles valeurs.

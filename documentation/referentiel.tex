@@ -1,0 +1,110 @@
+\chapter{Importer les référentiels}
+
+Pour garantir les échanges entre les différentes structures qui travaillent avec le logiciel Alisma, chacune doit disposer des mêmes référentiels, et notamment d'une liste à jour des stations de prélèvement, des taxons et des coefficients qui leur sont rattachés.
+
+Le logiciel permet d'importer automatiquement les référentiels, soit depuis le menu général (choix \textit{Import/Export}), soit directement depuis l'affichage des listes correspondantes.
+
+Tous les référentiels doivent être importés avant de commencer à saisir des dossiers.
+
+Dans la pratique, quatre importations sont à réaliser : 
+\begin{itemize}
+\item la liste des taxons
+\item les coefficients associés
+\item la liste des cours d'eau
+\item la liste des stations.
+\end{itemize}
+
+Un premier jeu des tables de référence est livré en même temps que le logiciel. Les fichiers d'import sont disponibles dans le sous-dossier \textit{referentiel}.
+
+Si des fichiers sont créés manuellement, ils doivent respecter impérativement la structure décrite dans ce chapitre. En particulier, l'ordre des colonnes ne doit pas être modifié.
+
+Les fichiers sont fournis au format CSV, avec le point-virgule comme séparateur de champ, et encodés en UTF-8.
+
+Les importations doivent être réalisées dans l'ordre indiqué. Certaines importations peuvent être longues à exécuter : veuillez patienter jusqu'à l'apparition d'un message indiquant que l'opération est terminée.
+
+Il est possible de relancer autant que nécessaire les importations, notamment pour mettre à jour la liste existante. Les mises à jour peuvent modifier un libellé, rajouter une nouvelle fiche, mais ne réaliseront aucune suppression dans la base de données.
+
+Avant de lancer les importations, surtout une fois que des données auront été saisies, il est fortement conseillé de disposer d'une sauvegarde de la base de données.
+
+\section{Importer la liste des taxons}
+
+La liste des taxons n'est actuellement pas téléchargeable, seule celle fournie avec le logiciel peut être utilisée.
+
+Voici la structure du fichier :
+
+% \usepackage{array} is required
+\begin{tabular}{|c|c|>{\raggedright\arraybackslash}p{9cm}|}
+\hline 
+Numéro de colonne & Nom & Description \\ 
+\hline 
+1 & cd\_taxon & Code du taxon, utilisé dans le logiciel \\ 
+\hline 
+2 & nom\_taxon & Nom scientifique du taxon \\ 
+\hline 
+3 & cd\_sandre & numéro enregistré auprès du Sandre \\ 
+\hline 
+4 & id\_groupe & Numéro informatique du groupe de rattachement du taxon dans l'application \\ 
+\hline 
+5 & auteur & Code de l'auteur de la description du taxon \\ 
+\hline 
+6 & cd\_valide & Code du taxon valide \\ 
+\hline 
+7 & cd\_contrib & Code du taxon contributif \\ 
+\hline 
+\end{tabular} 
+
+\section{Importer les coefficients associés aux taxons contributifs}
+
+Le fichier \textit{IBMR\_110\_Tableau\_Parametres.csv} est extrait d'une archive compressée disponible dans le site du SEEE, à l'adresse \url{http://www.seee.eaufrance.fr/algos/IBMR/Documentation/Documentation scripts IBMR v1.1.1.zip}
+
+Voici sa structure :
+
+\begin{tabular}{|c|c|>{\raggedright\arraybackslash}p{9cm}|}
+\hline 
+Numéro de colonne & Nom & Description \\ 
+\hline 
+1 & Cd\_taxon & Code du taxon\\ 
+\hline 
+2 & Csi & Coefficient spécifique \\ 
+\hline 
+3 & Ei & Valeur Ei \\ 
+\hline 
+\end{tabular} 
+
+\section{Importer la liste des cours d'eau et des stations}
+
+La liste des cours d'eau et des stations peut être récupérée auprès du Sandre. Un utilitaire, fourni avec le logiciel, permet d'interroger le Sandre pour récupérer la liste, puis génère les deux fichiers CSV utilisés pour l'importation des données (\textit{cf.} page \pageref{sandre}).
+
+Voici la structure du fichier d'importation des cours d'eau :
+
+\begin{tabular}{|c|c|l|}
+\hline 
+N° de colonne & Nom & Description \\ 
+\hline 
+1 & CdEntiteGeographique & Code du cours d'eau\\ 
+\hline 
+2 & NomEntiteGeographique & Nom \\ 
+\hline 
+
+\end{tabular}
+
+et celle du fichier d'importation des stations :
+
+\begin{tabular}{|c|c|l|}
+\hline 
+N° de colonne & Nom & Description \\ 
+\hline 
+1 & CdStationMesureEauxSurface & Code de la station\\ 
+\hline 
+2 & LbStationMesureEauxSurface & Nom de la station \\ 
+\hline 
+3 & CoordXStationMesureEauxSurface & Valeur X en Lambert 93 de la station \\ 
+\hline 
+4 & CoordYStationMesureEauxSurface & Valeur Y en Lambert 93 de la station \\ 
+\hline 
+5 & NomEntiteHydrographique & Nom du cours d'eau \\ 
+\hline 
+6 & TypeCEStationMesureEauxSurfac & vide \\ 
+\hline 
+\end{tabular}
+

@@ -2,109 +2,119 @@
 
 \section{Installer les pré-requis}
 \subsection{JRE Java}
-Si nécessaire (votre ordinateur dispose peut-être déjà d'une version du JRE), téléchargez le programme d'installation du JRE Java à partir du site : \url{http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html}
-\subsection{Serveur MySql}
-Le serveur MySql est utilisé pour gérer les données de l'application.
+Si nécessaire (votre ordinateur dispose peut-être déjà d'une version du JRE), téléchargez le programme d'installation du JRE Java à partir du site : \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}
 
-Vous avez besoin d'installer un serveur MySql dans votre poste de travail si vous voulez que votre application fonctionne de manière autonome. Si vous disposez d'un serveur, installez plutôt MySql dans le serveur ; vous n'aurez alors besoin de n'installer qu'un client pour exécuter les scripts de création et de pré-remplissage de la base de données.
+\subsection{Serveur MySql -- mode réseau}
 
-Consultez le cas échéant votre correspondant informatique pour savoir quelle est la meilleure stratégie à adopter.
+Si la base de données a vocation à être partagée entre plusieurs utilisateurs, le fonctionnement avec un serveur MySQL est possible. Pour tous renseignements concernant l'installation et le fonctionnement de MySQL, consultez le site \url{https://www.mysql.com/}.
 
-Pour télécharger MySQL serveur : \url{http://dev.mysql.com/downloads/windows/installer/}
+Vous devriez également installer SQL Workbench, le client fourni par MySQL pour manipuler les bases de données et les comptes des utilisateurs.
 
-\subsubsection{Configurer le serveur MySql}
-Dans le dossier d'installation de MySql, ouvrez le fichier \textit{my.cnf} ou \textit{my.ini} (en principe, dans le dossier : C:\textbackslash{} ProgramData\textbackslash{}MySQL\textbackslash{}MySQL Server 5.6. Dans la section [mysqld], recherchez l'entrée \textit{max\_allowed\_packet}, et vérifiez que la valeur soit au minimum à 16M :
+Dans le dossier d'installation de MySql, ouvrez le fichier \textit{my.cnf} ou \textit{my.ini} (en principe, dans le dossier : C:\textbackslash{} ProgramData\textbackslash{}MySQL\textbackslash{}MySQL Server 5.7 pour les installations sur des plates-formes Windows. Dans la section [mysqld], recherchez l'entrée \textit{max\_allowed\_packet}, et vérifiez que la valeur soit au minimum à 16M :
 \begin{lstlisting}
 [mysqld]
 ...
 max_allowed_packet      = 16M
 \end{lstlisting}
 
-Dans le cas contraire, l'import des données de référence (table des stations ou des espèces, notamment) risque de ne pas aboutir.
 
 Relancez ensuite le serveur Mysql.
 
-\subsection{Client MySql}
-Le programme sait se connecter directement au serveur MySql, sans passer par des outils tiers. Vous n'avez besoin d'un client, par exemple SQL Workbench, uniquement pour exécuter les scripts de création et de remplissage de la base de données.
+Connectez-vous au serveur MySQL, et créez :
+\begin{itemize}
+\item un utilisateur dédié à la base de données, par exemple \textit{alisma}, avec le mot de passe \textit{alisma} ;
+\item la base de données \textit{alisma}.
+\end{itemize}
 
-Pour télécharger SqlWorkbench : \url{http://dev.mysql.com/downloads/workbench/}
+Assurez-vous que l'utilisateur \textit{alisma} dispose bien de l'ensemble des droits pour la base de données \textit{alisma}.
+
+\subsection{Client de bases de données}
+
+Si vous avez besoin de réaliser des requêtes d'interrogation dans la base de données, vous pouvez installer le logiciel Java SQL Workbench/J (\url{http://www.sql-workbench.net/}), qui vous permettra de vous connecter aussi bien à la base de données HSQLDB (fonctionnement monoposte) que MySQL (fonctionnement en réseau). Pour la configuration des connexions dans SQL Workbench/J, consultez la procédure décrite en annexe, page \pageref{sqlworkbenchj}.
 
 
 \section{Installer le logiciel}
-\subsection{Créer le dossier d'installation}
 
-Le logiciel peut être installé à n'importe quel endroit dans le micro-ordinateur. Néanmoins, privilégiez l'installation soit dans le dossier \textit{program\textbackslash alisma}, soit directement dans un dossier à la racine de votre disque, par exemple \textit{c:\textbackslash alisma}.
+\subsection{Précautions à prendre en cas de mise à jour}
+Si vous réalisez une mise à jour du logiciel, pensez à sauvegarder :
+\begin{itemize}
+\item le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}data}, qui contient la base de données embarquée (fonctionnement monoposte) ;
+\item le fichier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}param\textbackslash{}param.ini}, qui contient vos paramètres personnels.
+\end{itemize}
+Notez également la version actuelle de l'application, que vous retrouverez dans la barre d'état de la fenêtre du logiciel.
 
 \subsection{Décompresser l'archive}
-Décompressez le fichier \textit{alisma.zip} dans le dossier d'installation. Vous devriez récupérer la structure suivante :
 
+Décompressez l'archive à la racine du disque c:, qui comprend un dossier \textit{alisma}.
+
+en cas de mise à jour, remplacez le dossier \textit{data} par celui préalablement sauvegardé.
+
+\section{Configurer la base de données}
+
+\subsection{Créer la base de données}
+
+Cette opération doit être réalisée pour toute nouvelle installation, et uniquement dans ce cas.
+
+\subsubsection{Base de données embarquée}
+
+Dans le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}hsqldb}, exécutez le programme \textit{create.bat}. Il va créer la structure de la base de données.
+
+\subsubsection{Base de données MySQL}
+
+Dans le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}mysql}, éditez le fichier \textit{create.bat}. Vérifiez notamment les paramètres de connexion (nom du serveur, compte, mot de passe, nom de la base de données, etc.) et l'emplacement du client MySQL dans la machine.
+
+Une fois les modifications effectuées, exécutez le script, qui créera la structure de la base de données.
+
+\section{Mettre à jour la base de données}
+
+Cette opération ne doit être réalisé que si le logiciel a déjà été installé dans votre poste de travail (mode monoposte), ou si la base de données est hébergée dans un serveur (mode réseau).
+
+Les scripts de mise à jour sont nommé ainsi : \textit{alter-xx-yy.bat}, où :
 \begin{itemize}
-\item Dossiers :
-\begin{description}
-\item[database] : scripts d'installation de la base de données ;
-\item[param] : contient le fichier de paramètres ;
-\item[license] : contient les fichiers de licence d'utilisation du logiciel ;
-\item[alisma\_lib] : bibliothèques complémentaires utilisées par l'application.
-\end{description}
-\item fichiers :
-\begin{description}
-\item[alisma.jar] : fichier contenant le programme java ;
-\item[alisma.bat] : programme de lancement à partir de Windows ;
-\item[alisma.sh] : programme de lancement à partir de Linux ;
-\item[alisma.png] : icône de l'application, pour créer un raccourci, par exemple (ce fichier n'est pas utilisé directement dans l'application) ;
-\item[langage.config] : fichier créé à la première utilisation, qui contient la langue utilisée par défaut.
-\end{description}
+\item \textit{xx} correspond à la version à mettre à jour ;
+\item \textit{yy} correspond à la version cible.
 \end{itemize}
 
-\section{Créer la base de données}
-Connectez-vous à votre serveur MySQL, avec les droits vous permettant de créer une base de données.
+Vous devrez exécuter tous les scripts, les uns après les autres, en recherchant celui dont la valeur \textit{xx} est égale ou strictement inférieure à la version du logiciel précédemment installé.
 
-Si vous avez installé le serveur MySQL localement (dans votre ordinateur), utilisez ces informations :
-\begin{description}
-\item[serveur] : \textit{localhost}
-\item[login] : \textit{root}
-\item[password] : laisser à vide\footnote{Les dernières versions de MySql imposent l'utilisation d'un mot de passe pour le compte root}
-\end{description}
+Par exemple, si vous disposiez du logiciel en version 1.1 et que vous installez la version 1.2, vous devrez exécuter le script \textit{alter-1.1-1.2.bat}.
 
-Créez la base de données (ou \textit{schéma}, dans la terminologie MySql) \textbf{alisma}, associée au login \textbf{alisma} et au mot de passe \textbf{alisma} (paramètres par défaut dans le fichier de configuration).
+\subsubsection{Base de données embarquée -- mode monoposte}
 
-Les scripts de création et d'alimentation de la base de données sont stockés dans le dossier \textit{database}. Ils doivent être exécutés dans cet ordre, sous peine de déclencher des messages d'erreur de cohérence :
-\begin{enumerate}
-\item \textit{create\_alisma\_v1.0.sql} : script de création de la base de données \textit{alisma} ;
-\item \textit{parametre\_populate\_v1.0.sql} : import des paramètres généraux ;
-\item \textit{taxons\_populate\_v1.0.sql} : import du référentiel IRSTEA ;
-\item \textit{cours\_eau\_populate\_v1.0.sql} : import des cours d'eau déclarés dans les stations du référentiel SANDRE ;
-\item \textit{stations\_populate\_v1.0.sql} : import des stations du référentiel SANDRE.
-\end{enumerate}
+Les scripts sont dans le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}hsqldb}.
 
-\subsection{Appliquer les mises à jour}
+\subsubsection{Base de données serveur -- mode réseau}
 
-Si la version du script de création est antérieure à la version de l'application, il est possible qu'il soit nécessaire d'appliquer un script de modification.
-
-Consultez le chapitre \ref{dbmaj} \textit{\nameref{dbmaj}}, page \pageref{dbmaj} pour plus de détails sur la numérotation des scripts de mise à jour.
+Les scripts sont dans le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}mysql}. Avant de lancer un script, assurez-vous que les paramètres de connexion soient corrects, en l'éditant préalablement.
 
 \section{Adapter les paramètres à votre installation}
 \label{sec:param}
+
+Si vous fonctionnez en mode monoposte, vous n'aurez probablement besoin de ne  modifier que les rubriques \textit{preleveur, organisme, operateur, producteur et determinateur} de la section \textit{others} (valeurs par défaut pré-positionnées lors de la saisie d'un nouveau relevé).
+
+En cas d'évolution des serveurs fournissant les référentiels ou calculant l'indice officiel, vous pourriez être amenés à modifier les paramètres correspondants. Consultez le cas échéant vos correspondants dans les agences de l'Eau ou à l'Agence française de la bio-diversité pour de plus amples informations.
+
 Le fichier \textit{param\textbackslash{}param.ini} contient les paramètres qui peuvent être modifiés facilement par l'utilisateur. Néanmoins, la plus grande prudence est de mise, le risque de créer des dysfonctionnements ultérieurement n'étant alors pas nul...
 
 Pour modifier le fichier \textit{param.ini}, utilisez \textit{notepad++} (\url{https://notepad-plus-plus.org}) plutôt que \textit{notepad}, pour éviter les problèmes de caractères de fin de ligne, qui sont différents entre Windows et les autres systèmes d'exploitation.
 
-Le fichier de paramètres est organisé en sections :
+Le fichier de paramètres est organisé en sections. Les valeurs par défaut précisées ici sont celles d'une installation monoposte. Pour une utilisation en mode réseau, remplacez le fichier \textit{param.ini} par une copie du fichier \textit{param-mysql.ini}.
 
 \subsection{database}
-Cette section précise les paramètres de connexion à la base de données (entre parenthèses, les valeurs par défaut).
+Cette section précise les paramètres de connexion à la base de données.
 \begin{description}
-\item [server] : nom du serveur (\textit{localhost})
-\item [dbname] : nom de la base de données (\textit{alisma})
-\item [dbuser] : nom du compte de connexion (\textit{alisma})
-\item [dbpass] : mot de passe de connexion (\textit{alisma})
-\item [jdbc\_class] : nom du pilote d'accès à la base de données (\textit{com.mysql.jdbc.Driver})
-\item [dbtype] : type de la base de données (\textit{mysql})
-\item [backupFileNamePrefix] : préfixe utilisé pour les sauvegardes de la base de données (\textit{alisma\_db})
-\item [backupProgram] : nom du programme utilisé pour réaliser la sauvegarde de la base de données (\textit{c:\textbackslash{}Program Files\textbackslash{}MySQL\textbackslash{}MYSQL Server 5.6\textbackslash{}bin\textbackslash{}mysqldump.exe})
-\item [pathFolderDataSave] : chemin de stockage des sauvegardes (\textit{c:\textbackslash{}alisma\textbackslash{}backup})
-\item [pathFileDateSave] : chemin d'accès au fichier contenant la date de la dernière sauvegarde réalisée (\textit{c:\textbackslash{}alisma\textbackslash{}backup\textbackslash{}alisma\_save.txt})
-\item [backupDelay] : délai entre deux sauvegardes (7). Pour inhiber la réalisation des sauvegardes, ce paramètre doit être positionné à \textbf{-1}
+\item [dbuser] : nom du compte de connexion (\textit{SA})
+\item [dbpass] : mot de passe de connexion ()
+\item [jdbc\_class] : nom du pilote d'accès à la base de données (\textit{org.hsqldb.jdbc.JDBCDriver})
+\item [jdbc\_string] : chaîne de connexion à la base de données (jdbc:hsqldb:file:data/alisma)
+\item [dbtype] : type de la base de données (\textit{hsqldb})
+\item [dbColumnSeparator] : séparateur interne utilisé pour les noms de colonnes (vide)
+\item [dbencode\_iso8859] : true|false. Indique si les caractères doivent être encodés en ISO-8859-15 (true). La valeur \textit{true} ne doit être positionnée que pour les postes de travail fonctionnant avec Windows
+\item [backupFileNamePrefix] : préfixe utilisé pour les sauvegardes de la base de données serveur (\textit{alisma\_db})
+\item [backupProgram] : nom du programme utilisé pour réaliser la sauvegarde de la base de données serveur (vide)
+\item [pathFolderDataSave] : chemin de stockage des sauvegardes (\textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}backup})
+\item [pathFileDateSave] : chemin d'accès au fichier contenant la date de la dernière sauvegarde réalisée (\textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}backup\textbackslash{}alisma\_save.txt})
+\item [backupDelay] : délai entre deux sauvegardes (-1). Pour que le logiciel déclenche des sauvegardes automatiques, ce paramètre doit être supérieur à -1. Les sauvegardes ne sont pas possibles en mode monoposte.
 \end{description}
 
 Si votre base de données est hébergée dans un serveur, contactez votre administrateur informatique pour connaître les paramètres à renseigner.
@@ -117,7 +127,7 @@ Cette section permet de définir la langue utilisée par défaut dans le logicie
 \item [default] : langue utilisée par défaut (fr\_FR)
 \item [preferred] : langue préférée (fr\_FR)
 \item[en\_US]: langue utilisée en cas de libellé manquant (fr\_FR)
-\item [en\_EN] : idem
+\item [en\_GB] : idem
 \end{description}
 
 
@@ -126,11 +136,11 @@ Cette section permet de définir la langue utilisée par défaut dans le logicie
 \begin{description}
 \item [modeDebug] : active l'affichage des messages dans le logiciel (false)
 \item [lambert] : indique si les coordonnées Lambert sont utilisées (true). Si le logiciel est employé pour des relevés hors France, basculez ce paramètre à \textbf{false}
-\item [lambert93Emin] : coordonnée Lambert Est minimale (70000)
+\item [lambert93Emin] : coordonnée Lambert Est minimale (100000)
 \item [lambert93Emax] : coordonnée Lambert Est maximale (1200000)
 \item [lambert93Nmin] : coordonnée Lambert Nord minimale (6000000)
-\item [lambert93Nmax] : coordonnée Lambert Nord maximale (7200000)
-\item [pathFolderExport] : chemin de stockage des fichiers générés (c:\textbackslash{}alisma\textbackslash{}export)
+\item [lambert93Nmax] : coordonnée Lambert Nord maximale (7100000)
+\item [pathFolderExport] : chemin de stockage des fichiers générés (\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}export)
 \item [exportFileNamePrefix] : préfixe utilisé pour les fichiers exportés (alisma)
 \item [xsltfile\_fr] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en français (param/alisma.xsl)
 \item [xsltfile\_en] : nom du fichier contenant le filtre utilisé pour générer les fichiers PDF, en anglais (param/alisma.xsl)
@@ -142,6 +152,7 @@ Cette section permet de définir la langue utilisée par défaut dans le logicie
 \item [producteur\_name] : nom par défaut du producteur
 \item [determinateur\_code] : code par défaut du déterminateur
 \item [determinateur\_name] : nom par défaut du déterminateur
+\item [sandreStationExportAddress] = adresse de récupération automatique de la liste des stations déclarées dans le Sandre
 
 \end{description}
 
@@ -158,7 +169,7 @@ Dans la pratique, ces niveaux ne sont modifiables que pour les informations suiv
 \begin{description}
 \item [coord\_x et coord\_y] : coordonnées Lambert. Les valeurs doivent être vidées si le logiciel est utilisé hors de France (modification à réaliser en même temps pour le paramètre \textit{others/lambert}) 
 \item [wgs84\_x et wgs84\_y] : coordonnées WGS84 (recommanded)
-\item [lambert\_x\_aval et lambert\_y\_amont] : coordonnées Lambert du point aval (recommanded)
+\item [lambert\_x\_aval et lambert\_y\_aval] : coordonnées Lambert du point aval (recommanded)
 \item [wgs84\_x\_aval et wgs84\_y\_aval] : coordonnées WGS84 du point aval (recommanded)
 \end{description}
 
@@ -176,48 +187,19 @@ Cette section contient le code des couleurs employées, ainsi que les adresses d
 \subsection{seee}
 Cette section est utilisée pour l'interrogation et le calcul SEEE de l'indicateur.
 \begin{description}
-\item[url] : adresse du site web
-\item [resourceIbmrCalc] : chemin d'accès au programme de calcul
-\item [indicator] : code de l'indicateur
-\item [version] : version utilisée pour le calcul de l'indicateur
-\item [proxyEnabled] : si à \textit{true}, la connexion est réalisée en utilisant un proxy d'entreprise
+\item[url] : adresse du site web (http://seee.eaufrance.fr)
+\item [resourceIbmrCalc] : chemin d'accès au programme de calcul (/api/calcul)
+\item [indicator] : code de l'indicateur (IBMR)
+\item [version] : version utilisée pour le calcul de l'indicateur (1.1.1)
+\item [proxyEnabled] : si à \textit{true}, la connexion est réalisée en utilisant un proxy d'entreprise (false)
 \item [proxyHost] : nom DNS (ou adresse IP) du serveur Proxy (ne pas préfixer par http://, indiquer uniquement le nom,par exemple \textit{proxy.masociete.com})
 \item [proxyPort] : port de connexion au proxy (8080 par défaut)
 \item [proxyUser] : si le proxy requiert une identification, code de l'utilisateur concerné
 \item [proxyPassword] : mot de passe associé
 \end{description}
 
-\section{Mettre à jour le logiciel}
-\label{maj}
-Lors de la livraison d'une nouvelle version, voici les opérations à réaliser.
+\section{Sauvegarde des données}
 
-Lisez le fichier \textit{news.txt} ou \textit{lisezmoi.txt}, qui peuvent contenir des informations complémentaires nécessaires pour la mise à jour.
+En mode monoposte, aucune sauvegarde n'est réalisée par le logiciel. Vous devrez recopier le dossier \textit{\NoAutoSpaceBeforeFDP c:\textbackslash{}alisma\textbackslash{}data} dans un support protégé, pour vous prémunir soit contre des problèmes techniques, soit contre des erreurs ou des opérations malencontreuses.
 
-\subsection{Installer la nouvelle version du logiciel}
-
-Renommez votre ancien dossier d'installation, par exemple en \textit{alisma.old}.
-
-Créez un nouveau dossier au nom identique au précédent (c:\textbackslash{}alisma).
-
-Décompressez la nouvelle version dans cd dossier. Récupérez ensuite l'ancien fichier \textit{param.ini} (en principe, c:\textbackslash{}alisma\textbackslash{}param\textbackslash{}param.ini) et écrasez la version livrée : cela vous permettra de conserver vos paramètres.
-
-\subsection{Vérifier si la base de données a besoin d'une mise à jour}
-\label{dbmaj}
-
-Dans le dossier \textit{database}, vérifiez s'il existe un script de modification correspondant à votre version, par exemple :
-
-\begin{lstlisting}
-alter-1.0.3-1.1.0.sql
-\end{lstlisting}
-
-Le premier nombre (1.0.3) correspond à la dernière version avant mise à jour de la structure de la base de données. Le second (1.1.0), la version cible minimale. Il est possible que plusieurs scripts soient nécessaires si vous avez sauté plusieurs mises à jour intermédiaires.
-
-Si vous avez besoin de réaliser une mise à jour :
-\begin{itemize}
-\item faites une sauvegarde de votre base de données ;
-\item exécutez le script, et notez le cas échéant les messages d'erreur rencontrés.
-\end{itemize}
-
-En cas d'erreur à l'exécution de la mise à jour, notez les messages d'erreur et signalez-les dans github (\url{https://github.com/Irstea/alisma/issues/new}).
-Restaurez ensuite la base de données à partir de la sauvegarde réalisée précédemment, et revenez à la version précédente du logiciel.
-
+En mode réseau, le logiciel peut déclencher une sauvegarde. Pensez également à recopier le fichier généré sur un support protégé pour éviter tout risque de perte.

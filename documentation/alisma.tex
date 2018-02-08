@@ -19,11 +19,18 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 
+\usepackage{textcomp}
+\usepackage{gensymb}
+
 % Definition des couleurs
 \definecolor{titreColor}{RGB}{0,58,128}  % Marine
 \definecolor{stitreColor}{RGB}{0,158,224}  % Ocean
 \definecolor{auteurColor}{RGB}{0,58,128}     % Marine
 \definecolor{texteColor}{RGB}{164,196,0}     % Prairie
+
+\definecolor{ocean}{RGB}{0,158,224}  % Ocean
+\definecolor{marine}{RGB}{0,58,128}     % Marine
+\definecolor{prairie}{RGB}{164,196,0}     % Prairie
 
 % Definition des chapitres
 \titleformat{\chapter}[display]
@@ -46,11 +53,18 @@
 {\color{stitreColor}\bfseries\sffamily}
 {\color{stitreColor}\thesubsection}{1em}{}
 
+\hypersetup{
+colorlinks = true,
+urlcolor=marine
+}
+
 %Données de titre et d'auteur pour la page de garde
-\newcommand{\titre}{Logiciel ALISMA}
+\newcommand{\titre}{Logiciel ALISMA\\Version 1.2}
 \newcommand{\sousTitre}{Manuel d'installation et d'utilisation}
 \newcommand{\auteur}{Irstea -- centre de Bordeaux}
-\newcommand{\dateModif}{Version 1.2 du x mars 2018}
+\newcommand{\dateModif}{Version du 8 février 2018}
+
+\usepackage{array}
 
 \begin{document}
 %Supprime les veuves et orphelines
@@ -92,14 +106,16 @@
 %\cleardoublepage
 \input{installer}
 
-\input{utilisation}
+\input{referentiel}
 
+\input{utilisation}
 
 \input{utilitaires}
 
 
 %\chapter{Annexes}
-%\input{annexes}
+\input{annexes}
+
 % \input{chapitre2}
 % Table des matières
 \tableofcontents

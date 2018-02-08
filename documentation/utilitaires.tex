@@ -13,6 +13,7 @@ Pour lancer un des programmes :
 
 \section{Liste des programmes utilitaires}
 \subsection{Récupération de la liste des stations auprès du Sandre}
+\label{sandre}
 Ce programme permet de récupérer la liste des stations du Sandre, pour pouvoir les importer dans le logiciel.
 
 \begin{description}
@@ -21,7 +22,7 @@ Ce programme permet de récupérer la liste des stations du Sandre, pour pouvoir
 \item [Fonctionnement] : le programme interroge le Sandre avec une requête pré-définie, pour récupérer la liste des stations\\
 Une fois la liste récupérée, celle-ci est remise en forme sous la forme d'un fichier CSV, qui pourra ensuite être importé dans ALISMA
 \item [Limitations] : la procédure d'interrogation ne fonctionne pas si le poste de travail ne dispose pas d'un accès direct à Internet (connexion nécessitant le paramétrage d'un serveur Proxy HTTP, notamment dans certains organismes)
-\item [Remarques] : il est possible que l'interrogation ne fonctionne pas la première fois qu'elle est lancée : il faut alors la relancer manuellement.
+\item [Remarques] : en raison de problèmes de performances (à la date de rédaction de ce document), il est possible que l'interrogation ne fonctionne pas la première fois qu'elle est lancée. Il faut alors la relancer, parfois dans un autre créneau temporel ou le lendemain, pour qu'elle finisse par aboutir.
 \end{description}
 
 \subsection{Export des données au format CSV}
