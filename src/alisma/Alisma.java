@@ -11,8 +11,8 @@ import utils.Parametre;
 
 public class Alisma {
 
-	public static final String VERSION = "v1.2 - 05 février 2018";
-	public static final String VERSIONNUMBER = "1.2";
+	public static final String VERSION = "v1.2.1 - 26 février 2018";
+	public static final String VERSIONNUMBER = "1.2.1";
 	static String parametre = "param/param.ini";
 	public static String versionOs ;
 	public static boolean isWindowsOs = false;

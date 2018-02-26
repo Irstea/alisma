@@ -431,9 +431,9 @@ public class Releve_tab3 extends ComposantAlisma {
 			addTextPourcentageDecimal("pc_vegetalisation", 0, 0, 1);
 			addCombo("periphyton", 0, 1, 1, false);
 			addComboItemList("periphyton", ur.params.get("periphyton").getArray(), false);
-			addTextPourcentage("pc_flottante", 0, 2, 1);
-			addTextPourcentage("pc_immerg", 0, 3, 1);
-			addTextPourcentage("pc_helophyte", 0, 4, 1);
+			addTextPourcentageDecimal("pc_flottante", 0, 2, 1);
+			addTextPourcentageDecimal("pc_immerg", 0, 3, 1);
+			addTextPourcentageDecimal("pc_helophyte", 0, 4, 1);
 			addFieldNecessary("pc_vegetalisation");
 		}
 	}
@@ -447,11 +447,11 @@ public class Releve_tab3 extends ComposantAlisma {
 	class VegeDroite extends ComposantAlisma {
 
 		public VegeDroite() {
-			addTextPourcentage("pc_heterot", 0, 0, 1);
-			addTextPourcentage("pc_algues", 0, 1, 1);
-			addTextPourcentage("pc_bryo", 0, 2, 1);
-			addTextPourcentage("pc_lichen", 0, 3, 1);
-			addTextPourcentage("pc_phanero", 0, 4, 1);
+			addTextPourcentageDecimal("pc_heterot", 0, 0, 1);
+			addTextPourcentageDecimal("pc_algues", 0, 1, 1);
+			addTextPourcentageDecimal("pc_bryo", 0, 2, 1);
+			addTextPourcentageDecimal("pc_lichen", 0, 3, 1);
+			addTextPourcentageDecimal("pc_phanero", 0, 4, 1);
 		}
 	}
 
